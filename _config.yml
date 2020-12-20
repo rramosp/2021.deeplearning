@@ -1,0 +1,19 @@
+# Book settings
+title: Fundamentos de Deep Learning
+author: YOUR NAME / YOUR INSTITUTION
+logo: content/local/imgs/rlxmooc_logo-black.png
+
+repository:
+   url: https://github.com/rramosp/2021.deeplearning
+   branch: master
+
+launch_buttons:
+  binderhub_url: ""
+  colab_url: https://colab.research.google.com
+
+#html:
+#  google_analytics_id: "XXXX"
+
+execute:
+  execute_notebooks         : off
+
