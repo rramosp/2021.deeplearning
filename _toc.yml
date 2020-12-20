@@ -4,7 +4,7 @@
     - file: "content/U1.01 - DL Overview"
     - file: "content/U1.02 - Modelos derivados de los datos.ipynb"
     - file: "content/U1.03 - Como se disena un algoritmo de Machine Learning.ipynb"
-    - file: "content/LAB 01 - SUBMISSION EXAMPLE.ipynb"
+    - file: "content/U1 LAB 01 - SUBMISSION EXAMPLE.ipynb"
 - file: content/M02
   sections:
     - file: "content/U2.01 - Introduction to Artificial Neural Networks.ipynb"
@@ -12,8 +12,8 @@
     - file: "content/U2.03 - Overfitting and regularization.ipynb"
     - file: "content/U2.04 - Network Architectures - Autoencoders.ipynb"
     - file: "content/U2.05 - Network Architectures - Multimodal information.ipynb"
-    - file: "content/U2.06 - [TALLER] - Autoencoders.ipynb"
-    - file: "content/U2.09 - [TALLER] - Multimodal architectures.ipynb"
+    - file: "content/U2 LAB 02 -  Autoencoders.ipynb"
+    - file: "content/U2 LAB 03 - Multimodal architectures.ipynb"
     
     
 
