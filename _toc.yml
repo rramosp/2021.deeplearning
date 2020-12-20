@@ -1,5 +1,5 @@
 - file: intro
-- file: content/M01_intro
+- file: content/M01
   sections:
     - file: "content/U1.01 - DL Overview"
     - file: "content/U1.02 - Modelos derivados de los datos.ipynb"
@@ -9,10 +9,12 @@
   sections:
     - file: "content/U2.01 - Introduction to Artificial Neural Networks.ipynb"
     - file: "content/U2.02 - MLP with Keras.ipynb"
-    - file: "content/U2.05 - Network Architectures - Autoencoders.ipynb"
+    - file: "content/U2.03 - Overfitting and regularization.ipynb"
+    - file: "content/U2.04 - Network Architectures - Autoencoders.ipynb"
+    - file: "content/U2.05 - Network Architectures - Multimodal information.ipynb"
     - file: "content/U2.06 - [TALLER] - Autoencoders.ipynb"
-    - file: "content/U2.08 - Network Architectures - Multimodal information.ipynb"
     - file: "content/U2.09 - [TALLER] - Multimodal architectures.ipynb"
+    
     
 
 
