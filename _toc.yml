@@ -1,7 +1,9 @@
 - file: intro
 - file: content/M01_intro
   sections:
-    - file: "content/NOTES 01.01 - GENERAL INSTRUCTIONS.ipynb"
+    - file: "content/U1.01 - DL Overview"
+    - file: "content/U1.02 - Modelos derivados de los datos.ipynb"
+    - file: "content/U1.03 - Como se disena un algoritmo de Machine Learning.ipynb"
     - file: "content/LAB 01 - SUBMISSION EXAMPLE.ipynb"
 
 
