@@ -13,6 +13,8 @@
     - file: "content/U2.04 - Loss functions.ipynb"
     - file: "content/U2.05 - Network Architectures - Autoencoders.ipynb"
     - file: "content/U2.06 - Network Architectures - Multimodal information.ipynb"
+    - file: "content/U2.07 - Vanishing gradients.ipynb"
+    - file: "content/U2.08 - Weights initialization.ipynb"
     - file: "content/U2 LAB 01 - Customized loss functions and regularization.ipynb"
     - file: "content/U2 LAB 02 - Autoencoders.ipynb"
     - file: "content/U2 LAB 03 - Pairwise image classification.ipynb"
