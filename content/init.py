@@ -42,7 +42,7 @@ def get_weblink():
 
 def install_sourcedefender():
     print('enabling encryption...')
-    output = subprocess.run(['pip', 'install', 'sourcedefender==5.0.17'], stderr=subprocess.PIPE)
+    output = subprocess.run(['pip', 'install', 'sourcedefender==6.0.50'], stderr=subprocess.PIPE)
 
     if output.returncode != 0:
         STDOUT_RED_COLOR = '\033[91m'

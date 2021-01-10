@@ -19,6 +19,13 @@
     - file: "content/U2 LAB 02 - Autoencoders.ipynb"
     - file: "content/U2 LAB 03 - Pairwise image classification.ipynb"
     - file: "content/U2 LAB 04 - Model instrumentation and monitoring.ipynb"
+- file: content/M03
+  sections:
+   - file: "content/U3.01 - Simbolic computing for ML.ipynb"
+   - file: "content/U3.02 - TF for symbolic computing.ipynb"
+   - file: "content/U3.03 - Using tf.function.ipynb"
+   - file: "content/U3.04 - Batch Normalization.ipynb"
+   - file: "content/U3 LAB 01 - Tensorflow model subclassing.ipynb"
     
     
 
