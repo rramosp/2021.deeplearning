@@ -1,4 +1,5 @@
 - file: intro
+- file: content/M00
 - file: content/M01
   sections:
     - file: "content/U1.01 - DL Overview"
