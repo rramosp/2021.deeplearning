@@ -27,7 +27,7 @@
    - file: "content/U3.03 - Using tf.function.ipynb"
    - file: "content/U3.04 - Batch Normalization.ipynb"
    - file: "content/U3 LAB 01 - Tensorflow model subclassing.ipynb"
-   - file: "content/U3 LAB 02 - Batch normalization.ipynb"
+   - file: "content/U3 LAB 02 - Low level Tensorflow.ipynb"
     
     
 
