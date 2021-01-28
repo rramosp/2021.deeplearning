@@ -28,6 +28,8 @@
    - file: "content/U3.04 - Batch Normalization.ipynb"
    - file: "content/U3 LAB 01 - Tensorflow model subclassing.ipynb"
    - file: "content/U3 LAB 02 - Low level Tensorflow.ipynb"
+- file: content/M04
+   - file: "content/U4.01 - Convolutional Neural Networks.ipynb"
     
     
 
