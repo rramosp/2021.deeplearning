@@ -33,6 +33,8 @@
    - file: "content/U4.01 - Convolutional Neural Networks.ipynb"
    - file: "content/U4.02 - Transfer learning.ipynb"
    - file: "content/U4.03 - Object Detection.ipynb"
+   - file: "content/U4.04 - Transposed convolutions.ipynb"
+   - file: "content/U4.05 - Image segmentation.ipynb"
     
     
 
