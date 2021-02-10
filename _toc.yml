@@ -30,11 +30,12 @@
    - file: "content/U3 LAB 02 - Low level Tensorflow.ipynb"
 - file: content/M04
   sections:
-   - file: "content/U4.01 - Convolutional Neural Networks.ipynb"
-   - file: "content/U4.02 - Transfer learning.ipynb"
-   - file: "content/U4.03 - Object Detection.ipynb"
-   - file: "content/U4.04 - Transposed convolutions.ipynb"
-   - file: "content/U4.05 - Image segmentation.ipynb"
+   - file: "content/U4.01 - Convolutions.ipynb"
+   - file: "content/U4.02 - Convolutional Neural Networks.ipynb"
+   - file: "content/U4.03 - Transfer learning.ipynb"
+   - file: "content/U4.04 - Object Detection.ipynb"
+   - file: "content/U4.05 - Transposed convolutions.ipynb"
+   - file: "content/U4.06 - Image segmentation.ipynb"
     
     
 
