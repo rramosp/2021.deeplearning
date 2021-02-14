@@ -32,10 +32,12 @@
   sections:
    - file: "content/U4.01 - Convolutions.ipynb"
    - file: "content/U4.02 - Convolutional Neural Networks.ipynb"
-   - file: "content/U4.03 - Transfer learning.ipynb"
-   - file: "content/U4.04 - Object Detection.ipynb"
-   - file: "content/U4.05 - Transposed convolutions.ipynb"
-   - file: "content/U4.06 - Image segmentation.ipynb"
+   - file: "content/U4.03 - Dropout, pooling.ipynb"
+   - file: "content/U4.04 - CNN Architectures.ipynb"
+   - file: "content/U4.05 - Transfer learning.ipynb"
+   - file: "content/U4.06 - Object Detection.ipynb"
+   - file: "content/U4.07 - Transposed convolutions.ipynb"
+   - file: "content/U4.08 - Image segmentation.ipynb"
 - file: content/M05
   sections:
    - file: "content/U5.00 - Intro time series.ipynb"
