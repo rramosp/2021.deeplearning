@@ -43,6 +43,9 @@
    - file: "content/U5.00 - Intro time series.ipynb"
    - file: "content/U5.01 - Recurrent Neural Networks.ipynb"
    - file: "content/U5.02 - Long Short Term Memory RNN.ipynb"
+   - file: "content/U5.03 - Truncated BPTT.ipynb"
+   - file: "content/U5.04 - Basic concepts of text processing.ipynb"
+   - file: "content/U5.05 - Sequence generation using LSTM.ipynb"
 
     
     
