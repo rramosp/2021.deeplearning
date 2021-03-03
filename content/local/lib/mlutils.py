@@ -16,7 +16,9 @@ import tensorflow as tf
 import time
 from sklearn.metrics import confusion_matrix
 from sklearn.utils.multiclass import unique_labels
-
+from tensorflow.keras.preprocessing import text
+from keras.utils import np_utils
+from tensorflow.keras.preprocessing import sequence
 
 def pbar(**kwargs):
     sys.stdout.flush()
@@ -702,3 +704,41 @@ def make_graph(f, *args, logdir='logs'):
         tf.summary.trace_export(name="tf.function '%s'"%f.__name__,step=0)
 
     tf.summary.trace_off()
+
+def prepare_text_for_cbow(all_words):
+    tokenizer = text.Tokenizer()
+    tokenizer.fit_on_texts(all_words[0])
+    word2id = tokenizer.word_index
+
+    # build vocabulary of unique words
+    word2id['PAD'] = 0
+    id2word = {v:k for k, v in word2id.items()}
+    wids = [word2id[w] for w in text.text_to_word_sequence(all_words[0][0])]
+
+    vocab_size = len(word2id)
+    embed_size = 10
+    window_size = 2 # context window size
+
+    print('Vocabulary Size:', vocab_size)
+    print('Vocabulary Sample:', list(word2id.items())[:10])
+    return wids, vocab_size, embed_size, window_size, id2word, word2id
+
+def generate_context_word_pairs(corpus, window_size, vocab_size):
+    context_length = window_size*2
+    for words in corpus:
+        sentence_length = len(words)
+        for index, word in enumerate(words):
+            context_words = []
+            label_word   = []            
+            start = index - window_size
+            end = index + window_size + 1
+            
+            context_words.append([words[i] 
+                                 for i in range(start, end) 
+                                 if 0 <= i < sentence_length 
+                                 and i != index])
+            label_word.append(word)
+
+            x = sequence.pad_sequences(context_words, maxlen=context_length)
+            y = np_utils.to_categorical(label_word, vocab_size)
+            yield (x, y)
