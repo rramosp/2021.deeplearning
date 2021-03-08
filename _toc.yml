@@ -39,6 +39,7 @@
    - file: "content/U4.07 - Transposed convolutions.ipynb"
    - file: "content/U4.08 - Image segmentation.ipynb"
    - file: "content/U4 LAB 01 - Convolutions.ipynb"
+   - file: "content/U4 LAB 02 - Transfer Learning.ipynb"
 - file: content/M05
   sections:
    - file: "content/U5.00 - Intro time series.ipynb"
