@@ -5,6 +5,9 @@ from sklearn.metrics import mean_squared_error
 import seaborn as sns
 import pandas as pd
 from sklearn.utils import check_array
+from tensorflow.keras.optimizers import Adam
+import tensorflow as tf
+from sklearn.preprocessing import MinMaxScaler
 
 def mean_absolute_percentage_error(y_true, y_pred): 
     #y_true, y_pred = check_array(y_true, y_pred)
@@ -277,4 +280,109 @@ def PlotCrossvalidationTS_Gap():
 	plt.axis("off")
 	plt.show()
 
+def DataPreparation(MVSeries,look_back,create_datasetMV):
+	groups = [0, 1, 2, 3, 5, 6, 7]
+	times = MVSeries.shape[0]
+    # split into train and test sets
+	train_size = int(times * 0.67)
+	test_size = times - train_size
+	train, test = MVSeries[0:train_size,groups], MVSeries[train_size-look_back:times,groups]
+    # normalize the dataset
+	scaler = MinMaxScaler(feature_range=(0, 1))
+	trainN = scaler.fit_transform(train)
+	testN = scaler.transform(test)
+	X_train, y_train = create_datasetMV(trainN, look_back)
+	X_test, y_test = create_datasetMV(testN, look_back)
+    # Defino un scaler sólo para polución
+	scaler = MinMaxScaler(feature_range=(0, 1))
+	scaler.fit(train[:,0].reshape(-1,1))
+	return X_train, y_train, X_test, y_test, scaler
 
+def TrainModel(X_train,y_train,model):
+    
+    Optimi = Adam(learning_rate=0.0001, beta_1=0.9, beta_2=0.999, amsgrad=False)
+    model.compile(optimizer=Optimi,loss='mse',metrics=['mae'])
+    #-------------------------------------------------------------------------------------------------
+    #!rm -rf ./logs/ 
+    #log_dir = "logs/fit/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+    #tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
+    #-------------------------------------------------------------------------------------------------
+    stop = tf.keras.callbacks.EarlyStopping(monitor='val_loss', min_delta=0, patience=10, verbose=0, mode='auto', baseline=None, restore_best_weights=False)
+    model.fit(X_train,y_train,epochs=20, validation_split=0.1, verbose=0, callbacks=[stop])
+    return model
+
+def Plot_Task2(mse):
+	look_back = range(1,6)
+	plt.figure(figsize=(14,4))
+	#plt.subplot(131)
+	plt.plot(look_back,mse[0,:],label='RNN')
+	plt.plot(look_back,mse[1,:],label='LSTM')
+	plt.plot(look_back,mse[2,:],label='GRU')
+	plt.xlabel('Number of lookbacks')
+	plt.ylabel('RMSE')
+	plt.legend()
+	plt.grid()
+	#---------------------------------------------------------
+	#plt.title('Performance using LSTM')
+	#plt.subplot(132)
+	#plt.plot(look_back,mse[1,:],label='Including pollution')
+	#plt.xlabel('Number of lookbacks')
+	#plt.ylabel('RMSE')
+	#plt.legend()
+	#plt.grid()
+	#---------------------------------------------------------
+	#plt.title('Performance using GRU')
+	#plt.subplot(133)
+	#plt.plot(look_back,mse[2,:],label='Including pollution')
+	#plt.xlabel('Number of lacks')
+	#plt.ylabel('RMSE')
+	#plt.legend()
+	#plt.grid()
+	#plt.title('Performance using RNN')
+	plt.show()
+
+def DataPreparation_TimesAhead(MVSeries,look_back,n_steps_ahead,create_datasetMV_TimesAhead):
+	groups = [0, 1, 2, 3, 5, 6, 7]
+	times = MVSeries.shape[0]
+    # split into train and test sets
+	train_size = int(times * 0.67)
+	test_size = times - train_size
+	train, test = MVSeries[0:train_size,groups], MVSeries[train_size-look_back:times,groups]
+    # normalize the dataset
+	scaler = MinMaxScaler(feature_range=(0, 1))
+	trainN = scaler.fit_transform(train)
+	testN = scaler.transform(test)
+	X_train, y_train = create_datasetMV_TimesAhead(trainN, look_back=look_back,n_steps_ahead=n_steps_ahead)
+	X_test, y_test = create_datasetMV_TimesAhead(testN, look_back=look_back,n_steps_ahead=n_steps_ahead)
+    # Defino un scaler sólo para polución
+	scaler = MinMaxScaler(feature_range=(0, 1))
+	scaler.fit(train[:,0].reshape(-1,1))
+	return X_train, y_train, X_test, y_test, scaler
+
+def Plot_sentiment_performance(sensitivity,accuracy,especificity):
+	fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(10,3))
+	X = np.arange(3)
+	ax1.bar(X + 0.00, accuracy[0,:], color = 'b', width = 0.25)
+	ax1.bar(X + 0.25, accuracy[1,:], color = 'g', width = 0.25)
+	ax1.bar(X + 0.50, accuracy[2,:], color = 'r', width = 0.25)
+	ax1.set_xticks([0.25, 1.25, 2.25])
+	ax1.set_xticklabels(['32','64', '128'])
+	ax1.set_title('Accuracy')
+	ax1.set_xlabel('Embedding dimension')
+	ax2.bar(X + 0.00, sensitivity[0,:], color = 'b', width = 0.25)
+	ax2.bar(X + 0.25, sensitivity[1,:], color = 'g', width = 0.25)
+	ax2.bar(X + 0.50, sensitivity[2,:], color = 'r', width = 0.25)
+	ax2.set_xticks([0.25, 1.25, 2.25])
+	ax2.set_xticklabels(['32','64', '128'])
+	ax2.set_title('Sensitivity')
+	ax2.set_xlabel('Embedding dimension')
+	ax3.bar(X + 0.00, especificity[0,:], color = 'b', width = 0.25)
+	ax3.bar(X + 0.25, especificity[1,:], color = 'g', width = 0.25)
+	ax3.bar(X + 0.50, especificity[2,:], color = 'r', width = 0.25)
+	ax3.set_xticks([0.25, 1.25, 2.25])
+	ax3.set_xticklabels(['32','64', '128'])
+	ax3.set_title('Especificity')
+	ax3.set_xlabel('Embedding dimension')
+	ax3.legend(labels=['32 cells','64 cells','128 cells'],bbox_to_anchor=(1.1, 1.05))
+	plt.show()
+	print('Best accuracy= {}'.format(np.max(accuracy)))
