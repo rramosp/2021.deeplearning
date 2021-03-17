@@ -50,8 +50,9 @@
    - file: "content/U5.04 - Basic concepts of text processing.ipynb"
    - file: "content/U5.05 - Sequences generation using LSTM.ipynb"
    - file: "content/U5.06 - Bidirectional RNNs - Attention Model.ipynb"
-   - file: "content/U5.07 - Self-Attention - Transformer - BERT.ipynb"
-   - file: "content/U5.08 - CNN-LSTM architectures.ipynb"
+   - file: "content/U5.07 - ELMo - NER.ipynb"
+   - file: "content/U5.08 - Self-Attention - Transformer - BERT.ipynb"
+   - file: "content/U5.09 - CNN-LSTM architectures.ipynb"
    - file: "content/U5 LAB 01 - Multivariate time series prediction.ipynb"
    - file: "content/U5 LAB 02 - Padding, Masking - Sentiment Analysis.ipynb"
 
