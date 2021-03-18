@@ -13,11 +13,11 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 import tensorflow as tf
+from tensorflow.keras.utils import to_categorical
 import time
 from sklearn.metrics import confusion_matrix
 from sklearn.utils.multiclass import unique_labels
 from tensorflow.keras.preprocessing import text
-from keras.utils import np_utils
 from tensorflow.keras.preprocessing import sequence
 
 def pbar(**kwargs):
@@ -740,5 +740,5 @@ def generate_context_word_pairs(corpus, window_size, vocab_size):
             label_word.append(word)
 
             x = sequence.pad_sequences(context_words, maxlen=context_length)
-            y = np_utils.to_categorical(label_word, vocab_size)
+            y = to_categorical(label_word, vocab_size)
             yield (x, y)
