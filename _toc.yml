@@ -42,6 +42,7 @@
    - file: "content/U4 LAB 01 - Convolutions.ipynb"
    - file: "content/U4 LAB 02 - Transfer Learning.ipynb"
    - file: "content/U4 LAB 03 - Object Detection.ipynb"
+   - file: "content/U4 LAB 04 - Semantic segmentation.ipynb"
 - file: content/M05
   sections:
    - file: "content/U5.00 - Intro time series.ipynb"
