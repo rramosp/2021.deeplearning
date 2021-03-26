@@ -8,6 +8,8 @@ from sklearn.utils import check_array
 from tensorflow.keras.optimizers import Adam
 import tensorflow as tf
 from sklearn.preprocessing import MinMaxScaler
+from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 def mean_absolute_percentage_error(y_true, y_pred): 
     #y_true, y_pred = check_array(y_true, y_pred)
@@ -386,3 +388,12 @@ def Plot_sentiment_performance(sensitivity,accuracy,especificity):
 	ax3.legend(labels=['32 cells','64 cells','128 cells'],bbox_to_anchor=(1.1, 1.05))
 	plt.show()
 	print('Best accuracy= {}'.format(np.max(accuracy)))
+
+def preprocessed_seq(text_list):
+
+    max_fatures = 2001
+    tokenizer = Tokenizer(num_words=max_fatures, split=' ')
+    tokenizer.fit_on_texts(text_list)
+    X = tokenizer.texts_to_sequences(text_list)
+    NewX = pad_sequences(sequences=X, padding="post", value=0)
+    return tokenizer, NewX
