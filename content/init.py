@@ -19,6 +19,14 @@ def get_last_modif_date(localdir):
         return None
     
 def init(force_download=False):
+    from IPython.display import display, HTML
+    js = """
+<meta name="google-signin-client_id"
+      content="461673936472-kdjosv61up3ac1ajeuq6qqu72upilmls.apps.googleusercontent.com"/>
+<script src="https://apis.google.com/js/client:platform.js?onload=google_button_start"></script>
+    """
+
+    display(HTML(js))
 
     if force_download or not os.path.exists("local"):
         print("replicating local resources")
@@ -42,7 +50,7 @@ def get_weblink():
 
 def install_sourcedefender():
     print('enabling encryption...')
-    output = subprocess.run(['pip', 'install', 'sourcedefender==6.0.50'], stderr=subprocess.PIPE)
+    output = subprocess.run(['pip', 'install', 'sourcedefender==7.0.0'], stderr=subprocess.PIPE)
 
     if output.returncode != 0:
         STDOUT_RED_COLOR = '\033[91m'
