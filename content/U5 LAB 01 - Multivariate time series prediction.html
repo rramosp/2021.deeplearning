@@ -271,11 +271,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="U4.02%20-%20Convolutional%20Neural%20Networks.html">
-     4.2 - CNNs
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="U4.03%20-%20Dropout%2C%20pooling.html">
      4.3 - Dropout, pooling
     </a>
@@ -643,6 +638,17 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     pollution  dew  temp   press wnd_dir  wnd_spd  snow  rain
+date                                                                          
+2010-01-02 00:00:00      129.0  -16  -4.0  1020.0      SE     1.79     0     0
+2010-01-02 01:00:00      148.0  -15  -4.0  1020.0      SE     2.68     0     0
+2010-01-02 02:00:00      159.0  -11  -5.0  1021.0      SE     3.57     0     0
+2010-01-02 03:00:00      181.0   -7  -5.0  1022.0      SE     5.36     1     0
+2010-01-02 04:00:00      138.0   -7  -5.0  1022.0      SE     6.25     2     0
+</pre></div>
+</div>
+</div>
 </div>
 <p>Let’s take a look at the time series:</p>
 <div class="cell docutils container">
@@ -664,10 +670,18 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/U5 LAB 01 - Multivariate time series prediction_8_0.png" src="../_images/U5 LAB 01 - Multivariate time series prediction_8_0.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;pollution&#39;
 </pre></div>
 </div>
 </div>

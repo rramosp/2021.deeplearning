@@ -273,11 +273,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="U4.02%20-%20Convolutional%20Neural%20Networks.html">
-     4.2 - CNNs
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="U4.03%20-%20Dropout%2C%20pooling.html">
      4.3 - Dropout, pooling
     </a>
@@ -716,7 +711,7 @@
 <p>For simplicity we are going to split the data manualy into training and validation sets using the classical approach</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">look_back</span><span class="o">=</span><span class="mi">1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">look_back</span><span class="o">=</span><span class="mi">2</span>
 <span class="c1"># split into train and test sets</span>
 <span class="n">train_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.67</span><span class="p">)</span>
 <span class="n">test_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span> <span class="o">-</span> <span class="n">train_size</span>
@@ -737,27 +732,36 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train [[[0.02588999]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train [[[0.02588999]
+  [0.04530746]]
 
- [[0.04530746]]
+ [[0.04530746]
+  [0.09061491]]
 
- [[0.09061491]]
+ [[0.09061491]
+  [0.08090615]]
 
- [[0.08090615]]
+ [[0.08090615]
+  [0.05501619]]
 
- [[0.05501619]]
+ [[0.05501619]
+  [0.10032365]]
 
- [[0.10032365]]
+ [[0.10032365]
+  [0.14239484]]
 
- [[0.14239484]]
+ [[0.14239484]
+  [0.14239484]]
 
- [[0.14239484]]
+ [[0.14239484]
+  [0.10355988]]
 
- [[0.10355988]]
+ [[0.10355988]
+  [0.04854369]]
 
- [[0.04854369]]]
-Test [[0.04530746]
- [0.09061491]
+ [[0.04854369]
+  [0.        ]]]
+Test [[0.09061491]
  [0.08090615]
  [0.05501619]
  [0.10032365]
@@ -765,7 +769,8 @@ Test [[0.04530746]
  [0.14239484]
  [0.10355988]
  [0.04854369]
- [0.        ]]
+ [0.        ]
+ [0.04530746]]
 </pre></div>
 </div>
 </div>
@@ -777,7 +782,7 @@ Test [[0.04530746]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((93, 3, 1), (93, 1))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((94, 2, 1), (94, 1))
 </pre></div>
 </div>
 </div>
@@ -789,7 +794,7 @@ Test [[0.04530746]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(48, 3, 1)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(46, 2, 1)
 </pre></div>
 </div>
 </div>
@@ -810,12 +815,12 @@ Test [[0.04530746]
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
-dense_2 (Dense)              (None, 5)                 10        
+dense_2 (Dense)              (None, 5)                 15        
 _________________________________________________________________
 dense_3 (Dense)              (None, 1)                 6         
 =================================================================
-Total params: 16
-Trainable params: 16
+Total params: 21
+Trainable params: 21
 Non-trainable params: 0
 _________________________________________________________________
 </pre></div>
@@ -832,10 +837,10 @@ _________________________________________________________________
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Score: 71.15 RMSE
-Test Score: 215.05 RMSE
-Train Score: 30.46 MAPE
-Test Score: 46.63 MAPE
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Score: 28.23 RMSE
+Test Score: 61.99 RMSE
+Train Score: 10.23 MAPE
+Test Score: 12.50 MAPE
 1
 </pre></div>
 </div>
@@ -907,10 +912,10 @@ Test Score: 10.10 MAPE
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Score: 0.32 RMSE
-Test Score: 0.40 RMSE
-Train Score: 0.73 MAPE
-Test Score: 0.72 MAPE
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Score: 0.42 RMSE
+Test Score: 0.48 RMSE
+Train Score: 0.99 MAPE
+Test Score: 0.85 MAPE
 1
 </pre></div>
 </div>
@@ -1031,10 +1036,10 @@ L = \sum_t L^{(t)}\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Score: 22.91 RMSE
-Test Score: 48.57 RMSE
-Train Score: 8.54 MAPE
-Test Score: 9.77 MAPE
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Score: 22.88 RMSE
+Test Score: 48.72 RMSE
+Train Score: 8.51 MAPE
+Test Score: 9.78 MAPE
 1
 </pre></div>
 </div>
@@ -1048,13 +1053,13 @@ Test Score: 9.77 MAPE
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;sequential_1&quot;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;sequential_4&quot;
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
-simple_rnn (SimpleRNN)       (None, 5)                 35        
+simple_rnn_2 (SimpleRNN)     (None, 5)                 35        
 _________________________________________________________________
-dense_2 (Dense)              (None, 1)                 6         
+dense_6 (Dense)              (None, 1)                 6         
 =================================================================
 Total params: 41
 Trainable params: 41
@@ -1656,6 +1661,20 @@ Test [[0.03776747 0.04070497 0.03524965 0.03063363 0.04196388 0.04196388
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;X_Train&#39;</span><span class="p">,</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Y_train&#39;</span><span class="p">,</span><span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X_Train (287, 10)
+Y_train (287, 7)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model7</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
 <span class="n">model7</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">SimpleRNN</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="n">activation</span> <span class="o">=</span> <span class="s1">&#39;relu&#39;</span><span class="p">,</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">look_back</span><span class="p">,</span><span class="mi">1</span><span class="p">)))</span>
 <span class="n">model7</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
@@ -1676,7 +1695,7 @@ Test Score: 1.26 MAPE
 5
 </pre></div>
 </div>
-<img alt="../_images/U5.01 - Recurrent Neural Networks_83_1.png" src="../_images/U5.01 - Recurrent Neural Networks_83_1.png" />
+<img alt="../_images/U5.01 - Recurrent Neural Networks_84_1.png" src="../_images/U5.01 - Recurrent Neural Networks_84_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1689,7 +1708,7 @@ Test Score: 1.26 MAPE
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U5.01 - Recurrent Neural Networks_84_0.png" src="../_images/U5.01 - Recurrent Neural Networks_84_0.png" />
+<img alt="../_images/U5.01 - Recurrent Neural Networks_85_0.png" src="../_images/U5.01 - Recurrent Neural Networks_85_0.png" />
 </div>
 </div>
 </div>
@@ -1743,7 +1762,7 @@ Test Score: 1.59 MAPE
 5
 </pre></div>
 </div>
-<img alt="../_images/U5.01 - Recurrent Neural Networks_86_1.png" src="../_images/U5.01 - Recurrent Neural Networks_86_1.png" />
+<img alt="../_images/U5.01 - Recurrent Neural Networks_87_1.png" src="../_images/U5.01 - Recurrent Neural Networks_87_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1756,7 +1775,7 @@ Test Score: 1.59 MAPE
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U5.01 - Recurrent Neural Networks_87_0.png" src="../_images/U5.01 - Recurrent Neural Networks_87_0.png" />
+<img alt="../_images/U5.01 - Recurrent Neural Networks_88_0.png" src="../_images/U5.01 - Recurrent Neural Networks_88_0.png" />
 </div>
 </div>
 <div class="cell docutils container">

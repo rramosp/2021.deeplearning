@@ -272,11 +272,6 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="U4.02%20-%20Convolutional%20Neural%20Networks.html">
-     4.2 - CNNs
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="U4.03%20-%20Dropout%2C%20pooling.html">
      4.3 - Dropout, pooling
     </a>
@@ -547,7 +542,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">local.lib.rlxmoocapi</span> <span class="kn">import</span> <span class="n">submit</span><span class="p">,</span> <span class="n">session</span>
 <span class="kn">import</span> <span class="nn">inspect</span>
-<span class="n">session</span><span class="o">.</span><span class="n">LoginSequence</span><span class="p">(</span><span class="n">endpoint</span><span class="o">=</span><span class="n">init</span><span class="o">.</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">course_id</span><span class="o">=</span><span class="n">init</span><span class="o">.</span><span class="n">course_id</span><span class="p">,</span> <span class="n">lab_id</span><span class="o">=</span><span class="s2">&quot;L05.03&quot;</span><span class="p">,</span> <span class="n">varname</span><span class="o">=</span><span class="s2">&quot;student&quot;</span><span class="p">);</span>
+<span class="n">session</span><span class="o">.</span><span class="n">LoginSequence</span><span class="p">(</span><span class="n">endpoint</span><span class="o">=</span><span class="n">init</span><span class="o">.</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">session_id</span><span class="o">=</span><span class="s2">&quot;UDEA&quot;</span><span class="p">,</span><span class="n">course_id</span><span class="o">=</span><span class="n">init</span><span class="o">.</span><span class="n">course_id</span><span class="p">,</span> <span class="n">lab_id</span><span class="o">=</span><span class="s2">&quot;L05.03&quot;</span><span class="p">,</span> <span class="n">varname</span><span class="o">=</span><span class="s2">&quot;student&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -813,7 +808,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span><span class="p">,</span> <span class="n">Model</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">LSTM</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Dropout</span>
 </pre></div>
 </div>
@@ -893,7 +888,7 @@
 <div class="math notranslate nohighlight">
 \[PE_{(pos,2i)} = \sin\left(\frac{pos}{10000^{2i/d_e}}\right)$$,
 $$PE_{(pos,2i+1)} = \cos\left(\frac{pos}{10000^{2i/d_e}}\right)\]</div>
-<p>where <span class="math notranslate nohighlight">\(pos\)</span> is the position in the embedding vector, <span class="math notranslate nohighlight">\(d_e =\)</span> embedding dimension and <span class="math notranslate nohighlight">\(i \in [0,d_e/2]\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(pos\)</span> is the position in the embedding vector, <span class="math notranslate nohighlight">\(d_e =\)</span> embedding dimension and <span class="math notranslate nohighlight">\(i \in [0,d_e/2]\)</span>. Remember to keep <span class="math notranslate nohighlight">\(pos\)</span> 0 for padding token position encoding zero vector.</p>
 <p>For a <span class="math notranslate nohighlight">\(d_e = 100\)</span> and sequences with a maximum length of 200, the positional embedding matrix must look like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -974,7 +969,7 @@ $$PE_{(pos,2i+1)} = \cos\left(\frac{pos}{10000^{2i/d_e}}\right)\]</div>
 <p><strong>Submit your solution:</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">student</span><span class="o">.</span><span class="n">submit_task</span><span class="p">(</span><span class="n">namespace</span><span class="o">=</span><span class="nb">globals</span><span class="p">(),</span>  <span class="n">task_id</span><span class="o">=</span><span class="s1">&#39;T2&#39;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">student</span><span class="o">.</span><span class="n">submit_task</span><span class="p">(</span><span class="n">namespace</span><span class="o">=</span><span class="nb">globals</span><span class="p">(),</span> <span class="n">task_id</span><span class="o">=</span><span class="s1">&#39;T2&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1016,7 +1011,7 @@ $$PE_{(pos,2i+1)} = \cos\left(\frac{pos}{10000^{2i/d_e}}\right)\]</div>
 <span class="n">Y</span> <span class="o">=</span> <span class="n">Encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 <span class="n">X_tr</span><span class="p">,</span> <span class="n">X_te</span><span class="p">,</span> <span class="n">y_tr</span><span class="p">,</span> <span class="n">y_te</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">2018</span><span class="p">)</span>
 <span class="n">classes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
-<span class="n">class_weight_vect</span> <span class="o">=</span> <span class="n">compute_class_weight</span><span class="p">(</span><span class="s1">&#39;balanced&#39;</span><span class="p">,</span><span class="n">classes</span><span class="p">,</span><span class="n">y_tr</span><span class="p">)</span>
+<span class="n">class_weight_vect</span> <span class="o">=</span> <span class="n">compute_class_weight</span><span class="p">(</span><span class="s1">&#39;balanced&#39;</span><span class="p">,</span><span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">y_tr</span><span class="p">)</span>
 <span class="n">class_weight</span> <span class="o">=</span> <span class="p">{</span><span class="n">classes</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">class_weight_vect</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
                 <span class="n">classes</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">class_weight_vect</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span>
 </pre></div>
@@ -1035,8 +1030,13 @@ $$PE_{(pos,2i+1)} = \cos\left(\frac{pos}{10000^{2i/d_e}}\right)\]</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;binary_crossentropy&quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">])</span>
-<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tr</span><span class="p">,</span> <span class="n">y_tr</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span><span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">class_weight</span><span class="o">=</span><span class="n">class_weight</span><span class="p">)</span> <span class="c1">#</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">opt</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span>
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">,</span> <span class="n">beta_1</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">beta_2</span><span class="o">=</span><span class="mf">0.999</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-07</span><span class="p">,</span> <span class="n">amsgrad</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Adam&#39;</span>
+<span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">opt</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;binary_crossentropy&quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">])</span>
+<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tr</span><span class="p">,</span> <span class="n">y_tr</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span><span class="n">epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">class_weight</span><span class="o">=</span><span class="n">class_weight</span><span class="p">)</span> <span class="c1">#</span>
 </pre></div>
 </div>
 </div>
