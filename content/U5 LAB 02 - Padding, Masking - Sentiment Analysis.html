@@ -610,89 +610,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>text</th>
-      <th>airline_sentiment</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>@VirginAmerica What @dhepburn said.</td>
-      <td>neutral</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>@VirginAmerica plus you've added commercials t...</td>
-      <td>positive</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>@VirginAmerica I didn't today... Must mean I n...</td>
-      <td>neutral</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>@VirginAmerica it's really aggressive to blast...</td>
-      <td>negative</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>@VirginAmerica and it's a really big bad thing...</td>
-      <td>negative</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>14635</th>
-      <td>@AmericanAir thank you we got on a different f...</td>
-      <td>positive</td>
-    </tr>
-    <tr>
-      <th>14636</th>
-      <td>@AmericanAir leaving over 20 minutes Late Flig...</td>
-      <td>negative</td>
-    </tr>
-    <tr>
-      <th>14637</th>
-      <td>@AmericanAir Please bring American Airlines to...</td>
-      <td>neutral</td>
-    </tr>
-    <tr>
-      <th>14638</th>
-      <td>@AmericanAir you have my money, you change my ...</td>
-      <td>negative</td>
-    </tr>
-    <tr>
-      <th>14639</th>
-      <td>@AmericanAir we have 8 ppl so we need 2 know h...</td>
-      <td>neutral</td>
-    </tr>
-  </tbody>
-</table>
-<p>14640 rows × 2 columns</p>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -714,12 +631,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of positive samples=2363
-Number of negative samples=9178
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -727,106 +638,12 @@ Number of negative samples=9178
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>text</th>
-      <th>airline_sentiment</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>plus youve added commercials to the experienc...</td>
-      <td>positive</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>its really aggressive to blast obnoxious ente...</td>
-      <td>negative</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>and its a really big bad thing about it</td>
-      <td>negative</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>seriously would pay 30 a flight for seats tha...</td>
-      <td>negative</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>yes nearly every time i fly vx this ear worm ...</td>
-      <td>positive</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>14633</th>
-      <td>my flight was cancelled flightled leaving tom...</td>
-      <td>negative</td>
-    </tr>
-    <tr>
-      <th>14634</th>
-      <td>right on cue with the delays</td>
-      <td>negative</td>
-    </tr>
-    <tr>
-      <th>14635</th>
-      <td>thank you we got on a different flight to chi...</td>
-      <td>positive</td>
-    </tr>
-    <tr>
-      <th>14636</th>
-      <td>leaving over 20 minutes late flight no warnin...</td>
-      <td>negative</td>
-    </tr>
-    <tr>
-      <th>14638</th>
-      <td>you have my money you change my flight and do...</td>
-      <td>negative</td>
-    </tr>
-  </tbody>
-</table>
-<p>11541 rows × 2 columns</p>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nltk</span>
 <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>
 <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt to /home/julian/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to /home/julian/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
 </div>
@@ -860,6 +677,29 @@ Number of negative samples=9178
 </div>
 </div>
 </div>
+<p>Test your function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Are random sentences computer generated?&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;Can I use these random sentences for my project?&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;Can I write random sentences?&#39;</span><span class="p">]</span>
+<span class="n">t</span><span class="p">,</span><span class="n">x</span> <span class="o">=</span> <span class="n">get_preprocessed_seq</span><span class="p">(</span><span class="n">text_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You should get the following results:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;local/imgs/tokenizer_padding.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/U5 LAB 02 - Padding, Masking - Sentiment Analysis_18_0.png" src="../_images/U5 LAB 02 - Padding, Masking - Sentiment Analysis_18_0.png" />
+</div>
+</div>
 <p><strong>Submit your solution:</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -872,7 +712,7 @@ Number of negative samples=9178
 <div class="section" id="task-2">
 <h2>Task 2<a class="headerlink" href="#task-2" title="Permalink to this headline">¶</a></h2>
 <p>The previous step add 0’s to some tweets in order to set them with the same length. Now it is necessary to define a model that be able to discard those 0’s. Review the masking layer and masking option of the embedding layer of keras. Take a look to the TensorFlow <a class="reference external" href="https://www.tensorflow.org/guide/keras/masking_and_padding">documentation</a>.</p>
-<p>Create a function to define a RNN architecture for the sentiment analysis problem. Use the Embedding layer and its masking option to discard the 0’s added during padding step. The architecture must consist of a RNN layer with a ‘cells_number’ of neurons, a dense hidden layer of 10 neurons and the output layer. Include a Dropout layer in between the dense layers with a drop rate of 0.3 . The type of RNN layer must be defined through a ‘layer_type’ parameter; the embedding dimension must also be set as an input parameter.</p>
+<p>Create a function to define a RNN architecture for the sentiment analysis problem. Use the Embedding layer and its masking option to discard the 0’s added during padding step. The architecture must consist of a RNN layer with a ‘cells_number’ of neurons, a dense hidden layer of 10 neurons and the output layer. Include a Dropout layer in between the dense layers with a drop rate of 0.3 . The type of RNN layer must be defined through a ‘layer_type’ parameter; the embedding dimension must also be set as an input parameter. The activation function for ‘SimpleRNN’ must be set to ‘relu’, while for LSTM and GRU a default ‘tanh’ must be chosen instead.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Recurrent_Model</span><span class="p">(</span><span class="n">cells_number</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">layer_type</span><span class="o">=</span><span class="s1">&#39;SimpleRNN&#39;</span><span class="p">,</span><span class="n">Embeb_dim</span><span class="o">=</span><span class="mi">32</span><span class="p">):</span><span class="c1">#Options for layer_type: &#39;SimpleRNN&#39;, &#39;LSTM&#39;, &#39;GRU&#39;</span>
