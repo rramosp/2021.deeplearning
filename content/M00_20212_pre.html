@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5.0 Crossvalidation in time series &#8212; Fundamentos de Deep Learning</title>
+    <title>Información 20212 - UdeA &#8212; Fundamentos de Deep Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,8 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5.1 Recurrent Neural Networks" href="U5.01%20-%20Recurrent%20Neural%20Networks.html" />
-    <link rel="prev" title="05 - SEQUENCE MODELS" href="M05.html" />
+    <link rel="next" title="01 - INTRODUCTION" href="M01.html" />
+    <link rel="prev" title="Información 20212 - UdeA" href="M00.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -112,8 +112,8 @@
    Información 20212 - UdeA
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="M00_20212_pre.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Información 20212 - UdeA
   </a>
  </li>
@@ -348,18 +348,18 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="M05.html">
    05 - SEQUENCE MODELS
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U5.00%20-%20Intro%20time%20series.html">
      5.0 Crossvalidation in time series
     </a>
    </li>
@@ -466,9 +466,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/content/U5.00 - Intro time series.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/content/M00_20212_pre.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -486,22 +486,6 @@
 
             <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/rramosp/2021.deeplearning/blob/master/content/U5.00 - Intro time series.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
         </div>
 
         <!-- Table of contents -->
@@ -513,26 +497,68 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#time-series">
-   Time series
+  <a class="reference internal nav-link" href="#trabajando-con-los-materiales-del-curso">
+   Trabajando con los materiales del curso
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sesiones-sincronicas">
+   Sesiones sincrónicas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calendario-y-fechas">
+   Calendario y fechas
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#classical-time-series-analysis-tools">
-     Classical time series analysis tools
+    <a class="reference internal nav-link" href="#fechas-limite-para-entregas">
+     Fechas límite para entregas
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#how-to-split-data-for-validation-purposes">
-     How to split data for validation purposes?
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#references">
-     References
+    <a class="reference internal nav-link" href="#fechas-oficiales-facutlad-de-ingenieria">
+     Fechas oficiales facutlad de ingeniería
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluaciones">
+   Evaluaciones
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#proyecto">
+   Proyecto
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#entrega-1">
+     Entrega 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#entrega-2">
+     Entrega 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evaluacion">
+     Evaluación
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#referencias">
+   Referencias
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contacto">
+   Contacto
+  </a>
  </li>
 </ul>
 
@@ -545,181 +571,185 @@
         
               <div>
                 
-  <div class="section" id="crossvalidation-in-time-series">
-<h1>5.0 Crossvalidation in time series<a class="headerlink" href="#crossvalidation-in-time-series" title="Permalink to this headline">¶</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget -nc --no-cache -O init.py -q https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
-<span class="kn">import</span> <span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> 
+  <div class="section" id="informacion-20212-udea">
+<h1>Información 20212 - UdeA<a class="headerlink" href="#informacion-20212-udea" title="Permalink to this headline">¶</a></h1>
+<center><big>
+<font color='red'>ESTA ES INFORMACIÓN PARA LAS PERSONAS MATRICULADAS EN EL CURSO REGULAR DE POSGRADO
+EN LA FACULTAD DE INGENIERÍA DE LA UNIVERSIDAD DE ANTIOQUIA - SEMESTRE 2021-2
+</font>
+</center></big>
+<div class="section" id="trabajando-con-los-materiales-del-curso">
+<h2>Trabajando con los materiales del curso<a class="headerlink" href="#trabajando-con-los-materiales-del-curso" title="Permalink to this headline">¶</a></h2>
+<p><strong>01 - Jupyter notebooks y Google colab</strong>: <a class="reference external" href="https://youtu.be/KajSbrEBZ5k">video 13mins</a> Explicamos brevemente cómo es el entorno de ejecución de código Python en la nube de Google que vamos a usar durante el curso</p>
+<p><strong>02 - Laboratorios y envío de soluciones</strong>: <a class="reference external" href="https://youtu.be/D6MuCnXc5LM">video 12mins</a> Describimos cómo es el mecanismo de envío de soluciones y la plataforma de autocorrección de talleres.</p>
+</div>
+<div class="section" id="sesiones-sincronicas">
+<h2>Sesiones sincrónicas<a class="headerlink" href="#sesiones-sincronicas" title="Permalink to this headline">¶</a></h2>
+<p><strong>Para acceder a las sesiones</strong></p>
+<center><big><a href="http://meet.google.com/rsi-dcuv-ncn">ENLACE DE GOOGLE MEET</a></big></center>
+</div>
+<div class="section" id="calendario-y-fechas">
+<h2>Calendario y fechas<a class="headerlink" href="#calendario-y-fechas" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fechas-limite-para-entregas">
+<h3>Fechas límite para entregas<a class="headerlink" href="#fechas-limite-para-entregas" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    19/dic: Laboratorios unidades 1 y 2
+            Proyecto entrega 1
+    30/ene: Laboratorios unidad 3
+    27/feb: Laboratorios unidad 4
+    27/mar: Laboratorios unidad 5
+    10/abr: Proyecto informe final
 </pre></div>
 </div>
 </div>
+<div class="section" id="fechas-oficiales-facutlad-de-ingenieria">
+<h3>Fechas oficiales facutlad de ingeniería<a class="headerlink" href="#fechas-oficiales-facutlad-de-ingenieria" title="Permalink to this headline">¶</a></h3>
+<p>16/nov/2021  Inicio de clases
+2/abr/2022  Fin clases
+4-9/abr/2022  Exámenes finales
+17/abr/2022  Fecha límite cierre notas finales
+18-23/abr/2022  Habilitación y validación
+25/abr/2022  Terminación oficial</p>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="k">if</span> <span class="s1">&#39;google.colab&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;setting tensorflow version in colab&quot;</span><span class="p">)</span>
-    <span class="o">%</span><span class="k">tensorflow_version</span> 2.x
-<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="n">tf</span><span class="o">.</span><span class="n">__version__</span>
+</div>
+<div class="section" id="evaluaciones">
+<h2>Evaluaciones<a class="headerlink" href="#evaluaciones" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    20%     Laboratorios unidades 1,2,3
+    20%     Laboratorios unidad 4
+    20%     Laboratorios unidad 5
+    40%     Proyecto 
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="time-series">
-<h2>Time series<a class="headerlink" href="#time-series" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">datasetO</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;local/data/international-airline-passengers.csv&#39;</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="n">skipfooter</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">datasetO</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Passenger numbers (1000s)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Air Passenger numbers from 1949 to 1961&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/U5.00 - Intro time series_4_0.png" src="../_images/U5.00 - Intro time series_4_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;local/data/KO_2006-01-01_to_2018-01-01.csv&#39;</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span><span class="s1">&#39;High&#39;</span><span class="p">],</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span>
-<span class="n">dataset1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span><span class="s1">&#39;High&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Price&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;KO stock price&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/U5.00 - Intro time series_5_0.png" src="../_images/U5.00 - Intro time series_5_0.png" />
-</div>
-</div>
-<div class="section" id="classical-time-series-analysis-tools">
-<h3>Classical time series analysis tools<a class="headerlink" href="#classical-time-series-analysis-tools" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="proyecto">
+<h2>Proyecto<a class="headerlink" href="#proyecto" title="Permalink to this headline">¶</a></h2>
+<p>Deberás de realizar un proyecto que aplique las técnicas del módulo 4 o del módulo 5 a un problema que escojas. Por ejemplo:</p>
 <ul class="simple">
-<li><p>Autocorrelation and partial autocorrelation</p></li>
-<li><p>Stationary, seasonality and unit root tests</p></li>
-<li><p>Differentiation, power transforms, etc.</p></li>
+<li><p>Relacionado con tu trabajo de tesis</p></li>
+<li><p>Un challenge de <a class="reference external" href="http://www.kaggle.com">www.kaggle.com</a> (aunque ya haya pasado la competición)</p></li>
+<li><p>Sobre algún dataset público</p></li>
+<li><p>etc.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.graphics.tsaplots</span> <span class="kn">import</span> <span class="n">plot_pacf</span>
-<span class="n">datasetO</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;local/data/international-airline-passengers.csv&#39;</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="n">skipfooter</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plot_pacf</span><span class="p">(</span><span class="n">datasetO</span><span class="p">,</span> <span class="n">lags</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<p>Te recomendamos que:</p>
+<ul class="simple">
+<li><p>Verifiques que los datos están disponibles antes de escoger tu proyecto.</p></li>
+<li><p>Estimes los requerimientos computacionales para generar los modelos que necesites. Reduce el alcance de tu proyecto si lo necesitas (menos datos, menos clases, etc.).</p></li>
+<li><p>Realices una primera iteración cuanto antes. Es decir, que llegues a tener un primer modelo <strong>sencillo</strong> produciendo predicciones. Implementa en esta primera iteración estrictamente lo que necesites para tener un modelo. El objetivo es resolver la mayoría de los problemas técnicos que te puedan surgir para ya, después, enfocarte en todo lo que quieras hacer en las siguientes iteraciones (preprocesado de datos, otros modelos, etc.)</p></li>
+</ul>
+<div class="section" id="entrega-1">
+<h3>Entrega 1<a class="headerlink" href="#entrega-1" title="Permalink to this headline">¶</a></h3>
+<p>Tendrás que entregar un documento (1-3 páginas máximo) con la siguiente estructura</p>
+<ul class="simple">
+<li><p>Contexto de aplicación</p></li>
+<li><p>Objetivo de machine learning (queremos predecir X, dada tal información)</p></li>
+<li><p>Dataset: tipo de datos, tamaño (número de datos y tamaño en disco), distribución de las clases</p></li>
+<li><p>Métricas de desempeño (de machine learning y negocio)</p></li>
+<li><p>Referencias y resultados previos</p></li>
+</ul>
+</div>
+<div class="section" id="entrega-2">
+<h3>Entrega 2<a class="headerlink" href="#entrega-2" title="Permalink to this headline">¶</a></h3>
+<p>Tendrás que hacer esta entrega en la carpeta compartida contigo</p>
+<ul class="simple">
+<li><p><strong>Notebooks reproducibles</strong></p>
+<ul>
+<li><p>Incluye los notebooks que consideres que implementen tu solución o las iteraciones
+que hiciste sobre la misma (distintas arquitecturas, etc.)</p></li>
+<li><p>Los notebooks han de ser <strong>directamente reproducibles</strong>. <font color='red'>CUALQUIER
+NOTEBOOK QUE PRODUZCA ERRORES AL EJECUTARSE SERÁ DESCARTADO DE TU ENTREGA</font></p></li>
+<li><p>Organiza tus notebooks con un prejifo numérico para que estén ordenados, mira el ejemplo
+de estructura de tu carpeta de entrega más abajo</p></li>
+</ul>
+</li>
+<li><p><strong>Informe</strong></p>
+<ul>
+<li><p>Redacta un informe <strong>ejecutivo</strong> e inclúyelo en la carpeta compartida en <strong>formato PDF</strong>.
+El informe no debería de ser muy largo (p.ej. entre 5 y 10 páginas), y ha de incluir:</p>
+<ul>
+<li><p>Descripción de la estructura de los notebooks entregados</p></li>
+<li><p>Descripción de tu solución (arquitectura, preprocesado, etc.)</p></li>
+<li><p>Descripción de las iteraciones que hiciste</p></li>
+<li><p>Descripción de los resultados.</p></li>
+</ul>
+</li>
+<li><p>El fichero con el informe se ha de llamar <strong>INFORME_PROYECTO.PDF</strong>. <font color="red">SI
+USAS OTRO NOMBRE O FORMATO LA ENTREGA NO SERÁ VÁLIDA</font></p></li>
+</ul>
+</li>
+<li><p><strong>Datos</strong></p>
+<ul>
+<li><p>Si es posible, incluye tus datos en una carpeta llamada <code class="docutils literal notranslate"><span class="pre">data</span></code> dentro de la misma
+carpeta de tu entrega.</p></li>
+<li><p>Si no es posible, incluye en tu informe cómo obtener y hacer disponibles tus datos
+a los procesos implementados en tus notebooks.</p></li>
+</ul>
+</li>
+<li><p><strong>Modelos entrenados</strong></p>
+<ul>
+<li><p>Para una verificación rápida puedes incluir tus modelos ya entrenados en una
+carpeta llamada <code class="docutils literal notranslate"><span class="pre">models</span></code>, con las instrucciones pertinentes en los notebooks y/o
+en tu informe.</p></li>
+<li><p>En todo caso, el proceso de entrenamiento de los modelos ha de ser ejecutable desde
+los notebooks de tu entrega.</p></li>
+</ul>
+</li>
+</ul>
+<p>Estructura de ejemplo de la carpeta de entrega</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    |
+    +-  01 - exploración de datos.ipynb
+    +-  02 - preprocesado.ipynb
+    +-  03 - arquitectura de linea de base.ipynb
+    +-  otros_notebooks
+    +-  INFORME_PROYECTO.PDF
+    +-  data +
+    |        +- train_images.hd5
+    |        +- test_images.hd5
+    +-  models +
+               +- baseline_model
+               +- best_model 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/U5.00 - Intro time series_7_0.png" src="../_images/U5.00 - Intro time series_7_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.graphics.tsaplots</span> <span class="kn">import</span> <span class="n">plot_pacf</span>
-<span class="n">dataset1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;local/data/KO_2006-01-01_to_2018-01-01.csv&#39;</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;High&#39;</span><span class="p">])</span>
-<span class="n">dataset1</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">dataset1</span><span class="p">)]</span> <span class="o">=</span> <span class="n">dataset1</span><span class="p">[</span><span class="s1">&#39;High&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-<span class="n">plot_pacf</span><span class="p">(</span><span class="n">dataset1</span><span class="p">,</span> <span class="n">lags</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/U5.00 - Intro time series_8_0.png" src="../_images/U5.00 - Intro time series_8_0.png" />
-</div>
-</div>
-</div>
-<div class="section" id="how-to-split-data-for-validation-purposes">
-<h3>How to split data for validation purposes?<a class="headerlink" href="#how-to-split-data-for-validation-purposes" title="Permalink to this headline">¶</a></h3>
-<p>Traditional approach:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">local.lib</span> <span class="kn">import</span> <span class="n">DataPreparationRNN</span> 
-<span class="n">datasetO</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;local/data/international-airline-passengers.csv&#39;</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="n">skipfooter</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">DataPreparationRNN</span><span class="o">.</span><span class="n">PlotValidationTimeSeries</span><span class="p">(</span><span class="n">datasetO</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/U5.00 - Intro time series_10_0.png" src="../_images/U5.00 - Intro time series_10_0.png" />
-</div>
-</div>
-<p>Crossvalidation in timeseries:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DataPreparationRNN</span><span class="o">.</span><span class="n">PlotCrossvalidationTS</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/U5.00 - Intro time series_12_0.png" src="../_images/U5.00 - Intro time series_12_0.png" />
-</div>
-</div>
-<p>Including a gap between training and validation sets:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DataPreparationRNN</span><span class="o">.</span><span class="n">PlotCrossvalidationTS_Gap</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/U5.00 - Intro time series_14_0.png" src="../_images/U5.00 - Intro time series_14_0.png" />
-</div>
-</div>
-<p>This can be done using the class TimeSeriesSplit:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">TimeSeriesSplit</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">tscv</span> <span class="o">=</span> <span class="n">TimeSeriesSplit</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span> <span class="ow">in</span> <span class="n">tscv</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TRAIN:&quot;</span><span class="p">,</span> <span class="n">train_index</span><span class="p">,</span> <span class="s2">&quot;TEST:&quot;</span><span class="p">,</span> <span class="n">test_index</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TRAIN: [0 1 2 3 4] TEST: [5 6 7]
-TRAIN: [0 1 2 3 4 5 6 7] TEST: [ 8  9 10]
-TRAIN: [ 0  1  2  3  4  5  6  7  8  9 10] TEST: [11 12 13]
-TRAIN: [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13] TEST: [14 15 16]
-TRAIN: [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16] TEST: [17 18 19]
-</pre></div>
-</div>
-</div>
-</div>
-<p>Limiting the number of lacks</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">tscv</span> <span class="o">=</span> <span class="n">TimeSeriesSplit</span><span class="p">(</span><span class="n">max_train_size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span> <span class="ow">in</span> <span class="n">tscv</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TRAIN:&quot;</span><span class="p">,</span> <span class="n">train_index</span><span class="p">,</span> <span class="s2">&quot;TEST:&quot;</span><span class="p">,</span> <span class="n">test_index</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TRAIN: [0 1 2 3 4] TEST: [5 6 7]
-TRAIN: [3 4 5 6 7] TEST: [ 8  9 10]
-TRAIN: [ 6  7  8  9 10] TEST: [11 12 13]
-TRAIN: [ 9 10 11 12 13] TEST: [14 15 16]
-TRAIN: [12 13 14 15 16] TEST: [17 18 19]
+<div class="section" id="evaluacion">
+<h3>Evaluación<a class="headerlink" href="#evaluacion" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   10%: Entrega 1 realizada a tiempo
+   40%: Claridad
+   25%: reproducibilidad
+   25%: compleción
 </pre></div>
 </div>
 </div>
 </div>
+<div class="section" id="referencias">
+<h2>Referencias<a class="headerlink" href="#referencias" title="Permalink to this headline">¶</a></h2>
+<p><strong>Guías sobre Deep Learning</strong></p>
+<ul class="simple">
+<li><p>Aggarwal, Charu C. <strong>Neural networks and deep learning.</strong> Springer 10 (2018): 978-3.</p></li>
+<li><p>Calin, Ovidiu. <strong>Deep Learning Architectures.</strong> Springer International Publishing, 2020.</p></li>
+<li><p>Goodfellow, I., Bengio, Y., Courville, A., &amp; Bengio, Y. (2016). <strong>Deep learning</strong> (Vol. 1). Cambridge: MIT Press <a class="reference external" href="https://www.deeplearningbook.org/">website</a> <a class="reference external" href="https://github.com/janishar/mit-deep-learning-book-pdf">pdf</a></p></li>
+</ul>
+<p><strong>Con un foco especial en alguno de los módulos</strong></p>
+<ul class="simple">
+<li><p>Hochreiter, S., &amp; Schmidhuber, J. (1997). <strong>Long short-term memory. Neural computation</strong>, 9(8), 1735-1780.</p></li>
+<li><p>Vinyals, O., Toshev, A., Bengio, S., &amp; Erhan, D. (2015). <strong>Show and tell: A neural image caption generator.</strong> In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 3156-3164).</p></li>
+<li><p>Venugopalan, S., Rohrbach, M., Donahue, J., Mooney, R., Darrell, T., &amp; Saenko, K. (2015). <strong>Sequence to sequence-video to text.</strong> In Proceedings of the IEEE international conference on computer vision (pp. 4534-4542).</p></li>
+<li><p>Sutskever, I., Vinyals, O., &amp; Le, Q. V. (2014). <strong>Sequence to sequence learning with neural networks.</strong> In Advances in neural information processing systems (pp. 3104-3112).</p></li>
+<li><p>Pradeep Pujari, Md. Rezaul Karim, Mohit Sewak (2017) , <strong>Practical Convolutional Neural Networks</strong>, O’Reilly,</p></li>
+</ul>
+<p><strong>Generales de machine learning</strong></p>
+<ul class="simple">
+<li><p>Hastie, Tibshirani, Friedman, <strong>The Elements of Statistical Learning</strong>, Springer-Verlag <a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/">website</a> <a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf">pdf</a></p></li>
+<li><p>Haykin, S. S., Haykin, S. S., Haykin, S. S., &amp; Haykin, S. S. (2009). <strong>Neural networks and learning machines</strong> (Vol. 3). Upper Saddle River, NJ, USA:: Pearson.</p></li>
+</ul>
+<p><strong>Materiales complementarios</strong></p>
+<ul class="simple">
+<li><p>Curso de pregrado <strong>Modelos y simulación</strong>: <a class="reference external" href="https://github.com/jdariasl/ML_2020">https://github.com/jdariasl/ML_2020</a></p></li>
+<li><p>Curso abierto <strong>Introducción a la IA para las Ciecnias e Ingenierías</strong> <a class="reference external" href="https://rramosp.github.io/ai4eng.v1">https://rramosp.github.io/ai4eng.v1</a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/user/numpy-for-matlab-users.html">https://numpy.org/doc/stable/user/numpy-for-matlab-users.html</a></p></li>
+</ul>
 </div>
-<div class="section" id="references">
-<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
-<p>C. Bergmeir, R. J. Hyndman, B. Koo (2018). A note on the validity of cross-validation for evaluating autoregressive time series prediction. Computational Statistics and Data Analysis, 120, 70-83. <a class="reference external" href="https://robjhyndman.com/papers/cv-wp.pdf">link</a></p>
-</div>
+<div class="section" id="contacto">
+<h2>Contacto<a class="headerlink" href="#contacto" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="mailto:raul&#46;ramos&#37;&#52;&#48;udea&#46;edu&#46;co">raul<span>&#46;</span>ramos<span>&#64;</span>udea<span>&#46;</span>edu<span>&#46;</span>co</a>, <a class="reference external" href="mailto:julian&#46;ariasl&#37;&#52;&#48;udea&#46;edu&#46;co">julian<span>&#46;</span>ariasl<span>&#64;</span>udea<span>&#46;</span>edu<span>&#46;</span>co</a></p>
 </div>
 </div>
 
@@ -748,17 +778,17 @@ TRAIN: [12 13 14 15 16] TEST: [17 18 19]
         
             <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="M05.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="M00.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">05 - SEQUENCE MODELS</p>
+            <p class="prev-next-title">Información 20212 - UdeA</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="U5.01%20-%20Recurrent%20Neural%20Networks.html" title="next page">
+    <a class='right-next' id="next-link" href="M01.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">5.1 Recurrent Neural Networks</p>
+        <p class="prev-next-title">01 - INTRODUCTION</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
