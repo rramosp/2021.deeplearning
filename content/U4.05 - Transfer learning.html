@@ -121,7 +121,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="M00.html">
+  <a class="reference internal" href="M00_20231_pre.html">
    Info 2022.2 - UdeA - Posgrado
   </a>
  </li>
@@ -686,7 +686,7 @@ title="Print to PDF"
 <h1>4.5 - Transfer learning<a class="headerlink" href="#transfer-learning" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget --no-cache -O init.py -q https://raw.githubusercontent.com/rramosp/2020.deeplearning/master/init.py
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2020.deeplearning/master/init.py
 <span class="kn">from</span> <span class="nn">init</span> <span class="kn">import</span> <span class="n">init</span><span class="p">;</span> <span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -715,7 +715,7 @@ title="Print to PDF"
 <p>Local file with weights from first two layers only</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls -lash local/data/alexnet_conv1_conv2.pklz
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls<span class="w"> </span>-lash<span class="w"> </span>local/data/alexnet_conv1_conv2.pklz
 </pre></div>
 </div>
 </div>
@@ -760,7 +760,7 @@ b&#39;conv1&#39; (96,) (11, 11, 3, 96)
 <h3>We will use them as starting point for training our network<a class="headerlink" href="#we-will-use-them-as-starting-point-for-training-our-network" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget -nc https://s3.amazonaws.com/rlx/mini_cifar.h5
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>https://s3.amazonaws.com/rlx/mini_cifar.h5
 </pre></div>
 </div>
 </div>
@@ -1120,7 +1120,7 @@ Epoch 15/15
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls -lash alexnet_finetuned_minicifar*
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls<span class="w"> </span>-lash<span class="w"> </span>alexnet_finetuned_minicifar*
 </pre></div>
 </div>
 </div>
@@ -1140,7 +1140,7 @@ total 168K
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>head alexnet_finetuned_minicifar.architecture.json
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>head<span class="w"> </span>alexnet_finetuned_minicifar.architecture.json
 </pre></div>
 </div>
 </div>

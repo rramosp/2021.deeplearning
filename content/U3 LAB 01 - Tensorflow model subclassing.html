@@ -123,7 +123,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="M00.html">
+  <a class="reference internal" href="M00_20231_pre.html">
    Info 2022.2 - UdeA - Posgrado
   </a>
  </li>
@@ -694,7 +694,7 @@ title="Print to PDF"
 <h1>LAB 3.1 - TF model subclassing<a class="headerlink" href="#lab-3-1-tf-model-subclassing" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget -nc --no-cache -O init.py -q https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
 <span class="kn">import</span> <span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> 
 </pre></div>
 </div>
@@ -1005,7 +1005,7 @@ b shapes [TensorShape([10]), TensorShape([5]), TensorShape([1])]
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>rm -rf logs
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>rm<span class="w"> </span>-rf<span class="w"> </span>logs
 <span class="n">tensorboard_callback</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">TensorBoard</span><span class="p">(</span><span class="n">log_dir</span><span class="o">=</span><span class="s2">&quot;logs/no_regularization&quot;</span><span class="p">)</span>
 <span class="n">mlp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
         <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">tensorboard_callback</span><span class="p">])</span>

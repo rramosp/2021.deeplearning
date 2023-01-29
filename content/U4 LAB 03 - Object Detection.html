@@ -123,7 +123,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="M00.html">
+  <a class="reference internal" href="M00_20231_pre.html">
    Info 2022.2 - UdeA - Posgrado
   </a>
  </li>
@@ -664,7 +664,7 @@ title="Print to PDF"
 <h1>LAB 4.3 - Object detection<a class="headerlink" href="#lab-4-3-object-detection" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget -nc --no-cache -O init.py -q https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
 <span class="kn">import</span> <span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> 
 </pre></div>
 </div>
@@ -695,15 +695,15 @@ title="Print to PDF"
 <p>observe how we download and extract the first 20K bounding-box annotations from the Open Images V6 dataset, out of the total 14M available. We are interested in the width and height of each box, which we must obtain by substracting the box coordinates, according to the description <a class="reference external" href="https://storage.googleapis.com/openimages/web/download.html">here</a>. Recall that the coordinates are <span class="math notranslate nohighlight">\(\in [0,1]\)</span> as they are relative to the image size</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget -nc https://storage.googleapis.com/openimages/v6/oidv6-train-annotations-bbox.csv
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>https://storage.googleapis.com/openimages/v6/oidv6-train-annotations-bbox.csv
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wc oidv6-train-annotations-bbox.csv
-<span class="o">!</span>head -5 oidv6-train-annotations-bbox.csv
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wc<span class="w"> </span>oidv6-train-annotations-bbox.csv
+<span class="o">!</span>head<span class="w"> </span>-5<span class="w"> </span>oidv6-train-annotations-bbox.csv
 </pre></div>
 </div>
 </div>
@@ -711,7 +711,7 @@ title="Print to PDF"
 <p>The <code class="docutils literal notranslate"><span class="pre">X</span></code> numpy array now contains the width and height of bounding boxes</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>head -20001 oidv6-train-annotations-bbox.csv &gt; oidv6-train-annotations-bbox-20k.csv
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>head<span class="w"> </span>-20001<span class="w"> </span>oidv6-train-annotations-bbox.csv<span class="w"> </span>&gt;<span class="w"> </span>oidv6-train-annotations-bbox-20k.csv
 <span class="n">d</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;oidv6-train-annotations-bbox-20k.csv&#39;</span><span class="p">)</span>
 <span class="n">w</span> <span class="o">=</span> <span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">XMax</span><span class="o">-</span><span class="n">d</span><span class="o">.</span><span class="n">XMin</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
 <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">YMax</span><span class="o">-</span><span class="n">d</span><span class="o">.</span><span class="n">YMin</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>

@@ -121,7 +121,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="M00.html">
+  <a class="reference internal" href="M00_20231_pre.html">
    Info 2022.2 - UdeA - Posgrado
   </a>
  </li>
@@ -642,7 +642,7 @@ title="Print to PDF"
 <h1>4.4 - CNN Architectures<a class="headerlink" href="#cnn-architectures" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget -nc --no-cache -O init.py -q https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
 <span class="kn">import</span> <span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> 
 </pre></div>
 </div>
@@ -788,7 +788,7 @@ _________________________________________________________________
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_img</span><span class="p">(</span><span class="n">img_url</span><span class="p">):</span>
     <span class="n">img_fname</span> <span class="o">=</span> <span class="n">img_url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="o">!</span>wget -nc <span class="nv">$img_url</span>
+    <span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span><span class="nv">$img_url</span>
     <span class="n">img</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">img_fname</span><span class="p">)</span>
     <span class="n">simg</span> <span class="o">=</span> <span class="n">resize</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">output_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">224</span><span class="p">,</span><span class="mi">224</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
     <span class="n">simg</span> <span class="o">=</span> <span class="p">((</span><span class="n">simg</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">simg</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">simg</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">simg</span><span class="p">))</span><span class="o">*</span><span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>

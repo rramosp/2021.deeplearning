@@ -123,7 +123,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="M00.html">
+  <a class="reference internal" href="M00_20231_pre.html">
    Info 2022.2 - UdeA - Posgrado
   </a>
  </li>
@@ -700,7 +700,7 @@ title="Print to PDF"
 <h1>LAB 4.2 - Transfer learning<a class="headerlink" href="#lab-4-2-transfer-learning" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget -nc --no-cache -O init.py -q https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
 <span class="kn">import</span> <span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> 
 </pre></div>
 </div>
@@ -719,7 +719,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="o">!</span>pip install --upgrade tensorflow_hub
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>tensorflow_hub
 
 <span class="kn">import</span> <span class="nn">tensorflow_hub</span> <span class="k">as</span> <span class="nn">hub</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -796,7 +796,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url_chimp</span> <span class="o">=</span> <span class="s1">&#39;https://scx2.b-cdn.net/gfx/news/2019/canwereallyk.jpg&#39;</span>
-<span class="o">!</span>wget -q -O img.jpg <span class="nv">$url_chimp</span>
+<span class="o">!</span>wget<span class="w"> </span>-q<span class="w"> </span>-O<span class="w"> </span>img.jpg<span class="w"> </span><span class="nv">$url_chimp</span>
 <span class="n">img</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="s1">&#39;img.jpg&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
 <span class="n">get_top3_inceptionv1_labels</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">labels_list</span><span class="p">)</span>
@@ -833,7 +833,7 @@ title="Print to PDF"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget -nc -q https://s3.amazonaws.com/rlx/mini_cifar.h5
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>-q<span class="w"> </span>https://s3.amazonaws.com/rlx/mini_cifar.h5
 <span class="k">with</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="s1">&#39;mini_cifar.h5&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">h5f</span><span class="p">:</span>
     <span class="n">x_cifar</span> <span class="o">=</span> <span class="n">h5f</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">][:][:</span><span class="mi">1000</span><span class="p">]</span>
     <span class="n">y_cifar</span> <span class="o">=</span> <span class="n">h5f</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">][:][:</span><span class="mi">1000</span><span class="p">]</span>
