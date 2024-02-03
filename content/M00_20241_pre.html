@@ -1,0 +1,1033 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Info 2023.2 - UdeA - Pregrado &#8212; Fundamentos de Deep Learning</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-43235448-3', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/fudea.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Fundamentos de Deep Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="M00_20232_pre.html">
+   Info 2023.2 - UdeA - Pregrado
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="M00_20232_pos.html">
+   Info 2023.2 - UdeA - Posgrado
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M01.html">
+   01 - INTRODUCTION
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U1.01%20-%20DL%20Overview.html">
+     1.1 - DL Overview
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U1.02%20-%20Modelos%20derivados%20de%20los%20datos.html">
+     1.2 - Models derived from data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U1.03%20-%20Como%20se%20disena%20un%20algoritmo%20de%20Machine%20Learning.html">
+     1.3 - ML algorithm design
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U1%20LAB%2001%20-%20WARMUP.html">
+     LAB 01.01 - WARM UP
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M02.html">
+   02 - NEURAL NETWORKS
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U2.01%20-%20The%20Perceptron.html">
+     2.1 - The Perceptron
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U2.02%20-%20The%20Multilayer%20Perceptron.html">
+     2.2 - The Multilayer Perceptron
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U2.03%20-%20Overfitting%20and%20regularization.html">
+     2.3 - Overfitting and regularization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U2.04%20-%20Loss%20functions.html">
+     2.4 - Loss functions in Tensorflow
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U2.05%20-%20Network%20Architectures%20-%20Autoencoders.html">
+     2.5 - Autoencoders
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U2.06%20-%20Network%20Architectures%20-%20Multimodal%20information.html">
+     2.6 - Multimodal architectures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U2.07%20-%20Vanishing%20gradients.html">
+     2.7 - Vanishing gradients
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U2.08%20-%20Weights%20initialization.html">
+     2.8 - Weights initialization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U2%20LAB%2001%20-%20Customized%20loss%20functions%20and%20regularization.html">
+     LAB 2.1 - Customized loss function
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U2%20LAB%2002%20-%20Autoencoders.html">
+     LAB 2.2 - Sparse Autoencoders
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U2%20LAB%2003%20-%20Pairwise%20image%20classification.html">
+     LAB 2.3 - Pairwise classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U2%20LAB%2004%20-%20Model%20instrumentation%20and%20monitoring.html">
+     LAB 2.4 - Model instrumentation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M03.html">
+   03 - TENSORFLOW CORE
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U3.01%20-%20Simbolic%20computing%20for%20ML.html">
+     3.1 - Symbolic computing for ML
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U3.02%20-%20TF%20for%20symbolic%20computing.html">
+     3.2 - TF symbolic engine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U3.03%20-%20Using%20tf.function.html">
+     3.3 - Using
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       tf.function
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U3.04%20-%20Batch%20Normalization.html">
+     3.4 - Batch normalization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U3%20LAB%2001%20-%20Tensorflow%20model%20subclassing.html">
+     LAB 3.1 - TF model subclassing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U3%20LAB%2002%20-%20Low%20level%20Tensorflow.html">
+     LAB 3.2 - Low level
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       tensorflow
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M04.html">
+   04 - CONVOLUTIONAL NETWORKS
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U4.01%20-%20Convolutions.html">
+     4.1 - Convolutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U4.02%20-%20Convolutional%20Neural%20Networks.html">
+     4.2 - Convolutional Neural Networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U4.03%20-%20Dropout%2C%20pooling.html">
+     4.3 - Dropout, pooling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U4.04%20-%20CNN%20Architectures.html">
+     4.4 - CNN Architectures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U4.05%20-%20Transfer%20learning.html">
+     4.5 - Transfer learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U4.06%20-%20Object%20Detection.html">
+     4.6 - Object detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U4.07%20-%20Transposed%20convolutions.html">
+     4.7 - Transposed convolutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U4.08%20-%20UNet%20image%20segmentation.html">
+     <strong>
+      4.8
+     </strong>
+     - UNet Image segmentation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U4.09%20-%20Atrous%20convolutions.html">
+     4.9 - Atrous convolutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U4%20LAB%2001%20-%20Convolutions.html">
+     LAB 4.1 - Convolutions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U4%20LAB%2002%20-%20Transfer%20Learning.html">
+     LAB 4.2 - Transfer learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U4%20LAB%2003%20-%20Object%20Detection.html">
+     LAB 4.3 - Object detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U4%20LAB%2004%20-%20Semantic%20segmentation.html">
+     LAB 4.4 - Semantic segmentation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M05.html">
+   05 - SEQUENCE MODELS
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U5.00%20-%20Intro%20time%20series.html">
+     5.0 Crossvalidation in time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U5.01%20-%20Recurrent%20Neural%20Networks.html">
+     5.1 Recurrent Neural Networks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U5.02%20-%20Long%20Short%20Term%20Memory%20RNN.html">
+     5.2 LSTM and GRU
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U5.03%20-%20Truncated%20BPTT.html">
+     5.3 Truncated BPTT
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U5.04%20-%20Basic%20concepts%20of%20text%20processing.html">
+     5.4 Text processing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U5.05%20-%20Sequences%20generation%20using%20LSTM.html">
+     5.5 Sequences generation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U5.06%20-%20Bidirectional%20RNNs%20-%20Attention%20Model.html">
+     5.6 Bidirectional RNNs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U5.07%20-%20ELMo%20-%20NER.html">
+     5.7 ELMo
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U5.08%20-%20Self-Attention%20-%20Transformer%20-%20BERT.html">
+     5.8 Transformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U5.09%20-%20CNN-LSTM%20architectures.html">
+     5.9  CNN-LSTM architectures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U5%20LAB%2001%20-%20Multivariate%20time%20series%20prediction.html">
+     LAB 5.1 - Time series prediction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U5%20LAB%2002%20-%20Padding%2C%20Masking%20-%20Sentiment%20Analysis.html">
+     LAB 5.2 - Padding - Masking
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="U5%20LAB%2003%20-%20Sentiment%20Analysis%20using%20BERT.html">
+     LAB 5.3 - Transformer - BERT
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/content/M00_20241_pre.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trabajando-con-los-materiales-del-curso">
+   Trabajando con los materiales del curso
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sesiones-sincronicas">
+   Sesiones sincrónicas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#grupo-de-whatsapp">
+   Grupo de Whatsapp
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calendario-y-fechas">
+   Calendario y fechas
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fechas-limite-para-entregas">
+     Fechas límite para entregas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fechas-oficiales-facutlad-de-ingenieria">
+     Fechas oficiales facutlad de ingeniería
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#entregas">
+   Entregas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluaciones">
+   Evaluaciones
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#proyecto">
+   Proyecto
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Entregas
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#entrega-1">
+     Entrega 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#entrega-2">
+     Entrega 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evaluacion-del-proyecto">
+     Evaluación del proyecto
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#referencias">
+   Referencias
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contacto">
+   Contacto
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Info 2023.2 - UdeA - Pregrado</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trabajando-con-los-materiales-del-curso">
+   Trabajando con los materiales del curso
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sesiones-sincronicas">
+   Sesiones sincrónicas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#grupo-de-whatsapp">
+   Grupo de Whatsapp
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calendario-y-fechas">
+   Calendario y fechas
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fechas-limite-para-entregas">
+     Fechas límite para entregas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fechas-oficiales-facutlad-de-ingenieria">
+     Fechas oficiales facutlad de ingeniería
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#entregas">
+   Entregas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluaciones">
+   Evaluaciones
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#proyecto">
+   Proyecto
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Entregas
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#entrega-1">
+     Entrega 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#entrega-2">
+     Entrega 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evaluacion-del-proyecto">
+     Evaluación del proyecto
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#referencias">
+   Referencias
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contacto">
+   Contacto
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="section" id="info-2023-2-udea-pregrado">
+<h1>Info 2023.2 - UdeA - Pregrado<a class="headerlink" href="#info-2023-2-udea-pregrado" title="Permalink to this headline">¶</a></h1>
+<center><big>
+<font color='red'>ESTA ES INFORMACIÓN PARA LAS PERSONAS MATRICULADAS EN EL CURSO REGULAR DE PREGRADO
+EN LA FACULTAD DE INGENIERÍA DE LA UNIVERSIDAD DE ANTIOQUIA - SEMESTRE 2023-2
+</font>
+</center></big>
+<div class="section" id="trabajando-con-los-materiales-del-curso">
+<h2>Trabajando con los materiales del curso<a class="headerlink" href="#trabajando-con-los-materiales-del-curso" title="Permalink to this headline">¶</a></h2>
+<p><strong>01 - Jupyter notebooks y Google colab</strong>: <a class="reference external" href="https://youtu.be/KajSbrEBZ5k">video 13mins</a> Explicamos brevemente cómo es el entorno de ejecución de código Python en la nube de Google que vamos a usar durante el curso</p>
+<p><strong>02 - Laboratorios y envío de soluciones</strong>: <a class="reference external" href="https://youtu.be/D6MuCnXc5LM">video 12mins</a> Describimos cómo es el mecanismo de envío de soluciones y la plataforma de autocorrección de talleres.</p>
+</div>
+<div class="section" id="sesiones-sincronicas">
+<h2>Sesiones sincrónicas<a class="headerlink" href="#sesiones-sincronicas" title="Permalink to this headline">¶</a></h2>
+<p><strong>Para acceder a las sesiones</strong></p>
+<center><big>ENLACE DE ZOOM <a href="https://udea.zoom.us/j/94266994891">https://udea.zoom.us/j/94266994891</a></big></center>
+<p/><p/>
+Puedes acceder a las grabaciones aquí: <a href=" https://ingenia.udea.edu.co/zoom/meeting/94266994891"> https://ingenia.udea.edu.co/zoom/meeting/94266994891</a>
+</div>
+<div class="section" id="grupo-de-whatsapp">
+<h2>Grupo de Whatsapp<a class="headerlink" href="#grupo-de-whatsapp" title="Permalink to this headline">¶</a></h2>
+<center><a href="https://chat.whatsapp.com/BibP0MKbNk82jaUk1jFww6">https://chat.whatsapp.com/BibP0MKbNk82jaUk1jFww6</a></center>
+</div>
+<div class="section" id="calendario-y-fechas">
+<h2>Calendario y fechas<a class="headerlink" href="#calendario-y-fechas" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fechas-limite-para-entregas">
+<h3>Fechas límite para entregas<a class="headerlink" href="#fechas-limite-para-entregas" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    03/sep: Laboratorios unidad 1 y 2
+    17/sep: Laboratorios unidad 3
+    01/oct: Proyecto entrega 1
+    22/oct: Laboratorios unidad 4
+    29/oct: Laboratorios unidad 5
+    19/nov: Proyecto informe final
+</pre></div>
+</div>
+</div>
+<div class="section" id="fechas-oficiales-facutlad-de-ingenieria">
+<h3>Fechas oficiales facutlad de ingeniería<a class="headerlink" href="#fechas-oficiales-facutlad-de-ingenieria" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>         01/ago/2023  Inicio de clases
+         18/nov/2023  Finalización clase
+      20-25/nov/2023  Fecha límite cierre de notas
+         25/nov/2023  Terminación oficial
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="entregas">
+<h2>Entregas<a class="headerlink" href="#entregas" title="Permalink to this headline">¶</a></h2>
+<p>Deberàs de rellenar un formulario <font color='red'>PARA CADA ENTREGA</font></p>
+<ul class="simple">
+<li><p>Formulario ENTREGA 1: <a class="reference external" href="https://forms.gle/QEERUZuwN6u92Qnr6">enlance al formulario</a></p></li>
+<li><p>Formulario ENTREGA 2: Todavía no disponible</p></li>
+</ul>
+<p><strong>Para verificar las fechas de entrega se considerará (1) que el formulario se haya rellenado antes de la fecha de entrega; y (2) el último commit antes de cada fecha</strong>. Es decir, si cualquier entregable, aparece únicamente en commits posteriores a cualquier fecha de entrega no se tendrá en cuenta.</p>
+<p>Cualquier solicitud de cambio de fechas habrá de realizarse <font color='red'>al menos tres días antes de la fecha</font> sobre la que se solicita el cambio, por medio de un correo a <tt><a class="reference external" href="mailto:raul&#46;ramos&#37;&#52;&#48;udea&#46;edu&#46;co">raul<span>&#46;</span>ramos<span>&#64;</span>udea<span>&#46;</span>edu<span>&#46;</span>co</a></tt> consensuado al menos por un 50% de la clase y con copia explícita a los estudiantes que formen parte del consenso.</p>
+</div>
+<div class="section" id="evaluaciones">
+<h2>Evaluaciones<a class="headerlink" href="#evaluaciones" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    20%     Laboratorios unidades 1,2,3
+    20%     Laboratorios unidad 4
+    20%     Laboratorios unidad 5
+    40%     Proyecto 
+</pre></div>
+</div>
+</div>
+<div class="section" id="proyecto">
+<h2>Proyecto<a class="headerlink" href="#proyecto" title="Permalink to this headline">¶</a></h2>
+<p>Deberás de realizar un proyecto que aplique las técnicas del módulo 4 o del módulo 5 a un problema que escojas. Por ejemplo:</p>
+<ul class="simple">
+<li><p>Relacionado con tu trabajo de investigación o interés que tú tengas.</p></li>
+<li><p>Un challenge de <a class="reference external" href="http://www.kaggle.com">www.kaggle.com</a> (aunque ya haya pasado la competición)</p></li>
+<li><p>Sobre algún dataset público</p></li>
+<li><p>etc.</p></li>
+</ul>
+<p>Los proyectos se podrán hacer en grupos de una, dos o tres personas. <font color='red'>Todos los miembros de un grupo</font> habrán de realizar las entregas cada uno en un repositorio github propio. Si un estudiante no tiene la entrega en su github no recibirá calificación, aunque los demás miembros del grupo la tengan.</p>
+<p><font color='red'>Cualquier entrega fuera de fechas será penalizada con el 50% de la evaluación</font>.</p>
+<p>Te recomendamos que:</p>
+<ul class="simple">
+<li><p>Verifiques que los datos están disponibles antes de escoger tu proyecto.</p></li>
+<li><p>Estimes los requerimientos computacionales para generar los modelos que necesites. Reduce el alcance de tu proyecto si lo necesitas (menos datos, menos clases, etc.).</p></li>
+<li><p>Realices una primera iteración cuanto antes. Es decir, que llegues a tener un primer modelo <strong>sencillo</strong> produciendo predicciones. Implementa en esta primera iteración estrictamente lo que necesites para tener un modelo. El objetivo es resolver la mayoría de los problemas técnicos que te puedan surgir para ya, después, enfocarte en todo lo que quieras hacer en las siguientes iteraciones (preprocesado de datos, otros modelos, etc.)</p></li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2>Entregas<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Deberàs de rellenar un formulario <font color='red'>PARA CADA ENTREGA</font></p>
+<ul class="simple">
+<li><p>Formulario ENTREGA 1: <a class="reference external" href="https://forms.gle/QEERUZuwN6u92Qnr6">enlace al formulario</a></p></li>
+<li><p>Formulario ENTREGA 2: <a class="reference external" href="https://forms.gle/YnRu1y88ssbSec8G8">enlace al formulario</a></p></li>
+</ul>
+<p><strong>Para verificar las fechas de entrega se considerará (1) que el formulario se haya rellenado antes de la fecha de entrega; y(2) el último commit antes de cada fecha</strong>. Es decir, si cualquier entregable, aparece únicamente en commits posteriores a cualquier fecha de entrega no se tendrá en cuenta.</p>
+<div class="section" id="entrega-1">
+<h3>Entrega 1<a class="headerlink" href="#entrega-1" title="Permalink to this headline">¶</a></h3>
+<p>Tendrás que entregar un documento (1-3 páginas máximo) con la siguiente estructura</p>
+<ul class="simple">
+<li><p>Contexto de aplicación.</p></li>
+<li><p>Objetivo de machine learning (queremos predecir X, dada tal información)</p></li>
+<li><p>Dataset: tipo de datos, tamaño (número de datos y tamaño en disco), distribución de las clases</p></li>
+<li><p>Métricas de desempeño (de machine learning y negocio)</p></li>
+<li><p>Referencias y resultados previos</p></li>
+</ul>
+<p>Para la entrega crea un nuevo repositorio en <a class="reference external" href="http://github.com">http://github.com</a> e incluye el informe. Para el resto de las entregas estructúralo según se indica más abajo.</p>
+</div>
+<div class="section" id="entrega-2">
+<h3>Entrega 2<a class="headerlink" href="#entrega-2" title="Permalink to this headline">¶</a></h3>
+<p>Para realizar esta entrega tienes que realizar <strong>TRES</strong> cosas:</p>
+<ul class="simple">
+<li><p>Incluye en el repositorio github los notebooks con tu soluciòn, el informe de la primera entrega y el informe final y lo que consideres oportuno.</p></li>
+<li><p>Crea un video de presentación y súbelo a <a class="reference external" href="http://youtube.com">http://youtube.com</a></p></li>
+<li><p>Incluye <strong>en el <a class="reference external" href="http://README.md">README.md</a></strong> del repositorio, el enlace al video de youtube.</p></li>
+</ul>
+<p>La entrega ha de constar de los siguientes elementos:</p>
+<ul class="simple">
+<li><p><strong>Notebooks reproducibles</strong></p>
+<ul>
+<li><p>Incluye los notebooks que consideres que implementen tu solución o las iteraciones
+que hiciste sobre la misma (distintas arquitecturas, etc.)</p></li>
+<li><p>Los notebooks han de ser <strong>directamente reproducibles</strong> sobre Google Colab. <font color='red'>CUALQUIER
+NOTEBOOK QUE PRODUZCA ERRORES AL EJECUTARSE SERÁ DESCARTADO DE TU ENTREGA</font></p></li>
+<li><p>Organiza tus notebooks con un prejifo numérico para que estén ordenados, mira el ejemplo
+de estructura de tu carpeta de entrega más abajo</p></li>
+</ul>
+</li>
+<li><p><strong>Informe</strong></p>
+<ul>
+<li><p>Redacta un informe <strong>ejecutivo</strong> e inclúyelo en la carpeta compartida en <strong>formato PDF</strong>.
+El informe no debería de ser muy largo (p.ej. entre 5 y 10 páginas), y ha de incluir:</p>
+<ul>
+<li><p>Descripción de la estructura de los notebooks entregados</p></li>
+<li><p>Descripción de tu solución (arquitectura, preprocesado, etc.)</p></li>
+<li><p>Descripción de las iteraciones que hiciste</p></li>
+<li><p>Descripción de los resultados.</p></li>
+</ul>
+</li>
+<li><p>El fichero con el informe se ha de llamar <strong>INFORME_PROYECTO.PDF</strong>. <font color="red">SI
+USAS OTRO NOMBRE O FORMATO LA ENTREGA NO SERÁ VÁLIDA</font></p></li>
+</ul>
+</li>
+<li><p><strong>Video</strong> (súbelo a youtube)</p>
+<ul>
+<li><p>Realiza un video de entre 5 y 10mins donde expliques tu entrega. P.ej.:</p>
+<ul>
+<li><p>Describe y muestra brevemente los datos</p></li>
+<li><p>Describe y muestra brevemente tu código</p></li>
+<li><p>Muestra la pantalla con tus notebooks según los ejecutas</p></li>
+<li><p>Muestre algunos de los resultados obtenidos</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Datos</strong></p>
+<ul>
+<li><p>Incluye en tu informe cómo obtener y hacer disponibles tus datos
+a los procesos implementados en tus notebooks.</p></li>
+</ul>
+</li>
+<li><p><strong>Modelos entrenados</strong></p>
+<ul>
+<li><p>El proceso de entrenamiento de los modelos ha de ser ejecutable desde
+los notebooks de tu entrega.</p></li>
+</ul>
+</li>
+</ul>
+<p>Estructura de ejemplo de la carpeta de entrega</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    |
+    +-  01 - exploración de datos.ipynb
+    +-  02 - preprocesado.ipynb
+    +-  03 - arquitectura de linea de base.ipynb
+    +-  otros_notebooks
+    +-  INFORME_PROYECTO.PDF
+    +-  ENTREGA1.PDF
+</pre></div>
+</div>
+</div>
+<div class="section" id="evaluacion-del-proyecto">
+<h3>Evaluación del proyecto<a class="headerlink" href="#evaluacion-del-proyecto" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   10%: Entrega 1 realizada a tiempo
+   40%: Claridad
+   25%: reproducibilidad
+   25%: compleción
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="referencias">
+<h2>Referencias<a class="headerlink" href="#referencias" title="Permalink to this headline">¶</a></h2>
+<p><strong>Guías sobre Deep Learning</strong></p>
+<ul class="simple">
+<li><p>Aggarwal, Charu C. <strong>Neural networks and deep learning.</strong> Springer 10 (2018): 978-3.</p></li>
+<li><p>Calin, Ovidiu. <strong>Deep Learning Architectures.</strong> Springer International Publishing, 2020.</p></li>
+<li><p>Goodfellow, I., Bengio, Y., Courville, A., &amp; Bengio, Y. (2016). <strong>Deep learning</strong> (Vol. 1). Cambridge: MIT Press <a class="reference external" href="https://www.deeplearningbook.org/">website</a> <a class="reference external" href="https://github.com/janishar/mit-deep-learning-book-pdf">pdf</a></p></li>
+</ul>
+<p><strong>Con un foco especial en alguno de los módulos</strong></p>
+<ul class="simple">
+<li><p>Hochreiter, S., &amp; Schmidhuber, J. (1997). <strong>Long short-term memory. Neural computation</strong>, 9(8), 1735-1780.</p></li>
+<li><p>Vinyals, O., Toshev, A., Bengio, S., &amp; Erhan, D. (2015). <strong>Show and tell: A neural image caption generator.</strong> In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 3156-3164).</p></li>
+<li><p>Venugopalan, S., Rohrbach, M., Donahue, J., Mooney, R., Darrell, T., &amp; Saenko, K. (2015). <strong>Sequence to sequence-video to text.</strong> In Proceedings of the IEEE international conference on computer vision (pp. 4534-4542).</p></li>
+<li><p>Sutskever, I., Vinyals, O., &amp; Le, Q. V. (2014). <strong>Sequence to sequence learning with neural networks.</strong> In Advances in neural information processing systems (pp. 3104-3112).</p></li>
+<li><p>Pradeep Pujari, Md. Rezaul Karim, Mohit Sewak (2017) , <strong>Practical Convolutional Neural Networks</strong>, O’Reilly,</p></li>
+</ul>
+<p><strong>Generales de machine learning</strong></p>
+<ul class="simple">
+<li><p>Hastie, Tibshirani, Friedman, <strong>The Elements of Statistical Learning</strong>, Springer-Verlag <a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/">website</a> <a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf">pdf</a></p></li>
+<li><p>Haykin, S. S., Haykin, S. S., Haykin, S. S., &amp; Haykin, S. S. (2009). <strong>Neural networks and learning machines</strong> (Vol. 3). Upper Saddle River, NJ, USA:: Pearson.</p></li>
+</ul>
+<p><strong>Materiales complementarios</strong></p>
+<ul class="simple">
+<li><p>Curso de pregrado <strong>Modelos y simulación</strong>: <a class="reference external" href="https://github.com/jdariasl/ML_2020">https://github.com/jdariasl/ML_2020</a></p></li>
+<li><p>Curso abierto <strong>Introducción a la IA para las Ciecnias e Ingenierías</strong> <a class="reference external" href="https://rramosp.github.io/ai4eng.v1">https://rramosp.github.io/ai4eng.v1</a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/user/numpy-for-matlab-users.html">https://numpy.org/doc/stable/user/numpy-for-matlab-users.html</a></p></li>
+</ul>
+</div>
+<div class="section" id="contacto">
+<h2>Contacto<a class="headerlink" href="#contacto" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="mailto:raul&#46;ramos&#37;&#52;&#48;udea&#46;edu&#46;co">raul<span>&#46;</span>ramos<span>&#64;</span>udea<span>&#46;</span>edu<span>&#46;</span>co</a></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Raúl Ramos, Julián Arias / Universidad de Antioquia<br/>
+  
+      &copy; Copyright 2020.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
