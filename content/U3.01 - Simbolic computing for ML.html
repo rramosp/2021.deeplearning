@@ -1,118 +1,191 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>3.1 - Symbolic computing for ML &#8212; Fundamentos de Deep Learning</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-43235448-3"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-43235448-3');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-43235448-3');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/U3.01 - Simbolic computing for ML';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="3.2 - TF symbolic engine" href="U3.02%20-%20TF%20for%20symbolic%20computing.html" />
     <link rel="prev" title="03 - TENSORFLOW CORE" href="M03.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
-<script async="" src="https://www.google-analytics.com/analytics.js"></script>
-<script>
-                        window.ga = window.ga || function () {
-                            (ga.q = ga.q || []).push(arguments) };
-                        ga.l = +new Date;
-                        ga('create', 'UA-43235448-3', 'auto');
-                        ga('set', 'anonymizeIp', true);
-                        ga('send', 'pageview');
-                    </script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/fudea.jpg" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Fundamentos de Deep Learning</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/fudea.jpg" class="logo__image only-light" alt="Fundamentos de Deep Learning - Home"/>
+    <script>document.write(`<img src="../_static/fudea.jpg" class="logo__image only-dark" alt="Fundamentos de Deep Learning - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -122,647 +195,283 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="M00_20242_prepos.html">
-   Info 2024.2 - UdeA
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="M01.html">
-   01 - INTRODUCTION
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U1.01%20-%20DL%20Overview.html">
-     1.1 - DL Overview
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U1.02%20-%20Modelos%20derivados%20de%20los%20datos.html">
-     1.2 - Models derived from data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U1.03%20-%20Como%20se%20disena%20un%20algoritmo%20de%20Machine%20Learning.html">
-     1.3 - ML algorithm design
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U1%20LAB%2001%20-%20WARMUP.html">
-     LAB 01.01 - WARM UP
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="M02.html">
-   02 - NEURAL NETWORKS
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U2.01%20-%20The%20Perceptron.html">
-     2.1 - The Perceptron
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U2.02%20-%20The%20Multilayer%20Perceptron.html">
-     2.2 - The Multilayer Perceptron
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U2.03%20-%20Overfitting%20and%20regularization.html">
-     2.3 - Overfitting and regularization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U2.04%20-%20Loss%20functions.html">
-     2.4 - Loss functions in Tensorflow
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U2.05%20-%20Network%20Architectures%20-%20Autoencoders.html">
-     2.5 - Autoencoders
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U2.06%20-%20Network%20Architectures%20-%20Multimodal%20information.html">
-     2.6 - Multimodal architectures
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U2.07%20-%20Vanishing%20gradients.html">
-     2.7 - Vanishing gradients
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U2.08%20-%20Weights%20initialization.html">
-     2.8 - Weights initialization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U2%20LAB%2001%20-%20Customized%20loss%20functions%20and%20regularization.html">
-     LAB 2.1 - Customized loss function
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U2%20LAB%2002%20-%20Autoencoders.html">
-     LAB 2.2 - Sparse Autoencoders
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U2%20LAB%2003%20-%20Pairwise%20image%20classification.html">
-     LAB 2.3 - Pairwise classification
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U2%20LAB%2004%20-%20Model%20instrumentation%20and%20monitoring.html">
-     LAB 2.4 - Model instrumentation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="M03.html">
-   03 - TENSORFLOW CORE
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     3.1 - Symbolic computing for ML
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U3.02%20-%20TF%20for%20symbolic%20computing.html">
-     3.2 - TF symbolic engine
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U3.03%20-%20Using%20tf.function.html">
-     3.3 - Using
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       tf.function
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U3.04%20-%20Batch%20Normalization.html">
-     3.4 - Batch normalization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U3%20LAB%2001%20-%20Tensorflow%20model%20subclassing.html">
-     LAB 3.1 - TF model subclassing
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U3%20LAB%2002%20-%20Low%20level%20Tensorflow.html">
-     LAB 3.2 - Low level
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       tensorflow
-      </span>
-     </code>
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="M04.html">
-   04 - CONVOLUTIONAL NETWORKS
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U4.01%20-%20Convolutions.html">
-     4.1 - Convolutions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U4.02%20-%20Convolutional%20Neural%20Networks.html">
-     4.2 - Convolutional Neural Networks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U4.03%20-%20Dropout%2C%20pooling.html">
-     4.3 - Dropout, pooling
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U4.04%20-%20CNN%20Architectures.html">
-     4.4 - CNN Architectures
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U4.05%20-%20Transfer%20learning.html">
-     4.5 - Transfer learning
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U4.06%20-%20Object%20Detection.html">
-     4.6 - Object detection
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U4.07%20-%20Transposed%20convolutions.html">
-     4.7 - Transposed convolutions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U4.08%20-%20UNet%20image%20segmentation.html">
-     <strong>
-      4.8
-     </strong>
-     - UNet Image segmentation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U4.09%20-%20Atrous%20convolutions.html">
-     4.9 - Atrous convolutions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U4%20LAB%2001%20-%20Convolutions.html">
-     LAB 4.1 - Convolutions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U4%20LAB%2002%20-%20Transfer%20Learning.html">
-     LAB 4.2 - Transfer learning
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U4%20LAB%2003%20-%20Object%20Detection.html">
-     LAB 4.3 - Object detection
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U4%20LAB%2004%20-%20Semantic%20segmentation.html">
-     LAB 4.4 - Semantic segmentation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="M05.html">
-   05 - SEQUENCE MODELS
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U5.00%20-%20Intro%20time%20series.html">
-     5.0 Crossvalidation in time series
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U5.01%20-%20Recurrent%20Neural%20Networks.html">
-     5.1 Recurrent Neural Networks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U5.02%20-%20Long%20Short%20Term%20Memory%20RNN.html">
-     5.2 LSTM and GRU
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U5.03%20-%20Truncated%20BPTT.html">
-     5.3 Truncated BPTT
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U5.04%20-%20Basic%20concepts%20of%20text%20processing.html">
-     5.4 Text processing
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U5.05%20-%20Sequences%20generation%20using%20LSTM.html">
-     5.5 Sequences generation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U5.06%20-%20Bidirectional%20RNNs%20-%20Attention%20Model.html">
-     5.6 Bidirectional RNNs
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U5.07%20-%20ELMo%20-%20NER.html">
-     5.7 ELMo
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U5.08%20-%20Self-Attention%20-%20Transformer%20-%20BERT.html">
-     5.8 Transformer
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U5.09%20-%20CNN-LSTM%20architectures.html">
-     5.9  CNN-LSTM architectures
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U5%20LAB%2001%20-%20Multivariate%20time%20series%20prediction.html">
-     LAB 5.1 - Time series prediction
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U5%20LAB%2002%20-%20Padding%2C%20Masking%20-%20Sentiment%20Analysis.html">
-     LAB 5.2 - Padding - Masking
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U5%20LAB%2003%20-%20Sentiment%20Analysis%20using%20BERT.html">
-     LAB 5.3 - Transformer - BERT
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="M00_20251_pre.html">Info 2024.2 - UdeA</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="M01.html">01 - INTRODUCTION</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="U1.01%20-%20DL%20Overview.html">1.1 - DL Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U1.02%20-%20Modelos%20derivados%20de%20los%20datos.html">1.2 - Models derived from data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U1.03%20-%20Como%20se%20disena%20un%20algoritmo%20de%20Machine%20Learning.html">1.3 - ML algorithm design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U1%20LAB%2001%20-%20WARMUP.html">LAB 01.01 - WARM UP</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="M02.html">02 - NEURAL NETWORKS</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="U2.01%20-%20The%20Perceptron.html">2.1 - The Perceptron</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U2.02%20-%20The%20Multilayer%20Perceptron.html">2.2 - The Multilayer Perceptron</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U2.03%20-%20Overfitting%20and%20regularization.html">2.3 - Overfitting and regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U2.04%20-%20Loss%20functions.html">2.4 - Loss functions in Tensorflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U2.05%20-%20Network%20Architectures%20-%20Autoencoders.html">2.5 - Autoencoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U2.06%20-%20Network%20Architectures%20-%20Multimodal%20information.html">2.6 - Multimodal architectures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U2.07%20-%20Vanishing%20gradients.html">2.7 - Vanishing gradients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U2.08%20-%20Weights%20initialization.html">2.8 - Weights initialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U2%20LAB%2001%20-%20Customized%20loss%20functions%20and%20regularization.html">LAB 2.1 - Customized loss function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U2%20LAB%2002%20-%20Autoencoders.html">LAB 2.2 - Sparse Autoencoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U2%20LAB%2003%20-%20Pairwise%20image%20classification.html">LAB 2.3 - Pairwise classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U2%20LAB%2004%20-%20Model%20instrumentation%20and%20monitoring.html">LAB 2.4 - Model instrumentation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="M03.html">03 - TENSORFLOW CORE</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.1 - Symbolic computing for ML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U3.02%20-%20TF%20for%20symbolic%20computing.html">3.2 - TF symbolic engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U3.03%20-%20Using%20tf.function.html">3.3 - Using <code class="docutils literal notranslate"><span class="pre">tf.function</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="U3.04%20-%20Batch%20Normalization.html">3.4 - Batch normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U3%20LAB%2001%20-%20Tensorflow%20model%20subclassing.html">LAB 3.1 - TF model subclassing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U3%20LAB%2002%20-%20Low%20level%20Tensorflow.html">LAB 3.2 - Low level <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="M04.html">04 - CONVOLUTIONAL NETWORKS</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="U4.01%20-%20Convolutions.html">4.1 - Convolutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U4.02%20-%20Convolutional%20Neural%20Networks.html">4.2 - Convolutional Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U4.03%20-%20Dropout%2C%20pooling.html">4.3 - Dropout, pooling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U4.04%20-%20CNN%20Architectures.html">4.4 - CNN Architectures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U4.05%20-%20Transfer%20learning.html">4.5 - Transfer learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U4.06%20-%20Object%20Detection.html">4.6 - Object detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U4.07%20-%20Transposed%20convolutions.html">4.7 - Transposed convolutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U4.08%20-%20UNet%20image%20segmentation.html"><strong>4.8</strong> - UNet Image segmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U4.09%20-%20Atrous%20convolutions.html">4.9 - Atrous convolutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U4%20LAB%2001%20-%20Convolutions.html">LAB 4.1 - Convolutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U4%20LAB%2002%20-%20Transfer%20Learning.html">LAB 4.2 - Transfer learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U4%20LAB%2003%20-%20Object%20Detection.html">LAB 4.3 - Object detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U4%20LAB%2004%20-%20Semantic%20segmentation.html">LAB 4.4 - Semantic segmentation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="M05.html">05 - SEQUENCE MODELS</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="U5.00%20-%20Intro%20time%20series.html">5.0 Crossvalidation in time series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U5.01%20-%20Recurrent%20Neural%20Networks.html">5.1 Recurrent Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U5.02%20-%20Long%20Short%20Term%20Memory%20RNN.html">5.2 LSTM and GRU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U5.03%20-%20Truncated%20BPTT.html">5.3 Truncated BPTT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U5.04%20-%20Basic%20concepts%20of%20text%20processing.html">5.4 Text processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U5.05%20-%20Sequences%20generation%20using%20LSTM.html">5.5 Sequences generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U5.06%20-%20Bidirectional%20RNNs%20-%20Attention%20Model.html">5.6 Bidirectional RNNs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U5.07%20-%20ELMo%20-%20NER.html">5.7 ELMo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U5.08%20-%20Self-Attention%20-%20Transformer%20-%20BERT.html">5.8 Transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U5.09%20-%20CNN-LSTM%20architectures.html">5.9  CNN-LSTM architectures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U5%20LAB%2001%20-%20Multivariate%20time%20series%20prediction.html">LAB 5.1 - Time series prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U5%20LAB%2002%20-%20Padding%2C%20Masking%20-%20Sentiment%20Analysis.html">LAB 5.2 - Padding - Masking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U5%20LAB%2003%20-%20Sentiment%20Analysis%20using%20BERT.html">LAB 5.3 - Transformer - BERT</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://colab.research.google.com/github/rramosp/2021.deeplearning/blob/master/content/U3.01 - Simbolic computing for ML.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_colab.png">
-  </span>
-<span class="headerbtn__text-container">Colab</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/rramosp/2021.deeplearning/blob/master/content/U3.01 - Simbolic computing for ML.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/U3.01 - Simbolic computing for ML.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/content/U3.01 - Simbolic computing for ML.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
 
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </button>
-
-      </li>
+</div></div>
       
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
+    </div>
   
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
-    </div>
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#recall-the-machine-learning-algorithm-design-process">
-   Recall the machine learning algorithm design process
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#and-how-we-sorted-it-out-for-linear-regression-using-a-generic-optimization-library">
-   And how we sorted it out for linear regression using a generic optimization library
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-sympy-computer-algebra-system-cas">
-   Using
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     sympy
-    </span>
-   </code>
-   computer algebra system (CAS)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sympy-to-python-and-numpy">
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     Sympy
-    </span>
-   </code>
-   to
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     Python
-    </span>
-   </code>
-   and
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     Numpy
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-sympy-to-obtain-the-gradient">
-   Using
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     sympy
-    </span>
-   </code>
-   to obtain the gradient.
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#and-we-are-still-using-black-box-optimization">
-   and we are still using black box optimization!!!!
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>3.1 - Symbolic computing for ML</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#recall-the-machine-learning-algorithm-design-process">
-   Recall the machine learning algorithm design process
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#and-how-we-sorted-it-out-for-linear-regression-using-a-generic-optimization-library">
-   And how we sorted it out for linear regression using a generic optimization library
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-sympy-computer-algebra-system-cas">
-   Using
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     sympy
-    </span>
-   </code>
-   computer algebra system (CAS)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sympy-to-python-and-numpy">
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     Sympy
-    </span>
-   </code>
-   to
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     Python
-    </span>
-   </code>
-   and
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     Numpy
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-sympy-to-obtain-the-gradient">
-   Using
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     sympy
-    </span>
-   </code>
-   to obtain the gradient.
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#and-we-are-still-using-black-box-optimization">
-   and we are still using black box optimization!!!!
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>3.1 - Symbolic computing for ML</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recall-the-machine-learning-algorithm-design-process">Recall the machine learning algorithm design process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#and-how-we-sorted-it-out-for-linear-regression-using-a-generic-optimization-library">And how we sorted it out for linear regression using a generic optimization library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-sympy-computer-algebra-system-cas">Using <code class="docutils literal notranslate"><span class="pre">sympy</span></code> computer algebra system (CAS)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sympy-to-python-and-numpy"><code class="docutils literal notranslate"><span class="pre">Sympy</span></code> to <code class="docutils literal notranslate"><span class="pre">Python</span></code> and <code class="docutils literal notranslate"><span class="pre">Numpy</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-sympy-to-obtain-the-gradient">Using <code class="docutils literal notranslate"><span class="pre">sympy</span></code> to obtain the gradient.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#and-we-are-still-using-black-box-optimization">and we are still using black box optimization!!!!</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
-  <div class="section" id="symbolic-computing-for-ml">
-<h1>3.1 - Symbolic computing for ML<a class="headerlink" href="#symbolic-computing-for-ml" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="symbolic-computing-for-ml">
+<h1>3.1 - Symbolic computing for ML<a class="headerlink" href="#symbolic-computing-for-ml" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
-<span class="kn">import</span> <span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> 
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sy</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sy</span>
 <span class="o">%</span><span class="k">load_ext</span> tensorboard
 <span class="n">sy</span><span class="o">.</span><span class="n">init_printing</span><span class="p">(</span><span class="n">use_latex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>    
-<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
 <span class="n">tf</span><span class="o">.</span><span class="n">__version__</span>
 </pre></div>
 </div>
@@ -773,22 +482,23 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<div class="section" id="recall-the-machine-learning-algorithm-design-process">
-<h2>Recall the machine learning algorithm design process<a class="headerlink" href="#recall-the-machine-learning-algorithm-design-process" title="Permalink to this headline">¶</a></h2>
+<section id="recall-the-machine-learning-algorithm-design-process">
+<h2>Recall the machine learning algorithm design process<a class="headerlink" href="#recall-the-machine-learning-algorithm-design-process" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
 <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;local/imgs/mldesign.jpg&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U3.01 - Simbolic computing for ML_4_0.jpg" src="../_images/U3.01 - Simbolic computing for ML_4_0.jpg" />
+<a class="reference internal image-reference" href="../_images/b1b9fdd0e1866d1f227cb883adbb912a69952d44b34d6252e3d58a20740fa755.jpg"><img alt="../_images/b1b9fdd0e1866d1f227cb883adbb912a69952d44b34d6252e3d58a20740fa755.jpg" src="../_images/b1b9fdd0e1866d1f227cb883adbb912a69952d44b34d6252e3d58a20740fa755.jpg" style="width: 800px;" />
+</a>
 </div>
 </div>
-</div>
-<div class="section" id="and-how-we-sorted-it-out-for-linear-regression-using-a-generic-optimization-library">
-<h2>And how we sorted it out for linear regression using a generic optimization library<a class="headerlink" href="#and-how-we-sorted-it-out-for-linear-regression-using-a-generic-optimization-library" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="and-how-we-sorted-it-out-for-linear-regression-using-a-generic-optimization-library">
+<h2>And how we sorted it out for linear regression using a generic optimization library<a class="headerlink" href="#and-how-we-sorted-it-out-for-linear-regression-using-a-generic-optimization-library" title="Link to this heading">#</a></h2>
 <p><strong>Input</strong> and <strong>expected output</strong> (supervised learning)</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\mathbf{x}^{(i)} \in \mathbb{R}^n\)</span>, <span class="math notranslate nohighlight">\(y^{(i)} \in \mathbb{R}\)</span></p></li>
@@ -810,10 +520,10 @@ title="Print to PDF"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">minimize</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
@@ -833,7 +543,7 @@ title="Print to PDF"
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(150, 2)
 </pre></div>
 </div>
-<img alt="../_images/U3.01 - Simbolic computing for ML_7_1.png" src="../_images/U3.01 - Simbolic computing for ML_7_1.png" />
+<img alt="../_images/8ec717136a4f60588c2098fe8559b623af588cd8834b1493d8a439e184cfdfc9.png" src="../_images/8ec717136a4f60588c2098fe8559b623af588cd8834b1493d8a439e184cfdfc9.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -842,10 +552,10 @@ title="Print to PDF"
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[[[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">d</span><span class="o">.</span><span class="n">longitud</span><span class="o">.</span><span class="n">values</span><span class="p">]]</span><span class="o">.</span><span class="n">T</span>
 
 
-<span class="k">def</span> <span class="nf">n_cost</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">n_cost</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">n_grad</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">n_grad</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
 <span class="n">init_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">40</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">20</span><span class="o">-</span><span class="mi">10</span>
@@ -870,9 +580,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="using-sympy-computer-algebra-system-cas">
-<h2>Using <code class="docutils literal notranslate"><span class="pre">sympy</span></code> computer algebra system (CAS)<a class="headerlink" href="#using-sympy-computer-algebra-system-cas" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="using-sympy-computer-algebra-system-cas">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">sympy</span></code> computer algebra system (CAS)<a class="headerlink" href="#using-sympy-computer-algebra-system-cas" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">sy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s2">&quot;x y&quot;</span><span class="p">)</span>
@@ -888,7 +598,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U3.01 - Simbolic computing for ML_11_0.png" src="../_images/U3.01 - Simbolic computing for ML_11_0.png" />
+<img alt="../_images/326cdb4c717b4c6f34201c90bc84c51866cc75f6080426a0f8fec3a6702fded6.png" src="../_images/326cdb4c717b4c6f34201c90bc84c51866cc75f6080426a0f8fec3a6702fded6.png" />
 </div>
 </div>
 <p>we can evaluate the expresion by providing concrete values for the symbolic variables</p>
@@ -899,7 +609,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U3.01 - Simbolic computing for ML_13_0.png" src="../_images/U3.01 - Simbolic computing for ML_13_0.png" />
+<img alt="../_images/9919d66b081357237aa8eab01a4d0793a63db2e02ddaeaacdf4b9685333a01c9.png" src="../_images/9919d66b081357237aa8eab01a4d0793a63db2e02ddaeaacdf4b9685333a01c9.png" />
 </div>
 </div>
 <p>and obtain numerical approximations of these values</p>
@@ -910,7 +620,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U3.01 - Simbolic computing for ML_15_0.png" src="../_images/U3.01 - Simbolic computing for ML_15_0.png" />
+<img alt="../_images/4cba5e0e88413e47c75a3b57d6fe6f87fc597002c68cb7be3351668af485c5bc.png" src="../_images/4cba5e0e88413e47c75a3b57d6fe6f87fc597002c68cb7be3351668af485c5bc.png" />
 </div>
 </div>
 <p>a <strong>derivative</strong> can be seen as a function that inputs and expression and outputs another expression</p>
@@ -922,7 +632,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U3.01 - Simbolic computing for ML_17_0.png" src="../_images/U3.01 - Simbolic computing for ML_17_0.png" />
+<img alt="../_images/943d3a05ac86f89897095b27c1ca698aa21d3171b60decf1782d9a7d3ccd820f.png" src="../_images/943d3a05ac86f89897095b27c1ca698aa21d3171b60decf1782d9a7d3ccd820f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -932,7 +642,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U3.01 - Simbolic computing for ML_18_0.png" src="../_images/U3.01 - Simbolic computing for ML_18_0.png" />
+<img alt="../_images/6a7bd9188fcf4be79429b68580d416937d748211ab3749fb82d8354d619ac0ff.png" src="../_images/6a7bd9188fcf4be79429b68580d416937d748211ab3749fb82d8354d619ac0ff.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -943,7 +653,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U3.01 - Simbolic computing for ML_19_0.png" src="../_images/U3.01 - Simbolic computing for ML_19_0.png" />
+<img alt="../_images/f52fdd0de41a290477686714d2bc89477065e225c2110bb2dc2680a7762a3441.png" src="../_images/f52fdd0de41a290477686714d2bc89477065e225c2110bb2dc2680a7762a3441.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -954,7 +664,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U3.01 - Simbolic computing for ML_20_0.png" src="../_images/U3.01 - Simbolic computing for ML_20_0.png" />
+<img alt="../_images/83df28362074c6d09e117c62ccca65a5bdc3c84f8087749d071d0c343637531e.png" src="../_images/83df28362074c6d09e117c62ccca65a5bdc3c84f8087749d071d0c343637531e.png" />
 </div>
 </div>
 <p><strong>EXERCISE</strong>: draw the computational graph of <span class="math notranslate nohighlight">\(x^2+x\cos(x)\)</span> and show how to differentiate mechanically using the graphs.</p>
@@ -966,7 +676,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U3.01 - Simbolic computing for ML_22_0.png" src="../_images/U3.01 - Simbolic computing for ML_22_0.png" />
+<img alt="../_images/20171b8c1ba281577ac4f0bc96aed12b4aef2ea46efb200e1818b22729d5b743.png" src="../_images/20171b8c1ba281577ac4f0bc96aed12b4aef2ea46efb200e1818b22729d5b743.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -976,7 +686,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U3.01 - Simbolic computing for ML_23_0.png" src="../_images/U3.01 - Simbolic computing for ML_23_0.png" />
+<img alt="../_images/d6b8ec8f116c0f992daa6f76acb34094b577968031150a2f22406e35c9ce6f85.png" src="../_images/d6b8ec8f116c0f992daa6f76acb34094b577968031150a2f22406e35c9ce6f85.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -986,7 +696,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U3.01 - Simbolic computing for ML_24_0.png" src="../_images/U3.01 - Simbolic computing for ML_24_0.png" />
+<img alt="../_images/5aa4c743211abc0c175e26ec351c20b45765d38fa30821bfddafbcf6db7e20cc.png" src="../_images/5aa4c743211abc0c175e26ec351c20b45765d38fa30821bfddafbcf6db7e20cc.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -997,7 +707,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U3.01 - Simbolic computing for ML_25_0.png" src="../_images/U3.01 - Simbolic computing for ML_25_0.png" />
+<img alt="../_images/45fa51666412e4a451bf96d55254be476eb7fe2b381a2ee6186c7b2a943aaba1.png" src="../_images/45fa51666412e4a451bf96d55254be476eb7fe2b381a2ee6186c7b2a943aaba1.png" />
 </div>
 </div>
 <p>differential equations, solving <span class="math notranslate nohighlight">\(\frac{df}{dt}=f(t)+t\)</span></p>
@@ -1013,7 +723,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U3.01 - Simbolic computing for ML_27_0.png" src="../_images/U3.01 - Simbolic computing for ML_27_0.png" />
+<img alt="../_images/7625d63bb7579cb7dbe31aa36d14c1c823e6ba6adc4d02bc374a28c9424b734f.png" src="../_images/7625d63bb7579cb7dbe31aa36d14c1c823e6ba6adc4d02bc374a28c9424b734f.png" />
 </div>
 </div>
 <p>systems of equations</p>
@@ -1024,12 +734,12 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U3.01 - Simbolic computing for ML_29_0.png" src="../_images/U3.01 - Simbolic computing for ML_29_0.png" />
+<img alt="../_images/811d0828ead3c1067981fd33b060305283c474a915c943e2a651115d0e9ef254.png" src="../_images/811d0828ead3c1067981fd33b060305283c474a915c943e2a651115d0e9ef254.png" />
 </div>
 </div>
-</div>
-<div class="section" id="sympy-to-python-and-numpy">
-<h2><code class="docutils literal notranslate"><span class="pre">Sympy</span></code> to <code class="docutils literal notranslate"><span class="pre">Python</span></code> and <code class="docutils literal notranslate"><span class="pre">Numpy</span></code><a class="headerlink" href="#sympy-to-python-and-numpy" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="sympy-to-python-and-numpy">
+<h2><code class="docutils literal notranslate"><span class="pre">Sympy</span></code> to <code class="docutils literal notranslate"><span class="pre">Python</span></code> and <code class="docutils literal notranslate"><span class="pre">Numpy</span></code><a class="headerlink" href="#sympy-to-python-and-numpy" title="Link to this heading">#</a></h2>
 <p>See <a class="reference external" href="http://docs.sympy.org/latest/modules/numeric-computation.html">Sympy Numeric Computation</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1039,7 +749,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U3.01 - Simbolic computing for ML_31_0.png" src="../_images/U3.01 - Simbolic computing for ML_31_0.png" />
+<img alt="../_images/27bcc6a2680c831227172c596a8a839ca809ce66732f66b34742021d4e4a4ed3.png" src="../_images/27bcc6a2680c831227172c596a8a839ca809ce66732f66b34742021d4e4a4ed3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1049,7 +759,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U3.01 - Simbolic computing for ML_32_0.png" src="../_images/U3.01 - Simbolic computing for ML_32_0.png" />
+<img alt="../_images/2e5238f086951b5b9c7f6a60f22b58a70df3d0a0720a5259b54e422007481c22.png" src="../_images/2e5238f086951b5b9c7f6a60f22b58a70df3d0a0720a5259b54e422007481c22.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1059,7 +769,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U3.01 - Simbolic computing for ML_33_0.png" src="../_images/U3.01 - Simbolic computing for ML_33_0.png" />
+<img alt="../_images/77b5301887afad6a52a9bd95698ef2a2d987c3c327ce11146211ebcf9bb8ce76.png" src="../_images/77b5301887afad6a52a9bd95698ef2a2d987c3c327ce11146211ebcf9bb8ce76.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1070,7 +780,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U3.01 - Simbolic computing for ML_34_0.png" src="../_images/U3.01 - Simbolic computing for ML_34_0.png" />
+<img alt="../_images/77b5301887afad6a52a9bd95698ef2a2d987c3c327ce11146211ebcf9bb8ce76.png" src="../_images/77b5301887afad6a52a9bd95698ef2a2d987c3c327ce11146211ebcf9bb8ce76.png" />
 </div>
 </div>
 <p>and a vectorized version</p>
@@ -1088,7 +798,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U3.01 - Simbolic computing for ML_37_0.png" src="../_images/U3.01 - Simbolic computing for ML_37_0.png" />
+<img alt="../_images/77b5301887afad6a52a9bd95698ef2a2d987c3c327ce11146211ebcf9bb8ce76.png" src="../_images/77b5301887afad6a52a9bd95698ef2a2d987c3c327ce11146211ebcf9bb8ce76.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1152,9 +862,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="using-sympy-to-obtain-the-gradient">
-<h2>Using <code class="docutils literal notranslate"><span class="pre">sympy</span></code> to obtain the gradient.<a class="headerlink" href="#using-sympy-to-obtain-the-gradient" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="using-sympy-to-obtain-the-gradient">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">sympy</span></code> to obtain the gradient.<a class="headerlink" href="#using-sympy-to-obtain-the-gradient" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">densidad_escamas</span><span class="o">.</span><span class="n">values</span>
@@ -1166,7 +876,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U3.01 - Simbolic computing for ML_46_0.png" src="../_images/U3.01 - Simbolic computing for ML_46_0.png" />
+<img alt="../_images/f7e7cd4f16364918a0ee0f86bc2226359c22c743be432820d53e52d0000a4296.png" src="../_images/f7e7cd4f16364918a0ee0f86bc2226359c22c743be432820d53e52d0000a4296.png" />
 </div>
 </div>
 <p>we first obtain the cost expression for a few summation terms, so that we can print it out and understand it</p>
@@ -1181,7 +891,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U3.01 - Simbolic computing for ML_48_0.png" src="../_images/U3.01 - Simbolic computing for ML_48_0.png" />
+<img alt="../_images/bec04c6c3a987f0f26299e039bde52aef3308401953759bee64d22440d04f9fa.png" src="../_images/bec04c6c3a987f0f26299e039bde52aef3308401953759bee64d22440d04f9fa.png" />
 </div>
 </div>
 <p>find <code class="docutils literal notranslate"><span class="pre">X[0]</span></code> and <code class="docutils literal notranslate"><span class="pre">y[0]</span></code> in the expression above, beware that you might get simplifications and reordering of the expression by <code class="docutils literal notranslate"><span class="pre">sympy</span></code></p>
@@ -1201,13 +911,13 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U3.01 - Simbolic computing for ML_52_0.png" src="../_images/U3.01 - Simbolic computing for ML_52_0.png" />
+<img alt="../_images/4a78c56f126c63276d42cb5f6e92d8976616047cd66dc18f0833450b73b970c6.png" src="../_images/4a78c56f126c63276d42cb5f6e92d8976616047cd66dc18f0833450b73b970c6.png" />
 </div>
 </div>
 <p>we now build the full expression</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">build_logisitic_regression_cost_expression</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">build_logisitic_regression_cost_expression</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
     <span class="n">expr_cost</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)):</span>
         <span class="n">expr_cost</span> <span class="o">+=</span> <span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">t0</span><span class="o">+</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">t1</span><span class="o">-</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
@@ -1228,7 +938,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U3.01 - Simbolic computing for ML_55_0.png" src="../_images/U3.01 - Simbolic computing for ML_55_0.png" />
+<img alt="../_images/a3206f902f88cd537bc0734b49d0bd22ce2b3176fe81f577236b0e4d548c0423.png" src="../_images/a3206f902f88cd537bc0734b49d0bd22ce2b3176fe81f577236b0e4d548c0423.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1253,7 +963,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U3.01 - Simbolic computing for ML_58_0.png" src="../_images/U3.01 - Simbolic computing for ML_58_0.png" />
+<img alt="../_images/95d04781d80663dffc0db800d8839516dac5b9c5e205c5299ba49483522588a1.png" src="../_images/95d04781d80663dffc0db800d8839516dac5b9c5e205c5299ba49483522588a1.png" />
 </div>
 </div>
 <p>and obtain regular Python so that we can use them in optimization</p>
@@ -1318,11 +1028,11 @@ gradient symbolic: [-1.66013083 -9.12123711]
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="and-we-are-still-using-black-box-optimization">
-<h2>and we are still using black box optimization!!!!<a class="headerlink" href="#and-we-are-still-using-black-box-optimization" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
+</section>
+<section id="and-we-are-still-using-black-box-optimization">
+<h2>and we are still using black box optimization!!!!<a class="headerlink" href="#and-we-are-still-using-black-box-optimization" title="Link to this heading">#</a></h2>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1336,7 +1046,7 @@ gradient symbolic: [-1.66013083 -9.12123711]
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./content"
         },
         predefinedOutput: true
@@ -1344,50 +1054,108 @@ gradient symbolic: [-1.66013083 -9.12123711]
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="M03.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">03 - TENSORFLOW CORE</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="M03.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">03 - TENSORFLOW CORE</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="U3.02%20-%20TF%20for%20symbolic%20computing.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="U3.02%20-%20TF%20for%20symbolic%20computing.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">3.2 - TF symbolic engine</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recall-the-machine-learning-algorithm-design-process">Recall the machine learning algorithm design process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#and-how-we-sorted-it-out-for-linear-regression-using-a-generic-optimization-library">And how we sorted it out for linear regression using a generic optimization library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-sympy-computer-algebra-system-cas">Using <code class="docutils literal notranslate"><span class="pre">sympy</span></code> computer algebra system (CAS)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sympy-to-python-and-numpy"><code class="docutils literal notranslate"><span class="pre">Sympy</span></code> to <code class="docutils literal notranslate"><span class="pre">Python</span></code> and <code class="docutils literal notranslate"><span class="pre">Numpy</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-sympy-to-obtain-the-gradient">Using <code class="docutils literal notranslate"><span class="pre">sympy</span></code> to obtain the gradient.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#and-we-are-still-using-black-box-optimization">and we are still using black box optimization!!!!</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Raúl Ramos, Julián Arias / Universidad de Antioquia<br/>
-  
-      &copy; Copyright 2020.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Raúl Ramos, Julián Arias / Universidad de Antioquia
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

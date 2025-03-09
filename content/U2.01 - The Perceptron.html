@@ -1,118 +1,191 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>2.1 - The Perceptron &#8212; Fundamentos de Deep Learning</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-43235448-3"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-43235448-3');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-43235448-3');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/U2.01 - The Perceptron';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="2.2 - The Multilayer Perceptron" href="U2.02%20-%20The%20Multilayer%20Perceptron.html" />
     <link rel="prev" title="02 - NEURAL NETWORKS" href="M02.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
-<script async="" src="https://www.google-analytics.com/analytics.js"></script>
-<script>
-                        window.ga = window.ga || function () {
-                            (ga.q = ga.q || []).push(arguments) };
-                        ga.l = +new Date;
-                        ga('create', 'UA-43235448-3', 'auto');
-                        ga('set', 'anonymizeIp', true);
-                        ga('send', 'pageview');
-                    </script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/fudea.jpg" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Fundamentos de Deep Learning</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/fudea.jpg" class="logo__image only-light" alt="Fundamentos de Deep Learning - Home"/>
+    <script>document.write(`<img src="../_static/fudea.jpg" class="logo__image only-dark" alt="Fundamentos de Deep Learning - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -122,696 +195,295 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="M00_20242_prepos.html">
-   Info 2024.2 - UdeA
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="M01.html">
-   01 - INTRODUCTION
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U1.01%20-%20DL%20Overview.html">
-     1.1 - DL Overview
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U1.02%20-%20Modelos%20derivados%20de%20los%20datos.html">
-     1.2 - Models derived from data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U1.03%20-%20Como%20se%20disena%20un%20algoritmo%20de%20Machine%20Learning.html">
-     1.3 - ML algorithm design
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U1%20LAB%2001%20-%20WARMUP.html">
-     LAB 01.01 - WARM UP
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="M02.html">
-   02 - NEURAL NETWORKS
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     2.1 - The Perceptron
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U2.02%20-%20The%20Multilayer%20Perceptron.html">
-     2.2 - The Multilayer Perceptron
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U2.03%20-%20Overfitting%20and%20regularization.html">
-     2.3 - Overfitting and regularization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U2.04%20-%20Loss%20functions.html">
-     2.4 - Loss functions in Tensorflow
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U2.05%20-%20Network%20Architectures%20-%20Autoencoders.html">
-     2.5 - Autoencoders
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U2.06%20-%20Network%20Architectures%20-%20Multimodal%20information.html">
-     2.6 - Multimodal architectures
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U2.07%20-%20Vanishing%20gradients.html">
-     2.7 - Vanishing gradients
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U2.08%20-%20Weights%20initialization.html">
-     2.8 - Weights initialization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U2%20LAB%2001%20-%20Customized%20loss%20functions%20and%20regularization.html">
-     LAB 2.1 - Customized loss function
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U2%20LAB%2002%20-%20Autoencoders.html">
-     LAB 2.2 - Sparse Autoencoders
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U2%20LAB%2003%20-%20Pairwise%20image%20classification.html">
-     LAB 2.3 - Pairwise classification
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U2%20LAB%2004%20-%20Model%20instrumentation%20and%20monitoring.html">
-     LAB 2.4 - Model instrumentation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="M03.html">
-   03 - TENSORFLOW CORE
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U3.01%20-%20Simbolic%20computing%20for%20ML.html">
-     3.1 - Symbolic computing for ML
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U3.02%20-%20TF%20for%20symbolic%20computing.html">
-     3.2 - TF symbolic engine
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U3.03%20-%20Using%20tf.function.html">
-     3.3 - Using
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       tf.function
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U3.04%20-%20Batch%20Normalization.html">
-     3.4 - Batch normalization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U3%20LAB%2001%20-%20Tensorflow%20model%20subclassing.html">
-     LAB 3.1 - TF model subclassing
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U3%20LAB%2002%20-%20Low%20level%20Tensorflow.html">
-     LAB 3.2 - Low level
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       tensorflow
-      </span>
-     </code>
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="M04.html">
-   04 - CONVOLUTIONAL NETWORKS
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U4.01%20-%20Convolutions.html">
-     4.1 - Convolutions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U4.02%20-%20Convolutional%20Neural%20Networks.html">
-     4.2 - Convolutional Neural Networks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U4.03%20-%20Dropout%2C%20pooling.html">
-     4.3 - Dropout, pooling
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U4.04%20-%20CNN%20Architectures.html">
-     4.4 - CNN Architectures
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U4.05%20-%20Transfer%20learning.html">
-     4.5 - Transfer learning
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U4.06%20-%20Object%20Detection.html">
-     4.6 - Object detection
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U4.07%20-%20Transposed%20convolutions.html">
-     4.7 - Transposed convolutions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U4.08%20-%20UNet%20image%20segmentation.html">
-     <strong>
-      4.8
-     </strong>
-     - UNet Image segmentation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U4.09%20-%20Atrous%20convolutions.html">
-     4.9 - Atrous convolutions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U4%20LAB%2001%20-%20Convolutions.html">
-     LAB 4.1 - Convolutions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U4%20LAB%2002%20-%20Transfer%20Learning.html">
-     LAB 4.2 - Transfer learning
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U4%20LAB%2003%20-%20Object%20Detection.html">
-     LAB 4.3 - Object detection
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U4%20LAB%2004%20-%20Semantic%20segmentation.html">
-     LAB 4.4 - Semantic segmentation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="M05.html">
-   05 - SEQUENCE MODELS
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U5.00%20-%20Intro%20time%20series.html">
-     5.0 Crossvalidation in time series
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U5.01%20-%20Recurrent%20Neural%20Networks.html">
-     5.1 Recurrent Neural Networks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U5.02%20-%20Long%20Short%20Term%20Memory%20RNN.html">
-     5.2 LSTM and GRU
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U5.03%20-%20Truncated%20BPTT.html">
-     5.3 Truncated BPTT
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U5.04%20-%20Basic%20concepts%20of%20text%20processing.html">
-     5.4 Text processing
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U5.05%20-%20Sequences%20generation%20using%20LSTM.html">
-     5.5 Sequences generation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U5.06%20-%20Bidirectional%20RNNs%20-%20Attention%20Model.html">
-     5.6 Bidirectional RNNs
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U5.07%20-%20ELMo%20-%20NER.html">
-     5.7 ELMo
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U5.08%20-%20Self-Attention%20-%20Transformer%20-%20BERT.html">
-     5.8 Transformer
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U5.09%20-%20CNN-LSTM%20architectures.html">
-     5.9  CNN-LSTM architectures
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U5%20LAB%2001%20-%20Multivariate%20time%20series%20prediction.html">
-     LAB 5.1 - Time series prediction
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U5%20LAB%2002%20-%20Padding%2C%20Masking%20-%20Sentiment%20Analysis.html">
-     LAB 5.2 - Padding - Masking
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="U5%20LAB%2003%20-%20Sentiment%20Analysis%20using%20BERT.html">
-     LAB 5.3 - Transformer - BERT
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="M00_20251_pre.html">Info 2024.2 - UdeA</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="M01.html">01 - INTRODUCTION</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="U1.01%20-%20DL%20Overview.html">1.1 - DL Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U1.02%20-%20Modelos%20derivados%20de%20los%20datos.html">1.2 - Models derived from data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U1.03%20-%20Como%20se%20disena%20un%20algoritmo%20de%20Machine%20Learning.html">1.3 - ML algorithm design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U1%20LAB%2001%20-%20WARMUP.html">LAB 01.01 - WARM UP</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="M02.html">02 - NEURAL NETWORKS</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.1 - The Perceptron</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U2.02%20-%20The%20Multilayer%20Perceptron.html">2.2 - The Multilayer Perceptron</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U2.03%20-%20Overfitting%20and%20regularization.html">2.3 - Overfitting and regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U2.04%20-%20Loss%20functions.html">2.4 - Loss functions in Tensorflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U2.05%20-%20Network%20Architectures%20-%20Autoencoders.html">2.5 - Autoencoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U2.06%20-%20Network%20Architectures%20-%20Multimodal%20information.html">2.6 - Multimodal architectures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U2.07%20-%20Vanishing%20gradients.html">2.7 - Vanishing gradients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U2.08%20-%20Weights%20initialization.html">2.8 - Weights initialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U2%20LAB%2001%20-%20Customized%20loss%20functions%20and%20regularization.html">LAB 2.1 - Customized loss function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U2%20LAB%2002%20-%20Autoencoders.html">LAB 2.2 - Sparse Autoencoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U2%20LAB%2003%20-%20Pairwise%20image%20classification.html">LAB 2.3 - Pairwise classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U2%20LAB%2004%20-%20Model%20instrumentation%20and%20monitoring.html">LAB 2.4 - Model instrumentation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="M03.html">03 - TENSORFLOW CORE</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="U3.01%20-%20Simbolic%20computing%20for%20ML.html">3.1 - Symbolic computing for ML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U3.02%20-%20TF%20for%20symbolic%20computing.html">3.2 - TF symbolic engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U3.03%20-%20Using%20tf.function.html">3.3 - Using <code class="docutils literal notranslate"><span class="pre">tf.function</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="U3.04%20-%20Batch%20Normalization.html">3.4 - Batch normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U3%20LAB%2001%20-%20Tensorflow%20model%20subclassing.html">LAB 3.1 - TF model subclassing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U3%20LAB%2002%20-%20Low%20level%20Tensorflow.html">LAB 3.2 - Low level <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="M04.html">04 - CONVOLUTIONAL NETWORKS</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="U4.01%20-%20Convolutions.html">4.1 - Convolutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U4.02%20-%20Convolutional%20Neural%20Networks.html">4.2 - Convolutional Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U4.03%20-%20Dropout%2C%20pooling.html">4.3 - Dropout, pooling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U4.04%20-%20CNN%20Architectures.html">4.4 - CNN Architectures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U4.05%20-%20Transfer%20learning.html">4.5 - Transfer learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U4.06%20-%20Object%20Detection.html">4.6 - Object detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U4.07%20-%20Transposed%20convolutions.html">4.7 - Transposed convolutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U4.08%20-%20UNet%20image%20segmentation.html"><strong>4.8</strong> - UNet Image segmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U4.09%20-%20Atrous%20convolutions.html">4.9 - Atrous convolutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U4%20LAB%2001%20-%20Convolutions.html">LAB 4.1 - Convolutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U4%20LAB%2002%20-%20Transfer%20Learning.html">LAB 4.2 - Transfer learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U4%20LAB%2003%20-%20Object%20Detection.html">LAB 4.3 - Object detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U4%20LAB%2004%20-%20Semantic%20segmentation.html">LAB 4.4 - Semantic segmentation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="M05.html">05 - SEQUENCE MODELS</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="U5.00%20-%20Intro%20time%20series.html">5.0 Crossvalidation in time series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U5.01%20-%20Recurrent%20Neural%20Networks.html">5.1 Recurrent Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U5.02%20-%20Long%20Short%20Term%20Memory%20RNN.html">5.2 LSTM and GRU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U5.03%20-%20Truncated%20BPTT.html">5.3 Truncated BPTT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U5.04%20-%20Basic%20concepts%20of%20text%20processing.html">5.4 Text processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U5.05%20-%20Sequences%20generation%20using%20LSTM.html">5.5 Sequences generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U5.06%20-%20Bidirectional%20RNNs%20-%20Attention%20Model.html">5.6 Bidirectional RNNs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U5.07%20-%20ELMo%20-%20NER.html">5.7 ELMo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U5.08%20-%20Self-Attention%20-%20Transformer%20-%20BERT.html">5.8 Transformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U5.09%20-%20CNN-LSTM%20architectures.html">5.9  CNN-LSTM architectures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U5%20LAB%2001%20-%20Multivariate%20time%20series%20prediction.html">LAB 5.1 - Time series prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U5%20LAB%2002%20-%20Padding%2C%20Masking%20-%20Sentiment%20Analysis.html">LAB 5.2 - Padding - Masking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="U5%20LAB%2003%20-%20Sentiment%20Analysis%20using%20BERT.html">LAB 5.3 - Transformer - BERT</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://colab.research.google.com/github/rramosp/2021.deeplearning/blob/master/content/U2.01 - The Perceptron.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_colab.png">
-  </span>
-<span class="headerbtn__text-container">Colab</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/rramosp/2021.deeplearning/blob/master/content/U2.01 - The Perceptron.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/U2.01 - The Perceptron.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/content/U2.01 - The Perceptron.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
 
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </button>
-
-      </li>
+</div></div>
       
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
+    </div>
   
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
-    </div>
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#artificial-neural-networks">
-   Artificial Neural Networks
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   The perceptron
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#loss-function-and-perceptron-training">
-   Loss function and perceptron training
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#now-let-s-thing-about-the-following-problem">
-     Now let’s thing about the following problem:
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#one-single-perceptron-is-not-able-to-solve-the-problem">
-     One single perceptron is not able to solve the problem!
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#span-style-color-blue-this-is-a-neural-network-span">
-     <span style="color:blue">
-      This is a neural network!
-     </span>
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#multi-layer-perceptron-mlp">
-   Multi-layer perceptron (MLP)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#backpropagation-algorithm">
-     Backpropagation algorithm
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#classical-activation-functions">
-   Classical activation functions
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#logistic">
-     Logistic
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hyperbolic-tangent">
-     Hyperbolic tangent
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#softmax">
-     Softmax
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#batch-minibatch-and-online-learning">
-   Batch, Minibatch and online learning
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-using-a-toy-dataset">
-     Example using a toy dataset:
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#drawbacks-of-the-classical-approaches">
-   Drawbacks of the classical approaches
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>2.1 - The Perceptron</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#artificial-neural-networks">
-   Artificial Neural Networks
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   The perceptron
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#loss-function-and-perceptron-training">
-   Loss function and perceptron training
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#now-let-s-thing-about-the-following-problem">
-     Now let’s thing about the following problem:
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#one-single-perceptron-is-not-able-to-solve-the-problem">
-     One single perceptron is not able to solve the problem!
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#span-style-color-blue-this-is-a-neural-network-span">
-     <span style="color:blue">
-      This is a neural network!
-     </span>
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#multi-layer-perceptron-mlp">
-   Multi-layer perceptron (MLP)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#backpropagation-algorithm">
-     Backpropagation algorithm
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#classical-activation-functions">
-   Classical activation functions
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#logistic">
-     Logistic
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hyperbolic-tangent">
-     Hyperbolic tangent
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#softmax">
-     Softmax
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#batch-minibatch-and-online-learning">
-   Batch, Minibatch and online learning
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-using-a-toy-dataset">
-     Example using a toy dataset:
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#drawbacks-of-the-classical-approaches">
-   Drawbacks of the classical approaches
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>2.1 - The Perceptron</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#artificial-neural-networks">Artificial Neural Networks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">The perceptron</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function-and-perceptron-training">Loss function and perceptron training</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-let-s-thing-about-the-following-problem">Now let’s thing about the following problem:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-single-perceptron-is-not-able-to-solve-the-problem">One single perceptron is not able to solve the problem!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#this-is-a-neural-network"><span style="color:blue">This is a neural network!</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-layer-perceptron-mlp">Multi-layer perceptron (MLP)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation-algorithm">Backpropagation algorithm</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-activation-functions">Classical activation functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic">Logistic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperbolic-tangent">Hyperbolic tangent</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax">Softmax</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-minibatch-and-online-learning">Batch, Minibatch and online learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-using-a-toy-dataset">Example using a toy dataset:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drawbacks-of-the-classical-approaches">Drawbacks of the classical approaches</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
-  <div class="section" id="the-perceptron">
-<h1>2.1 - The Perceptron<a class="headerlink" href="#the-perceptron" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="the-perceptron">
+<h1>2.1 - The Perceptron<a class="headerlink" href="#the-perceptron" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
-<span class="kn">import</span> <span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> 
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="artificial-neural-networks">
-<h2>Artificial Neural Networks<a class="headerlink" href="#artificial-neural-networks" title="Permalink to this headline">¶</a></h2>
+<section id="artificial-neural-networks">
+<h2>Artificial Neural Networks<a class="headerlink" href="#artificial-neural-networks" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -822,19 +494,19 @@ title="Print to PDF"
 <p>Artificial Neural Networks (ANNs) are a kind of bioinspired algorithms able to deal with many different problems in the field of Machine Learning. ANNs  try to emulate the behavior and learning capabilities of biological neural networks, thus they are built following a structure based on the combination of many basic units (neurons) called <strong>perceptrons</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
 <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;local/imgs/BNN.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U2.01 - The Perceptron_5_0.png" src="../_images/U2.01 - The Perceptron_5_0.png" />
+<img alt="../_images/cfa0ff9624a1e46db84f4b668ca17202fb461bf2a40acf23fa09f094015f4a52.png" src="../_images/cfa0ff9624a1e46db84f4b668ca17202fb461bf2a40acf23fa09f094015f4a52.png" />
 </div>
 </div>
 <p>Similar to the biological neurons, perceptrons are designed to have two different outputs 1 or 0 (exited/no exited).</p>
-</div>
-<div class="section" id="id1">
-<h2>The perceptron<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id1">
+<h2>The perceptron<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;local/imgs/perceptron_.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
@@ -842,7 +514,8 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U2.01 - The Perceptron_8_0.png" src="../_images/U2.01 - The Perceptron_8_0.png" />
+<a class="reference internal image-reference" href="../_images/7ec0198ccadbfb63c84c5ace39ef24d9876f8a551c8f7015e5a3d3305340f82a.png"><img alt="../_images/7ec0198ccadbfb63c84c5ace39ef24d9876f8a551c8f7015e5a3d3305340f82a.png" src="../_images/7ec0198ccadbfb63c84c5ace39ef24d9876f8a551c8f7015e5a3d3305340f82a.png" style="width: 600px;" />
+</a>
 </div>
 </div>
 <p>Where <span class="math notranslate nohighlight">\(x_i\)</span> corresponds to an input variable. The set of input variables is typically expressed as a vector <span class="math notranslate nohighlight">\({\bf{x}}=\{x_1,x_2,\cdots,x_d\}\)</span>.</p>
@@ -866,8 +539,8 @@ g(u) = \frac{\exp(u)}{1 + \exp(u)}
 \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="n">u</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">u</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">g</span><span class="p">)</span>
@@ -878,12 +551,12 @@ g(u) = \frac{\exp(u)}{1 + \exp(u)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U2.01 - The Perceptron_15_0.png" src="../_images/U2.01 - The Perceptron_15_0.png" />
+<img alt="../_images/564b293bc573fe50a6077a9f1bb9d9095574fef6a55912464ed36900c7269f2d.png" src="../_images/564b293bc573fe50a6077a9f1bb9d9095574fef6a55912464ed36900c7269f2d.png" />
 </div>
 </div>
-</div>
-<div class="section" id="loss-function-and-perceptron-training">
-<h2>Loss function and perceptron training<a class="headerlink" href="#loss-function-and-perceptron-training" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="loss-function-and-perceptron-training">
+<h2>Loss function and perceptron training<a class="headerlink" href="#loss-function-and-perceptron-training" title="Link to this heading">#</a></h2>
 <p>In a typicall ML problem you are given a dataset <span class="math notranslate nohighlight">\(\mathcal{D}=\{({\bf{x}}_j,t_j)\}_{j=1}^{N_s}\)</span>, where <span class="math notranslate nohighlight">\(N_s\)</span> stands for Number of Samples. <span class="math notranslate nohighlight">\({\bf{x}}_j\)</span> is a vector of inputs and <span class="math notranslate nohighlight">\(t_j\)</span> is its corresponding output target.</p>
 <p>In order to train the perceptron you must define a loss function, typically an error function that can be used to “penalize” the model when it makes wrong predictions. When the target variables <span class="math notranslate nohighlight">\(t_j \in \{0,1\}\)</span> (the prediction corresponds to a classification problem), the most common loss function is the <strong>crossentropy</strong> given by:</p>
 <div class="math notranslate nohighlight">
@@ -896,11 +569,11 @@ g(u) = \frac{\exp(u)}{1 + \exp(u)}
 <p>where <span class="math notranslate nohighlight">\(\eta\)</span> is the learning rate and <span class="math notranslate nohighlight">\(x_{ji}\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>-th input variable of the <span class="math notranslate nohighlight">\(j\)</span>-th training sample.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sigmoide</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sigmoide</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
     <span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">u</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">g</span>
 <span class="c1">#Aprendizaje</span>
-<span class="k">def</span> <span class="nf">Gradiente</span><span class="p">(</span><span class="n">MaxIter</span> <span class="o">=</span> <span class="mi">100000</span><span class="p">,</span> <span class="n">eta</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">Gradiente</span><span class="p">(</span><span class="n">MaxIter</span> <span class="o">=</span> <span class="mi">100000</span><span class="p">,</span> <span class="n">eta</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">):</span>
     <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">30</span><span class="p">,</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span><span class="o">-</span><span class="mi">120</span><span class="p">])</span><span class="c1">#np.ones(3).reshape(3, 1)</span>
     <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y2</span><span class="p">)</span>
     <span class="n">Error</span> <span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">MaxIter</span><span class="p">)</span>
@@ -920,7 +593,7 @@ g(u) = \frac{\exp(u)}{1 + \exp(u)}
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">datasets</span>
 <span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
 <span class="n">X2</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="mi">100</span><span class="p">][:,:</span><span class="mi">2</span><span class="p">]</span>
@@ -931,13 +604,13 @@ g(u) = \frac{\exp(u)}{1 + \exp(u)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U2.01 - The Perceptron_22_0.png" src="../_images/U2.01 - The Perceptron_22_0.png" />
+<img alt="../_images/2acff2638622f40a3ea9f7bb76245c0c3cf4d997d7968336aca60e210ebe0916.png" src="../_images/2acff2638622f40a3ea9f7bb76245c0c3cf4d997d7968336aca60e210ebe0916.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> notebook
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
@@ -1749,11 +1422,11 @@ if (IPython.notebook.kernel != null) {
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Loss&#39;)
 </pre></div>
 </div>
-<img alt="../_images/U2.01 - The Perceptron_24_1.png" src="../_images/U2.01 - The Perceptron_24_1.png" />
+<img alt="../_images/57a5fd30945848e369ad484423478a957b556f0665c607b0a7c204a84cd4c062.png" src="../_images/57a5fd30945848e369ad484423478a957b556f0665c607b0a7c204a84cd4c062.png" />
 </div>
 </div>
-<div class="section" id="now-let-s-thing-about-the-following-problem">
-<h3>Now let’s thing about the following problem:<a class="headerlink" href="#now-let-s-thing-about-the-following-problem" title="Permalink to this headline">¶</a></h3>
+<section id="now-let-s-thing-about-the-following-problem">
+<h3>Now let’s thing about the following problem:<a class="headerlink" href="#now-let-s-thing-about-the-following-problem" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;local/imgs/ORANDXOR.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
@@ -1761,12 +1434,13 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U2.01 - The Perceptron_26_0.png" src="../_images/U2.01 - The Perceptron_26_0.png" />
+<a class="reference internal image-reference" href="../_images/1916bfba80c8c91f7c0f7952c0d4629788e5087b96715440f6a7951f86f6c2d3.png"><img alt="../_images/1916bfba80c8c91f7c0f7952c0d4629788e5087b96715440f6a7951f86f6c2d3.png" src="../_images/1916bfba80c8c91f7c0f7952c0d4629788e5087b96715440f6a7951f86f6c2d3.png" style="width: 600px;" />
+</a>
 </div>
 </div>
-</div>
-<div class="section" id="one-single-perceptron-is-not-able-to-solve-the-problem">
-<h3>One single perceptron is not able to solve the problem!<a class="headerlink" href="#one-single-perceptron-is-not-able-to-solve-the-problem" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="one-single-perceptron-is-not-able-to-solve-the-problem">
+<h3>One single perceptron is not able to solve the problem!<a class="headerlink" href="#one-single-perceptron-is-not-able-to-solve-the-problem" title="Link to this heading">#</a></h3>
 <p>But we know that XOR can be reconstructed by using two AND and one OR functions</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1775,17 +1449,18 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U2.01 - The Perceptron_28_0.png" src="../_images/U2.01 - The Perceptron_28_0.png" />
+<a class="reference internal image-reference" href="../_images/33d1c2ac794d5122b0a84b84e4393dfc7c30f8f9d96b2b71f639492e99d39144.png"><img alt="../_images/33d1c2ac794d5122b0a84b84e4393dfc7c30f8f9d96b2b71f639492e99d39144.png" src="../_images/33d1c2ac794d5122b0a84b84e4393dfc7c30f8f9d96b2b71f639492e99d39144.png" style="width: 600px;" />
+</a>
 </div>
 </div>
-</div>
-<div class="section" id="span-style-color-blue-this-is-a-neural-network-span">
-<h3><span style="color:blue">This is a neural network!</span><a class="headerlink" href="#span-style-color-blue-this-is-a-neural-network-span" title="Permalink to this headline">¶</a></h3>
-</div>
-</div>
+</section>
+<section id="this-is-a-neural-network">
+<h3><span style="color:blue">This is a neural network!</span><a class="headerlink" href="#this-is-a-neural-network" title="Link to this heading">#</a></h3>
+</section>
+</section>
 <hr class="docutils" />
-<div class="section" id="multi-layer-perceptron-mlp">
-<h2>Multi-layer perceptron (MLP)<a class="headerlink" href="#multi-layer-perceptron-mlp" title="Permalink to this headline">¶</a></h2>
+<section id="multi-layer-perceptron-mlp">
+<h2>Multi-layer perceptron (MLP)<a class="headerlink" href="#multi-layer-perceptron-mlp" title="Link to this heading">#</a></h2>
 <p>In order to solve more complex problems, several perceptrons can be used together forming what is call a multi-layer perceptron.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1794,7 +1469,8 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U2.01 - The Perceptron_33_0.png" src="../_images/U2.01 - The Perceptron_33_0.png" />
+<a class="reference internal image-reference" href="../_images/78dd73f52eafdb7de53eaf0b88e976e04f5f069362c144816f7eb54646543e20.png"><img alt="../_images/78dd73f52eafdb7de53eaf0b88e976e04f5f069362c144816f7eb54646543e20.png" src="../_images/78dd73f52eafdb7de53eaf0b88e976e04f5f069362c144816f7eb54646543e20.png" style="width: 600px;" />
+</a>
 </div>
 </div>
 <p>The output <span class="math notranslate nohighlight">\(k\)</span> of a MLP with one input layer and one hidden layer can be expressed as:</p>
@@ -1805,8 +1481,8 @@ y_{jk}({\bf{x}}_j,{\bf{w}}) = \sigma\left( \sum_{l=1}^{M_1} w_{kl}^{(2)} h \left
 <p>where <span class="math notranslate nohighlight">\(\sigma\)</span> and <span class="math notranslate nohighlight">\(h\)</span> are the activation functions for the output and hidden layers respectively. Taking into acount that the net could have more than one output <span class="math notranslate nohighlight">\(k\)</span>, the cost function in this case must account for the mistakes in each output. For instance, using a least square error function, the cost function can be expressed as:</p>
 <div class="math notranslate nohighlight">
 \[J({\bf{w}}) = \frac{1}{Ns}\sum_{j=1}^{Ns}\sum_{k=1}^{K} (y_{jk} - t_{jk})^2\]</div>
-<div class="section" id="backpropagation-algorithm">
-<h3>Backpropagation algorithm<a class="headerlink" href="#backpropagation-algorithm" title="Permalink to this headline">¶</a></h3>
+<section id="backpropagation-algorithm">
+<h3>Backpropagation algorithm<a class="headerlink" href="#backpropagation-algorithm" title="Link to this heading">#</a></h3>
 <p>The Backpropagation algorithm is the application of the Gradient Descent algorithm to the neural network. The main difference with respect to the former case, is the fact that for the training of the most inner weights (all the weights in the hidden layers), the derivatives require the application of the <strong>chain rule</strong>.</p>
 <p>Lets define some intermediate variables during the forward running of the network:</p>
 <div class="math notranslate nohighlight">
@@ -1830,28 +1506,28 @@ y_{jk}({\bf{x}}_j,{\bf{w}}) = \sigma\left( \sum_{l=1}^{M_1} w_{kl}^{(2)} h \left
 <p>The gradients can be easily extended to more layers because they follow the same formulation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.lib.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.lib.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">YouTubeVideo</span>
 <span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">&#39;OwdjRYUPngE&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-<iframe
-    width="700"
-    height="500"
-    src="https://www.youtube.com/embed/OwdjRYUPngE"
-    frameborder="0"
-    allowfullscreen
-></iframe>
-</div></div>
+        <iframe
+            width="700"
+            height="500"
+            src="https://www.youtube.com/embed/OwdjRYUPngE"
+            frameborder="0"
+            allowfullscreen
+        ></iframe>
+        </div></div>
 </div>
-</div>
-</div>
-<div class="section" id="classical-activation-functions">
-<h2>Classical activation functions<a class="headerlink" href="#classical-activation-functions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="logistic">
-<h3>Logistic<a class="headerlink" href="#logistic" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="classical-activation-functions">
+<h2>Classical activation functions<a class="headerlink" href="#classical-activation-functions" title="Link to this heading">#</a></h2>
+<section id="logistic">
+<h3>Logistic<a class="headerlink" href="#logistic" title="Link to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[
 g(u) = \frac{\exp(u)}{1 + \exp(u)} = \frac{1}{1 + \exp(-u)}
@@ -1868,13 +1544,13 @@ g(u) = \frac{\exp(u)}{1 + \exp(u)} = \frac{1}{1 + \exp(-u)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U2.01 - The Perceptron_46_0.png" src="../_images/U2.01 - The Perceptron_46_0.png" />
+<img alt="../_images/564b293bc573fe50a6077a9f1bb9d9095574fef6a55912464ed36900c7269f2d.png" src="../_images/564b293bc573fe50a6077a9f1bb9d9095574fef6a55912464ed36900c7269f2d.png" />
 </div>
 </div>
 <p>Derivative: $<span class="math notranslate nohighlight">\(\frac{\partial g(u)}{\partial w_i} = g(u)(1-g(u))\frac{\partial u}{\partial w_i}\)</span>$.</p>
-</div>
-<div class="section" id="hyperbolic-tangent">
-<h3>Hyperbolic tangent<a class="headerlink" href="#hyperbolic-tangent" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="hyperbolic-tangent">
+<h3>Hyperbolic tangent<a class="headerlink" href="#hyperbolic-tangent" title="Link to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[g(u) = \frac{\exp(u) - \exp(-u)}{\exp(u) + \exp(-u)}\]</div>
 <div class="cell docutils container">
@@ -1886,13 +1562,13 @@ g(u) = \frac{\exp(u)}{1 + \exp(u)} = \frac{1}{1 + \exp(-u)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U2.01 - The Perceptron_50_0.png" src="../_images/U2.01 - The Perceptron_50_0.png" />
+<img alt="../_images/1c0395173648053a5ae6b9a886b90795b8a3e4f8ece0222ae67dc2d456ddffb8.png" src="../_images/1c0395173648053a5ae6b9a886b90795b8a3e4f8ece0222ae67dc2d456ddffb8.png" />
 </div>
 </div>
 <p>Derivative: $<span class="math notranslate nohighlight">\(\frac{\partial g(u)}{\partial w_i} = (1 - (g(u))^2) \frac{\partial u}{\partial w_i}\)</span>$</p>
-</div>
-<div class="section" id="softmax">
-<h3>Softmax<a class="headerlink" href="#softmax" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="softmax">
+<h3>Softmax<a class="headerlink" href="#softmax" title="Link to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[g(u_k) = \frac{\exp(u_k)}{\sum_{l=1}^K \exp(u_l)}\]</div>
 <p>Derivative: $<span class="math notranslate nohighlight">\( \frac{\partial g(u_i)}{\partial u_j} = g(u_i)(\delta_{ij}-g(u_j))\)</span>$</p>
@@ -1903,10 +1579,10 @@ g(u) = \frac{\exp(u)}{1 + \exp(u)} = \frac{1}{1 + \exp(-u)}
                   0\;\;\;{\rm{if}}\;\;\;i \neq j
                 \end{array}
               \right. \end{split}\]</div>
-</div>
-</div>
-<div class="section" id="batch-minibatch-and-online-learning">
-<h2>Batch, Minibatch and online learning<a class="headerlink" href="#batch-minibatch-and-online-learning" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="batch-minibatch-and-online-learning">
+<h2>Batch, Minibatch and online learning<a class="headerlink" href="#batch-minibatch-and-online-learning" title="Link to this heading">#</a></h2>
 <p>In order to trainig the MLP, the following quantities must be estimated in every iteration:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1915,7 +1591,7 @@ g(u) = \frac{\exp(u)}{1 + \exp(u)} = \frac{1}{1 + \exp(-u)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U2.01 - The Perceptron_58_0.png" src="../_images/U2.01 - The Perceptron_58_0.png" />
+<img alt="../_images/f69bcbd4028dfb950d195978e2cbc81b485ed73e11a379e839b4d69fea8efe27.png" src="../_images/f69bcbd4028dfb950d195978e2cbc81b485ed73e11a379e839b4d69fea8efe27.png" />
 </div>
 </div>
 <p>The training that acumulates the errors from all the training samples before carrying out the update of the network weights is called <strong>Batch training</strong>. Unfortunately, if the number of training samples is very large, the running of every iteration becomes intratale, because both the amount of calculations (CPU time) and amount of memory (RAM) required to perform matrix multiplications and to save partial results. But the real handicap is the batch gradient trajectory land you in a bad spot (<strong>saddle point</strong>).</p>
@@ -1926,28 +1602,29 @@ g(u) = \frac{\exp(u)}{1 + \exp(u)} = \frac{1}{1 + \exp(-u)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U2.01 - The Perceptron_60_0.jpg" src="../_images/U2.01 - The Perceptron_60_0.jpg" />
+<a class="reference internal image-reference" href="../_images/1f1cffda8dd599e6a3d6b8acd2e57e20b55c9a72d9daf3d1d72af12ed8f8d1c3.jpg"><img alt="../_images/1f1cffda8dd599e6a3d6b8acd2e57e20b55c9a72d9daf3d1d72af12ed8f8d1c3.jpg" src="../_images/1f1cffda8dd599e6a3d6b8acd2e57e20b55c9a72d9daf3d1d72af12ed8f8d1c3.jpg" style="width: 600px;" />
+</a>
 </div>
 </div>
 <p>As an alternative, the training of the MLP can be carried out by propagating a single sample forward throught the net, and then update the weights of the MLP using the estimated error for that single sample according to the Backpropagation algorithm. These two steps are repeated for every sample in the training set. This strategy is called <strong>on-line learning</strong> and the resulting algorithm is called <strong>Stochastic Gradient Descent (SGD)</strong>. Since it’s based on one random data point, it’s very noisy and may go off in a direction far from the batch gradient. However, the noisiness is exactly what you want in non-convex optimization, because it helps you escape from saddle points or local minima.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">local.lib.PerceptronExample</span> <span class="kn">import</span> <span class="n">Plot_SGD_trajectory</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">local.lib.PerceptronExample</span><span class="w"> </span><span class="kn">import</span> <span class="n">Plot_SGD_trajectory</span>
 <span class="n">Plot_SGD_trajectory</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/U2.01 - The Perceptron_62_0.png" src="../_images/U2.01 - The Perceptron_62_0.png" />
+<img alt="../_images/6d09148ced7f307c9c29f67073f6d8b9f43a7f157261b1ebad52fa44ff1fca18.png" src="../_images/6d09148ced7f307c9c29f67073f6d8b9f43a7f157261b1ebad52fa44ff1fca18.png" />
 </div>
 </div>
 <p>One of the problems with the SGD algorithm is that since the updates depend on a single sample, instead of the accumulation of the error for the whole training set, the convergence of the algorithm is slower, requiring more epochs to get the optimum. Therefore, an intermediate solution, called <strong>Mini-batch gradient descent</strong>, split the training samples into mini-batchs, and execute and update of the weigths (forward and backward steps) per mini-batch. The mini-batch gradient descent is a trade-off between memory load and rate of convergence.</p>
-<div class="section" id="example-using-a-toy-dataset">
-<h3>Example using a toy dataset:<a class="headerlink" href="#example-using-a-toy-dataset" title="Permalink to this headline">¶</a></h3>
+<section id="example-using-a-toy-dataset">
+<h3>Example using a toy dataset:<a class="headerlink" href="#example-using-a-toy-dataset" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">cluster</span><span class="p">,</span> <span class="n">datasets</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">cluster</span><span class="p">,</span> <span class="n">datasets</span>
 <span class="n">n_samples</span> <span class="o">=</span> <span class="mi">1500</span>
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">make_moons</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="mf">.05</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -1962,7 +1639,7 @@ g(u) = \frac{\exp(u)}{1 + \exp(u)} = \frac{1}{1 + \exp(-u)}
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1500, 2)
 </pre></div>
 </div>
-<img alt="../_images/U2.01 - The Perceptron_65_1.png" src="../_images/U2.01 - The Perceptron_65_1.png" />
+<img alt="../_images/09db01b2b532369f8586a8d3e7d5c67dbaf82160cd64c04d1debcb823e03e8c5.png" src="../_images/09db01b2b532369f8586a8d3e7d5c67dbaf82160cd64c04d1debcb823e03e8c5.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1974,9 +1651,9 @@ g(u) = \frac{\exp(u)}{1 + \exp(u)} = \frac{1}{1 + \exp(-u)}
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">neurolab</span> <span class="k">as</span> <span class="nn">nl</span>
-<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">ListedColormap</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">neurolab</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nl</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">ListedColormap</span>
 <span class="c1"># Create train samples</span>
 <span class="nb">input</span> <span class="o">=</span> <span class="n">X</span>
 <span class="n">target</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
@@ -2009,12 +1686,12 @@ g(u) = \frac{\exp(u)}{1 + \exp(u)} = \frac{1}{1 + \exp(-u)}
 The goal of learning is reached
 </pre></div>
 </div>
-<img alt="../_images/U2.01 - The Perceptron_67_1.png" src="../_images/U2.01 - The Perceptron_67_1.png" />
+<img alt="../_images/c59ea80599fc73856704a8e59afe3d15195d3f8ac896bd3487b533fb62d6e677.png" src="../_images/c59ea80599fc73856704a8e59afe3d15195d3f8ac896bd3487b533fb62d6e677.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neural_network</span> <span class="kn">import</span> <span class="n">MLPClassifier</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neural_network</span><span class="w"> </span><span class="kn">import</span> <span class="n">MLPClassifier</span>
 <span class="n">clf1</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">(</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;logistic&#39;</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;sgd&#39;</span><span class="p">,</span> <span class="n">learning_rate_init</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">learning_rate</span> <span class="o">=</span> <span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span> <span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,),</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">n_iter_no_change</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
 <span class="n">clf1</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;1 ok&quot;</span><span class="p">)</span>
@@ -2038,7 +1715,7 @@ The goal of learning is reached
 3 ok
 </pre></div>
 </div>
-<img alt="../_images/U2.01 - The Perceptron_68_1.png" src="../_images/U2.01 - The Perceptron_68_1.png" />
+<img alt="../_images/0e9252f37ed0615856b430f3aab73d0924f8ade29fa3e11bdb5dfac173bbfa01.png" src="../_images/0e9252f37ed0615856b430f3aab73d0924f8ade29fa3e11bdb5dfac173bbfa01.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2066,13 +1743,13 @@ The goal of learning is reached
 3 ok
 </pre></div>
 </div>
-<img alt="../_images/U2.01 - The Perceptron_69_1.png" src="../_images/U2.01 - The Perceptron_69_1.png" />
+<img alt="../_images/5221464c9893937712046bdbedb35a01017245afdbb1350193a8700380f4a358.png" src="../_images/5221464c9893937712046bdbedb35a01017245afdbb1350193a8700380f4a358.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="drawbacks-of-the-classical-approaches">
-<h2>Drawbacks of the classical approaches<a class="headerlink" href="#drawbacks-of-the-classical-approaches" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="drawbacks-of-the-classical-approaches">
+<h2>Drawbacks of the classical approaches<a class="headerlink" href="#drawbacks-of-the-classical-approaches" title="Link to this heading">#</a></h2>
 <p><strong>Inflexibility</strong></p>
 <ul class="simple">
 <li><p>Classifical approaches require an entire formulation if you want to change the loss function or test a slightly different architecture.</p></li>
@@ -2083,8 +1760,8 @@ The goal of learning is reached
 <li><p>Transfer learning</p></li>
 </ul>
 <p>[1] Simon Haykin, Neural Networks and Learning Machines, 3ra Edición, Prentice Hall, USA, 2009.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2098,7 +1775,7 @@ The goal of learning is reached
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./content"
         },
         predefinedOutput: true
@@ -2106,50 +1783,125 @@ The goal of learning is reached
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="M02.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">02 - NEURAL NETWORKS</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="M02.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">02 - NEURAL NETWORKS</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="U2.02%20-%20The%20Multilayer%20Perceptron.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="U2.02%20-%20The%20Multilayer%20Perceptron.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">2.2 - The Multilayer Perceptron</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#artificial-neural-networks">Artificial Neural Networks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">The perceptron</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function-and-perceptron-training">Loss function and perceptron training</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-let-s-thing-about-the-following-problem">Now let’s thing about the following problem:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-single-perceptron-is-not-able-to-solve-the-problem">One single perceptron is not able to solve the problem!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#this-is-a-neural-network"><span style="color:blue">This is a neural network!</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-layer-perceptron-mlp">Multi-layer perceptron (MLP)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation-algorithm">Backpropagation algorithm</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-activation-functions">Classical activation functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic">Logistic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperbolic-tangent">Hyperbolic tangent</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax">Softmax</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-minibatch-and-online-learning">Batch, Minibatch and online learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-using-a-toy-dataset">Example using a toy dataset:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drawbacks-of-the-classical-approaches">Drawbacks of the classical approaches</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Raúl Ramos, Julián Arias / Universidad de Antioquia<br/>
-  
-      &copy; Copyright 2020.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Raúl Ramos, Julián Arias / Universidad de Antioquia
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
