@@ -6,7 +6,11 @@ endpoint = 'https://m5knaekxo6.execute-api.us-west-2.amazonaws.com/dev-v0001/rlx
 
 zip_file_url ="https://github.com/%s/archive/main.zip"%github_repo
 #endpoint = 'http://localhost:5000/rlxmooc'
-
+def downgrade_tf_version():
+    import os
+    os.system("pip uninstall tensorflow")
+    os.system("pip install tensorflow==2.12.0")
+    
 def get_last_modif_date(localdir):
     try:
         import time, os, pytz
