@@ -8,8 +8,9 @@ zip_file_url ="https://github.com/%s/archive/main.zip"%github_repo
 #endpoint = 'http://localhost:5000/rlxmooc'
 def downgrade_tf_version():
     import os
-    os.system("pip uninstall -y tensorflow")
-    os.system("pip install -y tensorflow==2.12.0")
+    os.system("!yes | pip uninstall tensorflow")
+    os.system("!yes | pip install tensorflow==2.12.0")
+    os.system("!yes | pip install numpy==1.24.0")
     
 def get_last_modif_date(localdir):
     try:
