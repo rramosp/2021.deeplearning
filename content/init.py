@@ -10,7 +10,7 @@ def downgrade_tf_version():
     import os
     os.system("!yes | pip uninstall -y tensorflow")
     os.system("!yes | pip install -y tensorflow==2.12.0")
-    os.system("!yes | pip install -y numpy==1.23.0")
+    #os.system("!yes | pip install -y numpy==1.23.0")
     
 def get_last_modif_date(localdir):
     try:
