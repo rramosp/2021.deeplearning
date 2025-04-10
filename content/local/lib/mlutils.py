@@ -610,7 +610,8 @@ def get_activations(model, model_inputs, layer_name=None):
     # we remove the placeholders (Inputs node in Keras). Not the most elegant though..
     outputs = [output for output in outputs if 'input_' not in output.name]
 
-    funcs = [K.function(inp + [K.learning_phase()], [out]) for out in outputs]  # evaluation functions
+    #funcs = [K.function(inp + [K.learning_phase()], [out]) for out in outputs]  # evaluation functions
+    funcs = [K.function(inp, [out]) for out in outputs]  # Changed for compatibility with TF 2.12
 
     if model_multi_inputs_cond:
         list_inputs = []
