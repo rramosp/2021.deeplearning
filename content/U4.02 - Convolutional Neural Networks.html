@@ -463,23 +463,36 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="convolutional-neural-networks">
 <h1>4.2 - Convolutional Neural Networks<a class="headerlink" href="#convolutional-neural-networks" title="Link to this heading">#</a></h1>
+<p>Course’s material requires a <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code> version lower than the default one used in Google Colab. Run the following cell to downgrade TensorFlow accordingly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>!wget -nc --no-cache -O init.py -q https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
-import init; init.init(force_download=False); 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">downgrade_tf_version</span><span class="p">():</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip uninstall -y tensorflow&quot;</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip install tensorflow==2.12.0&quot;</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="mi">9</span><span class="p">)</span>
+<span class="n">downgrade_tf_version</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>import tensorflow as tf
-from time import time
-import pandas as pd
-import matplotlib.pyplot as plt
-import numpy as np
-from local.lib import mlutils
-%matplotlib inline
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
+<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">local.lib</span><span class="w"> </span><span class="kn">import</span> <span class="n">mlutils</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
 </div>
@@ -494,8 +507,8 @@ from local.lib import mlutils
 <h2>Image analytics tasks<a class="headerlink" href="#image-analytics-tasks" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>from IPython.display import Image
-Image(filename=&#39;local/imgs/imgs_tasks.jpeg&#39;, width=800)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;local/imgs/imgs_tasks.jpeg&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -509,13 +522,13 @@ Image(filename=&#39;local/imgs/imgs_tasks.jpeg&#39;, width=800)
 <p><strong>also</strong></p>
 <ul class="simple">
 <li><p>Image APIs <a class="reference external" href="https://clarifai.com/demo">Clarifai</a> <a class="reference external" href="https://aws.amazon.com/rekognition/">Amazon Rekognition</a>, <a class="reference external" href="https://cloud.google.com/vision/docs/drag-and-drop">Google Cloud Vision</a></p></li>
-<li><p>Image Captioning (con CNN + RNN!!!) <a class="reference external" href="https://www.captionbot.ai/">caption bot</a></p></li>
+<li><p>Image Captioning (con CNN + RNN!!!) <a class="reference external" href="https://captionbotui.azurewebsites.net/Home/Magic?lang=en-US">caption bot</a></p></li>
 </ul>
 </section>
 </section>
 <section id="id1">
 <h2>Convolutional Neural Networks<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>see <a class="reference external" href="https://cloud.google.com/blog/big-data/2017/01/learn-tensorflow-and-deep-learning-without-a-phd">https://cloud.google.com/blog/big-data/2017/01/learn-tensorflow-and-deep-learning-without-a-phd</a></p>
+<p>see video series <a class="reference external" href="https://www.youtube.com/watch?v=u4alGiomYP4">Tensorflow and Deep Learning without a PhD</a></p>
 <p>see <a class="reference external" href="https://towardsdatascience.com/conv2d-to-finally-understand-what-happens-in-the-forward-pass-1bbaafb0b148">convolutions summary</a> | <a class="reference external" href="http://ml4a.github.io/demos/convolution_all/">filter activation demo</a> | <a class="reference external" href="http://ml4a.github.io/demos/confusion_cifar/">confusion matrix</a></p>
 <p>see <a class="reference external" href="https://adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html">The 9 Deep Learning Papers You Should Know</a></p>
 <section id="recommendation">
@@ -532,7 +545,7 @@ Image(filename=&#39;local/imgs/imgs_tasks.jpeg&#39;, width=800)
 <p>the filters in the middle  are applied to the image on the left. Observe, for instance, in what parts of the image the seventh filter of the first row is activated (the one before the last one in the first row).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>Image(filename=&#39;local/imgs/cnn_swan.png&#39;, width=800)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;local/imgs/cnn_swan.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -546,7 +559,7 @@ Image(filename=&#39;local/imgs/imgs_tasks.jpeg&#39;, width=800)
 <h2>Hierarchy of filters and activation maps<a class="headerlink" href="#hierarchy-of-filters-and-activation-maps" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>Image(filename=&#39;local/imgs/cnn_features.png&#39;, width=600)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;local/imgs/cnn_features.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -557,7 +570,7 @@ Image(filename=&#39;local/imgs/imgs_tasks.jpeg&#39;, width=800)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>Image(filename=&#39;local/imgs/conv1.jpg&#39;, width=800)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;local/imgs/conv1.jpg&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -568,7 +581,7 @@ Image(filename=&#39;local/imgs/imgs_tasks.jpeg&#39;, width=800)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>Image(filename=&#39;local/imgs/conv2.jpg&#39;, width=800)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;local/imgs/conv2.jpg&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -580,7 +593,7 @@ Image(filename=&#39;local/imgs/imgs_tasks.jpeg&#39;, width=800)
 <p>otros ejemplos de filtros de primer nivel</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>Image(filename=&#39;local/imgs/cnn_features2.png&#39;, width=600)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;local/imgs/cnn_features2.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -592,7 +605,7 @@ Image(filename=&#39;local/imgs/imgs_tasks.jpeg&#39;, width=800)
 <p>We have a small image dataset based on <a class="reference external" href="https://www.cs.toronto.edu/~kriz/cifar.html">CIFAR-10</a>, where each image size is <strong>32x32x3</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>!wget -nc https://s3.amazonaws.com/rlx/mini_cifar.h5
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>https://s3.amazonaws.com/rlx/mini_cifar.h5
 </pre></div>
 </div>
 </div>
@@ -604,17 +617,17 @@ Image(filename=&#39;local/imgs/imgs_tasks.jpeg&#39;, width=800)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>import h5py
-with h5py.File(&#39;mini_cifar.h5&#39;,&#39;r&#39;) as h5f:
-    x_cifar = h5f[&quot;x&quot;][:]
-    y_cifar = h5f[&quot;y&quot;][:]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">h5py</span>
+<span class="k">with</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="s1">&#39;mini_cifar.h5&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">h5f</span><span class="p">:</span>
+    <span class="n">x_cifar</span> <span class="o">=</span> <span class="n">h5f</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">][:]</span>
+    <span class="n">y_cifar</span> <span class="o">=</span> <span class="n">h5f</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">][:]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>mlutils.show_labeled_image_mosaic(x_cifar, y_cifar)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mlutils</span><span class="o">.</span><span class="n">show_labeled_image_mosaic</span><span class="p">(</span><span class="n">x_cifar</span><span class="p">,</span> <span class="n">y_cifar</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -624,7 +637,7 @@ with h5py.File(&#39;mini_cifar.h5&#39;,&#39;r&#39;) as h5f:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>print (np.min(x_cifar), np.max(x_cifar))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x_cifar</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x_cifar</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -636,19 +649,19 @@ with h5py.File(&#39;mini_cifar.h5&#39;,&#39;r&#39;) as h5f:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>from sklearn.model_selection import train_test_split
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>x_train, x_test, y_train, y_test = train_test_split(x_cifar, y_cifar, test_size=.25)
-print (x_train.shape, y_train.shape, x_test.shape, y_test.shape)
-print (&quot;\ndistribution of train classes&quot;)
-print (pd.Series(y_train).value_counts())
-print (&quot;\ndistribution of test classes&quot;)
-print (pd.Series(y_test).value_counts())
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">x_cifar</span><span class="p">,</span> <span class="n">y_cifar</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">x_test</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">distribution of train classes&quot;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">distribution of test classes&quot;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -673,29 +686,29 @@ dtype: int64
 <p>build a Keras model</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>def get_conv_model_A(num_classes, img_size=32, compile=True):
-    tf.keras.backend.clear_session()
-    print (&quot;using&quot;,num_classes,&quot;classes&quot;)
-    inputs = tf.keras.Input(shape=(img_size,img_size,3), name=&quot;input_1&quot;)
-    layers = tf.keras.layers.Conv2D(15,(3,3), activation=&quot;relu&quot;, padding=&quot;SAME&quot;)(inputs)
-    layers = tf.keras.layers.Flatten()(layers)
-    layers = tf.keras.layers.Dense(16, activation=tf.nn.relu)(layers)
-    layers = tf.keras.layers.Dropout(0.2)(layers)
-    predictions = tf.keras.layers.Dense(num_classes, activation=tf.nn.softmax, name=&quot;output_1&quot;)(layers)
-    model = tf.keras.Model(inputs = inputs, outputs=predictions)
-    if compile:
-        model.compile(optimizer=&#39;adam&#39;,
-                      loss=&#39;sparse_categorical_crossentropy&#39;,
-                      metrics=[&#39;accuracy&#39;])
-    return model
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_conv_model_A</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">img_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="nb">compile</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;using&quot;</span><span class="p">,</span><span class="n">num_classes</span><span class="p">,</span><span class="s2">&quot;classes&quot;</span><span class="p">)</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">img_size</span><span class="p">,</span><span class="n">img_size</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;input_1&quot;</span><span class="p">)</span>
+    <span class="n">layers</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">15</span><span class="p">,(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s2">&quot;SAME&quot;</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+    <span class="n">layers</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">()(</span><span class="n">layers</span><span class="p">)</span>
+    <span class="n">layers</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">)(</span><span class="n">layers</span><span class="p">)</span>
+    <span class="n">layers</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)(</span><span class="n">layers</span><span class="p">)</span>
+    <span class="n">predictions</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;output_1&quot;</span><span class="p">)(</span><span class="n">layers</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">predictions</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">compile</span><span class="p">:</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span>
+                      <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;sparse_categorical_crossentropy&#39;</span><span class="p">,</span>
+                      <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">model</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>num_classes = len(np.unique(y_cifar))
-model = get_conv_model_A(num_classes)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_cifar</span><span class="p">))</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">get_conv_model_A</span><span class="p">(</span><span class="n">num_classes</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -708,9 +721,9 @@ model = get_conv_model_A(num_classes)
 <p>observe the weights initialized and their weights</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>weights = model.get_weights()
-for i in weights:
-    print (i.shape)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weights</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">weights</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -728,14 +741,14 @@ for i in weights:
 <p>we keep the filters on the first layer to later compare them with the same filters after training.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>initial_w0 = model.get_weights()[0].copy()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">initial_w0</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>y_test.shape, y_train.shape, x_test.shape, x_train.shape
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">x_test</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">x_train</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -747,16 +760,16 @@ for i in weights:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>num_classes = len(np.unique(y_cifar))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_cifar</span><span class="p">))</span>
 
-def train(model, batch_size, epochs, model_name=&quot;&quot;):
-    tensorboard = tf.keras.callbacks.TensorBoard(log_dir=&quot;logs/&quot;+model_name+&quot;_&quot;+&quot;{}&quot;.format(time()))
-    model.reset_states()
-    model.fit(x_train, y_train, epochs=epochs, callbacks=[tensorboard],
-              batch_size=batch_size,
-              validation_data=(x_test, y_test))
-    metrics = model.evaluate(x_test, y_test)
-    return {k:v for k,v in zip (model.metrics_names, metrics)}
+<span class="k">def</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="n">tensorboard</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">TensorBoard</span><span class="p">(</span><span class="n">log_dir</span><span class="o">=</span><span class="s2">&quot;logs/&quot;</span><span class="o">+</span><span class="n">model_name</span><span class="o">+</span><span class="s2">&quot;_&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time</span><span class="p">()))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">reset_states</span><span class="p">()</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">tensorboard</span><span class="p">],</span>
+              <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+              <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+    <span class="n">metrics</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span> <span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">metrics_names</span><span class="p">,</span> <span class="n">metrics</span><span class="p">)}</span>
 </pre></div>
 </div>
 </div>
@@ -764,8 +777,8 @@ def train(model, batch_size, epochs, model_name=&quot;&quot;):
 <p>observe the shapes of model weights obtained above and try to see how they are related to the <strong>output shape</strong> and the <strong>number of parameters</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>model = get_conv_model_A(num_classes)
-model.summary()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">get_conv_model_A</span><span class="p">(</span><span class="n">num_classes</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -796,7 +809,7 @@ _________________________________________________________________
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>train(model, batch_size=32, epochs=10, model_name=&quot;model_A&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;model_A&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -832,8 +845,8 @@ Epoch 10/10
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>test_preds = model.predict(x_test).argmax(axis=1)
-mlutils.plot_confusion_matrix(y_test, test_preds, classes=np.r_[0,1,2], normalize=True)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_preds</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">mlutils</span><span class="o">.</span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">test_preds</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -857,7 +870,7 @@ mlutils.plot_confusion_matrix(y_test, test_preds, classes=np.r_[0,1,2], normaliz
 <p>first layer filters before training</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>mlutils.display_imgs(initial_w0)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mlutils</span><span class="o">.</span><span class="n">display_imgs</span><span class="p">(</span><span class="n">initial_w0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -868,9 +881,9 @@ mlutils.plot_confusion_matrix(y_test, test_preds, classes=np.r_[0,1,2], normaliz
 <p>and after training</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>w0 = model.get_weights()[0]
-print (w0.shape)
-mlutils.display_imgs(w0)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w0</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">w0</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">mlutils</span><span class="o">.</span><span class="n">display_imgs</span><span class="p">(</span><span class="n">w0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -883,9 +896,9 @@ mlutils.display_imgs(w0)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>idxs = np.random.permutation(len(x_test))[:5]
-preds = model.predict(x_test[idxs])
-mlutils.show_preds(x_test[idxs],y_test[idxs], preds)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idxs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_test</span><span class="p">))[:</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">preds</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">[</span><span class="n">idxs</span><span class="p">])</span>
+<span class="n">mlutils</span><span class="o">.</span><span class="n">show_preds</span><span class="p">(</span><span class="n">x_test</span><span class="p">[</span><span class="n">idxs</span><span class="p">],</span><span class="n">y_test</span><span class="p">[</span><span class="n">idxs</span><span class="p">],</span> <span class="n">preds</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -901,32 +914,32 @@ mlutils.show_preds(x_test[idxs],y_test[idxs], preds)
 <h3>Let’s try a more complex network<a class="headerlink" href="#let-s-try-a-more-complex-network" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>def get_conv_model_B(num_classes, img_size=32, compile=True):
-    tf.keras.backend.clear_session()
-    print (&quot;using&quot;,num_classes,&quot;classes&quot;)
-    inputs = tf.keras.Input(shape=(img_size,img_size,3), name=&quot;input_1&quot;)
-    layers = tf.keras.layers.Conv2D(15,(5,5), activation=&quot;relu&quot;)(inputs)
-    layers = tf.keras.layers.MaxPool2D((2,2))(layers)
-    layers = tf.keras.layers.Conv2D(60,(5,5), activation=&quot;relu&quot;)(layers)
-    layers = tf.keras.layers.Flatten()(layers)
-    layers = tf.keras.layers.Dense(16, activation=tf.nn.relu)(layers)
-    layers = tf.keras.layers.Dropout(0.2)(layers)
-    predictions = tf.keras.layers.Dense(num_classes, activation=tf.nn.softmax, name=&quot;output_1&quot;)(layers)
-    model = tf.keras.Model(inputs = inputs, outputs=predictions)
-    if compile:
-        model.compile(optimizer=&#39;adam&#39;,
-                      loss=&#39;sparse_categorical_crossentropy&#39;,
-                      metrics=[&#39;accuracy&#39;])
-    return model
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_conv_model_B</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">img_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="nb">compile</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;using&quot;</span><span class="p">,</span><span class="n">num_classes</span><span class="p">,</span><span class="s2">&quot;classes&quot;</span><span class="p">)</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">img_size</span><span class="p">,</span><span class="n">img_size</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;input_1&quot;</span><span class="p">)</span>
+    <span class="n">layers</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">15</span><span class="p">,(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+    <span class="n">layers</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPool2D</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))(</span><span class="n">layers</span><span class="p">)</span>
+    <span class="n">layers</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">60</span><span class="p">,(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">layers</span><span class="p">)</span>
+    <span class="n">layers</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">()(</span><span class="n">layers</span><span class="p">)</span>
+    <span class="n">layers</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">)(</span><span class="n">layers</span><span class="p">)</span>
+    <span class="n">layers</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)(</span><span class="n">layers</span><span class="p">)</span>
+    <span class="n">predictions</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;output_1&quot;</span><span class="p">)(</span><span class="n">layers</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">predictions</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">compile</span><span class="p">:</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span>
+                      <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;sparse_categorical_crossentropy&#39;</span><span class="p">,</span>
+                      <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">model</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>model = get_conv_model_B(num_classes)
-model.summary()
-train(model, batch_size=32, epochs=10, model_name=&quot;model_B&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">get_conv_model_B</span><span class="p">(</span><span class="n">num_classes</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<span class="n">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;model_B&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -986,9 +999,9 @@ Epoch 10/10
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>w0 = model.get_weights()[0]
-print (w0.shape)
-mlutils.display_imgs(w0)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w0</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">w0</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">mlutils</span><span class="o">.</span><span class="n">display_imgs</span><span class="p">(</span><span class="n">w0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1004,32 +1017,32 @@ mlutils.display_imgs(w0)
 <h3>or with larger filters<a class="headerlink" href="#or-with-larger-filters" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>def get_conv_model_C(num_classes, img_size=32, compile=True):
-    tf.keras.backend.clear_session()
-    print (&quot;using&quot;,num_classes,&quot;classes&quot;)
-    inputs = tf.keras.Input(shape=(img_size,img_size,3), name=&quot;input_1&quot;)
-    layers = tf.keras.layers.Conv2D(96,(11,11), activation=&quot;relu&quot;)(inputs)
-    layers = tf.keras.layers.MaxPool2D((2,2))(layers)
-    layers = tf.keras.layers.Conv2D(60,(11,11), activation=&quot;relu&quot;)(layers)
-    layers = tf.keras.layers.Flatten()(layers)
-    layers = tf.keras.layers.Dense(16, activation=tf.nn.relu)(layers)
-    layers = tf.keras.layers.Dropout(0.2)(layers)
-    predictions = tf.keras.layers.Dense(num_classes, activation=tf.nn.softmax, name=&quot;output_1&quot;)(layers)
-    model = tf.keras.Model(inputs = inputs, outputs=predictions)
-    if compile:
-        model.compile(optimizer=&#39;adam&#39;,
-                      loss=&#39;sparse_categorical_crossentropy&#39;,
-                      metrics=[&#39;accuracy&#39;])
-    return model
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_conv_model_C</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">img_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="nb">compile</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">clear_session</span><span class="p">()</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;using&quot;</span><span class="p">,</span><span class="n">num_classes</span><span class="p">,</span><span class="s2">&quot;classes&quot;</span><span class="p">)</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">img_size</span><span class="p">,</span><span class="n">img_size</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;input_1&quot;</span><span class="p">)</span>
+    <span class="n">layers</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">96</span><span class="p">,(</span><span class="mi">11</span><span class="p">,</span><span class="mi">11</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+    <span class="n">layers</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPool2D</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))(</span><span class="n">layers</span><span class="p">)</span>
+    <span class="n">layers</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">60</span><span class="p">,(</span><span class="mi">11</span><span class="p">,</span><span class="mi">11</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">layers</span><span class="p">)</span>
+    <span class="n">layers</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">()(</span><span class="n">layers</span><span class="p">)</span>
+    <span class="n">layers</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">)(</span><span class="n">layers</span><span class="p">)</span>
+    <span class="n">layers</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)(</span><span class="n">layers</span><span class="p">)</span>
+    <span class="n">predictions</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;output_1&quot;</span><span class="p">)(</span><span class="n">layers</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">predictions</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">compile</span><span class="p">:</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span>
+                      <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;sparse_categorical_crossentropy&#39;</span><span class="p">,</span>
+                      <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">model</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>model = get_conv_model_C(num_classes)
-model.summary()
-train(model, batch_size=32, epochs=10, model_name=&quot;model_C&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">get_conv_model_C</span><span class="p">(</span><span class="n">num_classes</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<span class="n">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;model_C&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1089,9 +1102,9 @@ Epoch 10/10
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>w0 = model.get_weights()[0]
-print (w0.shape)
-mlutils.display_imgs(w0)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w0</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">w0</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">mlutils</span><span class="o">.</span><span class="n">display_imgs</span><span class="p">(</span><span class="n">w0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1104,9 +1117,9 @@ mlutils.display_imgs(w0)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>i = np.random.randint(len(x_test))
-plt.imshow(x_test[i])
-plt.axis(&quot;off&quot;);
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_test</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">x_test</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1116,18 +1129,18 @@ plt.axis(&quot;off&quot;);
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>acts = mlutils.get_activations(model, x_test[i:i+1])[&quot;conv2d/Relu:0&quot;][0]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acts</span> <span class="o">=</span> <span class="n">mlutils</span><span class="o">.</span><span class="n">get_activations</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">x_test</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])[</span><span class="s2">&quot;conv2d/Relu:0&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>plt.figure(figsize=(10,10))
-for i in range(acts.shape[-1]):
-    plt.subplot(10,10,i+1)
-    plt.imshow(acts[:,:,i], cmap=plt.cm.Greys_r )
-    plt.axis(&quot;off&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">acts</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">acts</span><span class="p">[:,:,</span><span class="n">i</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys_r</span> <span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1137,9 +1150,9 @@ for i in range(acts.shape[-1]):
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython2 notranslate"><div class="highlight"><pre><span></span>idxs = np.random.permutation(len(x_test))[:5]
-preds = model.predict(x_test[idxs])
-mlutils.show_preds(x_test[idxs],y_test[idxs], preds)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idxs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_test</span><span class="p">))[:</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">preds</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">[</span><span class="n">idxs</span><span class="p">])</span>
+<span class="n">mlutils</span><span class="o">.</span><span class="n">show_preds</span><span class="p">(</span><span class="n">x_test</span><span class="p">[</span><span class="n">idxs</span><span class="p">],</span><span class="n">y_test</span><span class="p">[</span><span class="n">idxs</span><span class="p">],</span> <span class="n">preds</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1174,13 +1187,13 @@ mlutils.show_preds(x_test[idxs],y_test[idxs], preds)
             mode: "python"
         },
         kernelOptions: {
-            name: "python2",
+            name: "python3",
             path: "./content"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python2'</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
