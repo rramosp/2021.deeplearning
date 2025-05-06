@@ -505,6 +505,16 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-05-03 13:10:30.993029: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TF version:  2.12.0
+Hub version:  0.16.1
+</pre></div>
+</div>
+</div>
 </div>
 <section id="example">
 <h2>Example:<a class="headerlink" href="#example" title="Link to this heading">#</a></h2>
@@ -549,6 +559,18 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of positive samples=2363
+Number of negative samples=9178
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/nn/3gvt2syd04g4g42qkb8m_czm0000gn/T/ipykernel_49595/228966672.py:15: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  row[0] = row[0].replace(&#39;rt&#39;,&#39; &#39;)
+/var/folders/nn/3gvt2syd04g4g42qkb8m_czm0000gn/T/ipykernel_49595/228966672.py:15: FutureWarning: Series.__setitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To set a value by position, use `ser.iloc[pos] = value`
+  row[0] = row[0].replace(&#39;rt&#39;,&#39; &#39;)
+</pre></div>
+</div>
+</div>
 </div>
 <p><strong>We can use a pre-trained BERT from tensorflow hub.</strong></p>
 <div class="cell docutils container">
@@ -561,7 +583,8 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>bert-for-tf2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!pip install bert-for-tf2</span>
+<span class="c1">#!pip install bert-tokenizer</span>
 </pre></div>
 </div>
 </div>
@@ -570,6 +593,10 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">bert</span>
 <span class="n">FullTokenizer</span> <span class="o">=</span> <span class="n">bert</span><span class="o">.</span><span class="n">bert_tokenization</span><span class="o">.</span><span class="n">FullTokenizer</span>
+
+
+<span class="c1">#import bert_tokenizer as tokenizer</span>
+<span class="c1">#FullTokenizer = tokenizer</span>
 </pre></div>
 </div>
 </div>
@@ -600,6 +627,59 @@ document.write(`
     <span class="k">if</span> <span class="n">i</span><span class="o">&gt;</span> <span class="n">maximo</span><span class="p">:</span>
         <span class="n">maximo</span> <span class="o">=</span> <span class="n">i</span>
 <span class="n">maximo</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>43
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sent</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39; you have my money you change my flight and dont answer your phones any other suggestions so i can make my commitment&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;[CLS]&#39;,
+ &#39;you&#39;,
+ &#39;have&#39;,
+ &#39;my&#39;,
+ &#39;money&#39;,
+ &#39;you&#39;,
+ &#39;change&#39;,
+ &#39;my&#39;,
+ &#39;flight&#39;,
+ &#39;and&#39;,
+ &#39;don&#39;,
+ &#39;##t&#39;,
+ &#39;answer&#39;,
+ &#39;your&#39;,
+ &#39;phones&#39;,
+ &#39;any&#39;,
+ &#39;other&#39;,
+ &#39;suggestions&#39;,
+ &#39;so&#39;,
+ &#39;i&#39;,
+ &#39;can&#39;,
+ &#39;make&#39;,
+ &#39;my&#39;,
+ &#39;commitment&#39;,
+ &#39;[SEP]&#39;]
 </pre></div>
 </div>
 </div>
@@ -671,6 +751,14 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;[CLS]&#39;, &#39;this&#39;, &#39;is&#39;, &#39;a&#39;, &#39;nice&#39;, &#39;sentence&#39;, &#39;.&#39;, &#39;[SEP]&#39;]
+[101, 2023, 2003, 1037, 3835, 6251, 1012, 102, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -678,6 +766,14 @@ document.write(`
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">input_ids</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">input_masks</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">input_segments</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
+45
+45
+45
 </pre></div>
 </div>
 </div>
