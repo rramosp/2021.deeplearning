@@ -569,7 +569,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bert_preprocess_model</span> <span class="o">=</span> <span class="n">hub</span><span class="o">.</span><span class="n">KerasLayer</span><span class="p">(</span><span class="s1">&#39;https://tfhub.dev/tensorflow/bert_en_uncased_preprocess/3&#39;</span><span class="p">)</span>
-<span class="n">bert_layer</span> <span class="o">=</span> <span class="n">hub</span><span class="o">.</span><span class="n">KerasLayer</span><span class="p">(</span><span class="s2">&quot;https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-12_H-768_A-12/1&quot;</span><span class="p">,</span><span class="n">trainable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">bert_layer</span> <span class="o">=</span> <span class="n">hub</span><span class="o">.</span><span class="n">KerasLayer</span><span class="p">(</span><span class="s2">&quot;https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-4_H-768_A-12/1&quot;</span><span class="p">,</span><span class="n">trainable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -630,7 +630,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Yet, let’s create the three input arrays for the whole dataset:</p>
+<p>Let’s prepare the data for training and validation</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span>
