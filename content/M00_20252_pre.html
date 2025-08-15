@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1.1 - DL Overview &#8212; Fundamentos de Deep Learning</title>
+    <title>Info 2025.2 - UdeA &#8212; Fundamentos de Deep Learning</title>
   
   
   
@@ -70,11 +70,11 @@
                 gtag('config', 'UA-43235448-3');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/U1.01 - DL Overview';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/M00_20252_pre';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1.2 - Models derived from data" href="U1.02%20-%20Modelos%20derivados%20de%20los%20datos.html" />
-    <link rel="prev" title="01 - INTRODUCTION" href="M01.html" />
+    <link rel="next" title="01 - INTRODUCTION" href="M01.html" />
+    <link rel="prev" title="Welcome" href="../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -193,9 +193,9 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="M00_20252_pre.html">Info 2025.2 - UdeA</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="M01.html">01 - INTRODUCTION</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.1 - DL Overview</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Info 2025.2 - UdeA</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="M01.html">01 - INTRODUCTION</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="U1.01%20-%20DL%20Overview.html">1.1 - DL Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="U1.02%20-%20Modelos%20derivados%20de%20los%20datos.html">1.2 - Models derived from data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="U1.03%20-%20Como%20se%20disena%20un%20algoritmo%20de%20Machine%20Learning.html">1.3 - ML algorithm design</a></li>
 <li class="toctree-l2"><a class="reference internal" href="U1%20LAB%2001%20-%20WARMUP.html">LAB 01.01 - WARM UP</a></li>
@@ -303,37 +303,6 @@
 
 
 
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://colab.research.google.com/github/rramosp/2021.deeplearning/blob/master/content/U1.01 - DL Overview.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch on Colab"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  
-    <img alt="Colab logo" src="../_static/images/logo_colab.png">
-  </span>
-<span class="btn__text-container">Colab</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-
-
 <div class="dropdown dropdown-download-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
@@ -342,7 +311,7 @@
       
       
       
-      <li><a href="../_sources/content/U1.01 - DL Overview.ipynb" target="_blank"
+      <li><a href="../_sources/content/M00_20252_pre.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -352,7 +321,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -426,7 +395,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>1.1 - DL Overview</h1>
+    <h1>Info 2025.2 - UdeA</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -436,10 +405,26 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-types-of-neural-networks">Some types of Neural Networks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-dl-now">Why DL now?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-learning">Feature learning</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dl-is-suited-for-large-datasets-with-highly-dimensional-input-variables">DL is suited for large datasets with highly dimensional input variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#registro">REGISTRO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trabajando-con-los-materiales-del-curso">Trabajando con los materiales del curso</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sesiones-sincronicas">Sesiones sincrónicas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grupo-de-whatsapp">Grupo de Whatsapp</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calendario-y-fechas">Calendario y fechas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fechas-limite-para-entregas">Fechas límite para entregas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fechas-oficiales-facultad-de-ingenieria">Fechas oficiales facultad de ingeniería</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluaciones">Evaluaciones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proyecto">Proyecto</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entregas">Entregas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entrega-1">Entrega 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entrega-2">Entrega 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estructura-del-repositorio-github">Estructura del repositorio github</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-del-proyecto">Evaluación del proyecto</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias">Referencias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contacto">Contacto</a></li>
 </ul>
             </nav>
         </div>
@@ -451,87 +436,241 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="dl-overview">
-<h1>1.1 - DL Overview<a class="headerlink" href="#dl-overview" title="Link to this heading">#</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
-<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> 
+  <section class="tex2jax_ignore mathjax_ignore" id="info-2025-2-udea">
+<h1>Info 2025.2 - UdeA<a class="headerlink" href="#info-2025-2-udea" title="Link to this heading">#</a></h1>
+<center><big>
+<font color='red'>ESTA ES INFORMACIÓN PARA LAS PERSONAS MATRICULADAS EN EL CURSO REGULAR
+EN LA FACULTAD DE INGENIERÍA DE LA UNIVERSIDAD DE ANTIOQUIA.
+</font>
+</center></big>
+<section id="registro">
+<h2>REGISTRO<a class="headerlink" href="#registro" title="Link to this heading">#</a></h2>
+<p>Para acceder a los laboratorios del curso tienes que registrate en el siguiente formulario</p>
+<center><big><a href="https://m5knaekxo6.execute-api.us-west-2.amazonaws.com/dev-v0001/rlxmooc/web/request_invitation/2021.deeplearning/udea.pre.20251">REGISTRO PARA LABORATORIOS</a></big></center>
+<br/>
+<br/>
+</section>
+<section id="trabajando-con-los-materiales-del-curso">
+<h2>Trabajando con los materiales del curso<a class="headerlink" href="#trabajando-con-los-materiales-del-curso" title="Link to this heading">#</a></h2>
+<p><strong>01 - Jupyter notebooks y Google colab</strong>: <a class="reference external" href="https://youtu.be/KajSbrEBZ5k">video 13mins</a> Explicamos brevemente cómo es el entorno de ejecución de código Python en la nube de Google que vamos a usar durante el curso</p>
+<p><strong>02 - Laboratorios y envío de soluciones</strong>: <a class="reference external" href="https://youtu.be/D6MuCnXc5LM">video 12mins</a> Describimos cómo es el mecanismo de envío de soluciones y la plataforma de autocorrección de talleres.
+<br/>
+<br/></p>
+</section>
+<section id="sesiones-sincronicas">
+<h2>Sesiones sincrónicas<a class="headerlink" href="#sesiones-sincronicas" title="Link to this heading">#</a></h2>
+<p><strong>Para acceder a las sesiones</strong></p>
+<center><big><a href="https://udea.zoom.us/j/95366177429">https://udea.zoom.us/j/95366177429</a></big></center>
+<p/><p/>
+<p><strong>Para acceder a las grabaciones</strong></p>
+<center><a href="https://ingenia.udea.edu.co/zoom/meeting/95366177429">https://ingenia.udea.edu.co/zoom/meeting/95366177429</a></center>
+<br/>
+<br/>
+</section>
+<section id="grupo-de-whatsapp">
+<h2>Grupo de Whatsapp<a class="headerlink" href="#grupo-de-whatsapp" title="Link to this heading">#</a></h2>
+<center><a href="https://chat.whatsapp.com/BibP0MKbNk82jaUk1jFww6">https://chat.whatsapp.com/BibP0MKbNk82jaUk1jFww6</a></center>
+<br/>
+<br/>
+</section>
+<section id="calendario-y-fechas">
+<h2>Calendario y fechas<a class="headerlink" href="#calendario-y-fechas" title="Link to this heading">#</a></h2>
+<section id="fechas-limite-para-entregas">
+<h3>Fechas límite para entregas<a class="headerlink" href="#fechas-limite-para-entregas" title="Link to this heading">#</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>     7/sep: Laboratorios unidad 1 y 2
+    21/sep: Laboratorios unidad 3
+     5/oct: Proyecto entrega 1
+    26/oct: Laboratorios unidad 4
+    16/nov: Laboratorios unidad 5
+    30/nov: Proyecto informe final
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
-<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;local/imgs/ai_ml_dl.jpeg&#39;</span><span class="p">)</span>
+<p>Cualquier solicitud de cambio de fechas habrá de realizarse <font color='red'>al menos tres días antes de la fecha</font> sobre la que se solicita el cambio, por medio de un correo a <tt><a class="reference external" href="mailto:raul&#46;ramos&#37;&#52;&#48;udea&#46;edu&#46;co">raul<span>&#46;</span>ramos<span>&#64;</span>udea<span>&#46;</span>edu<span>&#46;</span>co</a></tt> consensuado al menos por un 50% de la clase y con copia explícita a los estudiantes que formen parte del consenso.</p>
+<p>Las fechas de entrega de los laboratorios son <strong>ESTRICTAS</strong>. Como estudiantes tienen la posibilidad de solicitar ordenadamente aplazamientos. <font color='red'>No se admitirán entregas de laboratorios después de las fechas establecidas o aplazadas según el protocolo anterior.</font></p>
+</section>
+<section id="fechas-oficiales-facultad-de-ingenieria">
+<h3>Fechas oficiales facultad de ingeniería<a class="headerlink" href="#fechas-oficiales-facultad-de-ingenieria" title="Link to this heading">#</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>         12/ago/2025  Inicio de clases
+          4/oct/2025  Evaluación al 40% 
+         29/nov/2025  Finalización clases 
+
+  1/dic - 6/dic/2025  Exámentes finales
+          8/dic/2025  Fecha límite cierre de notas
+         17/dic/2025  Terminación oficial 
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/56f528a20c90ea67662e6ef8b78d7428b047b731c26cd75dc95487783c808e4a.jpg" src="../_images/56f528a20c90ea67662e6ef8b78d7428b047b731c26cd75dc95487783c808e4a.jpg" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;local/imgs/DL_timeline.png&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/caf86af2856d0859e79df379fbb60c4ad12103ec53d1f85259f6e9eaaddebaed.png" src="../_images/caf86af2856d0859e79df379fbb60c4ad12103ec53d1f85259f6e9eaaddebaed.png" />
-</div>
-</div>
-<section id="some-types-of-neural-networks">
-<h2>Some types of Neural Networks<a class="headerlink" href="#some-types-of-neural-networks" title="Link to this heading">#</a></h2>
-<p><a class="reference external" href="http://www.asimovinstitute.org/neural-network-zoo/">http://www.asimovinstitute.org/neural-network-zoo/</a></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;local/imgs/nntypes.png&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/5475765ba58d7871068099295d9049971129486060f0b71283d0356d1a623bad.png" src="../_images/5475765ba58d7871068099295d9049971129486060f0b71283d0356d1a623bad.png" />
-</div>
 </div>
 </section>
-<section id="why-dl-now">
-<h2>Why DL now?<a class="headerlink" href="#why-dl-now" title="Link to this heading">#</a></h2>
-<p><a class="reference external" href="https://towardsdatascience.com/a-weird-introduction-to-deep-learning-7828803693b0">A “weird” introduction to Deep Learning</a></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    As I said before, until the late 2000s, we were still missing a reliable way to train
-    very deep neural networks. Nowadays, with the development of several simple but important
-    theoretical and algorithmic improvements, the advances in hardware (mostly GPUs, now TPUs), 
-    and the exponential generation and accumulation of data, DL came naturally to fit this 
-    missing spot to transform the way we do machine learning.
+</section>
+<section id="evaluaciones">
+<h2>Evaluaciones<a class="headerlink" href="#evaluaciones" title="Link to this heading">#</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    20%     Laboratorios unidades 1,2,3
+    20%     Laboratorios unidad 4
+    20%     Laboratorios unidad 5
+    40%     Proyecto 
 </pre></div>
 </div>
 </section>
-<section id="feature-learning">
-<h2>Feature learning<a class="headerlink" href="#feature-learning" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;local/imgs/feature_learning_ml_dl.png&#39;</span><span class="p">)</span>
+<section id="proyecto">
+<h2>Proyecto<a class="headerlink" href="#proyecto" title="Link to this heading">#</a></h2>
+<p>Deberás de realizar un proyecto que aplique las técnicas del módulo 4 o del módulo 5 a un problema que escojas. Por ejemplo:</p>
+<ul class="simple">
+<li><p>Relacionado con tu trabajo de investigación o interés que tú tengas.</p></li>
+<li><p>Un challenge de <a class="reference external" href="http://www.kaggle.com">www.kaggle.com</a> (aunque ya haya pasado la competición)</p></li>
+<li><p>Sobre algún dataset público</p></li>
+<li><p>etc.</p></li>
+</ul>
+<p>Los proyectos se podrán hacer en grupos de una, dos o tres personas. <font color='red'>Todos los miembros de un grupo</font> habrán de realizar las entregas cada uno en un repositorio github propio. <font color='red'>Cada estudiante es responsable de su propia entrega</font>. Si un estudiante no realiza su entrega no recibirá calificación, aunque los demás miembros del grupo la tengan.</p>
+<p><font color='red'>Cualquier entrega de proyecto fuera de fechas será penalizada con el 50% de la evaluación</font>.</p>
+<p>Te recomendamos que:</p>
+<ul class="simple">
+<li><p>Verifiques que los datos están disponibles antes de escoger tu proyecto.</p></li>
+<li><p>Estimes los requerimientos computacionales para generar los modelos que necesites. Reduce el alcance de tu proyecto si lo necesitas (menos datos, menos clases, etc.).</p></li>
+<li><p>Realices una primera iteración cuanto antes. Es decir, que llegues a tener un primer modelo <strong>sencillo</strong> produciendo predicciones. Implementa en esta primera iteración estrictamente lo que necesites para tener un modelo. El objetivo es resolver la mayoría de los problemas técnicos que te puedan surgir para ya, después, enfocarte en todo lo que quieras hacer en las siguientes iteraciones (preprocesado de datos, otros modelos, etc.)</p></li>
+</ul>
+</section>
+<section id="entregas">
+<h2>Entregas<a class="headerlink" href="#entregas" title="Link to this heading">#</a></h2>
+<p>Deberàs de rellenar un formulario <font color='red'>PARA CADA ENTREGA</font></p>
+<ul class="simple">
+<li><p>Formulario ENTREGA 1: <a class="reference external" href="https://forms.gle/RtBLkRhtf9dkxKNe8">ENLACE FORMULARIO</a></p></li>
+<li><p>Formulario ENTREGA 2: <a class="reference external" href="https://forms.gle/KC3vp8QQ9BbLZtTP7">ENLACE FORMULARIO</a></p></li>
+</ul>
+<p><strong>Para verificar las fechas de entrega se considerará (1) que el formulario se haya rellenado antes de la fecha de entrega; y (2) el último commit antes de cada fecha</strong>. Es decir,</p>
+<ul class="simple">
+<li><p>si cualquier entregable aparece únicamente en commits posteriores a cualquier fecha de entrega no se tendrá en cuenta.</p></li>
+<li><p>si no se rellena el formulario no se considerará la entrega realizada, aunque haya commits dentro de la fecha de entrega.</p></li>
+</ul>
+<section id="entrega-1">
+<h3>Entrega 1<a class="headerlink" href="#entrega-1" title="Link to this heading">#</a></h3>
+<p>Tendrás que entregar un documento (1-3 páginas máximo) con la siguiente estructura</p>
+<ul class="simple">
+<li><p>Contexto de aplicación.</p></li>
+<li><p>Objetivo de machine learning (queremos predecir X, dada tal información)</p></li>
+<li><p>Dataset: tipo de datos, tamaño (número de datos y tamaño en disco), distribución de las clases</p></li>
+<li><p>Métricas de desempeño (de machine learning y negocio)</p></li>
+<li><p>Referencias y resultados previos</p></li>
+</ul>
+<p>Para la entrega crea un nuevo repositorio en <a class="github reference external" href="http://github.com">github</a> e incluye el informe con el nombre <strong>ENTREGA1.PDF</strong>.</p>
+</section>
+<section id="entrega-2">
+<h3>Entrega 2<a class="headerlink" href="#entrega-2" title="Link to this heading">#</a></h3>
+<p>Para realizar esta entrega tienes que realizar <strong>TRES</strong> cosas:</p>
+<ul class="simple">
+<li><p>Incluye en el repositorio github los notebooks con tu soluciòn, el informe de la primera entrega y el informe final y lo que consideres oportuno.</p></li>
+<li><p>Crea un video de presentación y súbelo a <a class="reference external" href="http://youtube.com">http://youtube.com</a></p></li>
+<li><p>Incluye <strong>en el <a class="reference external" href="http://README.md">README.md</a></strong> del repositorio, el enlace al video de youtube.</p></li>
+</ul>
+<p>La entrega ha de constar de los siguientes elementos:</p>
+<ul class="simple">
+<li><p><strong>Notebooks reproducibles</strong></p>
+<ul>
+<li><p>Incluye los notebooks que consideres que implementen tu solución o las iteraciones
+que hiciste sobre la misma (distintas arquitecturas, etc.)</p></li>
+<li><p>Los notebooks han de ser <strong>directamente reproducibles</strong> sobre Google Colab. <font color='red'>CUALQUIER
+NOTEBOOK QUE PRODUZCA ERRORES AL EJECUTARSE SERÁ DESCARTADO DE TU ENTREGA</font></p></li>
+<li><p>Organiza tus notebooks con un prejifo numérico para que estén ordenados, mira el ejemplo de estructura de tu carpeta de entrega más abajo</p></li>
+</ul>
+</li>
+<li><p><strong>Informe</strong></p>
+<ul>
+<li><p>Redacta un informe <strong>ejecutivo</strong> e inclúyelo en la carpeta compartida en <strong>formato PDF</strong>.
+El informe no debería de ser muy largo (p.ej. entre 5 y 10 páginas), y ha de incluir:</p>
+<ul>
+<li><p>Descripción de la estructura de los notebooks entregados</p></li>
+<li><p>Descripción de tu solución (arquitectura, preprocesado, etc.)</p></li>
+<li><p>Descripción de las iteraciones que hiciste</p></li>
+<li><p>Descripción de los resultados.</p></li>
+</ul>
+</li>
+<li><p>El fichero con el informe se ha de llamar <strong>INFORME_PROYECTO.PDF</strong>.</p></li>
+</ul>
+</li>
+<li><p><strong>Video</strong> (súbelo a youtube)</p>
+<ul>
+<li><p>Realiza un video de entre 5 y 10mins donde expliques tu entrega. P.ej.:</p>
+<ul>
+<li><p>Describe y muestra brevemente los datos</p></li>
+<li><p>Describe y muestra brevemente tu código</p></li>
+<li><p>Muestra la pantalla con tus notebooks según los ejecutas</p></li>
+<li><p>Muestre algunos de los resultados obtenidos</p></li>
+</ul>
+</li>
+<li><p>Incluye, en el <code class="docutils literal notranslate"><span class="pre">README.md</span></code> de tu repositorio un enlace al video en youtube.</p></li>
+</ul>
+</li>
+<li><p><strong>Datos</strong></p>
+<ul>
+<li><p>Incluye en tu informe cómo obtener y hacer disponibles tus datos
+a los procesos implementados en tus notebooks.</p></li>
+</ul>
+</li>
+<li><p><strong>Modelos entrenados</strong></p>
+<ul>
+<li><p>El proceso de entrenamiento de los modelos ha de ser ejecutable desde
+los notebooks de tu entrega.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="estructura-del-repositorio-github">
+<h3>Estructura del repositorio github<a class="headerlink" href="#estructura-del-repositorio-github" title="Link to this heading">#</a></h3>
+<p>Tu repositorio de la entrega final ha tener la siguiente estructura. Los nombres de los notebooks pueden ser distintos, pero <strong>HAN DE ESTAR NUMERADOS</strong>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    |
+    +-  01 - exploración de datos.ipynb
+    +-  02 - preprocesado.ipynb
+    +-  03 - arquitectura de linea de base.ipynb
+    +-  xx - otros_notebooks
+    +-  INFORME_PROYECTO.PDF
+    +-  ENTREGA1.PDF
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/75037a8eb7c9aaba20da491f4bdd2246118accd9b15fbf08b972e0d26ef3560c.png" src="../_images/75037a8eb7c9aaba20da491f4bdd2246118accd9b15fbf08b972e0d26ef3560c.png" />
-</div>
+<p><font color="red">SI NO SIGUES ESTAS REGLAS DE NOMBRADO DE LOS NOTEBOOKS, LOS INFORMES EN PDF, Y LA INCLUSIÓN DEL ENLACE DEL VIDEO EN YOUTUBE, TENDRÁS UNA PENALIZACIÓN DEL 50% EN LA CALIFICACIÓN TOTAL DEL PROYECTO.</font></p>
+</section>
+<section id="evaluacion-del-proyecto">
+<h3>Evaluación del proyecto<a class="headerlink" href="#evaluacion-del-proyecto" title="Link to this heading">#</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   10%: Entrega 1 realizada a tiempo
+   40%: Claridad
+   25%: reproducibilidad
+   25%: compleción
+</pre></div>
 </div>
 </section>
-<section id="dl-is-suited-for-large-datasets-with-highly-dimensional-input-variables">
-<h2>DL is suited for large datasets with highly dimensional input variables<a class="headerlink" href="#dl-is-suited-for-large-datasets-with-highly-dimensional-input-variables" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;local/imgs/cnn_feature_hierarchy.png&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/69552edfc878919507821459b9f0a74f8adf7cc10e73aa54d1eaab9647da7d07.png" src="../_images/69552edfc878919507821459b9f0a74f8adf7cc10e73aa54d1eaab9647da7d07.png" />
-</div>
-</div>
+</section>
+<section id="referencias">
+<h2>Referencias<a class="headerlink" href="#referencias" title="Link to this heading">#</a></h2>
+<p><strong>Guías sobre Deep Learning</strong></p>
+<ul class="simple">
+<li><p>Aggarwal, Charu C. <strong>Neural networks and deep learning.</strong> Springer 10 (2018): 978-3.</p></li>
+<li><p>Calin, Ovidiu. <strong>Deep Learning Architectures.</strong> Springer International Publishing, 2020.</p></li>
+<li><p>Goodfellow, I., Bengio, Y., Courville, A., &amp; Bengio, Y. (2016). <strong>Deep learning</strong> (Vol. 1). Cambridge: MIT Press <a class="reference external" href="https://www.deeplearningbook.org/">website</a> <a class="reference external" href="https://github.com/janishar/mit-deep-learning-book-pdf">pdf</a></p></li>
+</ul>
+<p><strong>Con un foco especial en alguno de los módulos</strong></p>
+<ul class="simple">
+<li><p>Hochreiter, S., &amp; Schmidhuber, J. (1997). <strong>Long short-term memory. Neural computation</strong>, 9(8), 1735-1780.</p></li>
+<li><p>Vinyals, O., Toshev, A., Bengio, S., &amp; Erhan, D. (2015). <strong>Show and tell: A neural image caption generator.</strong> In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 3156-3164).</p></li>
+<li><p>Venugopalan, S., Rohrbach, M., Donahue, J., Mooney, R., Darrell, T., &amp; Saenko, K. (2015). <strong>Sequence to sequence-video to text.</strong> In Proceedings of the IEEE international conference on computer vision (pp. 4534-4542).</p></li>
+<li><p>Sutskever, I., Vinyals, O., &amp; Le, Q. V. (2014). <strong>Sequence to sequence learning with neural networks.</strong> In Advances in neural information processing systems (pp. 3104-3112).</p></li>
+<li><p>Pradeep Pujari, Md. Rezaul Karim, Mohit Sewak (2017) , <strong>Practical Convolutional Neural Networks</strong>, O’Reilly,</p></li>
+<li><p>Vaswani et al. (2023), <strong>Attention is all you need</strong> <a class="reference external" href="https://arxiv.org/abs/1706.03762">arxiv</a></p></li>
+<li><p>Karpathy, Alex (2023) <strong>Let’s build GPT: from scratch, in code, spelled out.</strong> <a class="reference external" href="https://www.youtube.com/watch?v=kCc8FmEb1nY">youtube</a></p></li>
+<li><p>KDNuggets (2023) <strong>A Comprehensive List of Resources to Master Large Language Models</strong> <a class="reference external" href="https://www.kdnuggets.com/a-comprehensive-list-of-resources-to-master-large-language-models">website</a></p></li>
+</ul>
+<p><strong>Generales de machine learning</strong></p>
+<ul class="simple">
+<li><p>Hastie, Tibshirani, Friedman, <strong>The Elements of Statistical Learning</strong>, Springer-Verlag <a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/">website</a> <a class="reference external" href="https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf">pdf</a></p></li>
+<li><p>Haykin, S. S., Haykin, S. S., Haykin, S. S., &amp; Haykin, S. S. (2009). <strong>Neural networks and learning machines</strong> (Vol. 3). Upper Saddle River, NJ, USA:: Pearson.</p></li>
+</ul>
+<p><strong>Materiales complementarios</strong></p>
+<ul class="simple">
+<li><p>Curso de pregrado <strong>Modelos y simulación</strong>: <a class="reference external" href="https://jdariasl.github.io/Intro_ML_2025">https://github.com/jdariasl/Intro_ML_2025</a></p></li>
+<li><p>Curso abierto <strong>Introducción a la IA para las Ciecnias e Ingenierías</strong> <a class="reference external" href="https://rramosp.github.io/ai4eng.v1">https://rramosp.github.io/ai4eng.v1</a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/user/numpy-for-matlab-users.html">https://numpy.org/doc/stable/user/numpy-for-matlab-users.html</a></p></li>
+</ul>
+</section>
+<section id="contacto">
+<h2>Contacto<a class="headerlink" href="#contacto" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="mailto:raul&#46;ramos&#37;&#52;&#48;udea&#46;edu&#46;co">raul<span>&#46;</span>ramos<span>&#64;</span>udea<span>&#46;</span>edu<span>&#46;</span>co</a>
+<a class="reference external" href="mailto:julian&#46;ariasl&#37;&#52;&#48;udea&#46;edu&#46;co">julian<span>&#46;</span>ariasl<span>&#64;</span>udea<span>&#46;</span>edu<span>&#46;</span>co</a></p>
 </section>
 </section>
 
@@ -566,20 +705,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="M01.html"
+       href="../intro.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">01 - INTRODUCTION</p>
+        <p class="prev-next-title">Welcome</p>
       </div>
     </a>
     <a class="right-next"
-       href="U1.02%20-%20Modelos%20derivados%20de%20los%20datos.html"
+       href="M01.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">1.2 - Models derived from data</p>
+        <p class="prev-next-title">01 - INTRODUCTION</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -599,10 +738,26 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-types-of-neural-networks">Some types of Neural Networks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-dl-now">Why DL now?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-learning">Feature learning</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dl-is-suited-for-large-datasets-with-highly-dimensional-input-variables">DL is suited for large datasets with highly dimensional input variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#registro">REGISTRO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trabajando-con-los-materiales-del-curso">Trabajando con los materiales del curso</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sesiones-sincronicas">Sesiones sincrónicas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grupo-de-whatsapp">Grupo de Whatsapp</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calendario-y-fechas">Calendario y fechas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fechas-limite-para-entregas">Fechas límite para entregas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fechas-oficiales-facultad-de-ingenieria">Fechas oficiales facultad de ingeniería</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluaciones">Evaluaciones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proyecto">Proyecto</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entregas">Entregas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entrega-1">Entrega 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entrega-2">Entrega 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estructura-del-repositorio-github">Estructura del repositorio github</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-del-proyecto">Evaluación del proyecto</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias">Referencias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contacto">Contacto</a></li>
 </ul>
   </nav></div>
 
