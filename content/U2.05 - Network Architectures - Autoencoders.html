@@ -469,26 +469,19 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="autoencoders">
 <h1>2.5 - Autoencoders<a class="headerlink" href="#autoencoders" title="Link to this heading">#</a></h1>
-<p>Course’s material requires a <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code> version lower than the default one used in Google Colab. Run the following cell to downgrade TensorFlow accordingly.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">downgrade_tf_version</span><span class="p">():</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip uninstall -y tensorflow&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip install tensorflow==2.12.0&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="mi">9</span><span class="p">)</span>
-<span class="n">downgrade_tf_version</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
-<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<meta name="google-signin-client_id"
+      content="461673936472-kdjosv61up3ac1ajeuq6qqu72upilmls.apps.googleusercontent.com"/>
+<script src="https://apis.google.com/js/client:platform.js?onload=google_button_start"></script>
+    </div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -528,7 +521,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">perm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])))[</span><span class="mi">0</span><span class="p">:</span><span class="mi">50</span><span class="p">]</span>
 <span class="n">random_imgs</span>   <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">perm</span><span class="p">]</span>
-<span class="n">random_labels</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">perm</span><span class="p">]</span> 
+<span class="n">random_labels</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">perm</span><span class="p">]</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">random_imgs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
     <span class="n">ax</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
@@ -568,8 +561,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_model</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">code_size</span><span class="p">):</span>
-
-    <span class="n">inputs</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;input&quot;</span><span class="p">)</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;input&quot;</span><span class="p">)</span>
     <span class="n">encoder</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">code_size</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;encoder&quot;</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
     <span class="n">outputs</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;decoder&quot;</span><span class="p">)(</span><span class="n">encoder</span><span class="p">)</span>
 
@@ -588,23 +580,25 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;model_27&quot;
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-input (InputLayer)           [(None, 784)]             0         
-_________________________________________________________________
-encoder (Dense)              (None, 50)                39250     
-_________________________________________________________________
-decoder (Dense)              (None, 784)               39984     
-=================================================================
-Total params: 79,234
-Trainable params: 79,234
-Non-trainable params: 0
-_________________________________________________________________
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "functional_11"</span>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)                    </span>┃<span style="font-weight: bold"> Output Shape           </span>┃<span style="font-weight: bold">       Param # </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ input (<span style="color: #0087ff; text-decoration-color: #0087ff">InputLayer</span>)              │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">784</span>)            │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ encoder (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                 │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">50</span>)             │        <span style="color: #00af00; text-decoration-color: #00af00">39,250</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ decoder (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                 │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">784</span>)            │        <span style="color: #00af00; text-decoration-color: #00af00">39,984</span> │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">79,234</span> (309.51 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">79,234</span> (309.51 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">0</span> (0.00 B)
+</pre>
+</div></div>
 </div>
 <p>and we simply train the autoencoder. Observe how we use the same data as input and output</p>
 <div class="cell docutils container">
@@ -614,212 +608,209 @@ _________________________________________________________________
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train on 1200 samples
-Epoch 1/100
-1200/1200 [==============================] - 0s 219us/sample - loss: 0.1047
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/100
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 2ms/step - loss: 0.1487
 Epoch 2/100
-1200/1200 [==============================] - 0s 80us/sample - loss: 0.0597
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0644
 Epoch 3/100
-1200/1200 [==============================] - 0s 84us/sample - loss: 0.0493
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0520
 Epoch 4/100
-1200/1200 [==============================] - 0s 86us/sample - loss: 0.0427
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0429
 Epoch 5/100
-1200/1200 [==============================] - 0s 83us/sample - loss: 0.0380
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0384
 Epoch 6/100
-1200/1200 [==============================] - 0s 82us/sample - loss: 0.0344
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0351
 Epoch 7/100
-1200/1200 [==============================] - 0s 81us/sample - loss: 0.0314
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0320
 Epoch 8/100
-1200/1200 [==============================] - 0s 81us/sample - loss: 0.0290
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0298
 Epoch 9/100
-1200/1200 [==============================] - 0s 81us/sample - loss: 0.0269
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0277
 Epoch 10/100
-1200/1200 [==============================] - 0s 82us/sample - loss: 0.0251
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0255
 Epoch 11/100
-1200/1200 [==============================] - 0s 93us/sample - loss: 0.0234
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0238
 Epoch 12/100
-1200/1200 [==============================] - 0s 91us/sample - loss: 0.0220
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0220
 Epoch 13/100
-1200/1200 [==============================] - 0s 84us/sample - loss: 0.0207
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0209
 Epoch 14/100
-1200/1200 [==============================] - 0s 80us/sample - loss: 0.0195
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0195
 Epoch 15/100
-1200/1200 [==============================] - 0s 76us/sample - loss: 0.0185
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0189
 Epoch 16/100
-1200/1200 [==============================] - 0s 78us/sample - loss: 0.0176
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0175
 Epoch 17/100
-1200/1200 [==============================] - 0s 76us/sample - loss: 0.0168
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0165
 Epoch 18/100
-1200/1200 [==============================] - 0s 82us/sample - loss: 0.0160
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0159
 Epoch 19/100
-1200/1200 [==============================] - 0s 85us/sample - loss: 0.0152
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0152
 Epoch 20/100
-1200/1200 [==============================] - 0s 93us/sample - loss: 0.0145
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0144
 Epoch 21/100
-1200/1200 [==============================] - 0s 86us/sample - loss: 0.0139
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0139
 Epoch 22/100
-1200/1200 [==============================] - 0s 93us/sample - loss: 0.0134
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0131
 Epoch 23/100
-1200/1200 [==============================] - 0s 92us/sample - loss: 0.0128
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0128
 Epoch 24/100
-1200/1200 [==============================] - 0s 97us/sample - loss: 0.0123
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0126
 Epoch 25/100
-1200/1200 [==============================] - 0s 101us/sample - loss: 0.0119
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0118
 Epoch 26/100
-1200/1200 [==============================] - 0s 88us/sample - loss: 0.0114
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0115
 Epoch 27/100
-1200/1200 [==============================] - 0s 88us/sample - loss: 0.0110
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0110
 Epoch 28/100
-1200/1200 [==============================] - 0s 80us/sample - loss: 0.0107
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0106
 Epoch 29/100
-1200/1200 [==============================] - 0s 94us/sample - loss: 0.0103
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0104
 Epoch 30/100
-1200/1200 [==============================] - 0s 92us/sample - loss: 0.0100
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0101
 Epoch 31/100
-1200/1200 [==============================] - 0s 98us/sample - loss: 0.0097
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0096
 Epoch 32/100
-1200/1200 [==============================] - 0s 102us/sample - loss: 0.0094
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0094
 Epoch 33/100
-1200/1200 [==============================] - 0s 96us/sample - loss: 0.0091
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0093
 Epoch 34/100
-1200/1200 [==============================] - 0s 81us/sample - loss: 0.0089
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0090
 Epoch 35/100
-1200/1200 [==============================] - 0s 77us/sample - loss: 0.0086
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0086
 Epoch 36/100
-1200/1200 [==============================] - 0s 77us/sample - loss: 0.0084
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0087
 Epoch 37/100
-1200/1200 [==============================] - 0s 77us/sample - loss: 0.0082
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0082
 Epoch 38/100
-1200/1200 [==============================] - 0s 85us/sample - loss: 0.0080
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0082
 Epoch 39/100
-1200/1200 [==============================] - 0s 80us/sample - loss: 0.0078
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0079
 Epoch 40/100
-1200/1200 [==============================] - 0s 92us/sample - loss: 0.0077
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0079
 Epoch 41/100
-1200/1200 [==============================] - 0s 82us/sample - loss: 0.0075
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0076
 Epoch 42/100
-1200/1200 [==============================] - 0s 62us/sample - loss: 0.0073
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step - loss: 0.0074
 Epoch 43/100
-1200/1200 [==============================] - 0s 60us/sample - loss: 0.0072
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0071
 Epoch 44/100
-1200/1200 [==============================] - 0s 57us/sample - loss: 0.0070
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0073
 Epoch 45/100
-1200/1200 [==============================] - 0s 56us/sample - loss: 0.0069
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0070
 Epoch 46/100
-1200/1200 [==============================] - 0s 56us/sample - loss: 0.0068
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step - loss: 0.0069
 Epoch 47/100
-1200/1200 [==============================] - 0s 61us/sample - loss: 0.0067
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0067
 Epoch 48/100
-1200/1200 [==============================] - 0s 62us/sample - loss: 0.0066
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step - loss: 0.0066
 Epoch 49/100
-1200/1200 [==============================] - 0s 63us/sample - loss: 0.0065
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 2ms/step - loss: 0.0066
 Epoch 50/100
-1200/1200 [==============================] - 0s 61us/sample - loss: 0.0064
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0065
 Epoch 51/100
-1200/1200 [==============================] - 0s 74us/sample - loss: 0.0063
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0064
 Epoch 52/100
-1200/1200 [==============================] - 0s 71us/sample - loss: 0.0062
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0062
 Epoch 53/100
-1200/1200 [==============================] - 0s 62us/sample - loss: 0.0061
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0062
 Epoch 54/100
-1200/1200 [==============================] - 0s 62us/sample - loss: 0.0060
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0061
 Epoch 55/100
-1200/1200 [==============================] - 0s 63us/sample - loss: 0.0059
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0060
 Epoch 56/100
-1200/1200 [==============================] - 0s 67us/sample - loss: 0.0059
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0058
 Epoch 57/100
-1200/1200 [==============================] - 0s 64us/sample - loss: 0.0058
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0059
 Epoch 58/100
-1200/1200 [==============================] - 0s 69us/sample - loss: 0.0057
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0056
 Epoch 59/100
-1200/1200 [==============================] - 0s 78us/sample - loss: 0.0057
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0057
 Epoch 60/100
-1200/1200 [==============================] - 0s 66us/sample - loss: 0.0056
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0057
 Epoch 61/100
-1200/1200 [==============================] - 0s 69us/sample - loss: 0.0055
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0054
 Epoch 62/100
-1200/1200 [==============================] - 0s 66us/sample - loss: 0.0055
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0056
 Epoch 63/100
-1200/1200 [==============================] - 0s 63us/sample - loss: 0.0054
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0055
 Epoch 64/100
-1200/1200 [==============================] - 0s 68us/sample - loss: 0.0054
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0054
 Epoch 65/100
-1200/1200 [==============================] - 0s 88us/sample - loss: 0.0053
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0054
 Epoch 66/100
-1200/1200 [==============================] - 0s 70us/sample - loss: 0.0053
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0053
 Epoch 67/100
-1200/1200 [==============================] - 0s 58us/sample - loss: 0.0052
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0052
 Epoch 68/100
-1200/1200 [==============================] - 0s 57us/sample - loss: 0.0051
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0053
 Epoch 69/100
-1200/1200 [==============================] - 0s 57us/sample - loss: 0.0051
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0051
 Epoch 70/100
-1200/1200 [==============================] - 0s 56us/sample - loss: 0.0051
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0050
 Epoch 71/100
-1200/1200 [==============================] - 0s 54us/sample - loss: 0.0051
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0051
 Epoch 72/100
-1200/1200 [==============================] - 0s 67us/sample - loss: 0.0050
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0050
 Epoch 73/100
-1200/1200 [==============================] - 0s 57us/sample - loss: 0.0050
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0050
 Epoch 74/100
-1200/1200 [==============================] - 0s 59us/sample - loss: 0.0049
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0050
 Epoch 75/100
-1200/1200 [==============================] - 0s 59us/sample - loss: 0.0049
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0050
 Epoch 76/100
-1200/1200 [==============================] - 0s 58us/sample - loss: 0.0049
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0048
 Epoch 77/100
-1200/1200 [==============================] - 0s 55us/sample - loss: 0.0048
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0049
 Epoch 78/100
-1200/1200 [==============================] - 0s 57us/sample - loss: 0.0048
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0048
 Epoch 79/100
-1200/1200 [==============================] - 0s 59us/sample - loss: 0.0048
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0049
 Epoch 80/100
-1200/1200 [==============================] - 0s 57us/sample - loss: 0.0047
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0047
 Epoch 81/100
-1200/1200 [==============================] - 0s 54us/sample - loss: 0.0047
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0047
 Epoch 82/100
-1200/1200 [==============================] - 0s 55us/sample - loss: 0.0047
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0047
 Epoch 83/100
-1200/1200 [==============================] - 0s 56us/sample - loss: 0.0046
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0046
 Epoch 84/100
-1200/1200 [==============================] - 0s 55us/sample - loss: 0.0046
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0045
 Epoch 85/100
-1200/1200 [==============================] - 0s 57us/sample - loss: 0.0046
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0047
 Epoch 86/100
-1200/1200 [==============================] - 0s 56us/sample - loss: 0.0046
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0046
 Epoch 87/100
-1200/1200 [==============================] - 0s 62us/sample - loss: 0.0045
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0046
 Epoch 88/100
-1200/1200 [==============================] - 0s 63us/sample - loss: 0.0045
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0045
 Epoch 89/100
-1200/1200 [==============================] - 0s 61us/sample - loss: 0.0045
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0045
 Epoch 90/100
-1200/1200 [==============================] - 0s 59us/sample - loss: 0.0045
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step - loss: 0.0044
 Epoch 91/100
-1200/1200 [==============================] - 0s 54us/sample - loss: 0.0044
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0044
 Epoch 92/100
-1200/1200 [==============================] - 0s 61us/sample - loss: 0.0044
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step - loss: 0.0044
 Epoch 93/100
-1200/1200 [==============================] - 0s 57us/sample - loss: 0.0044
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 94/100
-1200/1200 [==============================] - 0s 54us/sample - loss: 0.0044
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step - loss: 0.0044
+Epoch 94/100
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step - loss: 0.0043
 Epoch 95/100
-1200/1200 [==============================] - 0s 62us/sample - loss: 0.0044
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 3ms/step - loss: 0.0044
 Epoch 96/100
-1200/1200 [==============================] - 0s 65us/sample - loss: 0.0043
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0043
 Epoch 97/100
-1200/1200 [==============================] - 0s 63us/sample - loss: 0.0043
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0043
 Epoch 98/100
-1200/1200 [==============================] - 0s 60us/sample - loss: 0.0043
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0043
 Epoch 99/100
-1200/1200 [==============================] - 0s 58us/sample - loss: 0.0043
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0042
 Epoch 100/100
-1200/1200 [==============================] - 0s 59us/sample - loss: 0.0043
+<span class=" -Color -Color-Bold">75/75</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0042
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7fdef872e710&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.src.callbacks.history.History at 0x785c0b33a090&gt;
 </pre></div>
 </div>
 </div>
@@ -838,20 +829,26 @@ Epoch 100/100
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.12/dist-packages/keras/src/models/functional.py:241: UserWarning: The structure of `inputs` doesn&#39;t match the expected structure.
+Expected: [&#39;input&#39;]
+Received: inputs=Tensor(shape=(1200, 784))
+  warnings.warn(msg)
+</pre></div>
+</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(1200, 784), dtype=float32, numpy=
-array([[3.6984453e-08, 1.9736575e-10, 2.5541331e-09, ..., 3.9784051e-10,
-        2.2014549e-10, 1.1092759e-09],
-       [2.4385532e-08, 5.4472249e-08, 1.0746028e-07, ..., 3.1418881e-07,
-        3.5111746e-08, 4.8708703e-08],
-       [6.5164496e-09, 9.6711994e-10, 2.4460364e-10, ..., 3.5345697e-09,
-        1.6141123e-10, 6.1249552e-09],
+array([[3.50094751e-07, 1.94241650e-07, 8.59628955e-08, ...,
+        2.07136850e-07, 8.43215844e-07, 5.10688835e-07],
+       [3.22270943e-09, 3.45581626e-08, 5.86148352e-10, ...,
+        1.50969122e-08, 4.10425693e-09, 1.37500294e-07],
+       [1.91462179e-09, 1.35006601e-08, 2.12271578e-09, ...,
+        7.72400988e-09, 3.95893807e-09, 1.30482780e-08],
        ...,
-       [7.9344659e-07, 8.7452588e-07, 8.2074229e-07, ..., 2.4234178e-06,
-        9.3258961e-07, 5.6553978e-07],
-       [9.9626490e-08, 6.0966705e-08, 8.2821021e-09, ..., 1.4567654e-08,
-        1.0074373e-08, 6.9440011e-07],
-       [5.3350539e-07, 3.4182764e-07, 1.0137308e-06, ..., 3.1523388e-07,
-        5.7831215e-08, 2.0375307e-07]], dtype=float32)&gt;
+       [7.66471749e-06, 9.76466936e-07, 4.00476938e-06, ...,
+        1.87887999e-05, 8.49053686e-06, 1.12413509e-04],
+       [1.16530943e-11, 8.82327024e-12, 2.29403063e-12, ...,
+        7.90878613e-11, 2.99862457e-12, 1.16109684e-10],
+       [2.22401306e-10, 7.32814753e-10, 7.91984620e-12, ...,
+        1.50693361e-10, 9.12313627e-11, 4.35173043e-11]], dtype=float32)&gt;
 </pre></div>
 </div>
 </div>
@@ -864,19 +861,19 @@ array([[3.6984453e-08, 1.9736575e-10, 2.5541331e-09, ..., 3.9784051e-10,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[3.6984453e-08, 1.9736575e-10, 2.5541331e-09, ..., 3.9784051e-10,
-        2.2014549e-10, 1.1092759e-09],
-       [2.4385532e-08, 5.4472249e-08, 1.0746028e-07, ..., 3.1418881e-07,
-        3.5111746e-08, 4.8708703e-08],
-       [6.5164496e-09, 9.6711994e-10, 2.4460364e-10, ..., 3.5345697e-09,
-        1.6141123e-10, 6.1249552e-09],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[3.50094751e-07, 1.94241650e-07, 8.59628955e-08, ...,
+        2.07136850e-07, 8.43215844e-07, 5.10688835e-07],
+       [3.22270943e-09, 3.45581626e-08, 5.86148352e-10, ...,
+        1.50969122e-08, 4.10425693e-09, 1.37500294e-07],
+       [1.91462179e-09, 1.35006601e-08, 2.12271578e-09, ...,
+        7.72400988e-09, 3.95893807e-09, 1.30482780e-08],
        ...,
-       [7.9344659e-07, 8.7452588e-07, 8.2074229e-07, ..., 2.4234178e-06,
-        9.3258961e-07, 5.6553978e-07],
-       [9.9626490e-08, 6.0966705e-08, 8.2821021e-09, ..., 1.4567654e-08,
-        1.0074373e-08, 6.9440011e-07],
-       [5.3350539e-07, 3.4182764e-07, 1.0137308e-06, ..., 3.1523388e-07,
-        5.7831215e-08, 2.0375307e-07]], dtype=float32)
+       [7.66471749e-06, 9.76466936e-07, 4.00476938e-06, ...,
+        1.87887999e-05, 8.49053686e-06, 1.12413509e-04],
+       [1.16530943e-11, 8.82327024e-12, 2.29403063e-12, ...,
+        7.90878613e-11, 2.99862457e-12, 1.16109684e-10],
+       [2.22401306e-10, 7.32814753e-10, 7.91984620e-12, ...,
+        1.50693361e-10, 9.12313627e-11, 4.35173043e-11]], dtype=float32)
 </pre></div>
 </div>
 </div>
@@ -889,19 +886,22 @@ array([[3.6984453e-08, 1.9736575e-10, 2.5541331e-09, ..., 3.9784051e-10,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[8.51090044e-06, 9.57351585e-06, 1.13940905e-05, ...,
-        3.42914391e-05, 3.14637837e-05, 2.88015835e-05],
-       [1.86773832e-07, 1.27578161e-07, 1.07958464e-07, ...,
-        1.01204898e-06, 2.39109053e-08, 8.60198028e-08],
-       [3.13102419e-07, 1.51896174e-07, 9.71393774e-07, ...,
-        2.90563321e-07, 1.50165334e-07, 1.02712795e-06],
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[3.50094410e-07, 1.94241466e-07, 8.59632223e-08, ...,
+        2.07136850e-07, 8.43216640e-07, 5.10688835e-07],
+       [3.22270943e-09, 3.45580951e-08, 5.86149518e-10, ...,
+        1.50968820e-08, 4.10426493e-09, 1.37500166e-07],
+       [1.91462179e-09, 1.35006344e-08, 2.12271578e-09, ...,
+        7.72399567e-09, 3.95893052e-09, 1.30483029e-08],
        ...,
-       [5.47624950e-06, 1.08655540e-05, 3.28201281e-06, ...,
-        1.65009769e-05, 3.28613760e-06, 6.86891599e-06],
-       [1.78545015e-05, 3.65451124e-05, 1.01834385e-05, ...,
-        3.14925092e-05, 9.99619442e-06, 3.84393861e-05],
-       [1.01194764e-05, 1.31769011e-05, 3.37959609e-05, ...,
-        2.97471677e-04, 3.17740560e-05, 5.00498973e-05]], dtype=float32)
+       [7.66471749e-06, 9.76468868e-07, 4.00476574e-06, ...,
+        1.87887999e-05, 8.49053686e-06, 1.12413400e-04],
+       [1.16530943e-11, 8.82328672e-12, 2.29403497e-12, ...,
+        7.90881596e-11, 2.99862457e-12, 1.16109906e-10],
+       [2.22401306e-10, 7.32816141e-10, 7.91987569e-12, ...,
+        1.50693361e-10, 9.12310158e-11, 4.35172211e-11]], dtype=float32)
 </pre></div>
 </div>
 </div>
@@ -910,6 +910,11 @@ array([[3.6984453e-08, 1.9736575e-10, 2.5541331e-09, ..., 3.9784051e-10,
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
 <span class="n">X_pred</span>   <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_sample</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">1/1</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 51ms/step
 </pre></div>
 </div>
 </div>
@@ -928,7 +933,7 @@ array([[3.6984453e-08, 1.9736575e-10, 2.5541331e-09, ..., 3.9784051e-10,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c44ef6ebbcd6eba6de25458eb768239a31f9db05ff50cbe61b1d0e41667fd695.png" src="../_images/c44ef6ebbcd6eba6de25458eb768239a31f9db05ff50cbe61b1d0e41667fd695.png" />
+<img alt="../_images/295c4cda7725fce368ae139571d5313a8a199b082290a2b0bfd541ca4d9b945a.png" src="../_images/295c4cda7725fce368ae139571d5313a8a199b082290a2b0bfd541ca4d9b945a.png" />
 </div>
 </div>
 </section>
@@ -937,57 +942,35 @@ array([[3.6984453e-08, 1.9736575e-10, 2.5541331e-09, ..., 3.9784051e-10,
 <p>We can also get the output of any layer, including the final layer</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">layer_input</span>   <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_layer</span><span class="p">(</span><span class="s2">&quot;input&quot;</span><span class="p">)</span>
-<span class="n">layer_encoder</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_layer</span><span class="p">(</span><span class="s2">&quot;encoder&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">layer_encoder</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_layer</span><span class="p">(</span><span class="s2">&quot;encoder&quot;</span><span class="p">)</span>
 <span class="n">layer_decoder</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_layer</span><span class="p">(</span><span class="s2">&quot;decoder&quot;</span><span class="p">)</span>
 
-<span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">([</span><span class="n">layer_input</span><span class="o">.</span><span class="n">input</span><span class="p">],</span> <span class="p">[</span><span class="n">layer_decoder</span><span class="o">.</span><span class="n">output</span><span class="p">])</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">input</span><span class="p">,</span> <span class="p">[</span><span class="n">layer_decoder</span><span class="o">.</span><span class="n">output</span><span class="p">])</span>
 <span class="n">m</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.12/dist-packages/keras/src/models/functional.py:241: UserWarning: The structure of `inputs` doesn&#39;t match the expected structure.
+Expected: [&#39;input&#39;]
+Received: inputs=Tensor(shape=(1200, 784))
+  warnings.warn(msg)
+</pre></div>
+</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(1200, 784), dtype=float32, numpy=
-array([[8.51090044e-06, 9.57351585e-06, 1.13941014e-05, ...,
-        3.42914718e-05, 3.14638128e-05, 2.88015835e-05],
-       [1.86773661e-07, 1.27578161e-07, 1.07958464e-07, ...,
-        1.01204989e-06, 2.39109053e-08, 8.60198028e-08],
-       [3.13102760e-07, 1.51896316e-07, 9.71393774e-07, ...,
-        2.90563577e-07, 1.50165334e-07, 1.02712988e-06],
+array([[3.50094751e-07, 1.94241650e-07, 8.59628955e-08, ...,
+        2.07136850e-07, 8.43215844e-07, 5.10688835e-07],
+       [3.22270943e-09, 3.45581626e-08, 5.86148352e-10, ...,
+        1.50969122e-08, 4.10425693e-09, 1.37500294e-07],
+       [1.91462179e-09, 1.35006601e-08, 2.12271578e-09, ...,
+        7.72400988e-09, 3.95893807e-09, 1.30482780e-08],
        ...,
-       [5.47624950e-06, 1.08655540e-05, 3.28200645e-06, ...,
-        1.65009933e-05, 3.28613760e-06, 6.86891599e-06],
-       [1.78545015e-05, 3.65451488e-05, 1.01834385e-05, ...,
-        3.14925092e-05, 9.99619442e-06, 3.84393861e-05],
-       [1.01194764e-05, 1.31769148e-05, 3.37959900e-05, ...,
-        2.97471968e-04, 3.17740851e-05, 5.00498973e-05]], dtype=float32)&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<p>of the encoder, shapes must match</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">me</span> <span class="o">=</span> <span class="n">Model</span><span class="p">([</span><span class="n">layer_input</span><span class="o">.</span><span class="n">input</span><span class="p">],</span> <span class="p">[</span><span class="n">layer_encoder</span><span class="o">.</span><span class="n">output</span><span class="p">])</span>
-<span class="n">me</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(1200, 50), dtype=float32, numpy=
-array([[ 1.4733481 ,  5.6071835 ,  0.4546271 , ...,  6.584404  ,
-         0.        ,  3.4143682 ],
-       [ 5.7947493 ,  6.376433  ,  0.        , ...,  1.1779828 ,
-         1.8339571 ,  2.2694755 ],
-       [ 1.7550068 ,  4.7390604 ,  0.64162546, ...,  8.171952  ,
-         4.2970653 ,  1.2317356 ],
-       ...,
-       [ 5.9646645 ,  6.6686645 ,  3.091914  , ...,  1.5258911 ,
-         2.0375972 ,  8.356914  ],
-       [ 3.3050153 ,  4.8892    ,  4.8872223 , ...,  2.1351342 ,
-         4.004214  ,  7.943392  ],
-       [ 5.2594194 ,  3.1832466 ,  1.4421158 , ...,  4.5179844 ,
-        12.360394  ,  3.8473024 ]], dtype=float32)&gt;
+       [7.66471749e-06, 9.76466936e-07, 4.00476938e-06, ...,
+        1.87887999e-05, 8.49053686e-06, 1.12413509e-04],
+       [1.16530943e-11, 8.82327024e-12, 2.29403063e-12, ...,
+        7.90878613e-11, 2.99862457e-12, 1.16109684e-10],
+       [2.22401306e-10, 7.32814753e-10, 7.91984620e-12, ...,
+        1.50693361e-10, 9.12313627e-11, 4.35173043e-11]], dtype=float32)&gt;
 </pre></div>
 </div>
 </div>
@@ -1005,10 +988,10 @@ array([[ 1.4733481 ,  5.6071835 ,  0.4546271 , ...,  6.584404  ,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>weights 0: (784, 50)  sum +1014.07
-weights 1: (50,)      sum +24.43
-weights 2: (50, 784)  sum -1458.86
-weights 3: (784,)     sum -181.90
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>weights 0: (784, 50)  sum +1032.37
+weights 1: (50,)      sum +21.02
+weights 2: (50, 784)  sum -1412.92
+weights 3: (784,)     sum -181.15
 </pre></div>
 </div>
 </div>
@@ -1023,8 +1006,8 @@ weights 3: (784,)     sum -181.90
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>layer 0 
-layer 1 (784, 50) sum +1014.07, (50,) sum +24.43
-layer 2 (50, 784) sum -1458.86, (784,) sum -181.90
+layer 1 (784, 50) sum +1032.37, (50,) sum +21.02
+layer 2 (50, 784) sum -1412.92, (784,) sum -181.15
 </pre></div>
 </div>
 </div>
@@ -1051,7 +1034,7 @@ layer 2 (50, 784) sum -1458.86, (784,) sum -181.90
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/75530028fd403a4d22eca3a219c318721854262314d9f2196e745d23a4c26bda.png" src="../_images/75530028fd403a4d22eca3a219c318721854262314d9f2196e745d23a4c26bda.png" />
+<img alt="../_images/8db625323874866e56e805955cd3f785e328ff2cb155a2092feae531ed1af879.png" src="../_images/8db625323874866e56e805955cd3f785e328ff2cb155a2092feae531ed1af879.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1061,7 +1044,7 @@ layer 2 (50, 784) sum -1458.86, (784,) sum -181.90
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/44419951dec9604bebda603a9a15db5c1423cd1d48e41ae8c1ae2cecbe9c06f8.png" src="../_images/44419951dec9604bebda603a9a15db5c1423cd1d48e41ae8c1ae2cecbe9c06f8.png" />
+<img alt="../_images/90c2ef956c03409f6d7265fc9366a020ffc95508ac43e29403a2c15df010f454.png" src="../_images/90c2ef956c03409f6d7265fc9366a020ffc95508ac43e29403a2c15df010f454.png" />
 </div>
 </div>
 </section>
@@ -1074,52 +1057,32 @@ layer 2 (50, 784) sum -1458.86, (784,) sum -181.90
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">layer_input</span>   <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_layer</span><span class="p">(</span><span class="s2">&quot;input&quot;</span><span class="p">)</span>
 <span class="n">layer_encoder</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_layer</span><span class="p">(</span><span class="s2">&quot;encoder&quot;</span><span class="p">)</span>
 
-<span class="n">me</span> <span class="o">=</span> <span class="n">Model</span><span class="p">([</span><span class="n">layer_input</span><span class="o">.</span><span class="n">input</span><span class="p">],</span> <span class="p">[</span><span class="n">layer_encoder</span><span class="o">.</span><span class="n">output</span><span class="p">])</span>
+<span class="n">me</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">input</span><span class="p">,</span> <span class="p">[</span><span class="n">layer_encoder</span><span class="o">.</span><span class="n">output</span><span class="p">])</span>
 <span class="n">me</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.12/dist-packages/keras/src/models/functional.py:241: UserWarning: The structure of `inputs` doesn&#39;t match the expected structure.
+Expected: [&#39;input&#39;]
+Received: inputs=Tensor(shape=(1200, 784))
+  warnings.warn(msg)
+</pre></div>
+</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(1200, 50), dtype=float32, numpy=
-array([[ 1.4733481 ,  5.6071835 ,  0.4546271 , ...,  6.584404  ,
-         0.        ,  3.4143682 ],
-       [ 5.7947493 ,  6.376433  ,  0.        , ...,  1.1779828 ,
-         1.8339571 ,  2.2694755 ],
-       [ 1.7550068 ,  4.7390604 ,  0.64162546, ...,  8.171952  ,
-         4.2970653 ,  1.2317356 ],
+array([[ 3.4944277 ,  9.547659  ,  8.758875  , ...,  0.        ,
+         6.6768923 ,  0.        ],
+       [ 3.0390263 ,  8.825412  ,  0.        , ...,  4.5940933 ,
+         1.3358723 , 10.0863285 ],
+       [11.384081  ,  7.3678827 ,  7.572358  , ...,  4.339612  ,
+         2.3894663 ,  7.526536  ],
        ...,
-       [ 5.9646645 ,  6.6686645 ,  3.091914  , ...,  1.5258911 ,
-         2.0375972 ,  8.356914  ],
-       [ 3.3050153 ,  4.8892    ,  4.8872223 , ...,  2.1351342 ,
-         4.004214  ,  7.943392  ],
-       [ 5.2594194 ,  3.1832466 ,  1.4421158 , ...,  4.5179844 ,
-        12.360394  ,  3.8473024 ]], dtype=float32)&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras</span><span class="w"> </span><span class="kn">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span>
-<span class="n">ke</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">layer_encoder</span><span class="o">.</span><span class="n">input</span><span class="p">,</span> <span class="n">layer_encoder</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
-<span class="n">ke</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.4733481 ,  5.6071835 ,  0.4546271 , ...,  6.584404  ,
-         0.        ,  3.4143682 ],
-       [ 5.7947493 ,  6.376433  ,  0.        , ...,  1.1779828 ,
-         1.8339571 ,  2.2694755 ],
-       [ 1.7550068 ,  4.7390604 ,  0.64162546, ...,  8.171952  ,
-         4.2970653 ,  1.2317356 ],
-       ...,
-       [ 5.9646645 ,  6.6686645 ,  3.091914  , ...,  1.5258911 ,
-         2.0375972 ,  8.356914  ],
-       [ 3.3050153 ,  4.8892    ,  4.8872223 , ...,  2.1351342 ,
-         4.004214  ,  7.943392  ],
-       [ 5.2594194 ,  3.1832466 ,  1.4421158 , ...,  4.5179844 ,
-        12.360394  ,  3.8473024 ]], dtype=float32)
+       [ 7.4959702 ,  6.932205  ,  0.        , ...,  1.8435824 ,
+         1.9294204 ,  4.0417094 ],
+       [ 6.086721  ,  6.47563   ,  0.85536695, ...,  8.570728  ,
+         9.548782  , 13.262166  ],
+       [ 1.0290082 , 12.900038  ,  0.        , ...,  2.6830041 ,
+         2.5218644 ,  7.783466  ]], dtype=float32)&gt;
 </pre></div>
 </div>
 </div>
@@ -1138,16 +1101,16 @@ array([[ 1.4733481 ,  5.6071835 ,  0.4546271 , ...,  6.584404  ,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 7.409996 ,  2.951494 ,  6.331457 ,  8.699426 ,  0.       ,
-         3.6293492, 14.668295 ,  2.578187 ,  3.3282623,  1.3088968,
-         5.8035784,  7.909799 ,  1.5063348,  5.7516637, 10.001439 ,
-         2.7947378,  9.866833 ,  4.3022175,  3.6016984,  8.251985 ,
-         5.2355657,  3.9983935,  0.       ,  5.183774 ,  7.8268447,
-         2.6671238,  6.396924 ,  0.       ,  2.674741 ,  7.8847423,
-         4.667186 ,  7.176488 ,  1.8782392,  3.4621015,  6.589601 ,
-         0.       ,  9.805147 ,  9.412526 ,  4.40743  ,  2.5635386,
-         7.575318 ,  9.788577 , 11.278124 ,  7.1031804,  3.389275 ,
-         3.0128388,  8.713953 ,  4.1965656, 13.539381 ,  3.0892658]],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[14.162563  ,  8.111314  ,  2.5342975 ,  5.1879454 ,  4.3676615 ,
+         0.        ,  9.433677  ,  1.9051679 ,  4.3265834 ,  8.516776  ,
+         3.7898495 ,  1.9780695 ,  0.        , 14.168376  , 11.846095  ,
+         0.        ,  1.249715  ,  7.210482  , 12.043379  , 12.735523  ,
+        10.786911  ,  3.7369032 , 13.22298   , 10.142835  , 16.038643  ,
+        10.149177  , 12.427222  ,  9.47407   , 10.0125475 ,  9.781037  ,
+         4.5014334 ,  8.754209  , 12.881138  ,  8.685972  , 19.292715  ,
+        12.003199  ,  0.        ,  5.1719694 ,  3.366579  ,  9.839557  ,
+         7.8036885 ,  5.181303  ,  9.068628  ,  0.30352163,  5.2075872 ,
+         8.206926  ,  9.621372  , 20.715343  ,  1.1775858 ,  5.3873854 ]],
       dtype=float32)
 </pre></div>
 </div>
@@ -1160,7 +1123,7 @@ array([[ 1.4733481 ,  5.6071835 ,  0.4546271 , ...,  6.584404  ,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0478754b5814ca38bc58812e07212e9558220d09e19b4e6236acdee8c2ba4daf.png" src="../_images/0478754b5814ca38bc58812e07212e9558220d09e19b4e6236acdee8c2ba4daf.png" />
+<img alt="../_images/73bab61379e1baf4ef1303a89c12fbd045cc5ac565abd4d798db59ec126efbce.png" src="../_images/73bab61379e1baf4ef1303a89c12fbd045cc5ac565abd4d798db59ec126efbce.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1175,7 +1138,7 @@ array([[ 1.4733481 ,  5.6071835 ,  0.4546271 , ...,  6.584404  ,
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;activation (ReLU)&#39;)
 </pre></div>
 </div>
-<img alt="../_images/057fbff4e32f065df705e49e341a87c8bd37eec96938258f271a838f99b0333a.png" src="../_images/057fbff4e32f065df705e49e341a87c8bd37eec96938258f271a838f99b0333a.png" />
+<img alt="../_images/3e1dbfb3fa42454fc6b76f9a810fd6270a822f3b866abf153686891c0092bc37.png" src="../_images/3e1dbfb3fa42454fc6b76f9a810fd6270a822f3b866abf153686891c0092bc37.png" />
 </div>
 </div>
 <section id="encoder-activations">
@@ -1195,7 +1158,7 @@ array([[ 1.4733481 ,  5.6071835 ,  0.4546271 , ...,  6.584404  ,
 <span class="n">X_sample_encoded</span> <span class="o">=</span> <span class="n">me</span><span class="p">([</span><span class="n">X_sample</span><span class="p">])</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;encoded data size&quot;</span><span class="p">,</span> <span class="n">X_sample_encoded</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X_sample_encoded</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys_r</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;bottom&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X_sample_encoded</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys_r</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;component&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;sample class number&quot;</span><span class="p">)</span>
@@ -1206,10 +1169,10 @@ array([[ 1.4733481 ,  5.6071835 ,  0.4546271 , ...,  6.584404  ,
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>encoded data size (200, 50)
-mean activation at encoder 6.036
+mean activation at encoder 5.951
 </pre></div>
 </div>
-<img alt="../_images/a8e405a87edab560831ebe1ef5252488f0de34a9af5ee9a8db4e5a4b113bff25.png" src="../_images/a8e405a87edab560831ebe1ef5252488f0de34a9af5ee9a8db4e5a4b113bff25.png" />
+<img alt="../_images/37ea41b1d457c5b7b6ec53cb7329603d277f2957f3562daece086cd0ee99a3ce.png" src="../_images/37ea41b1d457c5b7b6ec53cb7329603d277f2957f3562daece086cd0ee99a3ce.png" />
 </div>
 </div>
 <p>let’s get the average activation of the neurons in the latent space for each class.</p>
@@ -1228,7 +1191,13 @@ mean activation at encoder 6.036
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8d705e088eaf18ac72c44a6ae008accfa7794772d36d3291c1f10d4196d07b06.png" src="../_images/8d705e088eaf18ac72c44a6ae008accfa7794772d36d3291c1f10d4196d07b06.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.12/dist-packages/keras/src/models/functional.py:241: UserWarning: The structure of `inputs` doesn&#39;t match the expected structure.
+Expected: [&#39;input&#39;]
+Received: inputs=Tensor(shape=(300, 784))
+  warnings.warn(msg)
+</pre></div>
+</div>
+<img alt="../_images/b8161bc00f40aca3a4612352fe29044441230abec7c65c2219896c9a3f6b79c0.png" src="../_images/b8161bc00f40aca3a4612352fe29044441230abec7c65c2219896c9a3f6b79c0.png" />
 </div>
 </div>
 </section>
@@ -1241,7 +1210,7 @@ mean activation at encoder 6.036
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/31cab5c1b70752921c7a873183358a89c7ab5c84c293faaa043865c38c786396.png" src="../_images/31cab5c1b70752921c7a873183358a89c7ab5c84c293faaa043865c38c786396.png" />
+<img alt="../_images/d07f3e9cb296066e957cbfdd6813de55b079deb2e57452e3024a784014dbecd1.png" src="../_images/d07f3e9cb296066e957cbfdd6813de55b079deb2e57452e3024a784014dbecd1.png" />
 </div>
 </div>
 <p><strong>From this we can inspect the neuron activations in our dataset.</strong></p>
@@ -1253,15 +1222,23 @@ mean activation at encoder 6.036
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([6.54092  , 6.890245 , 5.0332685, 4.638923 , 4.586272 , 4.872563 ,
-       4.452017 , 6.6687894, 5.845137 , 9.670084 , 5.5277524, 3.8713033,
-       6.623263 , 6.4029975, 5.745097 , 6.755461 , 6.059909 , 5.918733 ,
-       4.8369656, 3.787856 , 5.030886 , 4.2290273, 7.1920123, 6.9971023,
-       5.206792 , 4.4348135, 4.7578964, 7.8614182, 6.2570157, 8.095148 ,
-       5.5375223, 5.2380457, 5.7093854, 5.4041505, 3.3272092, 4.686344 ,
-       6.4694433, 4.4688597, 6.687395 , 7.0459824, 6.1812396, 9.49828  ,
-       8.421416 , 6.230216 , 4.630983 , 4.014663 , 6.3445034, 5.1579123,
-       7.8651147, 5.29035  ], dtype=float32)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.12/dist-packages/keras/src/models/functional.py:241: UserWarning: The structure of `inputs` doesn&#39;t match the expected structure.
+Expected: [&#39;input&#39;]
+Received: inputs=Tensor(shape=(1200, 784))
+  warnings.warn(msg)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 6.1261086,  6.186819 ,  3.7819588,  6.364702 ,  5.2674127,
+        3.6269636,  5.2754307,  6.40878  ,  6.16172  ,  5.639795 ,
+        5.6534214,  5.044055 ,  5.127783 ,  6.9653506,  4.9933968,
+        4.557195 ,  7.2931943,  5.663545 ,  6.3618054, 10.097791 ,
+        6.8231506,  6.439757 ,  5.651111 ,  5.6049213,  6.286908 ,
+        5.4456015,  5.520226 ,  5.251183 ,  6.64647  ,  8.671206 ,
+        3.8040316,  5.932034 ,  8.858655 ,  5.059597 ,  6.378648 ,
+        5.7320347,  5.328809 ,  4.665625 ,  4.211729 ,  5.445572 ,
+        5.5631733,  4.5348973,  7.988807 ,  7.0627093,  4.071947 ,
+        7.27021  ,  6.3530846,  6.62036  ,  4.950751 ,  6.0590334],
+      dtype=float32)
 </pre></div>
 </div>
 </div>
@@ -1282,20 +1259,20 @@ mean activation at encoder 6.036
 <p>and implement it by hand, instead of using the prebuilt implementation</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras</span><span class="w"> </span><span class="kn">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.losses</span><span class="w"> </span><span class="kn">import</span> <span class="n">mse</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MSELoss</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">Loss</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span> <span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
 
 <span class="k">def</span><span class="w"> </span><span class="nf">get_model_U</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">code_size</span><span class="p">):</span>
-    <span class="n">inputs</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;input&quot;</span><span class="p">)</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;input&quot;</span><span class="p">)</span>
     <span class="n">encoder</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">code_size</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;encoder&quot;</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
     <span class="n">outputs</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;output&quot;</span><span class="p">)(</span><span class="n">encoder</span><span class="p">)</span>
 
-    <span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span> <span class="p">(</span><span class="n">inputs</span><span class="o">-</span><span class="n">outputs</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">([</span><span class="n">inputs</span><span class="p">],</span> <span class="p">[</span><span class="n">outputs</span><span class="p">])</span>    
-    <span class="n">model</span><span class="o">.</span><span class="n">add_loss</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
-    
-    <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">([</span><span class="n">inputs</span><span class="p">],</span> <span class="p">[</span><span class="n">outputs</span><span class="p">])</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="n">MSELoss</span><span class="p">())</span>
     <span class="k">return</span> <span class="n">model</span>
 </pre></div>
 </div>
@@ -1309,250 +1286,237 @@ mean activation at encoder 6.036
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>W1221 08:07:36.892163 4737162752 training_utils.py:1444] Output output missing from loss dictionary. We assume this was done on purpose. The fit and evaluate APIs will not be expecting any data to be passed to output.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;model_32&quot;
-__________________________________________________________________________________________________
-Layer (type)                    Output Shape         Param #     Connected to                     
-==================================================================================================
-input (InputLayer)              [(None, 784)]        0                                            
-__________________________________________________________________________________________________
-encoder (Dense)                 (None, 40)           31400       input[0][0]                      
-__________________________________________________________________________________________________
-output (Dense)                  (None, 784)          32144       encoder[0][0]                    
-__________________________________________________________________________________________________
-tf_op_layer_sub_2 (TensorFlowOp [(None, 784)]        0           input[0][0]                      
-                                                                 output[0][0]                     
-__________________________________________________________________________________________________
-tf_op_layer_pow_2 (TensorFlowOp [(None, 784)]        0           tf_op_layer_sub_2[0][0]          
-__________________________________________________________________________________________________
-tf_op_layer_Mean_12 (TensorFlow [()]                 0           tf_op_layer_pow_2[0][0]          
-__________________________________________________________________________________________________
-add_loss_2 (AddLoss)            ()                   0           tf_op_layer_Mean_12[0][0]        
-==================================================================================================
-Total params: 63,544
-Trainable params: 63,544
-Non-trainable params: 0
-__________________________________________________________________________________________________
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "functional_26"</span>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)                    </span>┃<span style="font-weight: bold"> Output Shape           </span>┃<span style="font-weight: bold">       Param # </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ input (<span style="color: #0087ff; text-decoration-color: #0087ff">InputLayer</span>)              │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">784</span>)            │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ encoder (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                 │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">40</span>)             │        <span style="color: #00af00; text-decoration-color: #00af00">31,400</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ output (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                  │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">784</span>)            │        <span style="color: #00af00; text-decoration-color: #00af00">32,144</span> │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">63,544</span> (248.22 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">63,544</span> (248.22 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">0</span> (0.00 B)
+</pre>
+</div></div>
 </div>
 <p>observe <code class="docutils literal notranslate"><span class="pre">.fit</span></code> call is now unsupervised (hence, the warning above)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train on 1200 samples
-Epoch 1/100
-1200/1200 [==============================] - 0s 190us/sample - loss: 0.1415
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/100
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 3ms/step - loss: 0.1880
 Epoch 2/100
-1200/1200 [==============================] - 0s 49us/sample - loss: 0.0702
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0728
 Epoch 3/100
-1200/1200 [==============================] - 0s 58us/sample - loss: 0.0635
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0648
 Epoch 4/100
-1200/1200 [==============================] - 0s 55us/sample - loss: 0.0572
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0584
 Epoch 5/100
-1200/1200 [==============================] - 0s 50us/sample - loss: 0.0519
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0523
 Epoch 6/100
-1200/1200 [==============================] - 0s 51us/sample - loss: 0.0475
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0472
 Epoch 7/100
-1200/1200 [==============================] - 0s 52us/sample - loss: 0.0442
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0431
 Epoch 8/100
-1200/1200 [==============================] - 0s 53us/sample - loss: 0.0418
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0409
 Epoch 9/100
-1200/1200 [==============================] - 0s 51us/sample - loss: 0.0398
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0390
 Epoch 10/100
-1200/1200 [==============================] - 0s 52us/sample - loss: 0.0381
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0364
 Epoch 11/100
-1200/1200 [==============================] - 0s 51us/sample - loss: 0.0364
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0350
 Epoch 12/100
-1200/1200 [==============================] - 0s 48us/sample - loss: 0.0348
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0333
 Epoch 13/100
-1200/1200 [==============================] - 0s 53us/sample - loss: 0.0334
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0320
 Epoch 14/100
-1200/1200 [==============================] - 0s 55us/sample - loss: 0.0321
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0309
 Epoch 15/100
-1200/1200 [==============================] - 0s 54us/sample - loss: 0.0309
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0296
 Epoch 16/100
-1200/1200 [==============================] - 0s 49us/sample - loss: 0.0297
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0285
 Epoch 17/100
-1200/1200 [==============================] - 0s 52us/sample - loss: 0.0285
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0267
 Epoch 18/100
-1200/1200 [==============================] - 0s 51us/sample - loss: 0.0275
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0264
 Epoch 19/100
-1200/1200 [==============================] - 0s 53us/sample - loss: 0.0267
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0253
 Epoch 20/100
-1200/1200 [==============================] - 0s 50us/sample - loss: 0.0257
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0246
 Epoch 21/100
-1200/1200 [==============================] - 0s 51us/sample - loss: 0.0250
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0238
 Epoch 22/100
-1200/1200 [==============================] - 0s 52us/sample - loss: 0.0242
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0224
 Epoch 23/100
-1200/1200 [==============================] - 0s 55us/sample - loss: 0.0234
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0222
 Epoch 24/100
-1200/1200 [==============================] - 0s 54us/sample - loss: 0.0227
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0215
 Epoch 25/100
-1200/1200 [==============================] - 0s 55us/sample - loss: 0.0221
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0207
 Epoch 26/100
-1200/1200 [==============================] - 0s 56us/sample - loss: 0.0214
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0200
 Epoch 27/100
-1200/1200 [==============================] - 0s 54us/sample - loss: 0.0207
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0197
 Epoch 28/100
-1200/1200 [==============================] - 0s 55us/sample - loss: 0.0202
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0190
 Epoch 29/100
-1200/1200 [==============================] - 0s 54us/sample - loss: 0.0196
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0185
 Epoch 30/100
-1200/1200 [==============================] - 0s 56us/sample - loss: 0.0191
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0179
 Epoch 31/100
-1200/1200 [==============================] - 0s 55us/sample - loss: 0.0186
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0174
 Epoch 32/100
-1200/1200 [==============================] - 0s 52us/sample - loss: 0.0180
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0174
 Epoch 33/100
-1200/1200 [==============================] - 0s 55us/sample - loss: 0.0176
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0169
 Epoch 34/100
-1200/1200 [==============================] - 0s 56us/sample - loss: 0.0172
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0163
 Epoch 35/100
-1200/1200 [==============================] - 0s 53us/sample - loss: 0.0168
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0160
 Epoch 36/100
-1200/1200 [==============================] - 0s 56us/sample - loss: 0.0163
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0156
 Epoch 37/100
-1200/1200 [==============================] - 0s 55us/sample - loss: 0.0160
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0152
 Epoch 38/100
-1200/1200 [==============================] - 0s 51us/sample - loss: 0.0156
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0148
 Epoch 39/100
-1200/1200 [==============================] - 0s 54us/sample - loss: 0.0153
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0145
 Epoch 40/100
-1200/1200 [==============================] - 0s 54us/sample - loss: 0.0150
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0142
 Epoch 41/100
-1200/1200 [==============================] - 0s 55us/sample - loss: 0.0146
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0136
 Epoch 42/100
-1200/1200 [==============================] - 0s 55us/sample - loss: 0.0144
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0137
 Epoch 43/100
-1200/1200 [==============================] - 0s 54us/sample - loss: 0.0140
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0135
 Epoch 44/100
-1200/1200 [==============================] - 0s 55us/sample - loss: 0.0138
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0129
 Epoch 45/100
-1200/1200 [==============================] - 0s 56us/sample - loss: 0.0135
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0132
 Epoch 46/100
-1200/1200 [==============================] - 0s 57us/sample - loss: 0.0133
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0125
 Epoch 47/100
-1200/1200 [==============================] - 0s 53us/sample - loss: 0.0130
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0125
 Epoch 48/100
-1200/1200 [==============================] - 0s 56us/sample - loss: 0.0128
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0120
 Epoch 49/100
-1200/1200 [==============================] - 0s 62us/sample - loss: 0.0126
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0120
 Epoch 50/100
-1200/1200 [==============================] - 0s 58us/sample - loss: 0.0124
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0117
 Epoch 51/100
-1200/1200 [==============================] - 0s 50us/sample - loss: 0.0122
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0116
 Epoch 52/100
-1200/1200 [==============================] - 0s 56us/sample - loss: 0.0120
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step - loss: 0.0113
 Epoch 53/100
-1200/1200 [==============================] - 0s 58us/sample - loss: 0.0118
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 5ms/step - loss: 0.0113
 Epoch 54/100
-1200/1200 [==============================] - 0s 54us/sample - loss: 0.0116
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 5ms/step - loss: 0.0110
 Epoch 55/100
-1200/1200 [==============================] - 0s 51us/sample - loss: 0.0114
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step - loss: 0.0109
 Epoch 56/100
-1200/1200 [==============================] - 0s 49us/sample - loss: 0.0113
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 5ms/step - loss: 0.0105
 Epoch 57/100
-1200/1200 [==============================] - 0s 54us/sample - loss: 0.0111
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 5ms/step - loss: 0.0107
 Epoch 58/100
-1200/1200 [==============================] - 0s 48us/sample - loss: 0.0110
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 6ms/step - loss: 0.0107
 Epoch 59/100
-1200/1200 [==============================] - 0s 44us/sample - loss: 0.0108
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 8ms/step - loss: 0.0103
 Epoch 60/100
-1200/1200 [==============================] - 0s 40us/sample - loss: 0.0107
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 7ms/step - loss: 0.0103
 Epoch 61/100
-1200/1200 [==============================] - 0s 39us/sample - loss: 0.0105
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0101
 Epoch 62/100
-1200/1200 [==============================] - 0s 39us/sample - loss: 0.0104
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0098
 Epoch 63/100
-1200/1200 [==============================] - 0s 38us/sample - loss: 0.0103
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0095
 Epoch 64/100
-1200/1200 [==============================] - 0s 46us/sample - loss: 0.0102
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0095
 Epoch 65/100
-1200/1200 [==============================] - 0s 42us/sample - loss: 0.0100
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0095
 Epoch 66/100
-1200/1200 [==============================] - 0s 43us/sample - loss: 0.0099
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0094
 Epoch 67/100
-1200/1200 [==============================] - 0s 40us/sample - loss: 0.0098
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0091
 Epoch 68/100
-1200/1200 [==============================] - 0s 39us/sample - loss: 0.0097
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0092
 Epoch 69/100
-1200/1200 [==============================] - 0s 38us/sample - loss: 0.0096
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0092
 Epoch 70/100
-1200/1200 [==============================] - 0s 42us/sample - loss: 0.0095
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0089
 Epoch 71/100
-1200/1200 [==============================] - 0s 40us/sample - loss: 0.0094
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0092
 Epoch 72/100
-1200/1200 [==============================] - 0s 43us/sample - loss: 0.0093
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0089
 Epoch 73/100
-1200/1200 [==============================] - 0s 45us/sample - loss: 0.0093
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0085
 Epoch 74/100
-1200/1200 [==============================] - 0s 41us/sample - loss: 0.0092
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0086
 Epoch 75/100
-1200/1200 [==============================] - 0s 38us/sample - loss: 0.0091
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0083
 Epoch 76/100
-1200/1200 [==============================] - 0s 39us/sample - loss: 0.0090
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0086
 Epoch 77/100
-1200/1200 [==============================] - 0s 50us/sample - loss: 0.0089
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0083
 Epoch 78/100
-1200/1200 [==============================] - 0s 41us/sample - loss: 0.0089
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0085
 Epoch 79/100
-1200/1200 [==============================] - 0s 37us/sample - loss: 0.0088
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0083
 Epoch 80/100
-1200/1200 [==============================] - 0s 37us/sample - loss: 0.0087
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0084
 Epoch 81/100
-1200/1200 [==============================] - 0s 38us/sample - loss: 0.0086
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0083
 Epoch 82/100
-1200/1200 [==============================] - 0s 49us/sample - loss: 0.0086
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0081
 Epoch 83/100
-1200/1200 [==============================] - 0s 48us/sample - loss: 0.0085
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0080
 Epoch 84/100
-1200/1200 [==============================] - 0s 45us/sample - loss: 0.0085
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0080
 Epoch 85/100
-1200/1200 [==============================] - 0s 62us/sample - loss: 0.0084
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0079
 Epoch 86/100
-1200/1200 [==============================] - 0s 53us/sample - loss: 0.0084
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0078
 Epoch 87/100
-1200/1200 [==============================] - 0s 54us/sample - loss: 0.0083
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0078
 Epoch 88/100
-1200/1200 [==============================] - 0s 53us/sample - loss: 0.0082
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0079
 Epoch 89/100
-1200/1200 [==============================] - 0s 47us/sample - loss: 0.0082
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0078
 Epoch 90/100
-1200/1200 [==============================] - 0s 48us/sample - loss: 0.0082
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0075
 Epoch 91/100
-1200/1200 [==============================] - 0s 50us/sample - loss: 0.0081
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0077
 Epoch 92/100
-1200/1200 [==============================] - 0s 47us/sample - loss: 0.0080
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0075
 Epoch 93/100
-1200/1200 [==============================] - 0s 38us/sample - loss: 0.0080
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 94/100
-1200/1200 [==============================] - 0s 37us/sample - loss: 0.0079
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step - loss: 0.0074
+Epoch 94/100
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0075
 Epoch 95/100
-1200/1200 [==============================] - 0s 42us/sample - loss: 0.0079
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0074
 Epoch 96/100
-1200/1200 [==============================] - 0s 41us/sample - loss: 0.0079
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0073
 Epoch 97/100
-1200/1200 [==============================] - 0s 39us/sample - loss: 0.0078
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0073
 Epoch 98/100
-1200/1200 [==============================] - 0s 39us/sample - loss: 0.0078
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0073
 Epoch 99/100
-1200/1200 [==============================] - 0s 38us/sample - loss: 0.0078
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0072
 Epoch 100/100
-1200/1200 [==============================] - 0s 36us/sample - loss: 0.0077
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0072
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7fdefadc1ba8&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.src.callbacks.history.History at 0x785c086c7260&gt;
 </pre></div>
 </div>
 </div>
@@ -1598,6 +1562,12 @@ Epoch 100/100
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">1/1</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 68ms/step
+<span class=" -Color -Color-Bold">1/1</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 39ms/step
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1613,7 +1583,7 @@ Epoch 100/100
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/754c96957bf384bb50e3abc9f21461786e98a1f5e3149dd1d56bb918ef7601f2.png" src="../_images/754c96957bf384bb50e3abc9f21461786e98a1f5e3149dd1d56bb918ef7601f2.png" />
+<img alt="../_images/3f951a95f4f5f7ef609db262ac653e9bbe67e2dc5a51174734885fa7047cbce9.png" src="../_images/3f951a95f4f5f7ef609db262ac653e9bbe67e2dc5a51174734885fa7047cbce9.png" />
 </div>
 </div>
 <section id="in-a-more-real-scenario-we-only-have-noisy-data-to-train-the-model">
@@ -1628,212 +1598,209 @@ Epoch 100/100
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train on 1200 samples
-Epoch 1/100
-1200/1200 [==============================] - 0s 199us/sample - loss: 0.1847
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/100
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 3ms/step - loss: 0.2293
 Epoch 2/100
-1200/1200 [==============================] - 0s 48us/sample - loss: 0.1102
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.1116
 Epoch 3/100
-1200/1200 [==============================] - 0s 51us/sample - loss: 0.1042
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.1055
 Epoch 4/100
-1200/1200 [==============================] - 0s 52us/sample - loss: 0.0972
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0979
 Epoch 5/100
-1200/1200 [==============================] - 0s 48us/sample - loss: 0.0917
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0924
 Epoch 6/100
-1200/1200 [==============================] - 0s 49us/sample - loss: 0.0872
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0875
 Epoch 7/100
-1200/1200 [==============================] - 0s 53us/sample - loss: 0.0836
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0831
 Epoch 8/100
-1200/1200 [==============================] - 0s 51us/sample - loss: 0.0808
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0810
 Epoch 9/100
-1200/1200 [==============================] - 0s 49us/sample - loss: 0.0786
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0780
 Epoch 10/100
-1200/1200 [==============================] - 0s 52us/sample - loss: 0.0766
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step - loss: 0.0763
 Epoch 11/100
-1200/1200 [==============================] - 0s 48us/sample - loss: 0.0747
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0747
 Epoch 12/100
-1200/1200 [==============================] - 0s 43us/sample - loss: 0.0730
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0734
 Epoch 13/100
-1200/1200 [==============================] - 0s 40us/sample - loss: 0.0714
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0720
 Epoch 14/100
-1200/1200 [==============================] - 0s 46us/sample - loss: 0.0698
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0711
 Epoch 15/100
-1200/1200 [==============================] - 0s 44us/sample - loss: 0.0684
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0683
 Epoch 16/100
-1200/1200 [==============================] - 0s 39us/sample - loss: 0.0671
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0674
 Epoch 17/100
-1200/1200 [==============================] - 0s 39us/sample - loss: 0.0659
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0658
 Epoch 18/100
-1200/1200 [==============================] - 0s 44us/sample - loss: 0.0648
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0649
 Epoch 19/100
-1200/1200 [==============================] - 0s 41us/sample - loss: 0.0637
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0639
 Epoch 20/100
-1200/1200 [==============================] - 0s 41us/sample - loss: 0.0627
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0627
 Epoch 21/100
-1200/1200 [==============================] - 0s 42us/sample - loss: 0.0618
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0618
 Epoch 22/100
-1200/1200 [==============================] - 0s 40us/sample - loss: 0.0610
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0613
 Epoch 23/100
-1200/1200 [==============================] - 0s 43us/sample - loss: 0.0602
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0605
 Epoch 24/100
-1200/1200 [==============================] - 0s 41us/sample - loss: 0.0595
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0595
 Epoch 25/100
-1200/1200 [==============================] - 0s 40us/sample - loss: 0.0589
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0587
 Epoch 26/100
-1200/1200 [==============================] - 0s 41us/sample - loss: 0.0582
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0584
 Epoch 27/100
-1200/1200 [==============================] - 0s 52us/sample - loss: 0.0576
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0572
 Epoch 28/100
-1200/1200 [==============================] - 0s 54us/sample - loss: 0.0570
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0569
 Epoch 29/100
-1200/1200 [==============================] - 0s 53us/sample - loss: 0.0565
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0562
 Epoch 30/100
-1200/1200 [==============================] - 0s 55us/sample - loss: 0.0560
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0553
 Epoch 31/100
-1200/1200 [==============================] - 0s 56us/sample - loss: 0.0555
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0552
 Epoch 32/100
-1200/1200 [==============================] - 0s 55us/sample - loss: 0.0550
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0544
 Epoch 33/100
-1200/1200 [==============================] - 0s 55us/sample - loss: 0.0546
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0537
 Epoch 34/100
-1200/1200 [==============================] - 0s 52us/sample - loss: 0.0542
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0538
 Epoch 35/100
-1200/1200 [==============================] - 0s 53us/sample - loss: 0.0538
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0533
 Epoch 36/100
-1200/1200 [==============================] - 0s 57us/sample - loss: 0.0533
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step - loss: 0.0528
 Epoch 37/100
-1200/1200 [==============================] - 0s 51us/sample - loss: 0.0530
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 5ms/step - loss: 0.0525
 Epoch 38/100
-1200/1200 [==============================] - 0s 37us/sample - loss: 0.0527
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 5ms/step - loss: 0.0520
 Epoch 39/100
-1200/1200 [==============================] - 0s 36us/sample - loss: 0.0523
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 5ms/step - loss: 0.0517
 Epoch 40/100
-1200/1200 [==============================] - 0s 35us/sample - loss: 0.0520
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step - loss: 0.0514
 Epoch 41/100
-1200/1200 [==============================] - 0s 35us/sample - loss: 0.0517
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 6ms/step - loss: 0.0512
 Epoch 42/100
-1200/1200 [==============================] - 0s 44us/sample - loss: 0.0514
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 6ms/step - loss: 0.0511
 Epoch 43/100
-1200/1200 [==============================] - 0s 48us/sample - loss: 0.0512
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 5ms/step - loss: 0.0507
 Epoch 44/100
-1200/1200 [==============================] - 0s 43us/sample - loss: 0.0509
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step - loss: 0.0503
 Epoch 45/100
-1200/1200 [==============================] - 0s 48us/sample - loss: 0.0506
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0503
 Epoch 46/100
-1200/1200 [==============================] - 0s 50us/sample - loss: 0.0504
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0500
 Epoch 47/100
-1200/1200 [==============================] - 0s 62us/sample - loss: 0.0502
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0496
 Epoch 48/100
-1200/1200 [==============================] - 0s 51us/sample - loss: 0.0499
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0493
 Epoch 49/100
-1200/1200 [==============================] - 0s 48us/sample - loss: 0.0497
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0493
 Epoch 50/100
-1200/1200 [==============================] - 0s 44us/sample - loss: 0.0495
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step - loss: 0.0491
 Epoch 51/100
-1200/1200 [==============================] - 0s 44us/sample - loss: 0.0493
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0487
 Epoch 52/100
-1200/1200 [==============================] - 0s 46us/sample - loss: 0.0492
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0484
 Epoch 53/100
-1200/1200 [==============================] - 0s 45us/sample - loss: 0.0490
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0483
 Epoch 54/100
-1200/1200 [==============================] - 0s 49us/sample - loss: 0.0488
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step - loss: 0.0482
 Epoch 55/100
-1200/1200 [==============================] - 0s 51us/sample - loss: 0.0487
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0481
 Epoch 56/100
-1200/1200 [==============================] - 0s 56us/sample - loss: 0.0485
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0480
 Epoch 57/100
-1200/1200 [==============================] - 0s 48us/sample - loss: 0.0483
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step - loss: 0.0479
 Epoch 58/100
-1200/1200 [==============================] - 0s 47us/sample - loss: 0.0482
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step - loss: 0.0476
 Epoch 59/100
-1200/1200 [==============================] - 0s 42us/sample - loss: 0.0480
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step - loss: 0.0476
 Epoch 60/100
-1200/1200 [==============================] - 0s 38us/sample - loss: 0.0478
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step - loss: 0.0475
 Epoch 61/100
-1200/1200 [==============================] - 0s 37us/sample - loss: 0.0477
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0473
 Epoch 62/100
-1200/1200 [==============================] - 0s 40us/sample - loss: 0.0476
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step - loss: 0.0473
 Epoch 63/100
-1200/1200 [==============================] - 0s 37us/sample - loss: 0.0475
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0470
 Epoch 64/100
-1200/1200 [==============================] - 0s 43us/sample - loss: 0.0473
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0469
 Epoch 65/100
-1200/1200 [==============================] - 0s 39us/sample - loss: 0.0472
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0468
 Epoch 66/100
-1200/1200 [==============================] - 0s 42us/sample - loss: 0.0471
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0467
 Epoch 67/100
-1200/1200 [==============================] - 0s 42us/sample - loss: 0.0470
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step - loss: 0.0466
 Epoch 68/100
-1200/1200 [==============================] - 0s 46us/sample - loss: 0.0469
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0465
 Epoch 69/100
-1200/1200 [==============================] - 0s 45us/sample - loss: 0.0468
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0464
 Epoch 70/100
-1200/1200 [==============================] - 0s 40us/sample - loss: 0.0467
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0461
 Epoch 71/100
-1200/1200 [==============================] - 0s 37us/sample - loss: 0.0466
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0462
 Epoch 72/100
-1200/1200 [==============================] - 0s 37us/sample - loss: 0.0465
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0461
 Epoch 73/100
-1200/1200 [==============================] - 0s 37us/sample - loss: 0.0464
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step - loss: 0.0459
 Epoch 74/100
-1200/1200 [==============================] - 0s 45us/sample - loss: 0.0463
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0461
 Epoch 75/100
-1200/1200 [==============================] - 0s 49us/sample - loss: 0.0462
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0459
 Epoch 76/100
-1200/1200 [==============================] - 0s 53us/sample - loss: 0.0462
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0460
 Epoch 77/100
-1200/1200 [==============================] - 0s 44us/sample - loss: 0.0461
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0456
 Epoch 78/100
-1200/1200 [==============================] - 0s 41us/sample - loss: 0.0460
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0456
 Epoch 79/100
-1200/1200 [==============================] - 0s 42us/sample - loss: 0.0459
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step - loss: 0.0455
 Epoch 80/100
-1200/1200 [==============================] - 0s 44us/sample - loss: 0.0458
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0456
 Epoch 81/100
-1200/1200 [==============================] - 0s 43us/sample - loss: 0.0458
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0453
 Epoch 82/100
-1200/1200 [==============================] - 0s 44us/sample - loss: 0.0457
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0452
 Epoch 83/100
-1200/1200 [==============================] - 0s 38us/sample - loss: 0.0456
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step - loss: 0.0452
 Epoch 84/100
-1200/1200 [==============================] - 0s 43us/sample - loss: 0.0456
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0454
 Epoch 85/100
-1200/1200 [==============================] - 0s 38us/sample - loss: 0.0455
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0453
 Epoch 86/100
-1200/1200 [==============================] - 0s 43us/sample - loss: 0.0454
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0450
 Epoch 87/100
-1200/1200 [==============================] - 0s 44us/sample - loss: 0.0454
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0450
 Epoch 88/100
-1200/1200 [==============================] - 0s 41us/sample - loss: 0.0453
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step - loss: 0.0450
 Epoch 89/100
-1200/1200 [==============================] - 0s 43us/sample - loss: 0.0452
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0450
 Epoch 90/100
-1200/1200 [==============================] - 0s 46us/sample - loss: 0.0452
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step - loss: 0.0448
 Epoch 91/100
-1200/1200 [==============================] - 0s 41us/sample - loss: 0.0451
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 5ms/step - loss: 0.0447
 Epoch 92/100
-1200/1200 [==============================] - 0s 38us/sample - loss: 0.0450
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 5ms/step - loss: 0.0447
 Epoch 93/100
-1200/1200 [==============================] - 0s 39us/sample - loss: 0.0450
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 94/100
-1200/1200 [==============================] - 0s 38us/sample - loss: 0.0450
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step - loss: 0.0448
+Epoch 94/100
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 5ms/step - loss: 0.0448
 Epoch 95/100
-1200/1200 [==============================] - 0s 37us/sample - loss: 0.0449
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 5ms/step - loss: 0.0447
 Epoch 96/100
-1200/1200 [==============================] - 0s 39us/sample - loss: 0.0448
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 6ms/step - loss: 0.0445
 Epoch 97/100
-1200/1200 [==============================] - 0s 41us/sample - loss: 0.0448
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 6ms/step - loss: 0.0446
 Epoch 98/100
-1200/1200 [==============================] - 0s 38us/sample - loss: 0.0447
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 5ms/step - loss: 0.0446
 Epoch 99/100
-1200/1200 [==============================] - 0s 36us/sample - loss: 0.0447
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 5ms/step - loss: 0.0445
 Epoch 100/100
-1200/1200 [==============================] - 0s 36us/sample - loss: 0.0447
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 5ms/step - loss: 0.0444
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7fdefb0fbb00&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.src.callbacks.history.History at 0x785c0873bec0&gt;
 </pre></div>
 </div>
 </div>
@@ -1855,7 +1822,10 @@ Epoch 100/100
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/cac0b5eb98296d62534ce3daf69faa0d5e5bea4000f19700feb47970b0578cfd.png" src="../_images/cac0b5eb98296d62534ce3daf69faa0d5e5bea4000f19700feb47970b0578cfd.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">1/1</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 71ms/step
+</pre></div>
+</div>
+<img alt="../_images/4fd97b94014cdcb7f5db27018ee4c5d39093967cd7b42c96000e0674fc46e2aa.png" src="../_images/4fd97b94014cdcb7f5db27018ee4c5d39093967cd7b42c96000e0674fc46e2aa.png" />
 </div>
 </div>
 </section>

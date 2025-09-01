@@ -456,23 +456,23 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="multimodal-architectures">
 <h1>2.6 - Multimodal architectures<a class="headerlink" href="#multimodal-architectures" title="Link to this heading">#</a></h1>
-<p>Course’s materials require a <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code> version lower than the default one used in Google Colab. Run the following cell to downgrade TensorFlow accordingly.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">downgrade_tf_version</span><span class="p">():</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip uninstall -y tensorflow&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip install tensorflow==2.12.0&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="mi">9</span><span class="p">)</span>
-<span class="n">downgrade_tf_version</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
-<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/content/init.py:2: SyntaxWarning: invalid escape sequence &#39;\S&#39;
+  course_id = &#39;\S*deeplearning\S*&#39;
+</pre></div>
+</div>
+<div class="output text_html">
+<meta name="google-signin-client_id"
+      content="461673936472-kdjosv61up3ac1ajeuq6qqu72upilmls.apps.googleusercontent.com"/>
+<script src="https://apis.google.com/js/client:platform.js?onload=google_button_start"></script>
+    </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>replicating local resources
 </pre></div>
 </div>
 </div>
@@ -490,7 +490,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.1.0&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.19.0&#39;
 </pre></div>
 </div>
 </div>
@@ -514,7 +514,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">perm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])))[</span><span class="mi">0</span><span class="p">:</span><span class="mi">50</span><span class="p">]</span>
 <span class="n">random_imgs</span>   <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">perm</span><span class="p">]</span>
-<span class="n">random_labels</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">perm</span><span class="p">]</span> 
+<span class="n">random_labels</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">perm</span><span class="p">]</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">random_imgs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
     <span class="n">ax</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
@@ -526,7 +526,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6adf3f150237fca95fd9849ee54cb9fc2f944bd43f82f06424e6143025446553.png" src="../_images/6adf3f150237fca95fd9849ee54cb9fc2f944bd43f82f06424e6143025446553.png" />
+<img alt="../_images/2165402611c13079a75e722ff4132ccc51ed0e8caa276854238fc4b6d0362d24.png" src="../_images/2165402611c13079a75e722ff4132ccc51ed0e8caa276854238fc4b6d0362d24.png" />
 </div>
 </div>
 <section id="a-regular-neural-network-for-classification">
@@ -566,7 +566,7 @@ LAYER 3 to OUTPUT:    20*10 + 10 (bias) = 210
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0, array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0.]))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.int64(8), array([0., 0., 0., 0., 0., 0., 0., 0., 1., 0.]))
 </pre></div>
 </div>
 </div>
@@ -612,7 +612,6 @@ LAYER 3 to OUTPUT:    20*10 + 10 (bias) = 210
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span>
 
     <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">)</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">reset_states</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">model</span>
 </pre></div>
 </div>
@@ -627,25 +626,29 @@ LAYER 3 to OUTPUT:    20*10 + 10 (bias) = 210
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>41610
-Model: &quot;sequential&quot;
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-dense (Dense)                (None, 50)                39250     
-_________________________________________________________________
-dense_1 (Dense)              (None, 30)                1530      
-_________________________________________________________________
-dense_2 (Dense)              (None, 20)                620       
-_________________________________________________________________
-dense_3 (Dense)              (None, 10)                210       
-=================================================================
-Total params: 41,610
-Trainable params: 41,610
-Non-trainable params: 0
-_________________________________________________________________
 </pre></div>
 </div>
-</div>
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "sequential"</span>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)                    </span>┃<span style="font-weight: bold"> Output Shape           </span>┃<span style="font-weight: bold">       Param # </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ dense (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                   │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">50</span>)             │        <span style="color: #00af00; text-decoration-color: #00af00">39,250</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                 │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">30</span>)             │         <span style="color: #00af00; text-decoration-color: #00af00">1,530</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                 │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">20</span>)             │           <span style="color: #00af00; text-decoration-color: #00af00">620</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_3 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                 │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">10</span>)             │           <span style="color: #00af00; text-decoration-color: #00af00">210</span> │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">41,610</span> (162.54 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">41,610</span> (162.54 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">0</span> (0.00 B)
+</pre>
+</div></div>
 </div>
 </section>
 <section id="fit-and-display-losses">
@@ -657,212 +660,209 @@ _________________________________________________________________
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train on 300 samples, validate on 1200 samples
-Epoch 1/100
-300/300 [==============================] - 0s 1ms/sample - loss: 2.2274 - val_loss: 2.1210
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 81ms/step - loss: 2.2954 - val_loss: 2.1621
 Epoch 2/100
-300/300 [==============================] - 0s 201us/sample - loss: 1.9919 - val_loss: 1.9278
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 26ms/step - loss: 2.0720 - val_loss: 1.9600
 Epoch 3/100
-300/300 [==============================] - 0s 224us/sample - loss: 1.7531 - val_loss: 1.7165
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 46ms/step - loss: 1.8375 - val_loss: 1.7254
 Epoch 4/100
-300/300 [==============================] - 0s 185us/sample - loss: 1.4943 - val_loss: 1.4922
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 50ms/step - loss: 1.5696 - val_loss: 1.4649
 Epoch 5/100
-300/300 [==============================] - 0s 188us/sample - loss: 1.2550 - val_loss: 1.3319
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 20ms/step - loss: 1.2652 - val_loss: 1.2484
 Epoch 6/100
-300/300 [==============================] - 0s 196us/sample - loss: 1.0457 - val_loss: 1.2062
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 16ms/step - loss: 0.9803 - val_loss: 1.0799
 Epoch 7/100
-300/300 [==============================] - 0s 199us/sample - loss: 0.8917 - val_loss: 1.0992
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 0.8234 - val_loss: 0.9596
 Epoch 8/100
-300/300 [==============================] - 0s 186us/sample - loss: 0.7668 - val_loss: 1.0182
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 16ms/step - loss: 0.6021 - val_loss: 0.9018
 Epoch 9/100
-300/300 [==============================] - 0s 184us/sample - loss: 0.6596 - val_loss: 0.9711
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 23ms/step - loss: 0.4973 - val_loss: 0.8189
 Epoch 10/100
-300/300 [==============================] - 0s 187us/sample - loss: 0.5542 - val_loss: 0.8945
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 23ms/step - loss: 0.3958 - val_loss: 0.7671
 Epoch 11/100
-300/300 [==============================] - 0s 193us/sample - loss: 0.4636 - val_loss: 0.8483
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 16ms/step - loss: 0.3382 - val_loss: 0.7722
 Epoch 12/100
-300/300 [==============================] - 0s 187us/sample - loss: 0.3939 - val_loss: 0.7981
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 0.2645 - val_loss: 0.7311
 Epoch 13/100
-300/300 [==============================] - 0s 169us/sample - loss: 0.3208 - val_loss: 0.7711
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 26ms/step - loss: 0.2472 - val_loss: 0.7472
 Epoch 14/100
-300/300 [==============================] - 0s 157us/sample - loss: 0.2782 - val_loss: 0.7700
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 23ms/step - loss: 0.1806 - val_loss: 0.7027
 Epoch 15/100
-300/300 [==============================] - 0s 172us/sample - loss: 0.2332 - val_loss: 0.7443
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 17ms/step - loss: 0.1554 - val_loss: 0.6946
 Epoch 16/100
-300/300 [==============================] - 0s 155us/sample - loss: 0.1945 - val_loss: 0.7321
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 0.1408 - val_loss: 0.7046
 Epoch 17/100
-300/300 [==============================] - 0s 172us/sample - loss: 0.1655 - val_loss: 0.7295
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step - loss: 0.1133 - val_loss: 0.6883
 Epoch 18/100
-300/300 [==============================] - 0s 162us/sample - loss: 0.1385 - val_loss: 0.7404
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 17ms/step - loss: 0.0872 - val_loss: 0.7181
 Epoch 19/100
-300/300 [==============================] - 0s 153us/sample - loss: 0.1214 - val_loss: 0.7357
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 23ms/step - loss: 0.0796 - val_loss: 0.7175
 Epoch 20/100
-300/300 [==============================] - 0s 175us/sample - loss: 0.0988 - val_loss: 0.7371
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 17ms/step - loss: 0.0648 - val_loss: 0.7024
 Epoch 21/100
-300/300 [==============================] - 0s 171us/sample - loss: 0.0864 - val_loss: 0.7381
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 19ms/step - loss: 0.0646 - val_loss: 0.7255
 Epoch 22/100
-300/300 [==============================] - 0s 159us/sample - loss: 0.0759 - val_loss: 0.7365
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 19ms/step - loss: 0.0514 - val_loss: 0.7222
 Epoch 23/100
-300/300 [==============================] - 0s 148us/sample - loss: 0.0621 - val_loss: 0.7684
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step - loss: 0.0477 - val_loss: 0.7162
 Epoch 24/100
-300/300 [==============================] - 0s 176us/sample - loss: 0.0558 - val_loss: 0.7525
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step - loss: 0.0421 - val_loss: 0.7229
 Epoch 25/100
-300/300 [==============================] - 0s 182us/sample - loss: 0.0470 - val_loss: 0.7554
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step - loss: 0.0355 - val_loss: 0.7289
 Epoch 26/100
-300/300 [==============================] - 0s 165us/sample - loss: 0.0401 - val_loss: 0.7518
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 23ms/step - loss: 0.0293 - val_loss: 0.7422
 Epoch 27/100
-300/300 [==============================] - 0s 174us/sample - loss: 0.0356 - val_loss: 0.7713
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step - loss: 0.0267 - val_loss: 0.7282
 Epoch 28/100
-300/300 [==============================] - 0s 173us/sample - loss: 0.0321 - val_loss: 0.7725
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 21ms/step - loss: 0.0240 - val_loss: 0.7517
 Epoch 29/100
-300/300 [==============================] - 0s 179us/sample - loss: 0.0278 - val_loss: 0.7749
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 26ms/step - loss: 0.0199 - val_loss: 0.7545
 Epoch 30/100
-300/300 [==============================] - 0s 181us/sample - loss: 0.0254 - val_loss: 0.7771
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 20ms/step - loss: 0.0184 - val_loss: 0.7512
 Epoch 31/100
-300/300 [==============================] - 0s 167us/sample - loss: 0.0226 - val_loss: 0.7835
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step - loss: 0.0166 - val_loss: 0.7565
 Epoch 32/100
-300/300 [==============================] - 0s 169us/sample - loss: 0.0206 - val_loss: 0.7873
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step - loss: 0.0147 - val_loss: 0.7673
 Epoch 33/100
-300/300 [==============================] - 0s 169us/sample - loss: 0.0187 - val_loss: 0.7902
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 0.0156 - val_loss: 0.7686
 Epoch 34/100
-300/300 [==============================] - 0s 173us/sample - loss: 0.0170 - val_loss: 0.7993
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step - loss: 0.0129 - val_loss: 0.7739
 Epoch 35/100
-300/300 [==============================] - 0s 188us/sample - loss: 0.0156 - val_loss: 0.8065
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 0.0113 - val_loss: 0.7820
 Epoch 36/100
-300/300 [==============================] - 0s 170us/sample - loss: 0.0145 - val_loss: 0.8089
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step - loss: 0.0110 - val_loss: 0.7828
 Epoch 37/100
-300/300 [==============================] - 0s 154us/sample - loss: 0.0134 - val_loss: 0.8054
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 16ms/step - loss: 0.0107 - val_loss: 0.7888
 Epoch 38/100
-300/300 [==============================] - 0s 169us/sample - loss: 0.0123 - val_loss: 0.8137
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 19ms/step - loss: 0.0090 - val_loss: 0.7977
 Epoch 39/100
-300/300 [==============================] - 0s 213us/sample - loss: 0.0115 - val_loss: 0.8190
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step - loss: 0.0094 - val_loss: 0.7942
 Epoch 40/100
-300/300 [==============================] - 0s 200us/sample - loss: 0.0107 - val_loss: 0.8212
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 22ms/step - loss: 0.0082 - val_loss: 0.8005
 Epoch 41/100
-300/300 [==============================] - 0s 198us/sample - loss: 0.0100 - val_loss: 0.8214
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 44ms/step - loss: 0.0070 - val_loss: 0.8048
 Epoch 42/100
-300/300 [==============================] - 0s 184us/sample - loss: 0.0094 - val_loss: 0.8351
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 27ms/step - loss: 0.0078 - val_loss: 0.8141
 Epoch 43/100
-300/300 [==============================] - 0s 201us/sample - loss: 0.0088 - val_loss: 0.8428
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 45ms/step - loss: 0.0069 - val_loss: 0.8103
 Epoch 44/100
-300/300 [==============================] - 0s 189us/sample - loss: 0.0082 - val_loss: 0.8436
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 28ms/step - loss: 0.0061 - val_loss: 0.8182
 Epoch 45/100
-300/300 [==============================] - 0s 202us/sample - loss: 0.0077 - val_loss: 0.8413
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 24ms/step - loss: 0.0064 - val_loss: 0.8272
 Epoch 46/100
-300/300 [==============================] - 0s 196us/sample - loss: 0.0073 - val_loss: 0.8521
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 23ms/step - loss: 0.0061 - val_loss: 0.8299
 Epoch 47/100
-300/300 [==============================] - 0s 187us/sample - loss: 0.0069 - val_loss: 0.8551
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 23ms/step - loss: 0.0051 - val_loss: 0.8275
 Epoch 48/100
-300/300 [==============================] - 0s 225us/sample - loss: 0.0065 - val_loss: 0.8512
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 23ms/step - loss: 0.0053 - val_loss: 0.8342
 Epoch 49/100
-300/300 [==============================] - 0s 175us/sample - loss: 0.0061 - val_loss: 0.8589
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 23ms/step - loss: 0.0048 - val_loss: 0.8367
 Epoch 50/100
-300/300 [==============================] - 0s 169us/sample - loss: 0.0058 - val_loss: 0.8664
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 23ms/step - loss: 0.0048 - val_loss: 0.8398
 Epoch 51/100
-300/300 [==============================] - 0s 154us/sample - loss: 0.0055 - val_loss: 0.8677
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 23ms/step - loss: 0.0045 - val_loss: 0.8376
 Epoch 52/100
-300/300 [==============================] - 0s 165us/sample - loss: 0.0053 - val_loss: 0.8700
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 0.0043 - val_loss: 0.8428
 Epoch 53/100
-300/300 [==============================] - 0s 156us/sample - loss: 0.0050 - val_loss: 0.8782
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 23ms/step - loss: 0.0044 - val_loss: 0.8490
 Epoch 54/100
-300/300 [==============================] - 0s 176us/sample - loss: 0.0048 - val_loss: 0.8812
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 20ms/step - loss: 0.0038 - val_loss: 0.8523
 Epoch 55/100
-300/300 [==============================] - 0s 196us/sample - loss: 0.0046 - val_loss: 0.8815
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 0.0034 - val_loss: 0.8562
 Epoch 56/100
-300/300 [==============================] - 0s 193us/sample - loss: 0.0044 - val_loss: 0.8859
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 17ms/step - loss: 0.0041 - val_loss: 0.8571
 Epoch 57/100
-300/300 [==============================] - 0s 196us/sample - loss: 0.0042 - val_loss: 0.8884
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 23ms/step - loss: 0.0035 - val_loss: 0.8579
 Epoch 58/100
-300/300 [==============================] - 0s 166us/sample - loss: 0.0040 - val_loss: 0.8921
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 20ms/step - loss: 0.0038 - val_loss: 0.8685
 Epoch 59/100
-300/300 [==============================] - 0s 155us/sample - loss: 0.0039 - val_loss: 0.8926
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step - loss: 0.0030 - val_loss: 0.8680
 Epoch 60/100
-300/300 [==============================] - 0s 157us/sample - loss: 0.0037 - val_loss: 0.9001
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 26ms/step - loss: 0.0033 - val_loss: 0.8712
 Epoch 61/100
-300/300 [==============================] - 0s 203us/sample - loss: 0.0035 - val_loss: 0.9011
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 0.0033 - val_loss: 0.8733
 Epoch 62/100
-300/300 [==============================] - 0s 203us/sample - loss: 0.0034 - val_loss: 0.9025
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 18ms/step - loss: 0.0027 - val_loss: 0.8746
 Epoch 63/100
-300/300 [==============================] - 0s 164us/sample - loss: 0.0033 - val_loss: 0.9089
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 16ms/step - loss: 0.0028 - val_loss: 0.8796
 Epoch 64/100
-300/300 [==============================] - 0s 168us/sample - loss: 0.0032 - val_loss: 0.9113
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 23ms/step - loss: 0.0025 - val_loss: 0.8873
 Epoch 65/100
-300/300 [==============================] - 0s 152us/sample - loss: 0.0030 - val_loss: 0.9144
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 23ms/step - loss: 0.0028 - val_loss: 0.8891
 Epoch 66/100
-300/300 [==============================] - 0s 146us/sample - loss: 0.0029 - val_loss: 0.9170
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 17ms/step - loss: 0.0024 - val_loss: 0.8905
 Epoch 67/100
-300/300 [==============================] - 0s 157us/sample - loss: 0.0028 - val_loss: 0.9206
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 0.0022 - val_loss: 0.8918
 Epoch 68/100
-300/300 [==============================] - 0s 153us/sample - loss: 0.0027 - val_loss: 0.9230
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 23ms/step - loss: 0.0026 - val_loss: 0.8961
 Epoch 69/100
-300/300 [==============================] - 0s 164us/sample - loss: 0.0026 - val_loss: 0.9266
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 17ms/step - loss: 0.0024 - val_loss: 0.8974
 Epoch 70/100
-300/300 [==============================] - 0s 157us/sample - loss: 0.0025 - val_loss: 0.9271
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 20ms/step - loss: 0.0018 - val_loss: 0.8987
 Epoch 71/100
-300/300 [==============================] - 0s 162us/sample - loss: 0.0025 - val_loss: 0.9302
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step - loss: 0.0019 - val_loss: 0.8992
 Epoch 72/100
-300/300 [==============================] - 0s 165us/sample - loss: 0.0024 - val_loss: 0.9313
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step - loss: 0.0020 - val_loss: 0.9018
 Epoch 73/100
-300/300 [==============================] - 0s 162us/sample - loss: 0.0023 - val_loss: 0.9379
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 20ms/step - loss: 0.0022 - val_loss: 0.9058
 Epoch 74/100
-300/300 [==============================] - 0s 167us/sample - loss: 0.0022 - val_loss: 0.9381
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 21ms/step - loss: 0.0018 - val_loss: 0.9068
 Epoch 75/100
-300/300 [==============================] - 0s 154us/sample - loss: 0.0022 - val_loss: 0.9368
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step - loss: 0.0018 - val_loss: 0.9102
 Epoch 76/100
-300/300 [==============================] - 0s 177us/sample - loss: 0.0021 - val_loss: 0.9389
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 18ms/step - loss: 0.0021 - val_loss: 0.9140
 Epoch 77/100
-300/300 [==============================] - 0s 179us/sample - loss: 0.0020 - val_loss: 0.9427
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 78/100
-300/300 [==============================] - 0s 169us/sample - loss: 0.0020 - val_loss: 0.9448
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 18ms/step - loss: 0.0018 - val_loss: 0.9150
+Epoch 78/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 23ms/step - loss: 0.0017 - val_loss: 0.9170
 Epoch 79/100
-300/300 [==============================] - 0s 145us/sample - loss: 0.0019 - val_loss: 0.9469
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 19ms/step - loss: 0.0018 - val_loss: 0.9216
 Epoch 80/100
-300/300 [==============================] - 0s 156us/sample - loss: 0.0018 - val_loss: 0.9510
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 23ms/step - loss: 0.0016 - val_loss: 0.9248
 Epoch 81/100
-300/300 [==============================] - 0s 143us/sample - loss: 0.0018 - val_loss: 0.9532
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 17ms/step - loss: 0.0016 - val_loss: 0.9245
 Epoch 82/100
-300/300 [==============================] - 0s 155us/sample - loss: 0.0017 - val_loss: 0.9547
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 23ms/step - loss: 0.0014 - val_loss: 0.9281
 Epoch 83/100
-300/300 [==============================] - 0s 142us/sample - loss: 0.0017 - val_loss: 0.9541
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 31ms/step - loss: 0.0014 - val_loss: 0.9342
 Epoch 84/100
-300/300 [==============================] - 0s 149us/sample - loss: 0.0017 - val_loss: 0.9589
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 28ms/step - loss: 0.0015 - val_loss: 0.9338
 Epoch 85/100
-300/300 [==============================] - 0s 142us/sample - loss: 0.0016 - val_loss: 0.9624
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 45ms/step - loss: 0.0014 - val_loss: 0.9347
 Epoch 86/100
-300/300 [==============================] - 0s 151us/sample - loss: 0.0016 - val_loss: 0.9668
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 26ms/step - loss: 0.0015 - val_loss: 0.9376
 Epoch 87/100
-300/300 [==============================] - 0s 147us/sample - loss: 0.0015 - val_loss: 0.9661
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 26ms/step - loss: 0.0015 - val_loss: 0.9412
 Epoch 88/100
-300/300 [==============================] - 0s 144us/sample - loss: 0.0015 - val_loss: 0.9678
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 19ms/step - loss: 0.0013 - val_loss: 0.9423
 Epoch 89/100
-300/300 [==============================] - 0s 141us/sample - loss: 0.0014 - val_loss: 0.9687
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 18ms/step - loss: 0.0013 - val_loss: 0.9443
 Epoch 90/100
-300/300 [==============================] - 0s 146us/sample - loss: 0.0014 - val_loss: 0.9704
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 0.0012 - val_loss: 0.9480
 Epoch 91/100
-300/300 [==============================] - 0s 148us/sample - loss: 0.0014 - val_loss: 0.9751
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step - loss: 0.0012 - val_loss: 0.9490
 Epoch 92/100
-300/300 [==============================] - 0s 146us/sample - loss: 0.0013 - val_loss: 0.9773
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 46ms/step - loss: 0.0011 - val_loss: 0.9517
 Epoch 93/100
-300/300 [==============================] - 0s 147us/sample - loss: 0.0013 - val_loss: 0.9780
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 36ms/step - loss: 0.0011 - val_loss: 0.9548
 Epoch 94/100
-300/300 [==============================] - 0s 140us/sample - loss: 0.0013 - val_loss: 0.9792
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 23ms/step - loss: 0.0012 - val_loss: 0.9546
 Epoch 95/100
-300/300 [==============================] - 0s 149us/sample - loss: 0.0012 - val_loss: 0.9820
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 23ms/step - loss: 0.0012 - val_loss: 0.9561
 Epoch 96/100
-300/300 [==============================] - 0s 145us/sample - loss: 0.0012 - val_loss: 0.9860
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 19ms/step - loss: 0.0011 - val_loss: 0.9577
 Epoch 97/100
-300/300 [==============================] - 0s 140us/sample - loss: 0.0012 - val_loss: 0.9876
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 0.0011 - val_loss: 0.9601
 Epoch 98/100
-300/300 [==============================] - 0s 152us/sample - loss: 0.0012 - val_loss: 0.9895
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 26ms/step - loss: 0.0010 - val_loss: 0.9617
 Epoch 99/100
-300/300 [==============================] - 0s 151us/sample - loss: 0.0011 - val_loss: 0.9892
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 20ms/step - loss: 9.3972e-04 - val_loss: 0.9652
 Epoch 100/100
-300/300 [==============================] - 0s 146us/sample - loss: 0.0011 - val_loss: 0.9936
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 23ms/step - loss: 0.0012 - val_loss: 0.9674
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7fde385ecf60&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.src.callbacks.history.History at 0x7cc6dc036960&gt;
 </pre></div>
 </div>
 </div>
@@ -880,7 +880,7 @@ Epoch 100/100
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a8abe296330aec7dce8e3d7e2d48aa37505286fe3f39bb4de4b0edcb5230c739.png" src="../_images/a8abe296330aec7dce8e3d7e2d48aa37505286fe3f39bb4de4b0edcb5230c739.png" />
+<img alt="../_images/28e9b0aa657b14fa257a26ecf63b835b67b699b016587891ad6821e7afc44573.png" src="../_images/28e9b0aa657b14fa257a26ecf63b835b67b699b016587891ad6821e7afc44573.png" />
 </div>
 </div>
 </section>
@@ -900,8 +900,10 @@ Epoch 100/100
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>accuracy train 1.000
-accuracy test  0.798
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 10ms/step
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step
+accuracy train 1.000
+accuracy test  0.796
 </pre></div>
 </div>
 </div>
@@ -936,20 +938,23 @@ LAYER 3 + INPUT 2 to OUTPUT:  (20+2)*10 + 10 (bias) = 230
 <p>observe how this new architecture is built, and how the two kinds of information are handled both when building the network or when fitting or predicting</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_model_B</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">extra_info_dim</span><span class="p">,</span>  <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">s3</span><span class="p">,</span> <span class="n">s3_activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Concat</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layers</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_model_B</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">extra_info_dim</span><span class="p">,</span>  <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">s3</span><span class="p">,</span> <span class="n">s3_activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">):</span>
     <span class="n">clear_session</span><span class="p">()</span>
     <span class="n">inp1</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;input_img&quot;</span><span class="p">)</span>
     <span class="n">l11</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;dense1&quot;</span><span class="p">)(</span><span class="n">inp1</span><span class="p">)</span>
     <span class="n">l12</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">s2</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;dense2&quot;</span><span class="p">)(</span><span class="n">l11</span><span class="p">)</span>
     <span class="n">l13</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">s3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">s3_activation</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;dense3&quot;</span><span class="p">)(</span><span class="n">l12</span><span class="p">)</span>
-    
+
     <span class="n">inp2</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">extra_info_dim</span><span class="p">,),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;input_extra&quot;</span><span class="p">)</span>
-    <span class="n">cc1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">l13</span><span class="p">,</span> <span class="n">inp2</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># Merge row, same column</span>
+    <span class="n">cc1</span> <span class="o">=</span> <span class="n">Concat</span><span class="p">()([</span><span class="n">l13</span><span class="p">,</span> <span class="n">inp2</span><span class="p">])</span>
     <span class="n">output</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;output&quot;</span><span class="p">)(</span><span class="n">cc1</span><span class="p">)</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">inp1</span><span class="p">,</span> <span class="n">inp2</span><span class="p">],</span> <span class="n">outputs</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>
-    
+
     <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">)</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">reset_states</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">model</span>
 </pre></div>
 </div>
@@ -1005,449 +1010,248 @@ LAYER 3 + INPUT 2 to OUTPUT:  (20+2)*10 + 10 (bias) = 230
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;model&quot;
-__________________________________________________________________________________________________
-Layer (type)                    Output Shape         Param #     Connected to                     
-==================================================================================================
-input_img (InputLayer)          [(None, 784)]        0                                            
-__________________________________________________________________________________________________
-dense1 (Dense)                  (None, 50)           39250       input_img[0][0]                  
-__________________________________________________________________________________________________
-dense2 (Dense)                  (None, 30)           1530        dense1[0][0]                     
-__________________________________________________________________________________________________
-dense3 (Dense)                  (None, 20)           620         dense2[0][0]                     
-__________________________________________________________________________________________________
-input_extra (InputLayer)        [(None, 2)]          0                                            
-__________________________________________________________________________________________________
-tf_op_layer_concat (TensorFlowO [(None, 22)]         0           dense3[0][0]                     
-                                                                 input_extra[0][0]                
-__________________________________________________________________________________________________
-output (Dense)                  (None, 10)           230         tf_op_layer_concat[0][0]         
-==================================================================================================
-Total params: 41,630
-Trainable params: 41,630
-Non-trainable params: 0
-__________________________________________________________________________________________________
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "functional"</span>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)        </span>┃<span style="font-weight: bold"> Output Shape      </span>┃<span style="font-weight: bold">    Param # </span>┃<span style="font-weight: bold"> Connected to      </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━┩
+│ input_img           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">784</span>)       │          <span style="color: #00af00; text-decoration-color: #00af00">0</span> │ -                 │
+│ (<span style="color: #0087ff; text-decoration-color: #0087ff">InputLayer</span>)        │                   │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ dense1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)      │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">50</span>)        │     <span style="color: #00af00; text-decoration-color: #00af00">39,250</span> │ input_img[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ dense2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)      │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">30</span>)        │      <span style="color: #00af00; text-decoration-color: #00af00">1,530</span> │ dense1[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]      │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ dense3 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)      │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">20</span>)        │        <span style="color: #00af00; text-decoration-color: #00af00">620</span> │ dense2[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]      │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ input_extra         │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">2</span>)         │          <span style="color: #00af00; text-decoration-color: #00af00">0</span> │ -                 │
+│ (<span style="color: #0087ff; text-decoration-color: #0087ff">InputLayer</span>)        │                   │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ concat (<span style="color: #0087ff; text-decoration-color: #0087ff">Concat</span>)     │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">22</span>)        │          <span style="color: #00af00; text-decoration-color: #00af00">0</span> │ dense3[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>],     │
+│                     │                   │            │ input_extra[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>] │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ output (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)      │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">10</span>)        │        <span style="color: #00af00; text-decoration-color: #00af00">230</span> │ concat[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]      │
+└─────────────────────┴───────────────────┴────────────┴───────────────────┘
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">41,630</span> (162.62 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">41,630</span> (162.62 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">0</span> (0.00 B)
+</pre>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">([</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_train_extra</span><span class="p">],</span> <span class="n">y_train_oh</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">([</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_train_extra</span><span class="p">],</span> <span class="n">y_train_oh</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
           <span class="n">validation_data</span><span class="o">=</span><span class="p">([</span><span class="n">X_test</span><span class="p">,</span> <span class="n">X_test_extra</span><span class="p">],</span> <span class="n">y_test_oh</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train on 300 samples, validate on 1200 samples
-Epoch 1/200
-300/300 [==============================] - 0s 1ms/sample - loss: 2.2208 - val_loss: 2.0656
-Epoch 2/200
-300/300 [==============================] - 0s 186us/sample - loss: 1.9353 - val_loss: 1.8616
-Epoch 3/200
-300/300 [==============================] - 0s 197us/sample - loss: 1.6757 - val_loss: 1.6130
-Epoch 4/200
-300/300 [==============================] - 0s 196us/sample - loss: 1.4212 - val_loss: 1.3889
-Epoch 5/200
-300/300 [==============================] - 0s 200us/sample - loss: 1.1756 - val_loss: 1.2010
-Epoch 6/200
-300/300 [==============================] - 0s 193us/sample - loss: 0.9764 - val_loss: 1.0640
-Epoch 7/200
-300/300 [==============================] - 0s 197us/sample - loss: 0.8130 - val_loss: 0.9314
-Epoch 8/200
-300/300 [==============================] - 0s 196us/sample - loss: 0.6877 - val_loss: 0.8559
-Epoch 9/200
-300/300 [==============================] - 0s 193us/sample - loss: 0.5882 - val_loss: 0.7672
-Epoch 10/200
-300/300 [==============================] - 0s 200us/sample - loss: 0.4998 - val_loss: 0.7380
-Epoch 11/200
-300/300 [==============================] - 0s 199us/sample - loss: 0.4319 - val_loss: 0.6846
-Epoch 12/200
-300/300 [==============================] - 0s 188us/sample - loss: 0.3673 - val_loss: 0.6468
-Epoch 13/200
-300/300 [==============================] - 0s 166us/sample - loss: 0.3206 - val_loss: 0.6241
-Epoch 14/200
-300/300 [==============================] - 0s 165us/sample - loss: 0.2804 - val_loss: 0.5929
-Epoch 15/200
-300/300 [==============================] - 0s 169us/sample - loss: 0.2418 - val_loss: 0.5843
-Epoch 16/200
-300/300 [==============================] - 0s 191us/sample - loss: 0.2141 - val_loss: 0.5577
-Epoch 17/200
-300/300 [==============================] - 0s 173us/sample - loss: 0.1914 - val_loss: 0.5527
-Epoch 18/200
-300/300 [==============================] - 0s 168us/sample - loss: 0.1701 - val_loss: 0.5357
-Epoch 19/200
-300/300 [==============================] - 0s 157us/sample - loss: 0.1517 - val_loss: 0.5244
-Epoch 20/200
-300/300 [==============================] - 0s 158us/sample - loss: 0.1379 - val_loss: 0.5278
-Epoch 21/200
-300/300 [==============================] - 0s 159us/sample - loss: 0.1199 - val_loss: 0.5158
-Epoch 22/200
-300/300 [==============================] - 0s 162us/sample - loss: 0.1085 - val_loss: 0.5092
-Epoch 23/200
-300/300 [==============================] - 0s 171us/sample - loss: 0.0992 - val_loss: 0.5031
-Epoch 24/200
-300/300 [==============================] - 0s 180us/sample - loss: 0.0916 - val_loss: 0.4994
-Epoch 25/200
-300/300 [==============================] - 0s 181us/sample - loss: 0.0836 - val_loss: 0.4974
-Epoch 26/200
-300/300 [==============================] - 0s 181us/sample - loss: 0.0774 - val_loss: 0.5017
-Epoch 27/200
-300/300 [==============================] - 0s 182us/sample - loss: 0.0707 - val_loss: 0.4908
-Epoch 28/200
-300/300 [==============================] - 0s 180us/sample - loss: 0.0659 - val_loss: 0.4878
-Epoch 29/200
-300/300 [==============================] - 0s 182us/sample - loss: 0.0612 - val_loss: 0.4905
-Epoch 30/200
-300/300 [==============================] - 0s 171us/sample - loss: 0.0574 - val_loss: 0.4880
-Epoch 31/200
-300/300 [==============================] - 0s 176us/sample - loss: 0.0536 - val_loss: 0.4856
-Epoch 32/200
-300/300 [==============================] - 0s 169us/sample - loss: 0.0506 - val_loss: 0.4869
-Epoch 33/200
-300/300 [==============================] - 0s 158us/sample - loss: 0.0474 - val_loss: 0.4837
-Epoch 34/200
-300/300 [==============================] - 0s 187us/sample - loss: 0.0448 - val_loss: 0.4839
-Epoch 35/200
-300/300 [==============================] - 0s 204us/sample - loss: 0.0424 - val_loss: 0.4801
-Epoch 36/200
-300/300 [==============================] - 0s 183us/sample - loss: 0.0402 - val_loss: 0.4783
-Epoch 37/200
-300/300 [==============================] - 0s 180us/sample - loss: 0.0380 - val_loss: 0.4838
-Epoch 38/200
-300/300 [==============================] - 0s 177us/sample - loss: 0.0362 - val_loss: 0.4808
-Epoch 39/200
-300/300 [==============================] - 0s 165us/sample - loss: 0.0344 - val_loss: 0.4820
-Epoch 40/200
-300/300 [==============================] - 0s 158us/sample - loss: 0.0327 - val_loss: 0.4817
-Epoch 41/200
-300/300 [==============================] - 0s 163us/sample - loss: 0.0311 - val_loss: 0.4807
-Epoch 42/200
-300/300 [==============================] - 0s 178us/sample - loss: 0.0298 - val_loss: 0.4784
-Epoch 43/200
-300/300 [==============================] - 0s 205us/sample - loss: 0.0285 - val_loss: 0.4799
-Epoch 44/200
-300/300 [==============================] - 0s 202us/sample - loss: 0.0273 - val_loss: 0.4823
-Epoch 45/200
-300/300 [==============================] - 0s 205us/sample - loss: 0.0262 - val_loss: 0.4771
-Epoch 46/200
-300/300 [==============================] - 0s 207us/sample - loss: 0.0251 - val_loss: 0.4828
-Epoch 47/200
-300/300 [==============================] - 0s 204us/sample - loss: 0.0241 - val_loss: 0.4855
-Epoch 48/200
-300/300 [==============================] - 0s 202us/sample - loss: 0.0232 - val_loss: 0.4841
-Epoch 49/200
-300/300 [==============================] - 0s 219us/sample - loss: 0.0223 - val_loss: 0.4847
-Epoch 50/200
-300/300 [==============================] - 0s 226us/sample - loss: 0.0215 - val_loss: 0.4862
-Epoch 51/200
-300/300 [==============================] - 0s 206us/sample - loss: 0.0207 - val_loss: 0.4855
-Epoch 52/200
-300/300 [==============================] - 0s 189us/sample - loss: 0.0200 - val_loss: 0.4839
-Epoch 53/200
-300/300 [==============================] - 0s 187us/sample - loss: 0.0193 - val_loss: 0.4833
-Epoch 54/200
-300/300 [==============================] - 0s 182us/sample - loss: 0.0187 - val_loss: 0.4859
-Epoch 55/200
-300/300 [==============================] - 0s 175us/sample - loss: 0.0180 - val_loss: 0.4905
-Epoch 56/200
-300/300 [==============================] - 0s 183us/sample - loss: 0.0175 - val_loss: 0.4905
-Epoch 57/200
-300/300 [==============================] - 0s 184us/sample - loss: 0.0169 - val_loss: 0.4898
-Epoch 58/200
-300/300 [==============================] - 0s 191us/sample - loss: 0.0165 - val_loss: 0.4860
-Epoch 59/200
-300/300 [==============================] - 0s 205us/sample - loss: 0.0159 - val_loss: 0.4903
-Epoch 60/200
-300/300 [==============================] - 0s 181us/sample - loss: 0.0154 - val_loss: 0.4925
-Epoch 61/200
-300/300 [==============================] - 0s 171us/sample - loss: 0.0150 - val_loss: 0.4925
-Epoch 62/200
-300/300 [==============================] - 0s 182us/sample - loss: 0.0145 - val_loss: 0.4929
-Epoch 63/200
-300/300 [==============================] - 0s 169us/sample - loss: 0.0142 - val_loss: 0.4933
-Epoch 64/200
-300/300 [==============================] - 0s 182us/sample - loss: 0.0138 - val_loss: 0.4935
-Epoch 65/200
-300/300 [==============================] - 0s 182us/sample - loss: 0.0134 - val_loss: 0.4939
-Epoch 66/200
-300/300 [==============================] - 0s 196us/sample - loss: 0.0130 - val_loss: 0.4952
-Epoch 67/200
-300/300 [==============================] - 0s 192us/sample - loss: 0.0127 - val_loss: 0.4958
-Epoch 68/200
-300/300 [==============================] - 0s 197us/sample - loss: 0.0124 - val_loss: 0.4986
-Epoch 69/200
-300/300 [==============================] - 0s 187us/sample - loss: 0.0120 - val_loss: 0.4968
-Epoch 70/200
-300/300 [==============================] - 0s 188us/sample - loss: 0.0117 - val_loss: 0.4984
-Epoch 71/200
-300/300 [==============================] - 0s 274us/sample - loss: 0.0114 - val_loss: 0.5004
-Epoch 72/200
-300/300 [==============================] - 0s 193us/sample - loss: 0.0111 - val_loss: 0.5009
-Epoch 73/200
-300/300 [==============================] - 0s 179us/sample - loss: 0.0109 - val_loss: 0.5017
-Epoch 74/200
-300/300 [==============================] - 0s 185us/sample - loss: 0.0106 - val_loss: 0.5000
-Epoch 75/200
-300/300 [==============================] - 0s 161us/sample - loss: 0.0104 - val_loss: 0.5028
-Epoch 76/200
-300/300 [==============================] - 0s 158us/sample - loss: 0.0101 - val_loss: 0.5029
-Epoch 77/200
-300/300 [==============================] - 0s 155us/sample - loss: 0.0099 - val_loss: 0.5040
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 48ms/step - loss: 2.4579 - val_loss: 2.2070
+Epoch 2/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 17ms/step - loss: 2.1755 - val_loss: 2.0255
+Epoch 3/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 1.9391 - val_loss: 1.7903
+Epoch 4/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 18ms/step - loss: 1.6191 - val_loss: 1.5660
+Epoch 5/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 17ms/step - loss: 1.3847 - val_loss: 1.3577
+Epoch 6/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 1.1145 - val_loss: 1.2180
+Epoch 7/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 17ms/step - loss: 0.9945 - val_loss: 1.0937
+Epoch 8/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 0.7901 - val_loss: 0.9952
+Epoch 9/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 0.6896 - val_loss: 0.9166
+Epoch 10/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 26ms/step - loss: 0.6219 - val_loss: 0.8615
+Epoch 11/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 27ms/step - loss: 0.4936 - val_loss: 0.8130
+Epoch 12/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 27ms/step - loss: 0.4216 - val_loss: 0.7800
+Epoch 13/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step - loss: 0.3793 - val_loss: 0.7349
+Epoch 14/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 0.3376 - val_loss: 0.7212
+Epoch 15/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 23ms/step - loss: 0.2824 - val_loss: 0.6875
+Epoch 16/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 18ms/step - loss: 0.2395 - val_loss: 0.6802
+Epoch 17/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 0.2358 - val_loss: 0.6571
+Epoch 18/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 26ms/step - loss: 0.1861 - val_loss: 0.6522
+Epoch 19/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 19ms/step - loss: 0.1919 - val_loss: 0.6313
+Epoch 20/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 19ms/step - loss: 0.1429 - val_loss: 0.6238
+Epoch 21/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 26ms/step - loss: 0.1468 - val_loss: 0.6222
+Epoch 22/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step - loss: 0.1234 - val_loss: 0.6152
+Epoch 23/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 21ms/step - loss: 0.1153 - val_loss: 0.6076
+Epoch 24/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 20ms/step - loss: 0.1054 - val_loss: 0.6011
+Epoch 25/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 0.0952 - val_loss: 0.6042
+Epoch 26/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 22ms/step - loss: 0.0940 - val_loss: 0.5993
+Epoch 27/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 46ms/step - loss: 0.0800 - val_loss: 0.5999
+Epoch 28/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 48ms/step - loss: 0.0746 - val_loss: 0.5919
+Epoch 29/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 51ms/step - loss: 0.0674 - val_loss: 0.5949
+Epoch 30/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 50ms/step - loss: 0.0627 - val_loss: 0.5867
+Epoch 31/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 28ms/step - loss: 0.0555 - val_loss: 0.5872
+Epoch 32/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 0.0520 - val_loss: 0.5967
+Epoch 33/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 23ms/step - loss: 0.0482 - val_loss: 0.5864
+Epoch 34/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 18ms/step - loss: 0.0475 - val_loss: 0.5869
+Epoch 35/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 20ms/step - loss: 0.0464 - val_loss: 0.5911
+Epoch 36/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step - loss: 0.0415 - val_loss: 0.5850
+Epoch 37/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 28ms/step - loss: 0.0400 - val_loss: 0.5897
+Epoch 38/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 22ms/step - loss: 0.0361 - val_loss: 0.5882
+Epoch 39/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step - loss: 0.0369 - val_loss: 0.5939
+Epoch 40/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 0.0345 - val_loss: 0.5913
+Epoch 41/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 21ms/step - loss: 0.0321 - val_loss: 0.5930
+Epoch 42/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 19ms/step - loss: 0.0306 - val_loss: 0.5931
+Epoch 43/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 21ms/step - loss: 0.0295 - val_loss: 0.5925
+Epoch 44/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step - loss: 0.0291 - val_loss: 0.5944
+Epoch 45/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 0.0265 - val_loss: 0.5967
+Epoch 46/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 0.0255 - val_loss: 0.5929
+Epoch 47/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 23ms/step - loss: 0.0242 - val_loss: 0.5961
+Epoch 48/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 21ms/step - loss: 0.0235 - val_loss: 0.5987
+Epoch 49/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 18ms/step - loss: 0.0226 - val_loss: 0.6004
+Epoch 50/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 0.0216 - val_loss: 0.5988
+Epoch 51/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 0.0207 - val_loss: 0.5965
+Epoch 52/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 26ms/step - loss: 0.0207 - val_loss: 0.6002
+Epoch 53/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 0.0191 - val_loss: 0.6016
+Epoch 54/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step - loss: 0.0185 - val_loss: 0.6015
+Epoch 55/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 21ms/step - loss: 0.0176 - val_loss: 0.6000
+Epoch 56/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 26ms/step - loss: 0.0183 - val_loss: 0.6059
+Epoch 57/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 21ms/step - loss: 0.0172 - val_loss: 0.6054
+Epoch 58/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 23ms/step - loss: 0.0164 - val_loss: 0.6074
+Epoch 59/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 0.0160 - val_loss: 0.6071
+Epoch 60/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 29ms/step - loss: 0.0149 - val_loss: 0.6076
+Epoch 61/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 20ms/step - loss: 0.0160 - val_loss: 0.6109
+Epoch 62/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 26ms/step - loss: 0.0143 - val_loss: 0.6090
+Epoch 63/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 26ms/step - loss: 0.0142 - val_loss: 0.6100
+Epoch 64/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step - loss: 0.0141 - val_loss: 0.6123
+Epoch 65/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step - loss: 0.0129 - val_loss: 0.6127
+Epoch 66/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 27ms/step - loss: 0.0129 - val_loss: 0.6139
+Epoch 67/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 26ms/step - loss: 0.0129 - val_loss: 0.6139
+Epoch 68/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 49ms/step - loss: 0.0119 - val_loss: 0.6164
+Epoch 69/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 46ms/step - loss: 0.0119 - val_loss: 0.6172
+Epoch 70/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 28ms/step - loss: 0.0116 - val_loss: 0.6189
+Epoch 71/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 27ms/step - loss: 0.0113 - val_loss: 0.6190
+Epoch 72/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 45ms/step - loss: 0.0118 - val_loss: 0.6200
+Epoch 73/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 27ms/step - loss: 0.0104 - val_loss: 0.6203
+Epoch 74/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 20ms/step - loss: 0.0104 - val_loss: 0.6219
+Epoch 75/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 17ms/step - loss: 0.0103 - val_loss: 0.6237
+Epoch 76/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 19ms/step - loss: 0.0099 - val_loss: 0.6241
+Epoch 77/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 18ms/step - loss: 0.0098 - val_loss: 0.6240
+Epoch 78/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 18ms/step - loss: 0.0093 - val_loss: 0.6264
+Epoch 79/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 18ms/step - loss: 0.0093 - val_loss: 0.6274
+Epoch 80/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step - loss: 0.0092 - val_loss: 0.6277
+Epoch 81/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 20ms/step - loss: 0.0088 - val_loss: 0.6270
+Epoch 82/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step - loss: 0.0084 - val_loss: 0.6284
+Epoch 83/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 17ms/step - loss: 0.0085 - val_loss: 0.6306
+Epoch 84/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 23ms/step - loss: 0.0084 - val_loss: 0.6306
+Epoch 85/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 0.0083 - val_loss: 0.6308
+Epoch 86/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 19ms/step - loss: 0.0082 - val_loss: 0.6314
+Epoch 87/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 24ms/step - loss: 0.0078 - val_loss: 0.6334
+Epoch 88/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 18ms/step - loss: 0.0075 - val_loss: 0.6353
+Epoch 89/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step - loss: 0.0078 - val_loss: 0.6352
+Epoch 90/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 22ms/step - loss: 0.0074 - val_loss: 0.6339
+Epoch 91/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 28ms/step - loss: 0.0072 - val_loss: 0.6359
+Epoch 92/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 26ms/step - loss: 0.0072 - val_loss: 0.6388
+Epoch 93/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 23ms/step - loss: 0.0068 - val_loss: 0.6394
+Epoch 94/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step - loss: 0.0068 - val_loss: 0.6414
+Epoch 95/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 19ms/step - loss: 0.0066 - val_loss: 0.6406
+Epoch 96/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 18ms/step - loss: 0.0064 - val_loss: 0.6419
+Epoch 97/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 17ms/step - loss: 0.0064 - val_loss: 0.6431
+Epoch 98/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 17ms/step - loss: 0.0063 - val_loss: 0.6429
+Epoch 99/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 19ms/step - loss: 0.0060 - val_loss: 0.6428
+Epoch 100/100
+<span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 26ms/step - loss: 0.0061 - val_loss: 0.6452
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 78/200
-300/300 [==============================] - 0s 173us/sample - loss: 0.0097 - val_loss: 0.5047
-Epoch 79/200
-300/300 [==============================] - 0s 159us/sample - loss: 0.0095 - val_loss: 0.5053
-Epoch 80/200
-300/300 [==============================] - 0s 162us/sample - loss: 0.0093 - val_loss: 0.5030
-Epoch 81/200
-300/300 [==============================] - 0s 159us/sample - loss: 0.0090 - val_loss: 0.5055
-Epoch 82/200
-300/300 [==============================] - 0s 162us/sample - loss: 0.0089 - val_loss: 0.5067
-Epoch 83/200
-300/300 [==============================] - 0s 153us/sample - loss: 0.0087 - val_loss: 0.5096
-Epoch 84/200
-300/300 [==============================] - 0s 152us/sample - loss: 0.0085 - val_loss: 0.5097
-Epoch 85/200
-300/300 [==============================] - 0s 153us/sample - loss: 0.0083 - val_loss: 0.5113
-Epoch 86/200
-300/300 [==============================] - 0s 152us/sample - loss: 0.0081 - val_loss: 0.5107
-Epoch 87/200
-300/300 [==============================] - 0s 161us/sample - loss: 0.0080 - val_loss: 0.5117
-Epoch 88/200
-300/300 [==============================] - 0s 161us/sample - loss: 0.0078 - val_loss: 0.5123
-Epoch 89/200
-300/300 [==============================] - 0s 165us/sample - loss: 0.0077 - val_loss: 0.5116
-Epoch 90/200
-300/300 [==============================] - 0s 167us/sample - loss: 0.0075 - val_loss: 0.5128
-Epoch 91/200
-300/300 [==============================] - 0s 156us/sample - loss: 0.0074 - val_loss: 0.5151
-Epoch 92/200
-300/300 [==============================] - 0s 149us/sample - loss: 0.0072 - val_loss: 0.5168
-Epoch 93/200
-300/300 [==============================] - 0s 150us/sample - loss: 0.0071 - val_loss: 0.5163
-Epoch 94/200
-300/300 [==============================] - 0s 156us/sample - loss: 0.0069 - val_loss: 0.5167
-Epoch 95/200
-300/300 [==============================] - 0s 159us/sample - loss: 0.0068 - val_loss: 0.5178
-Epoch 96/200
-300/300 [==============================] - 0s 166us/sample - loss: 0.0067 - val_loss: 0.5174
-Epoch 97/200
-300/300 [==============================] - 0s 191us/sample - loss: 0.0066 - val_loss: 0.5176
-Epoch 98/200
-300/300 [==============================] - 0s 184us/sample - loss: 0.0065 - val_loss: 0.5192
-Epoch 99/200
-300/300 [==============================] - 0s 160us/sample - loss: 0.0063 - val_loss: 0.5209
-Epoch 100/200
-300/300 [==============================] - 0s 154us/sample - loss: 0.0062 - val_loss: 0.5203
-Epoch 101/200
-300/300 [==============================] - 0s 154us/sample - loss: 0.0061 - val_loss: 0.5210
-Epoch 102/200
-300/300 [==============================] - 0s 159us/sample - loss: 0.0060 - val_loss: 0.5216
-Epoch 103/200
-300/300 [==============================] - 0s 153us/sample - loss: 0.0059 - val_loss: 0.5229
-Epoch 104/200
-300/300 [==============================] - 0s 162us/sample - loss: 0.0058 - val_loss: 0.5240
-Epoch 105/200
-300/300 [==============================] - 0s 158us/sample - loss: 0.0057 - val_loss: 0.5234
-Epoch 106/200
-300/300 [==============================] - 0s 157us/sample - loss: 0.0056 - val_loss: 0.5236
-Epoch 107/200
-300/300 [==============================] - 0s 159us/sample - loss: 0.0055 - val_loss: 0.5251
-Epoch 108/200
-300/300 [==============================] - 0s 152us/sample - loss: 0.0054 - val_loss: 0.5261
-Epoch 109/200
-300/300 [==============================] - 0s 160us/sample - loss: 0.0054 - val_loss: 0.5260
-Epoch 110/200
-300/300 [==============================] - 0s 156us/sample - loss: 0.0053 - val_loss: 0.5261
-Epoch 111/200
-300/300 [==============================] - 0s 151us/sample - loss: 0.0052 - val_loss: 0.5278
-Epoch 112/200
-300/300 [==============================] - 0s 161us/sample - loss: 0.0051 - val_loss: 0.5286
-Epoch 113/200
-300/300 [==============================] - 0s 157us/sample - loss: 0.0050 - val_loss: 0.5291
-Epoch 114/200
-300/300 [==============================] - 0s 159us/sample - loss: 0.0049 - val_loss: 0.5290
-Epoch 115/200
-300/300 [==============================] - 0s 159us/sample - loss: 0.0049 - val_loss: 0.5306
-Epoch 116/200
-300/300 [==============================] - 0s 152us/sample - loss: 0.0048 - val_loss: 0.5317
-Epoch 117/200
-300/300 [==============================] - 0s 158us/sample - loss: 0.0047 - val_loss: 0.5330
-Epoch 118/200
-300/300 [==============================] - 0s 165us/sample - loss: 0.0047 - val_loss: 0.5343
-Epoch 119/200
-300/300 [==============================] - 0s 153us/sample - loss: 0.0046 - val_loss: 0.5340
-Epoch 120/200
-300/300 [==============================] - 0s 163us/sample - loss: 0.0045 - val_loss: 0.5341
-Epoch 121/200
-300/300 [==============================] - 0s 162us/sample - loss: 0.0044 - val_loss: 0.5345
-Epoch 122/200
-300/300 [==============================] - 0s 164us/sample - loss: 0.0044 - val_loss: 0.5356
-Epoch 123/200
-300/300 [==============================] - 0s 161us/sample - loss: 0.0043 - val_loss: 0.5360
-Epoch 124/200
-300/300 [==============================] - 0s 160us/sample - loss: 0.0043 - val_loss: 0.5370
-Epoch 125/200
-300/300 [==============================] - 0s 157us/sample - loss: 0.0042 - val_loss: 0.5366
-Epoch 126/200
-300/300 [==============================] - 0s 159us/sample - loss: 0.0041 - val_loss: 0.5371
-Epoch 127/200
-300/300 [==============================] - 0s 157us/sample - loss: 0.0041 - val_loss: 0.5377
-Epoch 128/200
-300/300 [==============================] - 0s 153us/sample - loss: 0.0040 - val_loss: 0.5384
-Epoch 129/200
-300/300 [==============================] - 0s 149us/sample - loss: 0.0040 - val_loss: 0.5401
-Epoch 130/200
-300/300 [==============================] - 0s 161us/sample - loss: 0.0039 - val_loss: 0.5395
-Epoch 131/200
-300/300 [==============================] - 0s 159us/sample - loss: 0.0039 - val_loss: 0.5413
-Epoch 132/200
-300/300 [==============================] - 0s 157us/sample - loss: 0.0038 - val_loss: 0.5421
-Epoch 133/200
-300/300 [==============================] - 0s 156us/sample - loss: 0.0038 - val_loss: 0.5424
-Epoch 134/200
-300/300 [==============================] - 0s 151us/sample - loss: 0.0037 - val_loss: 0.5433
-Epoch 135/200
-300/300 [==============================] - 0s 155us/sample - loss: 0.0037 - val_loss: 0.5432
-Epoch 136/200
-300/300 [==============================] - 0s 160us/sample - loss: 0.0036 - val_loss: 0.5441
-Epoch 137/200
-300/300 [==============================] - 0s 160us/sample - loss: 0.0036 - val_loss: 0.5444
-Epoch 138/200
-300/300 [==============================] - 0s 159us/sample - loss: 0.0035 - val_loss: 0.5453
-Epoch 139/200
-300/300 [==============================] - 0s 156us/sample - loss: 0.0035 - val_loss: 0.5463
-Epoch 140/200
-300/300 [==============================] - 0s 158us/sample - loss: 0.0034 - val_loss: 0.5481
-Epoch 141/200
-300/300 [==============================] - 0s 160us/sample - loss: 0.0034 - val_loss: 0.5473
-Epoch 142/200
-300/300 [==============================] - 0s 159us/sample - loss: 0.0033 - val_loss: 0.5481
-Epoch 143/200
-300/300 [==============================] - 0s 155us/sample - loss: 0.0033 - val_loss: 0.5490
-Epoch 144/200
-300/300 [==============================] - 0s 149us/sample - loss: 0.0033 - val_loss: 0.5495
-Epoch 145/200
-300/300 [==============================] - 0s 159us/sample - loss: 0.0032 - val_loss: 0.5515
-Epoch 146/200
-300/300 [==============================] - 0s 157us/sample - loss: 0.0032 - val_loss: 0.5515
-Epoch 147/200
-300/300 [==============================] - 0s 159us/sample - loss: 0.0031 - val_loss: 0.5534
-Epoch 148/200
-300/300 [==============================] - 0s 159us/sample - loss: 0.0031 - val_loss: 0.5539
-Epoch 149/200
-300/300 [==============================] - 0s 150us/sample - loss: 0.0031 - val_loss: 0.5536
-Epoch 150/200
-300/300 [==============================] - 0s 150us/sample - loss: 0.0030 - val_loss: 0.5540
-Epoch 151/200
-300/300 [==============================] - 0s 159us/sample - loss: 0.0030 - val_loss: 0.5543
-Epoch 152/200
-300/300 [==============================] - 0s 159us/sample - loss: 0.0029 - val_loss: 0.5559
-Epoch 153/200
-300/300 [==============================] - 0s 169us/sample - loss: 0.0029 - val_loss: 0.5565
-Epoch 154/200
-300/300 [==============================] - 0s 162us/sample - loss: 0.0029 - val_loss: 0.5574
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 155/200
-300/300 [==============================] - 0s 164us/sample - loss: 0.0028 - val_loss: 0.5574
-Epoch 156/200
-300/300 [==============================] - 0s 171us/sample - loss: 0.0028 - val_loss: 0.5584
-Epoch 157/200
-300/300 [==============================] - 0s 165us/sample - loss: 0.0028 - val_loss: 0.5589
-Epoch 158/200
-300/300 [==============================] - 0s 167us/sample - loss: 0.0027 - val_loss: 0.5586
-Epoch 159/200
-300/300 [==============================] - 0s 171us/sample - loss: 0.0027 - val_loss: 0.5589
-Epoch 160/200
-300/300 [==============================] - 0s 160us/sample - loss: 0.0027 - val_loss: 0.5604
-Epoch 161/200
-300/300 [==============================] - 0s 170us/sample - loss: 0.0027 - val_loss: 0.5613
-Epoch 162/200
-300/300 [==============================] - 0s 157us/sample - loss: 0.0026 - val_loss: 0.5614
-Epoch 163/200
-300/300 [==============================] - 0s 167us/sample - loss: 0.0026 - val_loss: 0.5617
-Epoch 164/200
-300/300 [==============================] - 0s 153us/sample - loss: 0.0026 - val_loss: 0.5627
-Epoch 165/200
-300/300 [==============================] - 0s 159us/sample - loss: 0.0025 - val_loss: 0.5633
-Epoch 166/200
-300/300 [==============================] - 0s 157us/sample - loss: 0.0025 - val_loss: 0.5632
-Epoch 167/200
-300/300 [==============================] - 0s 149us/sample - loss: 0.0025 - val_loss: 0.5639
-Epoch 168/200
-300/300 [==============================] - 0s 157us/sample - loss: 0.0025 - val_loss: 0.5641
-Epoch 169/200
-300/300 [==============================] - 0s 154us/sample - loss: 0.0024 - val_loss: 0.5652
-Epoch 170/200
-300/300 [==============================] - 0s 152us/sample - loss: 0.0024 - val_loss: 0.5664
-Epoch 171/200
-300/300 [==============================] - 0s 155us/sample - loss: 0.0024 - val_loss: 0.5668
-Epoch 172/200
-300/300 [==============================] - 0s 160us/sample - loss: 0.0023 - val_loss: 0.5678
-Epoch 173/200
-300/300 [==============================] - 0s 159us/sample - loss: 0.0023 - val_loss: 0.5681
-Epoch 174/200
-300/300 [==============================] - 0s 159us/sample - loss: 0.0023 - val_loss: 0.5694
-Epoch 175/200
-300/300 [==============================] - 0s 158us/sample - loss: 0.0023 - val_loss: 0.5694
-Epoch 176/200
-300/300 [==============================] - 0s 157us/sample - loss: 0.0022 - val_loss: 0.5701
-Epoch 177/200
-300/300 [==============================] - 0s 154us/sample - loss: 0.0022 - val_loss: 0.5706
-Epoch 178/200
-300/300 [==============================] - 0s 151us/sample - loss: 0.0022 - val_loss: 0.5718
-Epoch 179/200
-300/300 [==============================] - 0s 160us/sample - loss: 0.0022 - val_loss: 0.5725
-Epoch 180/200
-300/300 [==============================] - 0s 161us/sample - loss: 0.0022 - val_loss: 0.5726
-Epoch 181/200
-300/300 [==============================] - 0s 171us/sample - loss: 0.0021 - val_loss: 0.5733
-Epoch 182/200
-300/300 [==============================] - 0s 186us/sample - loss: 0.0021 - val_loss: 0.5741
-Epoch 183/200
-300/300 [==============================] - 0s 185us/sample - loss: 0.0021 - val_loss: 0.5746
-Epoch 184/200
-300/300 [==============================] - 0s 182us/sample - loss: 0.0021 - val_loss: 0.5744
-Epoch 185/200
-300/300 [==============================] - 0s 185us/sample - loss: 0.0020 - val_loss: 0.5759
-Epoch 186/200
-300/300 [==============================] - 0s 180us/sample - loss: 0.0020 - val_loss: 0.5765
-Epoch 187/200
-300/300 [==============================] - 0s 174us/sample - loss: 0.0020 - val_loss: 0.5769
-Epoch 188/200
-300/300 [==============================] - 0s 176us/sample - loss: 0.0020 - val_loss: 0.5770
-Epoch 189/200
-300/300 [==============================] - 0s 185us/sample - loss: 0.0020 - val_loss: 0.5775
-Epoch 190/200
-300/300 [==============================] - 0s 183us/sample - loss: 0.0019 - val_loss: 0.5776
-Epoch 191/200
-300/300 [==============================] - 0s 179us/sample - loss: 0.0019 - val_loss: 0.5782
-Epoch 192/200
-300/300 [==============================] - 0s 185us/sample - loss: 0.0019 - val_loss: 0.5785
-Epoch 193/200
-300/300 [==============================] - 0s 190us/sample - loss: 0.0019 - val_loss: 0.5795
-Epoch 194/200
-300/300 [==============================] - 0s 188us/sample - loss: 0.0019 - val_loss: 0.5809
-Epoch 195/200
-300/300 [==============================] - 0s 180us/sample - loss: 0.0018 - val_loss: 0.5817
-Epoch 196/200
-300/300 [==============================] - 0s 190us/sample - loss: 0.0018 - val_loss: 0.5827
-Epoch 197/200
-300/300 [==============================] - 0s 189us/sample - loss: 0.0018 - val_loss: 0.5826
-Epoch 198/200
-300/300 [==============================] - 0s 186us/sample - loss: 0.0018 - val_loss: 0.5834
-Epoch 199/200
-300/300 [==============================] - 0s 196us/sample - loss: 0.0018 - val_loss: 0.5836
-Epoch 200/200
-300/300 [==============================] - 0s 187us/sample - loss: 0.0018 - val_loss: 0.5843
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7fde3c9b98d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.src.callbacks.history.History at 0x7cc6adfae9f0&gt;
 </pre></div>
 </div>
 </div>
@@ -1465,7 +1269,7 @@ Epoch 200/200
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/cad47e06a5f503555039e0e644149e8e7a9caee3942db48debf82f9035866b76.png" src="../_images/cad47e06a5f503555039e0e644149e8e7a9caee3942db48debf82f9035866b76.png" />
+<img alt="../_images/8db1a8fc4363d23fb7132cceea41561a4eb7b771baf6125b53d6e221ef370dc6.png" src="../_images/8db1a8fc4363d23fb7132cceea41561a4eb7b771baf6125b53d6e221ef370dc6.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1479,8 +1283,10 @@ Epoch 200/200
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>accuracy train 1.000
-accuracy test  0.835
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">10/10</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 13ms/step
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step
+accuracy train 1.000
+accuracy test  0.818
 </pre></div>
 </div>
 </div>

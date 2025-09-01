@@ -465,23 +465,23 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="vanishing-gradients">
 <h1>2.7 - Vanishing gradients<a class="headerlink" href="#vanishing-gradients" title="Link to this heading">#</a></h1>
-<p>Course’s materials require a <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code> version lower than the default one used in Google Colab. Run the following cell to downgrade TensorFlow accordingly.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">downgrade_tf_version</span><span class="p">():</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip uninstall -y tensorflow&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip install tensorflow==2.12.0&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="mi">9</span><span class="p">)</span>
-<span class="n">downgrade_tf_version</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
-<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/content/init.py:2: SyntaxWarning: invalid escape sequence &#39;\S&#39;
+  course_id = &#39;\S*deeplearning\S*&#39;
+</pre></div>
+</div>
+<div class="output text_html">
+<meta name="google-signin-client_id"
+      content="461673936472-kdjosv61up3ac1ajeuq6qqu72upilmls.apps.googleusercontent.com"/>
+<script src="https://apis.google.com/js/client:platform.js?onload=google_button_start"></script>
+    </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>replicating local resources
 </pre></div>
 </div>
 </div>
@@ -499,7 +499,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.1.0&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.19.0&#39;
 </pre></div>
 </div>
 </div>
@@ -547,10 +547,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fb43fbffeb8&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f36197145f0&gt;
 </pre></div>
 </div>
-<img alt="../_images/993c6c44321b46a07c6c37589f82f4b751e869a12baee0eb7afcfa93ee55d48e.png" src="../_images/993c6c44321b46a07c6c37589f82f4b751e869a12baee0eb7afcfa93ee55d48e.png" />
+<img alt="../_images/ce2b69e664a977792048a6847339b5645d758341b693c2cd5b95cfac36724472.png" src="../_images/ce2b69e664a977792048a6847339b5645d758341b693c2cd5b95cfac36724472.png" />
 </div>
 </div>
 </section>
@@ -578,10 +578,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fb43fd2ef60&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f36197690a0&gt;
 </pre></div>
 </div>
-<img alt="../_images/4287d81175dffd34f3abd09465b6aa652646ed25efbb0c2cca3016aaf5b6feba.png" src="../_images/4287d81175dffd34f3abd09465b6aa652646ed25efbb0c2cca3016aaf5b6feba.png" />
+<img alt="../_images/8c7a6894b393b945b203b92d23fb580814a81fa1b0a8590536030ffb54cc00c1.png" src="../_images/8c7a6894b393b945b203b92d23fb580814a81fa1b0a8590536030ffb54cc00c1.png" />
 </div>
 </div>
 </section>
@@ -609,10 +609,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fb43fe39780&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f36197d90a0&gt;
 </pre></div>
 </div>
-<img alt="../_images/c15d4a621771cb6a85deaad3024093934d38a31e650b968cfa36e1d50a47cecf.png" src="../_images/c15d4a621771cb6a85deaad3024093934d38a31e650b968cfa36e1d50a47cecf.png" />
+<img alt="../_images/56ddaf5860baf68d2ab704f79ec36a4db004d7e5c4a06a1619a304c71bbec48c.png" src="../_images/56ddaf5860baf68d2ab704f79ec36a4db004d7e5c4a06a1619a304c71bbec48c.png" />
 </div>
 </div>
 </section>
@@ -632,7 +632,7 @@ document.write(`
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">relu</span><span class="p">(</span><span class="n">z</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">drelu</span><span class="p">(</span><span class="n">z</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;grad relu&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
@@ -640,10 +640,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fb43fec0dd8&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f36176a0320&gt;
 </pre></div>
 </div>
-<img alt="../_images/a49479a8a04b9bdfa272d356be02d1d221ad0f133867017327557b7646390965.png" src="../_images/a49479a8a04b9bdfa272d356be02d1d221ad0f133867017327557b7646390965.png" />
+<img alt="../_images/690d054d2c090478f6b007101bf92ab719f177f3832fa31fc8d044287b5c0f79.png" src="../_images/690d054d2c090478f6b007101bf92ab719f177f3832fa31fc8d044287b5c0f79.png" />
 </div>
 </div>
 </section>
@@ -698,19 +698,19 @@ document.write(`
 <p>observe that the function allows us to parametrize the number of hidden layers and their activation function</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>rm<span class="w"> </span>-rf<span class="w"> </span>log<span class="w"> </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>rm<span class="w"> </span>-rf<span class="w"> </span>log
 
 <span class="k">def</span><span class="w"> </span><span class="nf">get_model</span><span class="p">(</span><span class="n">input_dim</span><span class="o">=</span><span class="mi">784</span><span class="p">,</span> <span class="n">output_dim</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">num_hidden_layers</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">):</span>
 
     <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">activation</span><span class="p">,</span> <span class="n">input_dim</span><span class="o">=</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Layer_</span><span class="si">%02d</span><span class="s2">_Input&quot;</span><span class="o">%</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
-    
+
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_hidden_layers</span><span class="p">):</span>
         <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">activation</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Layer_</span><span class="si">%02d</span><span class="s2">_Hidden&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)))</span>
-   
+
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">output_dim</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;softmax&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Layer_</span><span class="si">%02d</span><span class="s2">_Output&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">num_hidden_layers</span><span class="o">+</span><span class="mi">1</span><span class="p">)))</span>
     <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
-    
+
     <span class="k">return</span> <span class="n">model</span>
 </pre></div>
 </div>
@@ -729,70 +729,73 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train on 1200 samples, validate on 300 samples
-Epoch 1/30
-1200/1200 [==============================] - 1s 528us/sample - loss: 2.3860 - accuracy: 0.0933 - val_loss: 2.3674 - val_accuracy: 0.0967
-Epoch 2/30
-1200/1200 [==============================] - 0s 124us/sample - loss: 2.3391 - accuracy: 0.0933 - val_loss: 2.3356 - val_accuracy: 0.0967
-Epoch 3/30
-1200/1200 [==============================] - 0s 129us/sample - loss: 2.3174 - accuracy: 0.1050 - val_loss: 2.3181 - val_accuracy: 0.0733
-Epoch 4/30
-1200/1200 [==============================] - 0s 102us/sample - loss: 2.3073 - accuracy: 0.1083 - val_loss: 2.3097 - val_accuracy: 0.0733
-Epoch 5/30
-1200/1200 [==============================] - 0s 106us/sample - loss: 2.3023 - accuracy: 0.1025 - val_loss: 2.3059 - val_accuracy: 0.1367
-Epoch 6/30
-1200/1200 [==============================] - 0s 97us/sample - loss: 2.3006 - accuracy: 0.1208 - val_loss: 2.3029 - val_accuracy: 0.1367
-Epoch 7/30
-1200/1200 [==============================] - 0s 95us/sample - loss: 2.2994 - accuracy: 0.1208 - val_loss: 2.3017 - val_accuracy: 0.1367
-Epoch 8/30
-1200/1200 [==============================] - 0s 88us/sample - loss: 2.2993 - accuracy: 0.1208 - val_loss: 2.3029 - val_accuracy: 0.1367
-Epoch 9/30
-1200/1200 [==============================] - 0s 87us/sample - loss: 2.2990 - accuracy: 0.1208 - val_loss: 2.3012 - val_accuracy: 0.1367
-Epoch 10/30
-1200/1200 [==============================] - 0s 87us/sample - loss: 2.2991 - accuracy: 0.1208 - val_loss: 2.3008 - val_accuracy: 0.1367
-Epoch 11/30
-1200/1200 [==============================] - 0s 88us/sample - loss: 2.2990 - accuracy: 0.1208 - val_loss: 2.3020 - val_accuracy: 0.1367
-Epoch 12/30
-1200/1200 [==============================] - 0s 90us/sample - loss: 2.2994 - accuracy: 0.1208 - val_loss: 2.3006 - val_accuracy: 0.1367
-Epoch 13/30
-1200/1200 [==============================] - 0s 86us/sample - loss: 2.2990 - accuracy: 0.1208 - val_loss: 2.3012 - val_accuracy: 0.1367
-Epoch 14/30
-1200/1200 [==============================] - 0s 96us/sample - loss: 2.2993 - accuracy: 0.1208 - val_loss: 2.3024 - val_accuracy: 0.1367
-Epoch 15/30
-1200/1200 [==============================] - 0s 87us/sample - loss: 2.2989 - accuracy: 0.1208 - val_loss: 2.2997 - val_accuracy: 0.1367
-Epoch 16/30
-1200/1200 [==============================] - 0s 77us/sample - loss: 2.2994 - accuracy: 0.1208 - val_loss: 2.3006 - val_accuracy: 0.1367
-Epoch 17/30
-1200/1200 [==============================] - 0s 85us/sample - loss: 2.2991 - accuracy: 0.1208 - val_loss: 2.3010 - val_accuracy: 0.1367
-Epoch 18/30
-1200/1200 [==============================] - 0s 79us/sample - loss: 2.2991 - accuracy: 0.1208 - val_loss: 2.3006 - val_accuracy: 0.1367
-Epoch 19/30
-1200/1200 [==============================] - 0s 86us/sample - loss: 2.2989 - accuracy: 0.1208 - val_loss: 2.3017 - val_accuracy: 0.1367
-Epoch 20/30
-1200/1200 [==============================] - 0s 79us/sample - loss: 2.2989 - accuracy: 0.1208 - val_loss: 2.3013 - val_accuracy: 0.1367
-Epoch 21/30
-1200/1200 [==============================] - 0s 87us/sample - loss: 2.2990 - accuracy: 0.1208 - val_loss: 2.3010 - val_accuracy: 0.1367
-Epoch 22/30
-1200/1200 [==============================] - 0s 83us/sample - loss: 2.2986 - accuracy: 0.1208 - val_loss: 2.3014 - val_accuracy: 0.1367
-Epoch 23/30
-1200/1200 [==============================] - 0s 74us/sample - loss: 2.2988 - accuracy: 0.1208 - val_loss: 2.3011 - val_accuracy: 0.1367
-Epoch 24/30
-1200/1200 [==============================] - 0s 96us/sample - loss: 2.2991 - accuracy: 0.1208 - val_loss: 2.3023 - val_accuracy: 0.1367
-Epoch 25/30
-1200/1200 [==============================] - 0s 94us/sample - loss: 2.2990 - accuracy: 0.1208 - val_loss: 2.3006 - val_accuracy: 0.1367
-Epoch 26/30
-1200/1200 [==============================] - 0s 89us/sample - loss: 2.2990 - accuracy: 0.1208 - val_loss: 2.3007 - val_accuracy: 0.1367
-Epoch 27/30
-1200/1200 [==============================] - 0s 92us/sample - loss: 2.2993 - accuracy: 0.1208 - val_loss: 2.3010 - val_accuracy: 0.1367
-Epoch 28/30
-1200/1200 [==============================] - 0s 89us/sample - loss: 2.2991 - accuracy: 0.1208 - val_loss: 2.3019 - val_accuracy: 0.1367
-Epoch 29/30
-1200/1200 [==============================] - 0s 84us/sample - loss: 2.2991 - accuracy: 0.1208 - val_loss: 2.3023 - val_accuracy: 0.1367
-Epoch 30/30
-1200/1200 [==============================] - 0s 84us/sample - loss: 2.2989 - accuracy: 0.1208 - val_loss: 2.3014 - val_accuracy: 0.1367
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.12/dist-packages/keras/src/layers/core/dense.py:93: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
+  super().__init__(activity_regularizer=activity_regularizer, **kwargs)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7fb426ebe710&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 23ms/step - accuracy: 0.1054 - loss: 2.3731 - val_accuracy: 0.1067 - val_loss: 2.3696
+Epoch 2/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 13ms/step - accuracy: 0.1028 - loss: 2.3353 - val_accuracy: 0.1067 - val_loss: 2.3355
+Epoch 3/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 14ms/step - accuracy: 0.0926 - loss: 2.3204 - val_accuracy: 0.1067 - val_loss: 2.3203
+Epoch 4/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 12ms/step - accuracy: 0.1052 - loss: 2.3042 - val_accuracy: 0.1233 - val_loss: 2.3130
+Epoch 5/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 13ms/step - accuracy: 0.1037 - loss: 2.3028 - val_accuracy: 0.1233 - val_loss: 2.3093
+Epoch 6/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 12ms/step - accuracy: 0.1215 - loss: 2.3017 - val_accuracy: 0.1233 - val_loss: 2.3053
+Epoch 7/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.1330 - loss: 2.2979 - val_accuracy: 0.1233 - val_loss: 2.3039
+Epoch 8/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 12ms/step - accuracy: 0.1190 - loss: 2.3007 - val_accuracy: 0.1233 - val_loss: 2.3030
+Epoch 9/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.1241 - loss: 2.2997 - val_accuracy: 0.1233 - val_loss: 2.3019
+Epoch 10/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 12ms/step - accuracy: 0.1261 - loss: 2.2991 - val_accuracy: 0.1233 - val_loss: 2.3024
+Epoch 11/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.1299 - loss: 2.2960 - val_accuracy: 0.1233 - val_loss: 2.3018
+Epoch 12/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.1386 - loss: 2.2974 - val_accuracy: 0.1233 - val_loss: 2.3017
+Epoch 13/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 14ms/step - accuracy: 0.1185 - loss: 2.2999 - val_accuracy: 0.1233 - val_loss: 2.3021
+Epoch 14/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 20ms/step - accuracy: 0.1196 - loss: 2.2992 - val_accuracy: 0.1233 - val_loss: 2.3008
+Epoch 15/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 19ms/step - accuracy: 0.1262 - loss: 2.2959 - val_accuracy: 0.1233 - val_loss: 2.3022
+Epoch 16/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 18ms/step - accuracy: 0.1383 - loss: 2.2975 - val_accuracy: 0.1233 - val_loss: 2.3000
+Epoch 17/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 13ms/step - accuracy: 0.1224 - loss: 2.3021 - val_accuracy: 0.1233 - val_loss: 2.3014
+Epoch 18/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.1309 - loss: 2.2959 - val_accuracy: 0.1233 - val_loss: 2.3023
+Epoch 19/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 12ms/step - accuracy: 0.1255 - loss: 2.2970 - val_accuracy: 0.1233 - val_loss: 2.3013
+Epoch 20/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.1314 - loss: 2.2937 - val_accuracy: 0.1233 - val_loss: 2.3016
+Epoch 21/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 12ms/step - accuracy: 0.1175 - loss: 2.2988 - val_accuracy: 0.1233 - val_loss: 2.3016
+Epoch 22/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 13ms/step - accuracy: 0.1213 - loss: 2.2989 - val_accuracy: 0.1233 - val_loss: 2.3007
+Epoch 23/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 12ms/step - accuracy: 0.1429 - loss: 2.2939 - val_accuracy: 0.1233 - val_loss: 2.3005
+Epoch 24/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 12ms/step - accuracy: 0.1247 - loss: 2.2984 - val_accuracy: 0.1233 - val_loss: 2.3018
+Epoch 25/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 12ms/step - accuracy: 0.1363 - loss: 2.2947 - val_accuracy: 0.1233 - val_loss: 2.3022
+Epoch 26/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.1287 - loss: 2.2956 - val_accuracy: 0.1233 - val_loss: 2.3010
+Epoch 27/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 12ms/step - accuracy: 0.1320 - loss: 2.2975 - val_accuracy: 0.1233 - val_loss: 2.3010
+Epoch 28/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.1205 - loss: 2.3009 - val_accuracy: 0.1233 - val_loss: 2.3007
+Epoch 29/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 12ms/step - accuracy: 0.1338 - loss: 2.2950 - val_accuracy: 0.1233 - val_loss: 2.3016
+Epoch 30/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 13ms/step - accuracy: 0.1216 - loss: 2.2993 - val_accuracy: 0.1233 - val_loss: 2.3011
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.src.callbacks.history.History at 0x7f3615ceb3b0&gt;
 </pre></div>
 </div>
 </div>
@@ -810,70 +813,69 @@ Epoch 30/30
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train on 1200 samples, validate on 300 samples
-Epoch 1/30
-1200/1200 [==============================] - 1s 595us/sample - loss: 2.2625 - accuracy: 0.1167 - val_loss: 2.1966 - val_accuracy: 0.1167
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">4s</span> 20ms/step - accuracy: 0.0761 - loss: 2.3020 - val_accuracy: 0.1467 - val_loss: 2.2875
 Epoch 2/30
-1200/1200 [==============================] - 0s 109us/sample - loss: 2.0998 - accuracy: 0.1950 - val_loss: 2.0889 - val_accuracy: 0.2233
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.1180 - loss: 2.2585 - val_accuracy: 0.2067 - val_loss: 2.1309
 Epoch 3/30
-1200/1200 [==============================] - 0s 99us/sample - loss: 2.0089 - accuracy: 0.1867 - val_loss: 2.0127 - val_accuracy: 0.1667
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.2003 - loss: 2.0828 - val_accuracy: 0.2200 - val_loss: 2.0145
 Epoch 4/30
-1200/1200 [==============================] - 0s 104us/sample - loss: 1.9355 - accuracy: 0.1883 - val_loss: 1.9451 - val_accuracy: 0.1600
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.2092 - loss: 1.9246 - val_accuracy: 0.2000 - val_loss: 1.9175
 Epoch 5/30
-1200/1200 [==============================] - 0s 113us/sample - loss: 1.8051 - accuracy: 0.2050 - val_loss: 1.8259 - val_accuracy: 0.1833
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 12ms/step - accuracy: 0.2034 - loss: 1.8308 - val_accuracy: 0.2167 - val_loss: 1.8493
 Epoch 6/30
-1200/1200 [==============================] - 0s 99us/sample - loss: 1.6390 - accuracy: 0.3275 - val_loss: 1.7357 - val_accuracy: 0.2933
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.2405 - loss: 1.7564 - val_accuracy: 0.2733 - val_loss: 1.7784
 Epoch 7/30
-1200/1200 [==============================] - 0s 105us/sample - loss: 1.4954 - accuracy: 0.3950 - val_loss: 1.6874 - val_accuracy: 0.3367
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.2829 - loss: 1.6109 - val_accuracy: 0.3433 - val_loss: 1.7027
 Epoch 8/30
-1200/1200 [==============================] - 0s 106us/sample - loss: 1.3708 - accuracy: 0.4333 - val_loss: 1.6481 - val_accuracy: 0.3567
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 12ms/step - accuracy: 0.3451 - loss: 1.4697 - val_accuracy: 0.3833 - val_loss: 1.6274
 Epoch 9/30
-1200/1200 [==============================] - 0s 104us/sample - loss: 1.2762 - accuracy: 0.4675 - val_loss: 1.5920 - val_accuracy: 0.3900
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.4028 - loss: 1.3674 - val_accuracy: 0.4367 - val_loss: 1.6473
 Epoch 10/30
-1200/1200 [==============================] - 0s 93us/sample - loss: 1.2343 - accuracy: 0.5058 - val_loss: 1.7282 - val_accuracy: 0.4000
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 12ms/step - accuracy: 0.3966 - loss: 1.3169 - val_accuracy: 0.4067 - val_loss: 1.6630
 Epoch 11/30
-1200/1200 [==============================] - 0s 79us/sample - loss: 1.1764 - accuracy: 0.5625 - val_loss: 1.5635 - val_accuracy: 0.5000
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 18ms/step - accuracy: 0.4123 - loss: 1.2316 - val_accuracy: 0.4367 - val_loss: 1.6200
 Epoch 12/30
-1200/1200 [==============================] - 0s 92us/sample - loss: 1.1067 - accuracy: 0.5883 - val_loss: 1.5779 - val_accuracy: 0.5100
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 18ms/step - accuracy: 0.4763 - loss: 1.1386 - val_accuracy: 0.5067 - val_loss: 1.7163
 Epoch 13/30
-1200/1200 [==============================] - 0s 93us/sample - loss: 1.0479 - accuracy: 0.6333 - val_loss: 1.5841 - val_accuracy: 0.5567
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 22ms/step - accuracy: 0.5058 - loss: 1.1010 - val_accuracy: 0.4967 - val_loss: 1.6629
 Epoch 14/30
-1200/1200 [==============================] - 0s 81us/sample - loss: 0.9873 - accuracy: 0.6758 - val_loss: 1.5683 - val_accuracy: 0.5433
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.5511 - loss: 1.0193 - val_accuracy: 0.4967 - val_loss: 1.6722
 Epoch 15/30
-1200/1200 [==============================] - 0s 81us/sample - loss: 0.9450 - accuracy: 0.6967 - val_loss: 1.6503 - val_accuracy: 0.5833
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 12ms/step - accuracy: 0.5650 - loss: 1.0143 - val_accuracy: 0.5200 - val_loss: 1.5476
 Epoch 16/30
-1200/1200 [==============================] - 0s 84us/sample - loss: 0.9341 - accuracy: 0.6867 - val_loss: 1.4999 - val_accuracy: 0.5833
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 12ms/step - accuracy: 0.5950 - loss: 0.9485 - val_accuracy: 0.5200 - val_loss: 1.6630
 Epoch 17/30
-1200/1200 [==============================] - 0s 75us/sample - loss: 0.8636 - accuracy: 0.7267 - val_loss: 1.6228 - val_accuracy: 0.6167
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.6264 - loss: 0.9099 - val_accuracy: 0.5267 - val_loss: 1.6491
 Epoch 18/30
-1200/1200 [==============================] - 0s 78us/sample - loss: 0.8360 - accuracy: 0.7333 - val_loss: 1.6590 - val_accuracy: 0.6133
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 12ms/step - accuracy: 0.5965 - loss: 0.9193 - val_accuracy: 0.5633 - val_loss: 1.5708
 Epoch 19/30
-1200/1200 [==============================] - 0s 88us/sample - loss: 0.7785 - accuracy: 0.7667 - val_loss: 1.8198 - val_accuracy: 0.5900
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.6360 - loss: 0.8918 - val_accuracy: 0.5200 - val_loss: 1.6918
 Epoch 20/30
-1200/1200 [==============================] - 0s 84us/sample - loss: 0.7462 - accuracy: 0.7675 - val_loss: 1.7269 - val_accuracy: 0.6200
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 12ms/step - accuracy: 0.6560 - loss: 0.8420 - val_accuracy: 0.5567 - val_loss: 1.6657
 Epoch 21/30
-1200/1200 [==============================] - 0s 74us/sample - loss: 0.7176 - accuracy: 0.7692 - val_loss: 1.6506 - val_accuracy: 0.6133
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.6177 - loss: 0.9001 - val_accuracy: 0.5700 - val_loss: 1.7047
 Epoch 22/30
-1200/1200 [==============================] - 0s 92us/sample - loss: 0.6872 - accuracy: 0.7842 - val_loss: 1.7374 - val_accuracy: 0.6333
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 12ms/step - accuracy: 0.6718 - loss: 0.8106 - val_accuracy: 0.5767 - val_loss: 1.7745
 Epoch 23/30
-1200/1200 [==============================] - 0s 93us/sample - loss: 0.6497 - accuracy: 0.7983 - val_loss: 1.8901 - val_accuracy: 0.6400
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.6374 - loss: 0.8486 - val_accuracy: 0.5800 - val_loss: 1.6881
 Epoch 24/30
-1200/1200 [==============================] - 0s 95us/sample - loss: 0.6204 - accuracy: 0.8125 - val_loss: 1.9670 - val_accuracy: 0.6567
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.6945 - loss: 0.7626 - val_accuracy: 0.6133 - val_loss: 1.6876
 Epoch 25/30
-1200/1200 [==============================] - 0s 98us/sample - loss: 0.5886 - accuracy: 0.8258 - val_loss: 1.9190 - val_accuracy: 0.6767
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 13ms/step - accuracy: 0.7263 - loss: 0.7405 - val_accuracy: 0.5833 - val_loss: 1.7602
 Epoch 26/30
-1200/1200 [==============================] - 0s 100us/sample - loss: 0.5759 - accuracy: 0.8342 - val_loss: 1.9192 - val_accuracy: 0.6200
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.7265 - loss: 0.7421 - val_accuracy: 0.6100 - val_loss: 1.8384
 Epoch 27/30
-1200/1200 [==============================] - 0s 96us/sample - loss: 0.5506 - accuracy: 0.8292 - val_loss: 1.9242 - val_accuracy: 0.6300
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 12ms/step - accuracy: 0.7126 - loss: 0.7803 - val_accuracy: 0.6033 - val_loss: 1.8377
 Epoch 28/30
-1200/1200 [==============================] - 0s 108us/sample - loss: 0.5741 - accuracy: 0.8233 - val_loss: 2.0804 - val_accuracy: 0.6533
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.7535 - loss: 0.7120 - val_accuracy: 0.5967 - val_loss: 1.8472
 Epoch 29/30
-1200/1200 [==============================] - 0s 122us/sample - loss: 0.5592 - accuracy: 0.8317 - val_loss: 1.9038 - val_accuracy: 0.6633
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 12ms/step - accuracy: 0.7638 - loss: 0.6707 - val_accuracy: 0.6133 - val_loss: 1.9387
 Epoch 30/30
-1200/1200 [==============================] - 0s 105us/sample - loss: 0.5054 - accuracy: 0.8458 - val_loss: 1.9272 - val_accuracy: 0.6967
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.7216 - loss: 0.7566 - val_accuracy: 0.6233 - val_loss: 1.8856
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7fb4207b0630&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.src.callbacks.history.History at 0x7f35edb6ab10&gt;
 </pre></div>
 </div>
 </div>
@@ -892,70 +894,69 @@ Epoch 30/30
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train on 1200 samples, validate on 300 samples
-Epoch 1/30
-1200/1200 [==============================] - 1s 562us/sample - loss: 2.2907 - accuracy: 0.1617 - val_loss: 2.2538 - val_accuracy: 0.1700
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/30
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">4s</span> 21ms/step - accuracy: 0.1153 - loss: 2.3002 - val_accuracy: 0.1833 - val_loss: 2.2727
 Epoch 2/30
-1200/1200 [==============================] - 0s 120us/sample - loss: 2.1105 - accuracy: 0.1933 - val_loss: 2.0408 - val_accuracy: 0.1867
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.2004 - loss: 2.2264 - val_accuracy: 0.2167 - val_loss: 2.0627
 Epoch 3/30
-1200/1200 [==============================] - 0s 112us/sample - loss: 1.9159 - accuracy: 0.2242 - val_loss: 1.8557 - val_accuracy: 0.2367
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 13ms/step - accuracy: 0.2128 - loss: 2.0220 - val_accuracy: 0.2200 - val_loss: 2.0331
 Epoch 4/30
-1200/1200 [==============================] - 0s 93us/sample - loss: 1.7480 - accuracy: 0.2817 - val_loss: 1.7438 - val_accuracy: 0.2800
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.2566 - loss: 1.8607 - val_accuracy: 0.2667 - val_loss: 1.8322
 Epoch 5/30
-1200/1200 [==============================] - 0s 86us/sample - loss: 1.5951 - accuracy: 0.3467 - val_loss: 1.6657 - val_accuracy: 0.3400
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 12ms/step - accuracy: 0.3321 - loss: 1.6833 - val_accuracy: 0.2867 - val_loss: 1.7486
 Epoch 6/30
-1200/1200 [==============================] - 0s 91us/sample - loss: 1.4818 - accuracy: 0.3917 - val_loss: 1.5912 - val_accuracy: 0.3567
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.3403 - loss: 1.5454 - val_accuracy: 0.3200 - val_loss: 1.6454
 Epoch 7/30
-1200/1200 [==============================] - 0s 97us/sample - loss: 1.3874 - accuracy: 0.4400 - val_loss: 1.5629 - val_accuracy: 0.3700
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 13ms/step - accuracy: 0.3849 - loss: 1.4163 - val_accuracy: 0.3333 - val_loss: 1.5965
 Epoch 8/30
-1200/1200 [==============================] - 0s 104us/sample - loss: 1.3259 - accuracy: 0.4517 - val_loss: 1.5423 - val_accuracy: 0.4733
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.3988 - loss: 1.3185 - val_accuracy: 0.3500 - val_loss: 1.6274
 Epoch 9/30
-1200/1200 [==============================] - 0s 85us/sample - loss: 1.2746 - accuracy: 0.4750 - val_loss: 1.5676 - val_accuracy: 0.4567
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.4312 - loss: 1.2683 - val_accuracy: 0.4733 - val_loss: 1.4862
 Epoch 10/30
-1200/1200 [==============================] - 0s 78us/sample - loss: 1.2824 - accuracy: 0.4775 - val_loss: 1.4695 - val_accuracy: 0.4867
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.5286 - loss: 1.1724 - val_accuracy: 0.4267 - val_loss: 1.6519
 Epoch 11/30
-1200/1200 [==============================] - 0s 80us/sample - loss: 1.2036 - accuracy: 0.5150 - val_loss: 1.4573 - val_accuracy: 0.5067
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 17ms/step - accuracy: 0.5403 - loss: 1.1548 - val_accuracy: 0.4767 - val_loss: 1.5348
 Epoch 12/30
-1200/1200 [==============================] - 0s 73us/sample - loss: 1.1421 - accuracy: 0.5367 - val_loss: 1.5400 - val_accuracy: 0.4400
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 21ms/step - accuracy: 0.6052 - loss: 1.0305 - val_accuracy: 0.4767 - val_loss: 1.5166
 Epoch 13/30
-1200/1200 [==============================] - 0s 80us/sample - loss: 1.1279 - accuracy: 0.5450 - val_loss: 1.4324 - val_accuracy: 0.5733
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 20ms/step - accuracy: 0.6104 - loss: 0.9848 - val_accuracy: 0.5367 - val_loss: 1.4080
 Epoch 14/30
-1200/1200 [==============================] - 0s 75us/sample - loss: 1.0589 - accuracy: 0.5950 - val_loss: 1.4561 - val_accuracy: 0.5167
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.6407 - loss: 0.9210 - val_accuracy: 0.4900 - val_loss: 1.6197
 Epoch 15/30
-1200/1200 [==============================] - 0s 76us/sample - loss: 1.0217 - accuracy: 0.5983 - val_loss: 1.4408 - val_accuracy: 0.5633
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 14ms/step - accuracy: 0.6302 - loss: 0.8917 - val_accuracy: 0.5100 - val_loss: 1.7791
 Epoch 16/30
-1200/1200 [==============================] - 0s 82us/sample - loss: 1.0207 - accuracy: 0.5958 - val_loss: 1.4444 - val_accuracy: 0.5667
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.6345 - loss: 0.9043 - val_accuracy: 0.6100 - val_loss: 1.3989
 Epoch 17/30
-1200/1200 [==============================] - 0s 89us/sample - loss: 0.9661 - accuracy: 0.6417 - val_loss: 1.4375 - val_accuracy: 0.5733
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 12ms/step - accuracy: 0.6641 - loss: 0.8482 - val_accuracy: 0.5733 - val_loss: 1.5803
 Epoch 18/30
-1200/1200 [==============================] - 0s 94us/sample - loss: 0.9385 - accuracy: 0.6500 - val_loss: 1.4495 - val_accuracy: 0.5833
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.7033 - loss: 0.7594 - val_accuracy: 0.5500 - val_loss: 1.5795
 Epoch 19/30
-1200/1200 [==============================] - 0s 94us/sample - loss: 0.9147 - accuracy: 0.6608 - val_loss: 1.4188 - val_accuracy: 0.5967
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.7261 - loss: 0.7307 - val_accuracy: 0.6167 - val_loss: 1.5252
 Epoch 20/30
-1200/1200 [==============================] - 0s 75us/sample - loss: 0.8848 - accuracy: 0.6792 - val_loss: 1.4052 - val_accuracy: 0.6267
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.7317 - loss: 0.7193 - val_accuracy: 0.6167 - val_loss: 1.6626
 Epoch 21/30
-1200/1200 [==============================] - 0s 73us/sample - loss: 0.8333 - accuracy: 0.7025 - val_loss: 1.4286 - val_accuracy: 0.6067
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 12ms/step - accuracy: 0.8123 - loss: 0.5962 - val_accuracy: 0.6033 - val_loss: 1.8928
 Epoch 22/30
-1200/1200 [==============================] - 0s 77us/sample - loss: 0.8110 - accuracy: 0.7150 - val_loss: 1.4007 - val_accuracy: 0.6033
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.7938 - loss: 0.6043 - val_accuracy: 0.6000 - val_loss: 1.8191
 Epoch 23/30
-1200/1200 [==============================] - 0s 78us/sample - loss: 0.7738 - accuracy: 0.7217 - val_loss: 1.3882 - val_accuracy: 0.6233
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 12ms/step - accuracy: 0.7695 - loss: 0.6307 - val_accuracy: 0.6100 - val_loss: 1.8240
 Epoch 24/30
-1200/1200 [==============================] - 0s 80us/sample - loss: 0.7247 - accuracy: 0.7425 - val_loss: 1.3937 - val_accuracy: 0.5967
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.7817 - loss: 0.6184 - val_accuracy: 0.6267 - val_loss: 1.7866
 Epoch 25/30
-1200/1200 [==============================] - 0s 72us/sample - loss: 0.7083 - accuracy: 0.7417 - val_loss: 1.3503 - val_accuracy: 0.6200
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.8311 - loss: 0.5729 - val_accuracy: 0.6567 - val_loss: 1.8094
 Epoch 26/30
-1200/1200 [==============================] - 0s 80us/sample - loss: 0.6978 - accuracy: 0.7467 - val_loss: 1.3394 - val_accuracy: 0.6167
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 12ms/step - accuracy: 0.8459 - loss: 0.4978 - val_accuracy: 0.5933 - val_loss: 2.1872
 Epoch 27/30
-1200/1200 [==============================] - 0s 75us/sample - loss: 0.6619 - accuracy: 0.7642 - val_loss: 1.3664 - val_accuracy: 0.6167
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.8579 - loss: 0.4858 - val_accuracy: 0.6567 - val_loss: 2.0357
 Epoch 28/30
-1200/1200 [==============================] - 0s 92us/sample - loss: 0.6395 - accuracy: 0.7733 - val_loss: 1.3765 - val_accuracy: 0.6333
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.8561 - loss: 0.4508 - val_accuracy: 0.6367 - val_loss: 2.2305
 Epoch 29/30
-1200/1200 [==============================] - 0s 92us/sample - loss: 0.6028 - accuracy: 0.7833 - val_loss: 1.3866 - val_accuracy: 0.6200
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 13ms/step - accuracy: 0.8440 - loss: 0.4778 - val_accuracy: 0.6400 - val_loss: 2.1412
 Epoch 30/30
-1200/1200 [==============================] - 0s 95us/sample - loss: 0.5917 - accuracy: 0.7825 - val_loss: 1.3683 - val_accuracy: 0.6300
+<span class=" -Color -Color-Bold">38/38</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 13ms/step - accuracy: 0.8460 - loss: 0.4737 - val_accuracy: 0.6367 - val_loss: 2.0085
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7fb424db1860&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.src.callbacks.history.History at 0x7f360e0ccec0&gt;
 </pre></div>
 </div>
 </div>
@@ -1084,9 +1085,7 @@ Epoch 54/300
 1200/1200 [==============================] - 0s 78us/sample - loss: 2.2987 - accuracy: 0.1208 - val_loss: 2.3014 - val_accuracy: 0.1367
 Epoch 55/300
 1200/1200 [==============================] - 0s 100us/sample - loss: 2.2988 - accuracy: 0.1208 - val_loss: 2.3018 - val_accuracy: 0.1367
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 56/300
+Epoch 56/300
 1200/1200 [==============================] - 0s 95us/sample - loss: 2.2988 - accuracy: 0.1208 - val_loss: 2.3012 - val_accuracy: 0.1367
 Epoch 57/300
 1200/1200 [==============================] - 0s 98us/sample - loss: 2.2991 - accuracy: 0.1208 - val_loss: 2.3012 - val_accuracy: 0.1367
@@ -1196,9 +1195,7 @@ Epoch 109/300
 1200/1200 [==============================] - 0s 76us/sample - loss: 1.8769 - accuracy: 0.2175 - val_loss: 2.0173 - val_accuracy: 0.1933
 Epoch 110/300
 1200/1200 [==============================] - 0s 79us/sample - loss: 1.9608 - accuracy: 0.2017 - val_loss: 1.9729 - val_accuracy: 0.1967
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 111/300
+Epoch 111/300
 1200/1200 [==============================] - 0s 116us/sample - loss: 1.8808 - accuracy: 0.2125 - val_loss: 1.9769 - val_accuracy: 0.1833
 Epoch 112/300
 1200/1200 [==============================] - 0s 86us/sample - loss: 1.8805 - accuracy: 0.2150 - val_loss: 1.9790 - val_accuracy: 0.1867
@@ -1416,9 +1413,7 @@ Epoch 218/300
 1200/1200 [==============================] - 0s 79us/sample - loss: 1.8272 - accuracy: 0.2225 - val_loss: 1.9601 - val_accuracy: 0.1900
 Epoch 219/300
 1200/1200 [==============================] - 0s 71us/sample - loss: 1.8187 - accuracy: 0.2217 - val_loss: 1.9708 - val_accuracy: 0.1867
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 220/300
+Epoch 220/300
 1200/1200 [==============================] - 0s 77us/sample - loss: 1.8191 - accuracy: 0.2150 - val_loss: 1.9720 - val_accuracy: 0.2067
 Epoch 221/300
 1200/1200 [==============================] - 0s 85us/sample - loss: 1.8210 - accuracy: 0.2175 - val_loss: 1.9725 - val_accuracy: 0.1867
@@ -1617,18 +1612,18 @@ Epoch 300/300
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">
-      <iframe id="tensorboard-frame-bb539473bd24d780" width="100%" height="800" frameborder="0">
-      </iframe>
-      <script>
-        (function() {
-          const frame = document.getElementById("tensorboard-frame-bb539473bd24d780");
-          const url = new URL("/", window.location);
-          url.port = 6006;
-          frame.src = url;
+<script type="application/javascript">
+        (async () => {
+            const url = new URL(await google.colab.kernel.proxyPort(6006, {'cache': true}));
+            url.searchParams.set('tensorboardColab', 'true');
+            const iframe = document.createElement('iframe');
+            iframe.src = url;
+            iframe.setAttribute('width', '100%');
+            iframe.setAttribute('height', '800');
+            iframe.setAttribute('frameborder', 0);
+            document.body.appendChild(iframe);
         })();
-      </script>
-  </div></div>
+    </script></div>
 </div>
 </section>
 </section>
