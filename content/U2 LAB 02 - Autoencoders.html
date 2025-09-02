@@ -460,18 +460,6 @@ document.write(`
 <p>The labs require a <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code> version lower than the default one used in Google Colab. Run the following cell to downgrade TensorFlow accordingly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">downgrade_tf_version</span><span class="p">():</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip uninstall -y tensorflow&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip install tensorflow==2.12.0&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="mi">9</span><span class="p">)</span>
-<span class="n">downgrade_tf_version</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
 <span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> <span class="n">init</span><span class="o">.</span><span class="n">get_weblink</span><span class="p">()</span> 
 </pre></div>
@@ -649,25 +637,32 @@ document.write(`
 <section id="task-02-sparse-autoencoder-model">
 <h2>TASK 02: Sparse autoencoder model<a class="headerlink" href="#task-02-sparse-autoencoder-model" title="Link to this heading">#</a></h2>
 <p>Complete the <code class="docutils literal notranslate"><span class="pre">get_model</span></code> function so that the returned model uses the loss function previously defined.</p>
-<p>You <strong>MUST USE</strong> the <strong>UNSUPERVISED</strong> method to specify your loss function as described in the notes, so that the <code class="docutils literal notranslate"><span class="pre">.fit</span></code> method only gets one argument.</p>
-<p>Note for models you have to use <strong>Tensorflow operations</strong> in specific you have to use <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/math/reduce_mean"><code class="docutils literal notranslate"><span class="pre">tf.reduce_mean</span></code></a></p>
+<p>Using the <strong>UNSUPERVISED</strong> method to specify your loss function, as described in the notes, requires defining the model through the subclassing method. To simplify the implementation, we will use a standard supervised model where input and target correspond to the same tensor. To specify the loss function, two parts <strong>MUST</strong> be completed:</p>
+<ul class="simple">
+<li><p>The regularization term must be added to the encoder layer using a<a class="reference external" href="https://keras.io/api/layers/regularizers/">activity_regularizer</a>. Note that you can add a custom function.</p></li>
+<li><p>The reconstruction error must be added to the compile method. You can use the default <code class="docutils literal notranslate"><span class="pre">mse</span></code>or implement it on your own by subclassing the class Loss keras.</p></li>
+</ul>
+<p>Note for models you have to use <strong>Tensorflow operations</strong> in specific you have to use <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/math/reduce_mean"><code class="docutils literal notranslate"><span class="pre">tf.reduce_mean</span></code></a> or keras operations <a class="reference external" href="https://keras.io/guides/migrating_to_keras_3/"><code class="docutils literal notranslate"><span class="pre">ops.mean</span></code></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_model</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">code_size</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">.01</span><span class="p">):</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequential</span><span class="p">,</span> <span class="n">Model</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">Input</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">keras</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequential</span><span class="p">,</span> <span class="n">Model</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">keras.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">Input</span>
     <span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
     
     <span class="n">inputs</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;input&quot;</span><span class="p">)</span>
-    <span class="n">encoder</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">code_size</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;encoder&quot;</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+    <span class="n">encoder</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">code_size</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;encoder&quot;</span><span class="p">,</span>
+                    <span class="n">activity_regularizer</span><span class="o">=...</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
     <span class="n">outputs</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;decoder&quot;</span><span class="p">)(</span><span class="n">encoder</span><span class="p">)</span>
 
-    <span class="n">loss</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="c1">#class Sparse_AE_loss(Loss):</span>
+    <span class="c1">#  def call(self, inputs, outputs):</span>
+    <span class="c1">#      return ...</span>
 
     <span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">([</span><span class="n">inputs</span><span class="p">],</span> <span class="p">[</span><span class="n">outputs</span><span class="p">])</span>    
-    <span class="n">model</span><span class="o">.</span><span class="n">add_loss</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
 
-    <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">)</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=...</span><span class="p">,</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">model</span>
 </pre></div>
 </div>
@@ -678,10 +673,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># output and loss from TF model in this task</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_loss</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">Xinput</span><span class="p">):</span>
-    <span class="n">input_layer</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_layer</span><span class="p">(</span><span class="s2">&quot;input&quot;</span><span class="p">)</span>
-    <span class="n">loss_layer</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_layer</span><span class="p">([</span><span class="n">i</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span> <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;add_loss&quot;</span><span class="p">)][</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">ml</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">input_layer</span><span class="o">.</span><span class="n">input</span><span class="p">,</span> <span class="n">loss_layer</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">ml</span><span class="p">(</span><span class="n">Xinput</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">Xinput</span><span class="p">,</span> <span class="n">Xinput</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">get_model</span><span class="p">(</span><span class="n">input_dim</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">code_size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="nb">print</span> <span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
@@ -704,7 +696,7 @@ document.write(`
 <p>you can now train the autoencoder and check its behavior</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -728,8 +720,8 @@ document.write(`
 </div>
 </div>
 </div>
-<p>In a similar fashion to the corresponding course ntoes, you can inspect the encoder and decoder weights, and also the activations and distributions in the latent space.</p>
-<p>For activations you should get something similar to this, indicating a much more sparse representation</p>
+<p>In a similar fashion to the corresponding course notes, you can inspect the encoder and decoder weights, and also the activations and distributions in the latent space.</p>
+<p>For activations, you should get something similar to this, indicating a much more sparse representation</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>

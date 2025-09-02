@@ -461,18 +461,6 @@ document.write(`
 <p>The labs require a <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code> version lower than the default one used in Google Colab. Run the following cell to downgrade TensorFlow accordingly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">downgrade_tf_version</span><span class="p">():</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip uninstall -y tensorflow&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip install tensorflow==2.12.0&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="mi">9</span><span class="p">)</span>
-<span class="n">downgrade_tf_version</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
 <span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> <span class="n">init</span><span class="o">.</span><span class="n">get_weblink</span><span class="p">()</span> 
 </pre></div>
@@ -505,7 +493,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras</span><span class="w"> </span><span class="kn">import</span> <span class="n">datasets</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">keras</span><span class="w"> </span><span class="kn">import</span> <span class="n">datasets</span>
 <span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">fashion_mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
 <span class="n">X_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 <span class="n">X_test</span> <span class="o">=</span> <span class="n">x_test</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">x_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">x_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
@@ -515,8 +503,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras</span><span class="w"> </span><span class="kn">import</span> <span class="n">utils</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">keras</span><span class="w"> </span><span class="kn">import</span> <span class="n">utils</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
 
 <span class="n">input_dim</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -640,7 +627,7 @@ _________________________________________________________________
 </section>
 <section id="task-2-l-2-regularization">
 <h2>TASK 2: <span class="math notranslate nohighlight">\(L_2\)</span> regularization<a class="headerlink" href="#task-2-l-2-regularization" title="Link to this heading">#</a></h2>
-<p>Create a model like on TASK 1, but include <span class="math notranslate nohighlight">\(L_2\)</span> regularization to every hidden layer (in <code class="docutils literal notranslate"><span class="pre">kernel_regularizer</span></code>) with a regularization parameter equal to 0.0001.</p>
+<p>Create a model like on TASK 1, but include <span class="math notranslate nohighlight">\(L_2\)</span> regularization to every hidden layer (in <code class="docutils literal notranslate"><span class="pre">kernel_regularizer</span></code>) with a regularization parameter equal to 0.001.</p>
 <p>Use <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/regularizers/L2">tf.keras.regularizers.L2</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -721,7 +708,7 @@ _________________________________________________________________
 </section>
 <section id="task-3-l-1-l-2-regularization">
 <h2>TASK 3: <span class="math notranslate nohighlight">\(L_1\)</span>+<span class="math notranslate nohighlight">\(L_2\)</span> regularization<a class="headerlink" href="#task-3-l-1-l-2-regularization" title="Link to this heading">#</a></h2>
-<p>Create a model like on TASK 1, but use <span class="math notranslate nohighlight">\(L_1\)</span>+<span class="math notranslate nohighlight">\(L_2\)</span> regularization to every hidden layer (in <code class="docutils literal notranslate"><span class="pre">kernel_regularizer</span></code>) with both regularization parameters equal to 0.0001.</p>
+<p>Create a model like on TASK 1, but use <span class="math notranslate nohighlight">\(L_1\)</span>+<span class="math notranslate nohighlight">\(L_2\)</span> regularization to every hidden layer (in <code class="docutils literal notranslate"><span class="pre">kernel_regularizer</span></code>) with both regularization parameters equal to 0.001.</p>
 <p>Use <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/regularizers/L1L2">tf.keras.regularizers.L1L2</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -767,7 +754,7 @@ _________________________________________________________________
 <span class="n">model</span> <span class="o">=</span> <span class="n">get_L1L2_model</span><span class="p">(</span><span class="mi">784</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
 <span class="c1"># or instantiate an optimizer before passing it to model.compile</span>
-<span class="n">sgd</span> <span class="o">=</span> <span class="n">optimizers</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">decay</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">nesterov</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sgd</span> <span class="o">=</span> <span class="n">optimizers</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">decay</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">nesterov</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">sgd</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_trainN</span><span class="p">[:</span><span class="mi">500</span><span class="p">,:],</span> <span class="n">y_trainOHE</span><span class="p">[:</span><span class="mi">500</span><span class="p">,:],</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
