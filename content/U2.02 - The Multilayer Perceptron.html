@@ -457,19 +457,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-multilayer-perceptron">
 <h1>2.2 - The Multilayer Perceptron<a class="headerlink" href="#the-multilayer-perceptron" title="Link to this heading">#</a></h1>
-<p>Course’s materials require a <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code> version lower than the default one used in Google Colab. Run the following cell to downgrade TensorFlow accordingly.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">downgrade_tf_version</span><span class="p">():</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip uninstall -y tensorflow&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip install tensorflow==2.12.0&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="mi">9</span><span class="p">)</span>
-<span class="n">downgrade_tf_version</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
@@ -489,6 +476,18 @@ document.write(`
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span><span class="p">;</span> <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.19.0
 </pre></div>
 </div>
 </div>
@@ -530,13 +529,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e77ae8a096c861412f882e113d8e49c1a7edadbfe4c6c2aadaa97a931d127b0c.png" src="../_images/e77ae8a096c861412f882e113d8e49c1a7edadbfe4c6c2aadaa97a931d127b0c.png" />
+<img alt="../_images/2da1ba977dbf1c6375128a2dbf2458fd32e5055605e5621392ed39f5a84578cc.png" src="../_images/2da1ba977dbf1c6375128a2dbf2458fd32e5055605e5621392ed39f5a84578cc.png" />
 </div>
 </div>
 <p>Preparing the data for a training process…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras</span><span class="w"> </span><span class="kn">import</span> <span class="n">utils</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">keras</span><span class="w"> </span><span class="kn">import</span> <span class="n">utils</span> 
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
 
 <span class="n">input_dim</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -594,27 +593,29 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;sequential_1&quot;
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-dense_4 (Dense)              (None, 64)                50240     
-_________________________________________________________________
-activation_2 (Activation)    (None, 64)                0         
-_________________________________________________________________
-dense_5 (Dense)              (None, 32)                2080      
-_________________________________________________________________
-activation_3 (Activation)    (None, 32)                0         
-_________________________________________________________________
-dense_6 (Dense)              (None, 10)                330       
-=================================================================
-Total params: 52,650
-Trainable params: 52,650
-Non-trainable params: 0
-_________________________________________________________________
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "sequential_1"</span>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)                    </span>┃<span style="font-weight: bold"> Output Shape           </span>┃<span style="font-weight: bold">       Param # </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ dense_2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                 │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>)             │        <span style="color: #00af00; text-decoration-color: #00af00">50,240</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ activation_2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Activation</span>)       │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>)             │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_3 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                 │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>)             │         <span style="color: #00af00; text-decoration-color: #00af00">2,080</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ activation_3 (<span style="color: #0087ff; text-decoration-color: #0087ff">Activation</span>)       │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>)             │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_4 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                 │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">10</span>)             │           <span style="color: #00af00; text-decoration-color: #00af00">330</span> │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">52,650</span> (205.66 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">52,650</span> (205.66 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">0</span> (0.00 B)
+</pre>
+</div></div>
 </div>
 <p>Once the arquictecture of model has been defined, the next step is to set the loss function and optimizer</p>
 <div class="cell docutils container">
@@ -622,9 +623,9 @@ _________________________________________________________________
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pass optimizer by name: default parameters will be used</span>
 <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;sgd&#39;</span><span class="p">)</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras</span><span class="w"> </span><span class="kn">import</span> <span class="n">optimizers</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">keras</span><span class="w"> </span><span class="kn">import</span> <span class="n">optimizers</span>
 <span class="c1"># or instantiate an optimizer before passing it to model.compile</span>
-<span class="n">sgd</span> <span class="o">=</span> <span class="n">optimizers</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">decay</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">nesterov</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sgd</span> <span class="o">=</span> <span class="n">optimizers</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">decay</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">nesterov</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">sgd</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -681,7 +682,7 @@ Generating test predictions...
 9
 </pre></div>
 </div>
-<img alt="../_images/0bd1036fb664b458e33dfb4616500aa62e828bd7976abcc83a8d31c1aa1684de.png" src="../_images/0bd1036fb664b458e33dfb4616500aa62e828bd7976abcc83a8d31c1aa1684de.png" />
+<img alt="../_images/47a9faf00b1566bfee58912665010dfeef880b47b937a782cc01cf3e1ef46b65.png" src="../_images/47a9faf00b1566bfee58912665010dfeef880b47b937a782cc01cf3e1ef46b65.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -694,28 +695,28 @@ Generating test predictions...
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training...
 Epoch 1/10
-3375/3375 - 3s - loss: 0.4584 - val_loss: 0.3974
+3375/3375 - 1s - 347us/step - loss: 0.4599 - val_loss: 0.3945
 Epoch 2/10
-3375/3375 - 3s - loss: 0.3689 - val_loss: 0.3629
+3375/3375 - 1s - 320us/step - loss: 0.3654 - val_loss: 0.3668
 Epoch 3/10
-3375/3375 - 3s - loss: 0.3356 - val_loss: 0.3612
+3375/3375 - 1s - 319us/step - loss: 0.3370 - val_loss: 0.3685
 Epoch 4/10
-3375/3375 - 3s - loss: 0.3134 - val_loss: 0.3628
+3375/3375 - 1s - 319us/step - loss: 0.3155 - val_loss: 0.3524
 Epoch 5/10
-3375/3375 - 3s - loss: 0.2997 - val_loss: 0.3581
+3375/3375 - 1s - 321us/step - loss: 0.2979 - val_loss: 0.3431
 Epoch 6/10
-3375/3375 - 3s - loss: 0.2891 - val_loss: 0.3596
+3375/3375 - 1s - 315us/step - loss: 0.2858 - val_loss: 0.3429
 Epoch 7/10
-3375/3375 - 3s - loss: 0.2752 - val_loss: 0.3610
+3375/3375 - 1s - 318us/step - loss: 0.2779 - val_loss: 0.3519
 Epoch 8/10
-3375/3375 - 3s - loss: 0.2639 - val_loss: 0.3649
+3375/3375 - 1s - 315us/step - loss: 0.2680 - val_loss: 0.3444
 Epoch 9/10
-3375/3375 - 3s - loss: 0.2530 - val_loss: 0.3540
+3375/3375 - 1s - 318us/step - loss: 0.2599 - val_loss: 0.3603
 Epoch 10/10
-3375/3375 - 3s - loss: 0.2488 - val_loss: 0.3601
+3375/3375 - 1s - 318us/step - loss: 0.2522 - val_loss: 0.3617
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7f4bc47ac190&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.src.callbacks.history.History at 0x32387a0a0&gt;
 </pre></div>
 </div>
 </div>
@@ -739,7 +740,7 @@ Epoch 10/10
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Generating test predictions...
 </pre></div>
 </div>
-<img alt="../_images/76bfeef079cd7c1e910bb437d6b3b84fd6175c8bdc30ec2e02a37bf80faab927.png" src="../_images/76bfeef079cd7c1e910bb437d6b3b84fd6175c8bdc30ec2e02a37bf80faab927.png" />
+<img alt="../_images/b3fd98ac94f9a3171c7e8fe389da8632e67e790706f2079b51f8cf3cf10dccc1.png" src="../_images/b3fd98ac94f9a3171c7e8fe389da8632e67e790706f2079b51f8cf3cf10dccc1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -751,7 +752,8 @@ Epoch 10/10
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy =  86.28 %
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">313/313</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 233us/step
+Accuracy =  86.48 %
 </pre></div>
 </div>
 </div>
@@ -777,7 +779,7 @@ Epoch 10/10
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/65af967292338a02e9d40682ade3a87c34b00d2f2ec187f1ae3ab9e5fd9f1e3d.png" src="../_images/65af967292338a02e9d40682ade3a87c34b00d2f2ec187f1ae3ab9e5fd9f1e3d.png" />
+<img alt="../_images/997a109679b1e7ca4ba2761dd91b0cf7e285d6c334d004b28f81b36a10f4dfaf.png" src="../_images/997a109679b1e7ca4ba2761dd91b0cf7e285d6c334d004b28f81b36a10f4dfaf.png" />
 </div>
 </div>
 </section>
@@ -788,8 +790,8 @@ Epoch 10/10
 <p>Models are defined by creating instances of layers and connecting them directly to each other in pairs, then defining a Model that specifies the layers to act as the input and output to the model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Dense</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">keras.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">keras.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
 
 
 <span class="c1"># This returns a tensor</span>
@@ -817,25 +819,27 @@ Epoch 10/10
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;model&quot;
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-input_1 (InputLayer)         [(None, 784)]             0         
-_________________________________________________________________
-dense_5 (Dense)              (None, 64)                50240     
-_________________________________________________________________
-dense_6 (Dense)              (None, 32)                2080      
-_________________________________________________________________
-dense_7 (Dense)              (None, 10)                330       
-=================================================================
-Total params: 52,650
-Trainable params: 52,650
-Non-trainable params: 0
-_________________________________________________________________
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "functional_7"</span>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)                    </span>┃<span style="font-weight: bold"> Output Shape           </span>┃<span style="font-weight: bold">       Param # </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ input_layer_3 (<span style="color: #0087ff; text-decoration-color: #0087ff">InputLayer</span>)      │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">784</span>)            │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_8 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                 │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>)             │        <span style="color: #00af00; text-decoration-color: #00af00">50,240</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_9 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                 │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>)             │         <span style="color: #00af00; text-decoration-color: #00af00">2,080</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_10 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">10</span>)             │           <span style="color: #00af00; text-decoration-color: #00af00">330</span> │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">52,650</span> (205.66 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">52,650</span> (205.66 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">0</span> (0.00 B)
+</pre>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -845,28 +849,28 @@ _________________________________________________________________
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
-3375/3375 - 2s - loss: 0.5539 - accuracy: 0.8146 - val_loss: 0.4231 - val_accuracy: 0.8475
+3375/3375 - 1s - 377us/step - accuracy: 0.8170 - loss: 0.5504 - val_accuracy: 0.8517 - val_loss: 0.4180
 Epoch 2/10
-3375/3375 - 2s - loss: 0.3926 - accuracy: 0.8629 - val_loss: 0.3830 - val_accuracy: 0.8618
+3375/3375 - 1s - 321us/step - accuracy: 0.8645 - loss: 0.3876 - val_accuracy: 0.8625 - val_loss: 0.3830
 Epoch 3/10
-3375/3375 - 2s - loss: 0.3512 - accuracy: 0.8766 - val_loss: 0.3649 - val_accuracy: 0.8645
+3375/3375 - 1s - 321us/step - accuracy: 0.8770 - loss: 0.3481 - val_accuracy: 0.8663 - val_loss: 0.3651
 Epoch 4/10
-3375/3375 - 2s - loss: 0.3252 - accuracy: 0.8855 - val_loss: 0.3528 - val_accuracy: 0.8707
+3375/3375 - 1s - 320us/step - accuracy: 0.8861 - loss: 0.3219 - val_accuracy: 0.8715 - val_loss: 0.3553
 Epoch 5/10
-3375/3375 - 2s - loss: 0.3051 - accuracy: 0.8923 - val_loss: 0.3482 - val_accuracy: 0.8745
+3375/3375 - 1s - 324us/step - accuracy: 0.8919 - loss: 0.3036 - val_accuracy: 0.8728 - val_loss: 0.3472
 Epoch 6/10
-3375/3375 - 2s - loss: 0.2879 - accuracy: 0.8971 - val_loss: 0.3460 - val_accuracy: 0.8720
+3375/3375 - 1s - 326us/step - accuracy: 0.8981 - loss: 0.2872 - val_accuracy: 0.8730 - val_loss: 0.3442
 Epoch 7/10
-3375/3375 - 2s - loss: 0.2745 - accuracy: 0.9026 - val_loss: 0.3456 - val_accuracy: 0.8753
+3375/3375 - 1s - 319us/step - accuracy: 0.9028 - loss: 0.2732 - val_accuracy: 0.8753 - val_loss: 0.3360
 Epoch 8/10
-3375/3375 - 2s - loss: 0.2616 - accuracy: 0.9074 - val_loss: 0.3482 - val_accuracy: 0.8778
+3375/3375 - 1s - 319us/step - accuracy: 0.9071 - loss: 0.2601 - val_accuracy: 0.8750 - val_loss: 0.3447
 Epoch 9/10
-3375/3375 - 2s - loss: 0.2496 - accuracy: 0.9118 - val_loss: 0.3409 - val_accuracy: 0.8765
+3375/3375 - 1s - 319us/step - accuracy: 0.9115 - loss: 0.2484 - val_accuracy: 0.8805 - val_loss: 0.3325
 Epoch 10/10
-3375/3375 - 2s - loss: 0.2393 - accuracy: 0.9157 - val_loss: 0.3454 - val_accuracy: 0.8748
+3375/3375 - 1s - 318us/step - accuracy: 0.9148 - loss: 0.2378 - val_accuracy: 0.8817 - val_loss: 0.3328
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7f4bc457ba50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.src.callbacks.history.History at 0x3244fa3d0&gt;
 </pre></div>
 </div>
 </div>
@@ -880,7 +884,8 @@ Epoch 10/10
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy =  87.41 %
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">313/313</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 250us/step
+Accuracy =  87.14 %
 </pre></div>
 </div>
 </div>
@@ -890,12 +895,12 @@ Epoch 10/10
 In this way we use inherintance from class Model to define the nwe model. It requires two methods the constructor init, where you should define your layers, and the forward pass in call.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyModel</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyModel</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">MyModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dense1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">tanh</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dense2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">tanh</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dense3</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">nb_classes</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dense1</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">tanh</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dense2</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">tanh</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dense3</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">nb_classes</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">)</span>
         
     <span class="k">def</span><span class="w"> </span><span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dense1</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
@@ -909,15 +914,13 @@ In this way we use inherintance from class Model to define the nwe model. It req
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">MyModel2</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyModel2</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">MyModel2</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dense1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">tanh</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dense2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">tanh</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dense3</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">nb_classes</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dense1</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">tanh</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dense2</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">tanh</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dense3</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">nb_classes</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span> <span class="o">=</span> <span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
         
     <span class="k">def</span><span class="w"> </span><span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dense1</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
@@ -942,36 +945,34 @@ In this way we use inherintance from class Model to define the nwe model. It req
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">set_floatx</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_trainN</span><span class="p">,</span> <span class="n">y_trainOHE</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_trainN</span><span class="p">,</span> <span class="n">y_trainOHE</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train on 54000 samples, validate on 6000 samples
-Epoch 1/10
-54000/54000 - 3s - loss: 0.2287 - accuracy: 0.9198 - val_loss: 0.3338 - val_accuracy: 0.8860
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
+3375/3375 - 1s - 356us/step - accuracy: 0.8147 - loss: 0.5562 - val_accuracy: 0.8520 - val_loss: 0.4209
 Epoch 2/10
-54000/54000 - 3s - loss: 0.2202 - accuracy: 0.9224 - val_loss: 0.3324 - val_accuracy: 0.8840
+3375/3375 - 1s - 318us/step - accuracy: 0.8620 - loss: 0.3916 - val_accuracy: 0.8668 - val_loss: 0.3799
 Epoch 3/10
-54000/54000 - 3s - loss: 0.2111 - accuracy: 0.9251 - val_loss: 0.3315 - val_accuracy: 0.8852
+3375/3375 - 1s - 337us/step - accuracy: 0.8772 - loss: 0.3509 - val_accuracy: 0.8715 - val_loss: 0.3659
 Epoch 4/10
-54000/54000 - 3s - loss: 0.2030 - accuracy: 0.9294 - val_loss: 0.3412 - val_accuracy: 0.8863
+3375/3375 - 1s - 320us/step - accuracy: 0.8857 - loss: 0.3250 - val_accuracy: 0.8763 - val_loss: 0.3503
 Epoch 5/10
-54000/54000 - 3s - loss: 0.1966 - accuracy: 0.9319 - val_loss: 0.3390 - val_accuracy: 0.8850
+3375/3375 - 1s - 319us/step - accuracy: 0.8921 - loss: 0.3044 - val_accuracy: 0.8772 - val_loss: 0.3499
 Epoch 6/10
-54000/54000 - 3s - loss: 0.1889 - accuracy: 0.9354 - val_loss: 0.3478 - val_accuracy: 0.8803
+3375/3375 - 1s - 319us/step - accuracy: 0.8991 - loss: 0.2877 - val_accuracy: 0.8755 - val_loss: 0.3393
 Epoch 7/10
-54000/54000 - 3s - loss: 0.1821 - accuracy: 0.9371 - val_loss: 0.3393 - val_accuracy: 0.8855
+3375/3375 - 1s - 332us/step - accuracy: 0.9034 - loss: 0.2744 - val_accuracy: 0.8762 - val_loss: 0.3365
 Epoch 8/10
-54000/54000 - 3s - loss: 0.1744 - accuracy: 0.9404 - val_loss: 0.3485 - val_accuracy: 0.8840
+3375/3375 - 1s - 336us/step - accuracy: 0.9072 - loss: 0.2612 - val_accuracy: 0.8783 - val_loss: 0.3364
 Epoch 9/10
-54000/54000 - 3s - loss: 0.1706 - accuracy: 0.9412 - val_loss: 0.3565 - val_accuracy: 0.8813
+3375/3375 - 1s - 334us/step - accuracy: 0.9110 - loss: 0.2495 - val_accuracy: 0.8750 - val_loss: 0.3408
 Epoch 10/10
-54000/54000 - 4s - loss: 0.1627 - accuracy: 0.9447 - val_loss: 0.3541 - val_accuracy: 0.8813
+3375/3375 - 1s - 326us/step - accuracy: 0.9143 - loss: 0.2397 - val_accuracy: 0.8778 - val_loss: 0.3374
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7fe879246278&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.src.callbacks.history.History at 0x1592bb4c0&gt;
 </pre></div>
 </div>
 </div>
