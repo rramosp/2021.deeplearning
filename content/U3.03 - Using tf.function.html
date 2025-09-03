@@ -459,10 +459,16 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
-<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<meta name="google-signin-client_id"
+      content="461673936472-kdjosv61up3ac1ajeuq6qqu72upilmls.apps.googleusercontent.com"/>
+<script src="https://apis.google.com/js/client:platform.js?onload=google_button_start"></script>
+    </div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -479,7 +485,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.4.1&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.19.0&#39;
 </pre></div>
 </div>
 </div>
@@ -535,7 +541,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@tf</span><span class="o">.</span><span class="n">function</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">f47</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tracing!&#39;</span><span class="p">)</span>
-    <span class="n">tf</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s1">&#39;Executing&#39;</span><span class="p">)</span>  
+    <span class="n">tf</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s1">&#39;Executing&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">t</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">t</span><span class="o">*</span><span class="mi">47</span>
 </pre></div>
 </div>
@@ -601,7 +607,7 @@ Executing
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Executing
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(), dtype=float32, numpy=171.36&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(), dtype=float32, numpy=171.36000061035156&gt;
 </pre></div>
 </div>
 </div>
@@ -615,8 +621,7 @@ Executing
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tracing!
-Executing
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Executing
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(), dtype=float32, numpy=98.0&gt;
@@ -649,7 +654,7 @@ Executing
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Executing
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(), dtype=float32, numpy=171.36&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(), dtype=float32, numpy=171.36000061035156&gt;
 </pre></div>
 </div>
 </div>
@@ -694,27 +699,26 @@ Executing
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f47(t)
-  Args:
-    t: VariableSpec(shape=(), dtype=tf.float32, name=&#39;t&#39;)
-  Returns:
-    float32 Tensor, shape=()
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Input Parameters:
+  t (POSITIONAL_OR_KEYWORD): Literal[2]
+Output Type:
+  TensorSpec(shape=(), dtype=tf.int32, name=None)
+Captures:
+  None
 
-f47(t=2)
-  Returns:
-    int32 Tensor, shape=()
+Input Parameters:
+  t (POSITIONAL_OR_KEYWORD): VariableSpec(shape=(), dtype=tf.float32, trainable=True, alias_id=0)
+Output Type:
+  TensorSpec(shape=(), dtype=tf.float32, name=None)
+Captures:
+  None
 
-f47(t)
-  Args:
-    t: VariableSpec(shape=(), dtype=tf.float32, name=&#39;t&#39;)
-  Returns:
-    float32 Tensor, shape=()
-
-f47(t)
-  Args:
-    t: VariableSpec(shape=(), dtype=tf.int32, name=&#39;t&#39;)
-  Returns:
-    int32 Tensor, shape=()
+Input Parameters:
+  t (POSITIONAL_OR_KEYWORD): VariableSpec(shape=(), dtype=tf.int32, trainable=True, alias_id=0)
+Output Type:
+  TensorSpec(shape=(), dtype=tf.int32, name=None)
+Captures:
+  None
 </pre></div>
 </div>
 </div>
@@ -735,7 +739,7 @@ f47(t)
         ag__.converted_call(ag__.ld(tf).print, (&#39;Executing&#39;,), None, fscope)
         try:
             do_return = True
-            retval_ = ((ag__.ld(t) ** 2) + (ag__.ld(t) * 47))
+            retval_ = ag__.ld(t) ** 2 + ag__.ld(t) * 47
         except:
             do_return = False
             raise
@@ -789,10 +793,10 @@ f47(t)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.8393676,
- &lt;tf.Tensor: shape=(), dtype=float32, numpy=0.5855545&gt;,
- &lt;tf.Tensor: shape=(), dtype=float32, numpy=0.5855545&gt;,
- &lt;tf.Tensor: shape=(), dtype=float32, numpy=0.5855545&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float32(1.8400924),
+ &lt;tf.Tensor: shape=(), dtype=float32, numpy=0.5865188837051392&gt;,
+ &lt;tf.Tensor: shape=(), dtype=float32, numpy=0.5865188837051392&gt;,
+ &lt;tf.Tensor: shape=(), dtype=float32, numpy=0.5865188837051392&gt;)
 </pre></div>
 </div>
 </div>
@@ -804,10 +808,10 @@ f47(t)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.8252264,
- &lt;tf.Tensor: shape=(), dtype=float32, numpy=0.57828975&gt;,
- &lt;tf.Tensor: shape=(), dtype=float32, numpy=0.5782897&gt;,
- &lt;tf.Tensor: shape=(), dtype=float32, numpy=0.5782897&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float32(1.8400924),
+ &lt;tf.Tensor: shape=(), dtype=float32, numpy=0.5865188837051392&gt;,
+ &lt;tf.Tensor: shape=(), dtype=float32, numpy=0.5865188837051392&gt;,
+ &lt;tf.Tensor: shape=(), dtype=float32, numpy=0.5865188837051392&gt;)
 </pre></div>
 </div>
 </div>
@@ -821,19 +825,19 @@ f47(t)
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(1000, 20), dtype=float32, numpy=
-array([[2.3446867 , 3.1720169 , 2.4340954 , ..., 0.94587123, 3.915599  ,
-        1.3334954 ],
-       [3.6761417 , 0.35400784, 0.285192  , ..., 3.8192358 , 3.4868982 ,
-        0.13817935],
-       [3.5109763 , 2.8115458 , 1.7549498 , ..., 2.0345583 , 0.21928157,
-        3.7829554 ],
+array([[2.5066283 , 3.566715  , 0.21405369, ..., 1.1387894 , 0.21747205,
+        0.5582415 ],
+       [0.8427817 , 2.307036  , 2.4168954 , ..., 1.2836732 , 1.1275133 ,
+        2.156976  ],
+       [3.8027775 , 0.8254186 , 2.5732207 , ..., 1.3825173 , 3.4700062 ,
+        2.5409565 ],
        ...,
-       [0.37408376, 2.8192651 , 2.4856312 , ..., 1.3615996 , 2.8233917 ,
-        3.7900527 ],
-       [0.64968884, 2.9891465 , 2.6093905 , ..., 0.15869308, 2.1982477 ,
-        0.26403534],
-       [3.0967698 , 2.259425  , 0.6859213 , ..., 0.01919816, 2.8295956 ,
-        2.8226109 ]], dtype=float32)&gt;
+       [0.8170469 , 3.4651794 , 1.0635482 , ..., 0.04916687, 0.48021984,
+        2.854732  ],
+       [0.7078032 , 1.1500525 , 3.8444602 , ..., 3.0917153 , 0.8404596 ,
+        3.0876915 ],
+       [2.2794511 , 2.3670022 , 3.5228426 , ..., 0.56031686, 3.0963511 ,
+        0.1286898 ]], dtype=float32)&gt;
 </pre></div>
 </div>
 </div>
@@ -848,7 +852,7 @@ array([[2.3446867 , 3.1720169 , 2.4340954 , ..., 0.94587123, 3.915599  ,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>27 µs ± 254 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>33 µs ± 995 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 </pre></div>
 </div>
 </div>
@@ -860,7 +864,7 @@ array([[2.3446867 , 3.1720169 , 2.4340954 , ..., 0.94587123, 3.915599  ,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>326 µs ± 8.95 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.19 ms ± 152 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -875,7 +879,7 @@ array([[2.3446867 , 3.1720169 , 2.4340954 , ..., 0.94587123, 3.915599  ,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>512 µs ± 12 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.87 ms ± 153 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -891,7 +895,7 @@ array([[2.3446867 , 3.1720169 , 2.4340954 , ..., 0.94587123, 3.915599  ,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>128 µs ± 2.6 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>461 µs ± 10.4 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -903,7 +907,7 @@ array([[2.3446867 , 3.1720169 , 2.4340954 , ..., 0.94587123, 3.915599  ,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>498 µs ± 4.39 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.14 ms ± 85.3 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
@@ -919,7 +923,7 @@ array([[2.3446867 , 3.1720169 , 2.4340954 , ..., 0.94587123, 3.915599  ,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>128 µs ± 1.68 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>451 µs ± 9.2 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -960,7 +964,7 @@ array([[2.3446867 , 3.1720169 , 2.4340954 , ..., 0.94587123, 3.915599  ,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;tensorflow.python.eager.function.ConcreteFunction at 0x7f681e3562e0&gt;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;ConcreteFunction (x: TensorSpec(shape=&lt;unknown&gt;, dtype=tf.string, name=None)) -&gt; TensorSpec(shape=&lt;unknown&gt;, dtype=tf.string, name=None) at 0x7F406A8BA660&gt;,
  &lt;tf.Tensor: shape=(), dtype=string, numpy=b&#39;aaaa&#39;&gt;)
 </pre></div>
 </div>
@@ -974,7 +978,7 @@ array([[2.3446867 , 3.1720169 , 2.4340954 , ..., 0.94587123, 3.915599  ,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;tensorflow.python.eager.function.ConcreteFunction at 0x7f68143064c0&gt;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;ConcreteFunction (x: TensorSpec(shape=&lt;unknown&gt;, dtype=tf.int32, name=None)) -&gt; TensorSpec(shape=&lt;unknown&gt;, dtype=tf.int32, name=None) at 0x7F406A8BB7D0&gt;,
  &lt;tf.Tensor: shape=(), dtype=int32, numpy=2&gt;)
 </pre></div>
 </div>
@@ -988,7 +992,7 @@ array([[2.3446867 , 3.1720169 , 2.4340954 , ..., 0.94587123, 3.915599  ,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;tensorflow.python.eager.function.ConcreteFunction at 0x7f6814388c10&gt;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;ConcreteFunction (x: TensorSpec(shape=&lt;unknown&gt;, dtype=tf.float32, name=None)) -&gt; TensorSpec(shape=&lt;unknown&gt;, dtype=tf.float32, name=None) at 0x7F406B9E01D0&gt;,
  &lt;tf.Tensor: shape=(), dtype=float32, numpy=2.0&gt;)
 </pre></div>
 </div>
@@ -1016,8 +1020,7 @@ array([[2.3446867 , 3.1720169 , 2.4340954 , ..., 0.94587123, 3.915599  ,
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inputer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">InputLayer</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-<span class="n">denser1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">denser1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span>
 <span class="n">denser2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1027,8 +1030,7 @@ array([[2.3446867 , 3.1720169 , 2.4340954 , ..., 0.94587123, 3.915599  ,
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">model_1</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">inputer</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">denser1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">denser1</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;After the first layer:&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
     <span class="n">out</span> <span class="o">=</span> <span class="n">denser2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;After the second layer:&#39;</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
@@ -1042,32 +1044,32 @@ array([[2.3446867 , 3.1720169 , 2.4340954 , ..., 0.94587123, 3.915599  ,
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After the first layer: tf.Tensor(
-[[0.        0.        0.        0.       ]
- [1.1272627 0.        1.5222576 0.       ]
- [0.        0.        0.        1.0462083]], shape=(3, 4), dtype=float32)
+[[0.         0.         0.36905685 0.        ]
+ [1.3161621  1.5016826  0.8457896  0.20686978]
+ [0.         0.         0.         0.        ]], shape=(3, 4), dtype=float32)
 After the second layer: tf.Tensor(
-[[0.5       ]
- [0.8619154 ]
- [0.61063063]], shape=(3, 1), dtype=float32)
+[[0.4046358]
+ [0.5677154]
+ [0.5      ]], shape=(3, 1), dtype=float32)
 Model output:
  tf.Tensor(
-[[0.5       ]
- [0.8619154 ]
- [0.61063063]], shape=(3, 1), dtype=float32)
+[[0.4046358]
+ [0.5677154]
+ [0.5      ]], shape=(3, 1), dtype=float32)
 --
 After the first layer: tf.Tensor(
-[[0.27164382 0.         0.         0.        ]
- [1.5170838  0.         1.8968623  0.        ]
- [0.         0.         0.         0.18906634]], shape=(3, 4), dtype=float32)
+[[0.         0.         0.82375824 0.        ]
+ [1.3717937  1.9063075  1.3004911  0.        ]
+ [0.         0.         0.40059814 0.        ]], shape=(3, 4), dtype=float32)
 After the second layer: tf.Tensor(
-[[0.5418302 ]
- [0.9130416 ]
- [0.52031773]], shape=(3, 1), dtype=float32)
+[[0.29692343]
+ [0.5237631 ]
+ [0.3967103 ]], shape=(3, 1), dtype=float32)
 Model output:
  tf.Tensor(
-[[0.5418302 ]
- [0.9130416 ]
- [0.52031773]], shape=(3, 1), dtype=float32)
+[[0.29692343]
+ [0.5237631 ]
+ [0.3967103 ]], shape=(3, 1), dtype=float32)
 </pre></div>
 </div>
 </div>
@@ -1077,8 +1079,7 @@ Model output:
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@tf</span><span class="o">.</span><span class="n">function</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">model_2</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">inputer</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">denser1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">denser1</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;After the first layer:&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
     <span class="n">out</span> <span class="o">=</span> <span class="n">denser2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;After the second layer:&#39;</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
@@ -1092,17 +1093,17 @@ Model output:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After the first layer: Tensor(&quot;dense/Relu:0&quot;, shape=(3, 4), dtype=float32)
-After the second layer: Tensor(&quot;dense_1/Sigmoid:0&quot;, shape=(3, 1), dtype=float32)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After the first layer: Tensor(&quot;dense_3_1/Relu:0&quot;, shape=(3, 4), dtype=float32)
+After the second layer: Tensor(&quot;dense_4_1/Sigmoid:0&quot;, shape=(3, 1), dtype=float32)
 Model&#39;s output: tf.Tensor(
-[[0.5       ]
- [0.8619154 ]
- [0.61063063]], shape=(3, 1), dtype=float32)
+[[0.4046358]
+ [0.5677154]
+ [0.5      ]], shape=(3, 1), dtype=float32)
 --
 Model&#39;s output: tf.Tensor(
-[[0.5418302 ]
- [0.9130416 ]
- [0.52031773]], shape=(3, 1), dtype=float32)
+[[0.29692343]
+ [0.5237631 ]
+ [0.3967103 ]], shape=(3, 1), dtype=float32)
 </pre></div>
 </div>
 </div>
@@ -1111,15 +1112,13 @@ Model&#39;s output: tf.Tensor(
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">model_1</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">inputer</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">denser1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">denser1</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
     <span class="n">out</span> <span class="o">=</span> <span class="n">denser2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">out</span>
 
 <span class="nd">@tf</span><span class="o">.</span><span class="n">function</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">model_2</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">inputer</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">denser1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">denser1</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
     <span class="n">out</span> <span class="o">=</span> <span class="n">denser2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">out</span>
 </pre></div>
@@ -1133,7 +1132,7 @@ Model&#39;s output: tf.Tensor(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>330 µs ± 4.57 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.87 ms ± 652 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
@@ -1145,7 +1144,7 @@ Model&#39;s output: tf.Tensor(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>101 µs ± 1.87 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>618 µs ± 10.1 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1177,15 +1176,15 @@ Model&#39;s output: tf.Tensor(
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([&lt;tf.Tensor: shape=(2, 4), dtype=float32, numpy=
-  array([[ 0.07191873,  0.        ,  0.08687735,  0.19097383],
-         [ 0.16466327,  0.        ,  0.19891211, -0.09993505]],
+  array([[ 0.1410127 ,  0.08198048, -0.69603944, -0.1481947 ],
+         [ 0.322859  ,  0.18770038, -0.67634726, -0.33930275]],
         dtype=float32)&gt;,
-  &lt;tf.Tensor: shape=(4,), dtype=float32, numpy=array([0.07348109, 0.        , 0.08876466, 0.10225859], dtype=float32)&gt;],
+  &lt;tf.Tensor: shape=(4,), dtype=float32, numpy=array([ 0.14407603,  0.08376142, -0.50889206, -0.15141407], dtype=float32)&gt;],
  [&lt;tf.Tensor: shape=(2, 4), dtype=float32, numpy=
-  array([[ 0.07191873,  0.        ,  0.08687735,  0.19097383],
-         [ 0.16466327,  0.        ,  0.19891211, -0.09993505]],
+  array([[ 0.1410127 ,  0.08198048, -0.69603944, -0.1481947 ],
+         [ 0.322859  ,  0.18770038, -0.67634726, -0.33930275]],
         dtype=float32)&gt;,
-  &lt;tf.Tensor: shape=(4,), dtype=float32, numpy=array([0.07348109, 0.        , 0.08876466, 0.10225859], dtype=float32)&gt;])
+  &lt;tf.Tensor: shape=(4,), dtype=float32, numpy=array([ 0.14407603,  0.08376142, -0.50889206, -0.15141407], dtype=float32)&gt;])
 </pre></div>
 </div>
 </div>
@@ -1197,7 +1196,7 @@ Model&#39;s output: tf.Tensor(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>686 µs ± 8.1 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.2 ms ± 1.07 ms per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
@@ -1209,7 +1208,7 @@ Model&#39;s output: tf.Tensor(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>406 µs ± 11.2 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.8 ms ± 301 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1224,7 +1223,7 @@ Model&#39;s output: tf.Tensor(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>117 µs ± 1.65 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>650 µs ± 10.3 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1237,7 +1236,7 @@ Model&#39;s output: tf.Tensor(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>116 µs ± 2.17 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>711 µs ± 98.6 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
