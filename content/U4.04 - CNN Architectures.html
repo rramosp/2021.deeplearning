@@ -453,14 +453,20 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
-<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>enabling encryption...
-encryption enabled
-replicating local resources
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/content/init.py:2: SyntaxWarning: invalid escape sequence &#39;\S&#39;
+  course_id = &#39;\S*deeplearning\S*&#39;
+</pre></div>
+</div>
+<div class="output text_html">
+<meta name="google-signin-client_id"
+      content="461673936472-kdjosv61up3ac1ajeuq6qqu72upilmls.apps.googleusercontent.com"/>
+<script src="https://apis.google.com/js/client:platform.js?onload=google_button_start"></script>
+    </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>replicating local resources
 </pre></div>
 </div>
 </div>
@@ -481,11 +487,7 @@ replicating local resources
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The tensorboard extension is already loaded. To reload it, use:
-  %reload_ext tensorboard
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.4.1&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.19.0&#39;
 </pre></div>
 </div>
 </div>
@@ -512,6 +514,12 @@ replicating local resources
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading data from https://storage.googleapis.com/tensorflow/keras-applications/vgg16/vgg16_weights_tf_dim_ordering_tf_kernels.h5
+<span class=" -Color -Color-Bold">553467096/553467096</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">3s</span> 0us/step
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -520,63 +528,65 @@ replicating local resources
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;vgg16&quot;
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-input_2 (InputLayer)         [(None, 224, 224, 3)]     0         
-_________________________________________________________________
-block1_conv1 (Conv2D)        (None, 224, 224, 64)      1792      
-_________________________________________________________________
-block1_conv2 (Conv2D)        (None, 224, 224, 64)      36928     
-_________________________________________________________________
-block1_pool (MaxPooling2D)   (None, 112, 112, 64)      0         
-_________________________________________________________________
-block2_conv1 (Conv2D)        (None, 112, 112, 128)     73856     
-_________________________________________________________________
-block2_conv2 (Conv2D)        (None, 112, 112, 128)     147584    
-_________________________________________________________________
-block2_pool (MaxPooling2D)   (None, 56, 56, 128)       0         
-_________________________________________________________________
-block3_conv1 (Conv2D)        (None, 56, 56, 256)       295168    
-_________________________________________________________________
-block3_conv2 (Conv2D)        (None, 56, 56, 256)       590080    
-_________________________________________________________________
-block3_conv3 (Conv2D)        (None, 56, 56, 256)       590080    
-_________________________________________________________________
-block3_pool (MaxPooling2D)   (None, 28, 28, 256)       0         
-_________________________________________________________________
-block4_conv1 (Conv2D)        (None, 28, 28, 512)       1180160   
-_________________________________________________________________
-block4_conv2 (Conv2D)        (None, 28, 28, 512)       2359808   
-_________________________________________________________________
-block4_conv3 (Conv2D)        (None, 28, 28, 512)       2359808   
-_________________________________________________________________
-block4_pool (MaxPooling2D)   (None, 14, 14, 512)       0         
-_________________________________________________________________
-block5_conv1 (Conv2D)        (None, 14, 14, 512)       2359808   
-_________________________________________________________________
-block5_conv2 (Conv2D)        (None, 14, 14, 512)       2359808   
-_________________________________________________________________
-block5_conv3 (Conv2D)        (None, 14, 14, 512)       2359808   
-_________________________________________________________________
-block5_pool (MaxPooling2D)   (None, 7, 7, 512)         0         
-_________________________________________________________________
-flatten (Flatten)            (None, 25088)             0         
-_________________________________________________________________
-fc1 (Dense)                  (None, 4096)              102764544 
-_________________________________________________________________
-fc2 (Dense)                  (None, 4096)              16781312  
-_________________________________________________________________
-predictions (Dense)          (None, 1000)              4097000   
-=================================================================
-Total params: 138,357,544
-Trainable params: 138,357,544
-Non-trainable params: 0
-_________________________________________________________________
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "vgg16"</span>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)                    </span>┃<span style="font-weight: bold"> Output Shape           </span>┃<span style="font-weight: bold">       Param # </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ input_layer (<span style="color: #0087ff; text-decoration-color: #0087ff">InputLayer</span>)        │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">224</span>, <span style="color: #00af00; text-decoration-color: #00af00">224</span>, <span style="color: #00af00; text-decoration-color: #00af00">3</span>)    │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block1_conv1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">224</span>, <span style="color: #00af00; text-decoration-color: #00af00">224</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>)   │         <span style="color: #00af00; text-decoration-color: #00af00">1,792</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block1_conv2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">224</span>, <span style="color: #00af00; text-decoration-color: #00af00">224</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>)   │        <span style="color: #00af00; text-decoration-color: #00af00">36,928</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block1_pool (<span style="color: #0087ff; text-decoration-color: #0087ff">MaxPooling2D</span>)      │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">112</span>, <span style="color: #00af00; text-decoration-color: #00af00">112</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>)   │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block2_conv1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">112</span>, <span style="color: #00af00; text-decoration-color: #00af00">112</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>)  │        <span style="color: #00af00; text-decoration-color: #00af00">73,856</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block2_conv2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">112</span>, <span style="color: #00af00; text-decoration-color: #00af00">112</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>)  │       <span style="color: #00af00; text-decoration-color: #00af00">147,584</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block2_pool (<span style="color: #0087ff; text-decoration-color: #0087ff">MaxPooling2D</span>)      │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">56</span>, <span style="color: #00af00; text-decoration-color: #00af00">56</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>)    │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block3_conv1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">56</span>, <span style="color: #00af00; text-decoration-color: #00af00">56</span>, <span style="color: #00af00; text-decoration-color: #00af00">256</span>)    │       <span style="color: #00af00; text-decoration-color: #00af00">295,168</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block3_conv2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">56</span>, <span style="color: #00af00; text-decoration-color: #00af00">56</span>, <span style="color: #00af00; text-decoration-color: #00af00">256</span>)    │       <span style="color: #00af00; text-decoration-color: #00af00">590,080</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block3_conv3 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">56</span>, <span style="color: #00af00; text-decoration-color: #00af00">56</span>, <span style="color: #00af00; text-decoration-color: #00af00">256</span>)    │       <span style="color: #00af00; text-decoration-color: #00af00">590,080</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block3_pool (<span style="color: #0087ff; text-decoration-color: #0087ff">MaxPooling2D</span>)      │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">28</span>, <span style="color: #00af00; text-decoration-color: #00af00">28</span>, <span style="color: #00af00; text-decoration-color: #00af00">256</span>)    │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block4_conv1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">28</span>, <span style="color: #00af00; text-decoration-color: #00af00">28</span>, <span style="color: #00af00; text-decoration-color: #00af00">512</span>)    │     <span style="color: #00af00; text-decoration-color: #00af00">1,180,160</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block4_conv2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">28</span>, <span style="color: #00af00; text-decoration-color: #00af00">28</span>, <span style="color: #00af00; text-decoration-color: #00af00">512</span>)    │     <span style="color: #00af00; text-decoration-color: #00af00">2,359,808</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block4_conv3 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">28</span>, <span style="color: #00af00; text-decoration-color: #00af00">28</span>, <span style="color: #00af00; text-decoration-color: #00af00">512</span>)    │     <span style="color: #00af00; text-decoration-color: #00af00">2,359,808</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block4_pool (<span style="color: #0087ff; text-decoration-color: #0087ff">MaxPooling2D</span>)      │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">14</span>, <span style="color: #00af00; text-decoration-color: #00af00">14</span>, <span style="color: #00af00; text-decoration-color: #00af00">512</span>)    │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block5_conv1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">14</span>, <span style="color: #00af00; text-decoration-color: #00af00">14</span>, <span style="color: #00af00; text-decoration-color: #00af00">512</span>)    │     <span style="color: #00af00; text-decoration-color: #00af00">2,359,808</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block5_conv2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">14</span>, <span style="color: #00af00; text-decoration-color: #00af00">14</span>, <span style="color: #00af00; text-decoration-color: #00af00">512</span>)    │     <span style="color: #00af00; text-decoration-color: #00af00">2,359,808</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block5_conv3 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">14</span>, <span style="color: #00af00; text-decoration-color: #00af00">14</span>, <span style="color: #00af00; text-decoration-color: #00af00">512</span>)    │     <span style="color: #00af00; text-decoration-color: #00af00">2,359,808</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ block5_pool (<span style="color: #0087ff; text-decoration-color: #0087ff">MaxPooling2D</span>)      │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">7</span>, <span style="color: #00af00; text-decoration-color: #00af00">7</span>, <span style="color: #00af00; text-decoration-color: #00af00">512</span>)      │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ flatten (<span style="color: #0087ff; text-decoration-color: #0087ff">Flatten</span>)               │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">25088</span>)          │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ fc1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                     │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">4096</span>)           │   <span style="color: #00af00; text-decoration-color: #00af00">102,764,544</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ fc2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                     │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">4096</span>)           │    <span style="color: #00af00; text-decoration-color: #00af00">16,781,312</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ predictions (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)             │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">1000</span>)           │     <span style="color: #00af00; text-decoration-color: #00af00">4,097,000</span> │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">138,357,544</span> (527.79 MB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">138,357,544</span> (527.79 MB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">0</span> (0.00 B)
+</pre>
+</div></div>
 </div>
 <p>Get some random image and transform it. We need the correct shape and pixel values</p>
 <div class="cell docutils container">
@@ -596,40 +606,28 @@ _________________________________________________________________
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_img</span><span class="p">(</span><span class="n">img_url</span><span class="p">):</span>
-    <span class="n">img_fname</span> <span class="o">=</span> <span class="n">img_url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span><span class="nv">$img_url</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_img</span><span class="p">(</span><span class="n">img_fname</span><span class="p">):</span>
     <span class="n">img</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">img_fname</span><span class="p">)</span>
     <span class="n">simg</span> <span class="o">=</span> <span class="n">resize</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">output_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">224</span><span class="p">,</span><span class="mi">224</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
     <span class="n">simg</span> <span class="o">=</span> <span class="p">((</span><span class="n">simg</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">simg</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">simg</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">simg</span><span class="p">))</span><span class="o">*</span><span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="n">simg</span> <span class="o">=</span> <span class="n">simg</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="o">*</span><span class="n">simg</span><span class="o">.</span><span class="n">shape</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">simg</span>
 
-<span class="n">simg</span> <span class="o">=</span> <span class="n">get_img</span><span class="p">(</span><span class="n">img_url</span><span class="p">)</span>
+
+<span class="n">simg</span> <span class="o">=</span> <span class="n">get_img</span><span class="p">(</span><span class="s1">&#39;local/imgs/car.jpg&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">simg</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">simg</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">simg</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">simg</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2021-02-14 19:57:46--  https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/images/car-reviews/first-drives/legacy/rrswbphev006.jpg?itok=9I7wPblq
-Resolving www.autocar.co.uk (www.autocar.co.uk)... 13.226.49.122, 13.226.49.37, 13.226.49.22, ...
-Connecting to www.autocar.co.uk (www.autocar.co.uk)|13.226.49.122|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 116781 (114K) [image/jpeg]
-Saving to: ‘rrswbphev006.jpg?itok=9I7wPblq’
-
-rrswbphev006.jpg?it 100%[===================&gt;] 114.04K  --.-KB/s    in 0.05s   
-
-2021-02-14 19:57:46 (2.05 MB/s) - ‘rrswbphev006.jpg?itok=9I7wPblq’ saved [116781/116781]
-
-(1, 224, 224, 3) 0 255
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 224, 224, 3) 0 255
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f3bb93ae240&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7d78da73cef0&gt;
 </pre></div>
 </div>
-<img alt="../_images/c553738fbe7b7afb5764091cbb210671bc96203acea7ea6661db9cdfada85f0f.png" src="../_images/c553738fbe7b7afb5764091cbb210671bc96203acea7ea6661db9cdfada85f0f.png" />
+<img alt="../_images/c2cbc2558cdd6563b80f94e45eb1bbda81a2f70c2b6ebc41ae9e053cd2157610.png" src="../_images/c2cbc2558cdd6563b80f94e45eb1bbda81a2f70c2b6ebc41ae9e053cd2157610.png" />
 </div>
 </div>
 <p>make and decode prediction</p>
@@ -641,6 +639,9 @@ rrswbphev006.jpg?it 100%[===================&gt;] 114.04K  --.-KB/s    in 0.05s
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">1/1</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 595ms/step
+</pre></div>
+</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 1000)
 </pre></div>
 </div>
@@ -653,10 +654,10 @@ rrswbphev006.jpg?it 100%[===================&gt;] 114.04K  --.-KB/s    in 0.05s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f3bb932b518&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7d78e044f140&gt;]
 </pre></div>
 </div>
-<img alt="../_images/e2ec2f3b460c3e472b47b5e6f5535c2cd1b3c80e63e2489a19b1d4e2ff7f1aca.png" src="../_images/e2ec2f3b460c3e472b47b5e6f5535c2cd1b3c80e63e2489a19b1d4e2ff7f1aca.png" />
+<img alt="../_images/14fda2ccd85ab019ed740e07d1a91ebffcaa3e8c9a1cb60986888bdacb906f6b.png" src="../_images/14fda2ccd85ab019ed740e07d1a91ebffcaa3e8c9a1cb60986888bdacb906f6b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -666,7 +667,7 @@ rrswbphev006.jpg?it 100%[===================&gt;] 114.04K  --.-KB/s    in 0.05s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([717, 609, 436, 656, 511])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([656, 436, 609, 654, 734])
 </pre></div>
 </div>
 </div>
@@ -685,11 +686,11 @@ rrswbphev006.jpg?it 100%[===================&gt;] 114.04K  --.-KB/s    in 0.05s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[(&#39;n03930630&#39;, &#39;pickup&#39;, 0.2946707),
-  (&#39;n03594945&#39;, &#39;jeep&#39;, 0.2187905),
-  (&#39;n02814533&#39;, &#39;beach_wagon&#39;, 0.14391266),
-  (&#39;n03770679&#39;, &#39;minivan&#39;, 0.105930716),
-  (&#39;n03100240&#39;, &#39;convertible&#39;, 0.078578584)]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[(&#39;n03770679&#39;, &#39;minivan&#39;, np.float32(0.7349299)),
+  (&#39;n02814533&#39;, &#39;beach_wagon&#39;, np.float32(0.109361306)),
+  (&#39;n03594945&#39;, &#39;jeep&#39;, np.float32(0.04911455)),
+  (&#39;n03769881&#39;, &#39;minibus&#39;, np.float32(0.033921164)),
+  (&#39;n03977966&#39;, &#39;police_van&#39;, np.float32(0.014368715))]]
 </pre></div>
 </div>
 </div>
@@ -700,7 +701,7 @@ rrswbphev006.jpg?it 100%[===================&gt;] 114.04K  --.-KB/s    in 0.05s
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="n">vgg16</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">layer</span> <span class="o">=</span> <span class="n">vgg16</span><span class="o">.</span><span class="n">get_layer</span><span class="p">(</span><span class="s1">&#39;fc1&#39;</span><span class="p">)</span>
 
-<span class="n">layer_output_fn</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">.</span><span class="n">input</span><span class="p">,</span> <span class="n">layer</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
+<span class="n">layer_output_fn</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">vgg16</span><span class="o">.</span><span class="n">inputs</span><span class="p">,</span> <span class="n">layer</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -712,9 +713,15 @@ rrswbphev006.jpg?it 100%[===================&gt;] 114.04K  --.-KB/s    in 0.05s
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.12/dist-packages/keras/src/models/functional.py:241: UserWarning: The structure of `inputs` doesn&#39;t match the expected structure.
+Expected: [&#39;keras_tensor&#39;]
+Received: inputs=Tensor(shape=(1, 224, 224, 3))
+  warnings.warn(msg)
+</pre></div>
+</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(1, 4096), dtype=float32, numpy=
-array([[0.     , 0.     , 0.     , ..., 1.44261, 0.     , 0.     ]],
-      dtype=float32)&gt;
+array([[ 0.      ,  0.      ,  0.      , ..., 21.892479,  0.      ,
+         0.      ]], dtype=float32)&gt;
 </pre></div>
 </div>
 </div>
@@ -722,9 +729,9 @@ array([[0.     , 0.     , 0.     , ..., 1.44261, 0.     , 0.     ]],
 <p>and do other stuff (train other models, compare, etc.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simg2</span> <span class="o">=</span> <span class="n">get_img</span><span class="p">(</span><span class="s1">&#39;https://specials-images.forbesimg.com/imageserve/5d61562368cb0a0008c04988/960x0.jpg?fit=scale&#39;</span><span class="p">)</span>
-<span class="n">simg3</span> <span class="o">=</span> <span class="n">get_img</span><span class="p">(</span><span class="s1">&#39;https://static01.nyt.com/images/2020/08/13/fashion/12VIRUS-CARS-eli/12VIRUS-CARS-eli-mobileMasterAt3x-v2.jpg&#39;</span><span class="p">)</span>
-<span class="n">simg4</span> <span class="o">=</span> <span class="n">get_img</span><span class="p">(</span><span class="s1">&#39;https://media-cdn.tripadvisor.com/media/photo-s/12/99/82/95/bellaire-house.jpg&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simg2</span> <span class="o">=</span> <span class="n">get_img</span><span class="p">(</span><span class="s1">&#39;local/imgs/motorbike.jpg&#39;</span><span class="p">)</span>
+<span class="n">simg3</span> <span class="o">=</span> <span class="n">get_img</span><span class="p">(</span><span class="s1">&#39;local/imgs/citycar.jpg&#39;</span><span class="p">)</span>
+<span class="n">simg4</span> <span class="o">=</span> <span class="n">get_img</span><span class="p">(</span><span class="s1">&#39;local/imgs/bellaire-house.jpg&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">141</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">simg</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">142</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">simg2</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
@@ -734,26 +741,10 @@ array([[0.     , 0.     , 0.     , ..., 1.44261, 0.     , 0.     ]],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File ‘960x0.jpg?fit=scale’ already there; not retrieving.
-
-File ‘12VIRUS-CARS-eli-mobileMasterAt3x-v2.jpg’ already there; not retrieving.
-
---2021-02-14 19:59:26--  https://media-cdn.tripadvisor.com/media/photo-s/12/99/82/95/bellaire-house.jpg
-Resolving media-cdn.tripadvisor.com (media-cdn.tripadvisor.com)... 151.101.2.38, 151.101.66.38, 151.101.130.38, ...
-Connecting to media-cdn.tripadvisor.com (media-cdn.tripadvisor.com)|151.101.2.38|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 58530 (57K) [image/jpeg]
-Saving to: ‘bellaire-house.jpg’
-
-bellaire-house.jpg  100%[===================&gt;]  57.16K  --.-KB/s    in 0.01s   
-
-2021-02-14 19:59:26 (4.44 MB/s) - ‘bellaire-house.jpg’ saved [58530/58530]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(-0.5), np.float64(223.5), np.float64(223.5), np.float64(-0.5))
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.5, 223.5, 223.5, -0.5)
-</pre></div>
-</div>
-<img alt="../_images/7686994ffae3c8e2b970f8a1b577a9a2ec04883c4f81479204a8e701e683c107.png" src="../_images/7686994ffae3c8e2b970f8a1b577a9a2ec04883c4f81479204a8e701e683c107.png" />
+<img alt="../_images/08eea89af63760f76917f6a24edc2ebd899d699697821bf6a09089f741fda94c.png" src="../_images/08eea89af63760f76917f6a24edc2ebd899d699697821bf6a09089f741fda94c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -764,6 +755,12 @@ bellaire-house.jpg  100%[===================&gt;]  57.16K  --.-KB/s    in 0.01s
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.12/dist-packages/keras/src/models/functional.py:241: UserWarning: The structure of `inputs` doesn&#39;t match the expected structure.
+Expected: [&#39;keras_tensor&#39;]
+Received: inputs=Tensor(shape=(4, 224, 224, 3))
+  warnings.warn(msg)
+</pre></div>
+</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4, 4096)
 </pre></div>
 </div>
@@ -780,10 +777,10 @@ bellaire-house.jpg  100%[===================&gt;]  57.16K  --.-KB/s    in 0.01s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.        , 2.57414365, 2.57649517, 2.30459738],
-       [2.57414365, 0.        , 3.01039696, 2.43500757],
-       [2.57649517, 3.01039696, 0.        , 2.78080606],
-       [2.30459738, 2.43500757, 2.78080606, 0.        ]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.        , 2.55644989, 2.53840065, 2.27824593],
+       [2.55644989, 0.        , 3.00784516, 2.43986821],
+       [2.53840065, 3.00784516, 0.        , 2.7770021 ],
+       [2.27824593, 2.43986821, 2.7770021 , 0.        ]])
 </pre></div>
 </div>
 </div>
@@ -797,26 +794,29 @@ bellaire-house.jpg  100%[===================&gt;]  57.16K  --.-KB/s    in 0.01s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[(&#39;n03930630&#39;, &#39;pickup&#39;, 0.29467037),
-  (&#39;n03594945&#39;, &#39;jeep&#39;, 0.21879068),
-  (&#39;n02814533&#39;, &#39;beach_wagon&#39;, 0.14391305),
-  (&#39;n03770679&#39;, &#39;minivan&#39;, 0.1059308),
-  (&#39;n03100240&#39;, &#39;convertible&#39;, 0.078578345)],
- [(&#39;n04482393&#39;, &#39;tricycle&#39;, 0.4868581),
-  (&#39;n03791053&#39;, &#39;motor_scooter&#39;, 0.122519016),
-  (&#39;n03785016&#39;, &#39;moped&#39;, 0.06780141),
-  (&#39;n03534580&#39;, &#39;hoopskirt&#39;, 0.0479511),
-  (&#39;n02769748&#39;, &#39;backpack&#39;, 0.04404157)],
- [(&#39;n02930766&#39;, &#39;cab&#39;, 0.64891493),
-  (&#39;n04252077&#39;, &#39;snowmobile&#39;, 0.048013847),
-  (&#39;n03459775&#39;, &#39;grille&#39;, 0.043748885),
-  (&#39;n03445924&#39;, &#39;golfcart&#39;, 0.0394534),
-  (&#39;n02704792&#39;, &#39;amphibian&#39;, 0.032926943)],
- [(&#39;n02859443&#39;, &#39;boathouse&#39;, 0.41583353),
-  (&#39;n02825657&#39;, &#39;bell_cote&#39;, 0.17513582),
-  (&#39;n03028079&#39;, &#39;church&#39;, 0.08576325),
-  (&#39;n03930313&#39;, &#39;picket_fence&#39;, 0.06905515),
-  (&#39;n02793495&#39;, &#39;barn&#39;, 0.042880956)]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">1/1</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 2s/step
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[(&#39;n03770679&#39;, &#39;minivan&#39;, np.float32(0.7349284)),
+  (&#39;n02814533&#39;, &#39;beach_wagon&#39;, np.float32(0.109362334)),
+  (&#39;n03594945&#39;, &#39;jeep&#39;, np.float32(0.04911469)),
+  (&#39;n03769881&#39;, &#39;minibus&#39;, np.float32(0.03392129)),
+  (&#39;n03977966&#39;, &#39;police_van&#39;, np.float32(0.014368754))],
+ [(&#39;n04482393&#39;, &#39;tricycle&#39;, np.float32(0.4998707)),
+  (&#39;n03791053&#39;, &#39;motor_scooter&#39;, np.float32(0.11783641)),
+  (&#39;n03785016&#39;, &#39;moped&#39;, np.float32(0.06644621)),
+  (&#39;n03534580&#39;, &#39;hoopskirt&#39;, np.float32(0.04639038)),
+  (&#39;n02769748&#39;, &#39;backpack&#39;, np.float32(0.042827234))],
+ [(&#39;n02930766&#39;, &#39;cab&#39;, np.float32(0.64287394)),
+  (&#39;n04252077&#39;, &#39;snowmobile&#39;, np.float32(0.046685826)),
+  (&#39;n03459775&#39;, &#39;grille&#39;, np.float32(0.044866074)),
+  (&#39;n03445924&#39;, &#39;golfcart&#39;, np.float32(0.040118206)),
+  (&#39;n02701002&#39;, &#39;ambulance&#39;, np.float32(0.03328232))],
+ [(&#39;n02859443&#39;, &#39;boathouse&#39;, np.float32(0.40657878)),
+  (&#39;n02825657&#39;, &#39;bell_cote&#39;, np.float32(0.17474882)),
+  (&#39;n03028079&#39;, &#39;church&#39;, np.float32(0.08881704)),
+  (&#39;n03930313&#39;, &#39;picket_fence&#39;, np.float32(0.07153446)),
+  (&#39;n02793495&#39;, &#39;barn&#39;, np.float32(0.043169715))]]
 </pre></div>
 </div>
 </div>

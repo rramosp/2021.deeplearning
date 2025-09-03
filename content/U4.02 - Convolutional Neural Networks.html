@@ -466,20 +466,21 @@ document.write(`
 <p>Course’s material requires a <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code> version lower than the default one used in Google Colab. Run the following cell to downgrade TensorFlow accordingly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">downgrade_tf_version</span><span class="p">():</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip uninstall -y tensorflow&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip install tensorflow==2.12.0&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="mi">9</span><span class="p">)</span>
-<span class="n">downgrade_tf_version</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
+<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/content/init.py:2: SyntaxWarning: invalid escape sequence &#39;\S&#39;
+  course_id = &#39;\S*deeplearning\S*&#39;
+</pre></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
-<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> 
+<div class="output text_html">
+<meta name="google-signin-client_id"
+      content="461673936472-kdjosv61up3ac1ajeuq6qqu72upilmls.apps.googleusercontent.com"/>
+<script src="https://apis.google.com/js/client:platform.js?onload=google_button_start"></script>
+    </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>replicating local resources
 </pre></div>
 </div>
 </div>
@@ -493,12 +494,6 @@ document.write(`
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">local.lib</span><span class="w"> </span><span class="kn">import</span> <span class="n">mlutils</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/anaconda2/lib/python2.7/site-packages/sklearn/ensemble/weight_boosting.py:29: DeprecationWarning: numpy.core.umath_tests is an internal NumPy module and should not be imported. It will be removed in a future NumPy release.
-  from numpy.core.umath_tests import inner1d
 </pre></div>
 </div>
 </div>
@@ -610,7 +605,16 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File ‘mini_cifar.h5’ already there; not retrieving.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2025-09-03 22:13:45--  https://s3.amazonaws.com/rlx/mini_cifar.h5
+Resolving s3.amazonaws.com (s3.amazonaws.com)... 3.5.21.44, 52.217.172.48, 3.5.24.43, ...
+Connecting to s3.amazonaws.com (s3.amazonaws.com)|3.5.21.44|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 14803609 (14M) [binary/octet-stream]
+Saving to: ‘mini_cifar.h5’
+
+mini_cifar.h5       100%[===================&gt;]  14.12M  66.7MB/s    in 0.2s    
+
+2025-09-03 22:13:45 (66.7 MB/s) - ‘mini_cifar.h5’ saved [14803609/14803609]
 </pre></div>
 </div>
 </div>
@@ -632,7 +636,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f21a714551ffbf8d62a05abfedb2a70e5cd14a253e70260fb67c320a7ccda8a9.png" src="../_images/f21a714551ffbf8d62a05abfedb2a70e5cd14a253e70260fb67c320a7ccda8a9.png" />
+<img alt="../_images/5d89ad64f72c0076c5272adb8397bd44c2d1a850b9c5f3728c35c4acf2b9c437.png" src="../_images/5d89ad64f72c0076c5272adb8397bd44c2d1a850b9c5f3728c35c4acf2b9c437.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -669,16 +673,16 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2253, 32, 32, 3) (2253,) (751, 32, 32, 3) (751,)
 
 distribution of train classes
-2    778
+2    788
 0    750
-1    725
-dtype: int64
+1    715
+Name: count, dtype: int64
 
 distribution of test classes
+1    259
 0    255
-1    249
-2    247
-dtype: int64
+2    237
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -764,7 +768,6 @@ dtype: int64
 
 <span class="k">def</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
     <span class="n">tensorboard</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">TensorBoard</span><span class="p">(</span><span class="n">log_dir</span><span class="o">=</span><span class="s2">&quot;logs/&quot;</span><span class="o">+</span><span class="n">model_name</span><span class="o">+</span><span class="s2">&quot;_&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time</span><span class="p">()))</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">reset_states</span><span class="p">()</span>
     <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">tensorboard</span><span class="p">],</span>
               <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
               <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
@@ -784,28 +787,33 @@ dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>using 3 classes
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-input_1 (InputLayer)         (None, 32, 32, 3)         0         
-_________________________________________________________________
-conv2d (Conv2D)              (None, 32, 32, 15)        420       
-_________________________________________________________________
-flatten (Flatten)            (None, 15360)             0         
-_________________________________________________________________
-dense (Dense)                (None, 16)                245776    
-_________________________________________________________________
-dropout (Dropout)            (None, 16)                0         
-_________________________________________________________________
-output_1 (Dense)             (None, 3)                 51        
-=================================================================
-Total params: 246,247
-Trainable params: 246,247
-Non-trainable params: 0
-_________________________________________________________________
 </pre></div>
 </div>
-</div>
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "functional"</span>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)                    </span>┃<span style="font-weight: bold"> Output Shape           </span>┃<span style="font-weight: bold">       Param # </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ input_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">InputLayer</span>)            │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>, <span style="color: #00af00; text-decoration-color: #00af00">3</span>)      │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)                 │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>, <span style="color: #00af00; text-decoration-color: #00af00">15</span>)     │           <span style="color: #00af00; text-decoration-color: #00af00">420</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ flatten (<span style="color: #0087ff; text-decoration-color: #0087ff">Flatten</span>)               │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">15360</span>)          │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                   │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>)             │       <span style="color: #00af00; text-decoration-color: #00af00">245,776</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout (<span style="color: #0087ff; text-decoration-color: #0087ff">Dropout</span>)               │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>)             │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ output_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">3</span>)              │            <span style="color: #00af00; text-decoration-color: #00af00">51</span> │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">246,247</span> (961.90 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">246,247</span> (961.90 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">0</span> (0.00 B)
+</pre>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -814,31 +822,30 @@ _________________________________________________________________
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train on 2253 samples, validate on 751 samples
-Epoch 1/10
-2253/2253 [==============================] - 1s 490us/step - loss: 0.9741 - acc: 0.5109 - val_loss: 0.8331 - val_acc: 0.6498
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">4s</span> 33ms/step - accuracy: 0.4473 - loss: 1.2124 - val_accuracy: 0.6405 - val_loss: 0.8304
 Epoch 2/10
-2253/2253 [==============================] - 1s 430us/step - loss: 0.8445 - acc: 0.6130 - val_loss: 0.7991 - val_acc: 0.6618
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 19ms/step - accuracy: 0.6213 - loss: 0.8343 - val_accuracy: 0.6578 - val_loss: 0.7908
 Epoch 3/10
-2253/2253 [==============================] - 1s 465us/step - loss: 0.7801 - acc: 0.6338 - val_loss: 0.7409 - val_acc: 0.6804
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">3s</span> 19ms/step - accuracy: 0.6574 - loss: 0.7616 - val_accuracy: 0.6897 - val_loss: 0.7229
 Epoch 4/10
-2253/2253 [==============================] - 1s 371us/step - loss: 0.7336 - acc: 0.6755 - val_loss: 0.7352 - val_acc: 0.6818
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 17ms/step - accuracy: 0.6527 - loss: 0.7387 - val_accuracy: 0.7031 - val_loss: 0.7145
 Epoch 5/10
-2253/2253 [==============================] - 1s 486us/step - loss: 0.7217 - acc: 0.6826 - val_loss: 0.6991 - val_acc: 0.7071
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 17ms/step - accuracy: 0.6950 - loss: 0.6999 - val_accuracy: 0.6937 - val_loss: 0.7106
 Epoch 6/10
-2253/2253 [==============================] - 1s 538us/step - loss: 0.6801 - acc: 0.7057 - val_loss: 0.6940 - val_acc: 0.6991
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 17ms/step - accuracy: 0.7206 - loss: 0.6592 - val_accuracy: 0.6897 - val_loss: 0.7089
 Epoch 7/10
-2253/2253 [==============================] - 1s 383us/step - loss: 0.6133 - acc: 0.7266 - val_loss: 0.6788 - val_acc: 0.7044
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 17ms/step - accuracy: 0.7170 - loss: 0.6470 - val_accuracy: 0.7044 - val_loss: 0.6813
 Epoch 8/10
-2253/2253 [==============================] - 1s 446us/step - loss: 0.5957 - acc: 0.7483 - val_loss: 0.6807 - val_acc: 0.7137
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 19ms/step - accuracy: 0.7434 - loss: 0.5900 - val_accuracy: 0.7044 - val_loss: 0.6998
 Epoch 9/10
-2253/2253 [==============================] - 2s 702us/step - loss: 0.5585 - acc: 0.7581 - val_loss: 0.6566 - val_acc: 0.7217
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">3s</span> 21ms/step - accuracy: 0.7374 - loss: 0.5816 - val_accuracy: 0.7403 - val_loss: 0.6335
 Epoch 10/10
-2253/2253 [==============================] - 2s 720us/step - loss: 0.5489 - acc: 0.7386 - val_loss: 0.6471 - val_acc: 0.7270
-751/751 [==============================] - 0s 251us/step
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 19ms/step - accuracy: 0.7540 - loss: 0.5684 - val_accuracy: 0.7350 - val_loss: 0.6252
+<span class=" -Color -Color-Bold">24/24</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 7ms/step - accuracy: 0.7377 - loss: 0.6379
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;acc&#39;: 0.7270306261496918, &#39;loss&#39;: 0.6470887158586881}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;loss&#39;: 0.6252090930938721, &#39;compile_metrics&#39;: 0.7350199818611145}
 </pre></div>
 </div>
 </div>
@@ -851,16 +858,17 @@ Epoch 10/10
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Normalized confusion matrix
-[[0.69411765 0.16862745 0.1372549 ]
- [0.04016064 0.85140562 0.10843373]
- [0.22267206 0.1417004  0.63562753]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">24/24</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 7ms/step
+Normalized confusion matrix
+[[0.56078431 0.14509804 0.29411765]
+ [0.05019305 0.86872587 0.08108108]
+ [0.11392405 0.10970464 0.77637131]]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7efe9e4a1dd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;Normalized confusion matrix&#39;}, xlabel=&#39;Predicted label&#39;, ylabel=&#39;True label&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/82cd3b4594718147da85ecec02c3ad7212ba86f288a8299f7858af3ec4a85be9.png" src="../_images/82cd3b4594718147da85ecec02c3ad7212ba86f288a8299f7858af3ec4a85be9.png" />
+<img alt="../_images/f7b067f19f2a89b63a24aa14b35d50799b48f07c99e37dbecc4af8503d9b821c.png" src="../_images/f7b067f19f2a89b63a24aa14b35d50799b48f07c99e37dbecc4af8503d9b821c.png" />
 </div>
 </div>
 <p>observe the outp in tensorboard</p>
@@ -875,7 +883,7 @@ Epoch 10/10
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c75f4955998d17482ac4823c6a6b3cf714360e7ad061d1cb2060a5b3bcf42883.png" src="../_images/c75f4955998d17482ac4823c6a6b3cf714360e7ad061d1cb2060a5b3bcf42883.png" />
+<img alt="../_images/998b61adc771b60f97e71e2eb3d27dd442ab08321bdd3d7226f2e34186eb514e.png" src="../_images/998b61adc771b60f97e71e2eb3d27dd442ab08321bdd3d7226f2e34186eb514e.png" />
 </div>
 </div>
 <p>and after training</p>
@@ -891,7 +899,7 @@ Epoch 10/10
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3, 3, 3, 15)
 </pre></div>
 </div>
-<img alt="../_images/7b47eba8aa1159d3291e978044fc86c986ad9055b0feb6743e42db40100be3a0.png" src="../_images/7b47eba8aa1159d3291e978044fc86c986ad9055b0feb6743e42db40100be3a0.png" />
+<img alt="../_images/1f298fddcd540da43116d6ba7503a8d30e9b1835201733d40a531506daf6e0fe.png" src="../_images/1f298fddcd540da43116d6ba7503a8d30e9b1835201733d40a531506daf6e0fe.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -903,11 +911,14 @@ Epoch 10/10
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f176813acdfeda87c5daa478c0c23979b07c370961af13a1f89dd578cfc56d14.png" src="../_images/f176813acdfeda87c5daa478c0c23979b07c370961af13a1f89dd578cfc56d14.png" />
-<img alt="../_images/935d94481c67b2455c620fca30b62242853dd99963487d87c3789b9e4ac34a91.png" src="../_images/935d94481c67b2455c620fca30b62242853dd99963487d87c3789b9e4ac34a91.png" />
-<img alt="../_images/21884392f0a8a144dca9c332bd19612e7bd9d0754703257519ce59b94bd42b75.png" src="../_images/21884392f0a8a144dca9c332bd19612e7bd9d0754703257519ce59b94bd42b75.png" />
-<img alt="../_images/2ecbedaa7642caff342345729a89996daf108cf25e31c4cd449a1511706d55b7.png" src="../_images/2ecbedaa7642caff342345729a89996daf108cf25e31c4cd449a1511706d55b7.png" />
-<img alt="../_images/c9d7eb8acf3e93830caeb1fe6f311ca73336ff459ef901668d7cec386c0565a8.png" src="../_images/c9d7eb8acf3e93830caeb1fe6f311ca73336ff459ef901668d7cec386c0565a8.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">1/1</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 53ms/step
+</pre></div>
+</div>
+<img alt="../_images/8cbd7e6ac14a310cb0c09bf00159aeeb24e28ef773c5583e4c7015d3387379f4.png" src="../_images/8cbd7e6ac14a310cb0c09bf00159aeeb24e28ef773c5583e4c7015d3387379f4.png" />
+<img alt="../_images/39c13266e36407a351e21e4498752748da690ff431753fb902fb1c665913de2c.png" src="../_images/39c13266e36407a351e21e4498752748da690ff431753fb902fb1c665913de2c.png" />
+<img alt="../_images/4329c37816b5ca21cfb04802a1d94717c6c6af299b589fa02d6f740a83c9b1fe.png" src="../_images/4329c37816b5ca21cfb04802a1d94717c6c6af299b589fa02d6f740a83c9b1fe.png" />
+<img alt="../_images/97d54e8bd85bf10079b8b45d1d147e8a7523d5157937f4fe29497e48040e4761.png" src="../_images/97d54e8bd85bf10079b8b45d1d147e8a7523d5157937f4fe29497e48040e4761.png" />
+<img alt="../_images/d7aca469f46f30c7bc1b7baa0afaa2f9b40b4ab195843a31beee678d653844a1.png" src="../_images/d7aca469f46f30c7bc1b7baa0afaa2f9b40b4ab195843a31beee678d653844a1.png" />
 </div>
 </div>
 <section id="let-s-try-a-more-complex-network">
@@ -945,54 +956,60 @@ Epoch 10/10
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>using 3 classes
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-input_1 (InputLayer)         (None, 32, 32, 3)         0         
-_________________________________________________________________
-conv2d (Conv2D)              (None, 28, 28, 15)        1140      
-_________________________________________________________________
-max_pooling2d (MaxPooling2D) (None, 14, 14, 15)        0         
-_________________________________________________________________
-conv2d_1 (Conv2D)            (None, 10, 10, 60)        22560     
-_________________________________________________________________
-flatten (Flatten)            (None, 6000)              0         
-_________________________________________________________________
-dense (Dense)                (None, 16)                96016     
-_________________________________________________________________
-dropout (Dropout)            (None, 16)                0         
-_________________________________________________________________
-output_1 (Dense)             (None, 3)                 51        
-=================================================================
-Total params: 119,767
-Trainable params: 119,767
-Non-trainable params: 0
-_________________________________________________________________
-Train on 2253 samples, validate on 751 samples
-Epoch 1/10
-2253/2253 [==============================] - 3s 1ms/step - loss: 0.9930 - acc: 0.4918 - val_loss: 0.9041 - val_acc: 0.5726
-Epoch 2/10
-2253/2253 [==============================] - 2s 878us/step - loss: 0.8651 - acc: 0.5832 - val_loss: 0.7849 - val_acc: 0.6431
-Epoch 3/10
-2253/2253 [==============================] - 3s 2ms/step - loss: 0.7790 - acc: 0.6316 - val_loss: 0.7374 - val_acc: 0.6551
-Epoch 4/10
-2253/2253 [==============================] - 4s 2ms/step - loss: 0.7289 - acc: 0.6587 - val_loss: 0.6836 - val_acc: 0.7310
-Epoch 5/10
-2253/2253 [==============================] - 5s 2ms/step - loss: 0.6608 - acc: 0.7079 - val_loss: 0.6550 - val_acc: 0.7097
-Epoch 6/10
-2253/2253 [==============================] - 3s 2ms/step - loss: 0.5975 - acc: 0.7386 - val_loss: 0.6259 - val_acc: 0.7430
-Epoch 7/10
-2253/2253 [==============================] - 3s 1ms/step - loss: 0.5508 - acc: 0.7590 - val_loss: 0.6558 - val_acc: 0.7031
-Epoch 8/10
-2253/2253 [==============================] - 4s 2ms/step - loss: 0.5065 - acc: 0.7852 - val_loss: 0.6555 - val_acc: 0.7177
-Epoch 9/10
-2253/2253 [==============================] - 3s 1ms/step - loss: 0.4732 - acc: 0.7994 - val_loss: 0.6463 - val_acc: 0.7350
-Epoch 10/10
-2253/2253 [==============================] - 3s 2ms/step - loss: 0.4236 - acc: 0.8282 - val_loss: 0.5843 - val_acc: 0.7537
-751/751 [==============================] - 0s 580us/step
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;acc&#39;: 0.7536617846844517, &#39;loss&#39;: 0.5843058094362444}
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "functional"</span>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)                    </span>┃<span style="font-weight: bold"> Output Shape           </span>┃<span style="font-weight: bold">       Param # </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ input_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">InputLayer</span>)            │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>, <span style="color: #00af00; text-decoration-color: #00af00">3</span>)      │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)                 │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">28</span>, <span style="color: #00af00; text-decoration-color: #00af00">28</span>, <span style="color: #00af00; text-decoration-color: #00af00">15</span>)     │         <span style="color: #00af00; text-decoration-color: #00af00">1,140</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ max_pooling2d (<span style="color: #0087ff; text-decoration-color: #0087ff">MaxPooling2D</span>)    │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">14</span>, <span style="color: #00af00; text-decoration-color: #00af00">14</span>, <span style="color: #00af00; text-decoration-color: #00af00">15</span>)     │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)               │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">10</span>, <span style="color: #00af00; text-decoration-color: #00af00">10</span>, <span style="color: #00af00; text-decoration-color: #00af00">60</span>)     │        <span style="color: #00af00; text-decoration-color: #00af00">22,560</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ flatten (<span style="color: #0087ff; text-decoration-color: #0087ff">Flatten</span>)               │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">6000</span>)           │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                   │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>)             │        <span style="color: #00af00; text-decoration-color: #00af00">96,016</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout (<span style="color: #0087ff; text-decoration-color: #0087ff">Dropout</span>)               │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>)             │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ output_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">3</span>)              │            <span style="color: #00af00; text-decoration-color: #00af00">51</span> │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">119,767</span> (467.84 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">119,767</span> (467.84 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">0</span> (0.00 B)
+</pre>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">4s</span> 37ms/step - accuracy: 0.4160 - loss: 1.0678 - val_accuracy: 0.5885 - val_loss: 0.9273
+Epoch 2/10
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">4s</span> 52ms/step - accuracy: 0.5649 - loss: 0.9118 - val_accuracy: 0.6125 - val_loss: 0.8346
+Epoch 3/10
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">4s</span> 34ms/step - accuracy: 0.5947 - loss: 0.8255 - val_accuracy: 0.6911 - val_loss: 0.7538
+Epoch 4/10
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 34ms/step - accuracy: 0.6596 - loss: 0.7524 - val_accuracy: 0.6937 - val_loss: 0.7103
+Epoch 5/10
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">3s</span> 34ms/step - accuracy: 0.6510 - loss: 0.7328 - val_accuracy: 0.7137 - val_loss: 0.6942
+Epoch 6/10
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">4s</span> 53ms/step - accuracy: 0.6763 - loss: 0.7173 - val_accuracy: 0.7217 - val_loss: 0.6599
+Epoch 7/10
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">4s</span> 35ms/step - accuracy: 0.7023 - loss: 0.6559 - val_accuracy: 0.7417 - val_loss: 0.6539
+Epoch 8/10
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 34ms/step - accuracy: 0.7208 - loss: 0.6330 - val_accuracy: 0.7590 - val_loss: 0.6169
+Epoch 9/10
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">3s</span> 35ms/step - accuracy: 0.7530 - loss: 0.5603 - val_accuracy: 0.7590 - val_loss: 0.5748
+Epoch 10/10
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">4s</span> 53ms/step - accuracy: 0.7677 - loss: 0.5238 - val_accuracy: 0.7523 - val_loss: 0.6104
+<span class=" -Color -Color-Bold">24/24</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 12ms/step - accuracy: 0.7349 - loss: 0.6249
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;loss&#39;: 0.6103829145431519, &#39;compile_metrics&#39;: 0.7523302435874939}
 </pre></div>
 </div>
 </div>
@@ -1009,7 +1026,7 @@ Epoch 10/10
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5, 5, 3, 15)
 </pre></div>
 </div>
-<img alt="../_images/67a14eb46b4de16555fcc064b7368a290aff106a81a0913a7232951330e80c45.png" src="../_images/67a14eb46b4de16555fcc064b7368a290aff106a81a0913a7232951330e80c45.png" />
+<img alt="../_images/845910d8a39ad7c2de11903772a1f9278897a5981765f60da46167ed2c978886.png" src="../_images/845910d8a39ad7c2de11903772a1f9278897a5981765f60da46167ed2c978886.png" />
 </div>
 </div>
 </section>
@@ -1048,54 +1065,60 @@ Epoch 10/10
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>using 3 classes
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-input_1 (InputLayer)         (None, 32, 32, 3)         0         
-_________________________________________________________________
-conv2d (Conv2D)              (None, 22, 22, 96)        34944     
-_________________________________________________________________
-max_pooling2d (MaxPooling2D) (None, 11, 11, 96)        0         
-_________________________________________________________________
-conv2d_1 (Conv2D)            (None, 1, 1, 60)          697020    
-_________________________________________________________________
-flatten (Flatten)            (None, 60)                0         
-_________________________________________________________________
-dense (Dense)                (None, 16)                976       
-_________________________________________________________________
-dropout (Dropout)            (None, 16)                0         
-_________________________________________________________________
-output_1 (Dense)             (None, 3)                 51        
-=================================================================
-Total params: 732,991
-Trainable params: 732,991
-Non-trainable params: 0
-_________________________________________________________________
-Train on 2253 samples, validate on 751 samples
-Epoch 1/10
-2253/2253 [==============================] - 11s 5ms/step - loss: 1.0610 - acc: 0.4159 - val_loss: 0.9639 - val_acc: 0.5300
-Epoch 2/10
-2253/2253 [==============================] - 11s 5ms/step - loss: 0.9590 - acc: 0.5317 - val_loss: 0.9168 - val_acc: 0.5566
-Epoch 3/10
-2253/2253 [==============================] - 10s 4ms/step - loss: 0.8939 - acc: 0.5584 - val_loss: 0.9846 - val_acc: 0.4940
-Epoch 4/10
-2253/2253 [==============================] - 10s 4ms/step - loss: 0.8659 - acc: 0.5899 - val_loss: 0.9343 - val_acc: 0.5459
-Epoch 5/10
-2253/2253 [==============================] - 10s 4ms/step - loss: 0.8456 - acc: 0.6165 - val_loss: 0.8306 - val_acc: 0.6325
-Epoch 6/10
-2253/2253 [==============================] - 10s 5ms/step - loss: 0.8022 - acc: 0.6303 - val_loss: 0.8122 - val_acc: 0.6192
-Epoch 7/10
-2253/2253 [==============================] - 10s 4ms/step - loss: 0.7941 - acc: 0.6343 - val_loss: 0.7889 - val_acc: 0.6325
-Epoch 8/10
-2253/2253 [==============================] - 10s 4ms/step - loss: 0.7490 - acc: 0.6613 - val_loss: 0.7288 - val_acc: 0.6818
-Epoch 9/10
-2253/2253 [==============================] - 10s 4ms/step - loss: 0.7323 - acc: 0.6600 - val_loss: 0.7660 - val_acc: 0.6591
-Epoch 10/10
-2253/2253 [==============================] - 10s 4ms/step - loss: 0.7040 - acc: 0.6747 - val_loss: 0.7095 - val_acc: 0.6791
-751/751 [==============================] - 1s 1ms/step
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;acc&#39;: 0.6790945410093518, &#39;loss&#39;: 0.7095216961103813}
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "functional"</span>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)                    </span>┃<span style="font-weight: bold"> Output Shape           </span>┃<span style="font-weight: bold">       Param # </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ input_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">InputLayer</span>)            │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>, <span style="color: #00af00; text-decoration-color: #00af00">3</span>)      │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)                 │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">22</span>, <span style="color: #00af00; text-decoration-color: #00af00">22</span>, <span style="color: #00af00; text-decoration-color: #00af00">96</span>)     │        <span style="color: #00af00; text-decoration-color: #00af00">34,944</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ max_pooling2d (<span style="color: #0087ff; text-decoration-color: #0087ff">MaxPooling2D</span>)    │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">11</span>, <span style="color: #00af00; text-decoration-color: #00af00">11</span>, <span style="color: #00af00; text-decoration-color: #00af00">96</span>)     │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)               │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">1</span>, <span style="color: #00af00; text-decoration-color: #00af00">1</span>, <span style="color: #00af00; text-decoration-color: #00af00">60</span>)       │       <span style="color: #00af00; text-decoration-color: #00af00">697,020</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ flatten (<span style="color: #0087ff; text-decoration-color: #0087ff">Flatten</span>)               │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">60</span>)             │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                   │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>)             │           <span style="color: #00af00; text-decoration-color: #00af00">976</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout (<span style="color: #0087ff; text-decoration-color: #0087ff">Dropout</span>)               │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>)             │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ output_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">3</span>)              │            <span style="color: #00af00; text-decoration-color: #00af00">51</span> │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">732,991</span> (2.80 MB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">732,991</span> (2.80 MB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">0</span> (0.00 B)
+</pre>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">8s</span> 99ms/step - accuracy: 0.3655 - loss: 1.1214 - val_accuracy: 0.5140 - val_loss: 0.9933
+Epoch 2/10
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">8s</span> 114ms/step - accuracy: 0.5219 - loss: 0.9886 - val_accuracy: 0.5965 - val_loss: 0.8874
+Epoch 3/10
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">10s</span> 115ms/step - accuracy: 0.5585 - loss: 0.9041 - val_accuracy: 0.6138 - val_loss: 0.8526
+Epoch 4/10
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">11s</span> 120ms/step - accuracy: 0.5946 - loss: 0.8621 - val_accuracy: 0.6431 - val_loss: 0.8478
+Epoch 5/10
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">7s</span> 97ms/step - accuracy: 0.5931 - loss: 0.8814 - val_accuracy: 0.6471 - val_loss: 0.8161
+Epoch 6/10
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">11s</span> 110ms/step - accuracy: 0.6173 - loss: 0.8420 - val_accuracy: 0.6471 - val_loss: 0.8194
+Epoch 7/10
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">11s</span> 115ms/step - accuracy: 0.6380 - loss: 0.8193 - val_accuracy: 0.6485 - val_loss: 0.8030
+Epoch 8/10
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">10s</span> 115ms/step - accuracy: 0.6524 - loss: 0.7944 - val_accuracy: 0.6485 - val_loss: 0.7796
+Epoch 9/10
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">7s</span> 98ms/step - accuracy: 0.6609 - loss: 0.7736 - val_accuracy: 0.6658 - val_loss: 0.7591
+Epoch 10/10
+<span class=" -Color -Color-Bold">71/71</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">10s</span> 98ms/step - accuracy: 0.6640 - loss: 0.7502 - val_accuracy: 0.6551 - val_loss: 0.7783
+<span class=" -Color -Color-Bold">24/24</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 42ms/step - accuracy: 0.6572 - loss: 0.7931
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;loss&#39;: 0.7782898545265198, &#39;compile_metrics&#39;: 0.6551265120506287}
 </pre></div>
 </div>
 </div>
@@ -1112,24 +1135,39 @@ Epoch 10/10
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(11, 11, 3, 96)
 </pre></div>
 </div>
-<img alt="../_images/bdf6e58c2fc91adb53b134c51f186fdf8a9a1a4b1687384116de5a2f6012d43b.png" src="../_images/bdf6e58c2fc91adb53b134c51f186fdf8a9a1a4b1687384116de5a2f6012d43b.png" />
+<img alt="../_images/5411e8c4c19febaa4a558bc869f0a29a86fa76bff81f68df843e14062c36bcce.png" src="../_images/5411e8c4c19febaa4a558bc869f0a29a86fa76bff81f68df843e14062c36bcce.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_test</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">x_test</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_test</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">x_test</span><span class="p">[</span><span class="n">bi</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a152d981db7e8c01c2aaa633602f7b125a3cc3cbc8610fdb8bc8798f9c923283.png" src="../_images/a152d981db7e8c01c2aaa633602f7b125a3cc3cbc8610fdb8bc8798f9c923283.png" />
+<img alt="../_images/48d8885b0f9278650961cb86a1bcd33f40ded916aeecec7796e92f7a760fb4d6.png" src="../_images/48d8885b0f9278650961cb86a1bcd33f40ded916aeecec7796e92f7a760fb4d6.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acts</span> <span class="o">=</span> <span class="n">mlutils</span><span class="o">.</span><span class="n">get_activations</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">x_test</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])[</span><span class="s2">&quot;conv2d/Relu:0&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">output_at_layer</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">):</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
+    <span class="k">return</span> <span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">input</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">get_layer</span><span class="p">(</span><span class="n">layer_name</span><span class="p">)</span><span class="o">.</span><span class="n">output</span><span class="p">)(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acts</span> <span class="o">=</span> <span class="n">output_at_layer</span><span class="p">(</span><span class="n">x_test</span><span class="p">[</span><span class="n">bi</span><span class="p">:</span><span class="n">bi</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">model</span><span class="p">,</span> <span class="s2">&quot;conv2d&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">acts</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(22, 22, 96)
 </pre></div>
 </div>
 </div>
@@ -1145,7 +1183,7 @@ Epoch 10/10
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2e608385339ca36e974f52cc26f5d3bb73a77858d2adaa5d90cabb1ae0c1afd0.png" src="../_images/2e608385339ca36e974f52cc26f5d3bb73a77858d2adaa5d90cabb1ae0c1afd0.png" />
+<img alt="../_images/598ae6d5a20a9f0bc92a6c466c2acabc418f88dce101b5f38f32224daf1815f7.png" src="../_images/598ae6d5a20a9f0bc92a6c466c2acabc418f88dce101b5f38f32224daf1815f7.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1157,11 +1195,14 @@ Epoch 10/10
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8255e38a1e6e6a0e0c725f06a529a46e303386fd11c62bd87f6e69ccbc3aafaa.png" src="../_images/8255e38a1e6e6a0e0c725f06a529a46e303386fd11c62bd87f6e69ccbc3aafaa.png" />
-<img alt="../_images/118a7b7000448b27fe63b35df6e9f6cec37bc1d2c073d202e82c1f0c759c3412.png" src="../_images/118a7b7000448b27fe63b35df6e9f6cec37bc1d2c073d202e82c1f0c759c3412.png" />
-<img alt="../_images/2604fbc453ee56767d72ba493449723c89536834468744c3e5cbf542a4151361.png" src="../_images/2604fbc453ee56767d72ba493449723c89536834468744c3e5cbf542a4151361.png" />
-<img alt="../_images/d7d2760bec732f211a678f2280a9510cc230ec2497f37581fde47fb7a5bf63c8.png" src="../_images/d7d2760bec732f211a678f2280a9510cc230ec2497f37581fde47fb7a5bf63c8.png" />
-<img alt="../_images/8e046e43b819402725551a9bd4e7dfdc4646944ed13b1a8d709b8a3fa1dd376e.png" src="../_images/8e046e43b819402725551a9bd4e7dfdc4646944ed13b1a8d709b8a3fa1dd376e.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">1/1</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 86ms/step
+</pre></div>
+</div>
+<img alt="../_images/f3de2a443a300e8fce5b0fa5ab1dfbf90eacb245844f7e385ad1ef00ef6b9288.png" src="../_images/f3de2a443a300e8fce5b0fa5ab1dfbf90eacb245844f7e385ad1ef00ef6b9288.png" />
+<img alt="../_images/5c193fb9b65b0627300c6cb9b99182473245d8b9a58a6e00a3a032bd46d8e41d.png" src="../_images/5c193fb9b65b0627300c6cb9b99182473245d8b9a58a6e00a3a032bd46d8e41d.png" />
+<img alt="../_images/92ba60ba9fcb20741a3cbd8e18ab4041960ab0e7e2006685fcf4ccd669f972a3.png" src="../_images/92ba60ba9fcb20741a3cbd8e18ab4041960ab0e7e2006685fcf4ccd669f972a3.png" />
+<img alt="../_images/8eb575eee3b31e8eb641f767f8562582b28020499d1522a96b44018f75b91766.png" src="../_images/8eb575eee3b31e8eb641f767f8562582b28020499d1522a96b44018f75b91766.png" />
+<img alt="../_images/55b4f10744a8de71a7e114491f3fd5b668b691978b821b02fa44fb58d5f43cdd.png" src="../_images/55b4f10744a8de71a7e114491f3fd5b668b691978b821b02fa44fb58d5f43cdd.png" />
 </div>
 </div>
 <p>see</p>

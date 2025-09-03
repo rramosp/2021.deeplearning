@@ -463,6 +463,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>replicating local resources
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -492,7 +497,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1,4M -rw-r--r-- 1 rlx rlx 1,4M Jan 27 21:09 local/data/alexnet_conv1_conv2.pklz
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.4M -rw-r--r-- 1 root root 1.4M Sep  3 22:51 local/data/alexnet_conv1_conv2.pklz
 </pre></div>
 </div>
 </div>
@@ -525,7 +530,7 @@ b&#39;conv1&#39; (96,) (11, 11, 3, 96)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(11, 11, 3, 96)
 </pre></div>
 </div>
-<img alt="../_images/8bee645810d2938efdca8bb30e594df3b024de4055e44102363693c0fe93b333.png" src="../_images/8bee645810d2938efdca8bb30e594df3b024de4055e44102363693c0fe93b333.png" />
+<img alt="../_images/fb438bf67fa666aef68cba0cf5c41b483b328cd941f504ba1a1c4f0bff72135e.png" src="../_images/fb438bf67fa666aef68cba0cf5c41b483b328cd941f504ba1a1c4f0bff72135e.png" />
 </div>
 </div>
 <section id="we-will-use-them-as-starting-point-for-training-our-network">
@@ -537,7 +542,16 @@ b&#39;conv1&#39; (96,) (11, 11, 3, 96)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File ‘mini_cifar.h5’ already there; not retrieving.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2025-09-03 22:51:35--  https://s3.amazonaws.com/rlx/mini_cifar.h5
+Resolving s3.amazonaws.com (s3.amazonaws.com)... 52.217.117.16, 3.5.12.130, 3.5.8.74, ...
+Connecting to s3.amazonaws.com (s3.amazonaws.com)|52.217.117.16|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 14803609 (14M) [binary/octet-stream]
+Saving to: ‘mini_cifar.h5’
+
+mini_cifar.h5       100%[===================&gt;]  14.12M  18.9MB/s    in 0.7s    
+
+2025-09-03 22:51:36 (18.9 MB/s) - ‘mini_cifar.h5’ saved [14803609/14803609]
 </pre></div>
 </div>
 </div>
@@ -559,7 +573,7 @@ b&#39;conv1&#39; (96,) (11, 11, 3, 96)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/87d2d3112e7bca9a37b5bb7b1c602537abce2a7fde6dca6004e80809a279710a.png" src="../_images/87d2d3112e7bca9a37b5bb7b1c602537abce2a7fde6dca6004e80809a279710a.png" />
+<img alt="../_images/a59a05b1a68a9c13faa0d0f5ea32bc7832b35eb90dcc087b6956ee6f9d1e24c7.png" src="../_images/a59a05b1a68a9c13faa0d0f5ea32bc7832b35eb90dcc087b6956ee6f9d1e24c7.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -578,16 +592,16 @@ b&#39;conv1&#39; (96,) (11, 11, 3, 96)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2253, 32, 32, 3) (2253,) (751, 32, 32, 3) (751,)
 
 distribution of train classes
-0    769
-2    750
-1    734
-dtype: int64
+2    773
+0    745
+1    735
+Name: count, dtype: int64
 
 distribution of test classes
-2    275
-1    240
-0    236
-dtype: int64
+0    260
+2    252
+1    239
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -619,7 +633,6 @@ dtype: int64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
     <span class="n">tensorboard</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">TensorBoard</span><span class="p">(</span><span class="n">log_dir</span><span class="o">=</span><span class="s2">&quot;logs/&quot;</span><span class="o">+</span><span class="n">model_name</span><span class="o">+</span><span class="s2">&quot;_&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time</span><span class="p">()))</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">reset_states</span><span class="p">()</span>
     <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">tensorboard</span><span class="p">],</span>
               <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
               <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
@@ -639,35 +652,39 @@ dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>using 3 classes
-Model: &quot;model&quot;
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-input_1 (InputLayer)         [(None, 32, 32, 3)]       0         
-_________________________________________________________________
-conv2d (Conv2D)              (None, 22, 22, 96)        34944     
-_________________________________________________________________
-max_pooling2d (MaxPooling2D) (None, 11, 11, 96)        0         
-_________________________________________________________________
-conv2d_1 (Conv2D)            (None, 1, 1, 60)          697020    
-_________________________________________________________________
-flatten (Flatten)            (None, 60)                0         
-_________________________________________________________________
-dropout (Dropout)            (None, 60)                0         
-_________________________________________________________________
-dense (Dense)                (None, 16)                976       
-_________________________________________________________________
-dropout_1 (Dropout)          (None, 16)                0         
-_________________________________________________________________
-output_1 (Dense)             (None, 3)                 51        
-=================================================================
-Total params: 732,991
-Trainable params: 732,991
-Non-trainable params: 0
-_________________________________________________________________
 </pre></div>
 </div>
-</div>
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "functional_1"</span>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)                    </span>┃<span style="font-weight: bold"> Output Shape           </span>┃<span style="font-weight: bold">       Param # </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ input_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">InputLayer</span>)            │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>, <span style="color: #00af00; text-decoration-color: #00af00">3</span>)      │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d_2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)               │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">22</span>, <span style="color: #00af00; text-decoration-color: #00af00">22</span>, <span style="color: #00af00; text-decoration-color: #00af00">96</span>)     │        <span style="color: #00af00; text-decoration-color: #00af00">34,944</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ max_pooling2d_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">MaxPooling2D</span>)  │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">11</span>, <span style="color: #00af00; text-decoration-color: #00af00">11</span>, <span style="color: #00af00; text-decoration-color: #00af00">96</span>)     │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d_3 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)               │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">1</span>, <span style="color: #00af00; text-decoration-color: #00af00">1</span>, <span style="color: #00af00; text-decoration-color: #00af00">60</span>)       │       <span style="color: #00af00; text-decoration-color: #00af00">697,020</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ flatten_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Flatten</span>)             │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">60</span>)             │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout_2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dropout</span>)             │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">60</span>)             │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                 │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>)             │           <span style="color: #00af00; text-decoration-color: #00af00">976</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout_3 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dropout</span>)             │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>)             │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ output_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">3</span>)              │            <span style="color: #00af00; text-decoration-color: #00af00">51</span> │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">732,991</span> (2.80 MB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">732,991</span> (2.80 MB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">0</span> (0.00 B)
+</pre>
+</div></div>
 </div>
 </section>
 </section>
@@ -682,39 +699,39 @@ _________________________________________________________________
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/15
-141/141 [==============================] - 3s 20ms/step - loss: 1.1283 - accuracy: 0.3371 - val_loss: 1.0988 - val_accuracy: 0.3329
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">13s</span> 66ms/step - accuracy: 0.3740 - loss: 1.1126 - val_accuracy: 0.5193 - val_loss: 0.9987
 Epoch 2/15
-141/141 [==============================] - 3s 18ms/step - loss: 1.0934 - accuracy: 0.3666 - val_loss: 1.0427 - val_accuracy: 0.4274
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">9s</span> 63ms/step - accuracy: 0.4912 - loss: 1.0197 - val_accuracy: 0.5300 - val_loss: 0.9636
 Epoch 3/15
-141/141 [==============================] - 3s 18ms/step - loss: 1.0586 - accuracy: 0.4369 - val_loss: 1.0446 - val_accuracy: 0.4314
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">8s</span> 55ms/step - accuracy: 0.5245 - loss: 0.9775 - val_accuracy: 0.5606 - val_loss: 0.9048
 Epoch 4/15
-141/141 [==============================] - 3s 18ms/step - loss: 1.0355 - accuracy: 0.4536 - val_loss: 1.0159 - val_accuracy: 0.4847
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">10s</span> 68ms/step - accuracy: 0.5524 - loss: 0.9097 - val_accuracy: 0.5979 - val_loss: 0.8650
 Epoch 5/15
-141/141 [==============================] - 2s 18ms/step - loss: 1.0295 - accuracy: 0.4641 - val_loss: 1.0007 - val_accuracy: 0.5393
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">10s</span> 64ms/step - accuracy: 0.5700 - loss: 0.9040 - val_accuracy: 0.5992 - val_loss: 0.8447
 Epoch 6/15
-141/141 [==============================] - 3s 18ms/step - loss: 1.0114 - accuracy: 0.5016 - val_loss: 0.9795 - val_accuracy: 0.5499
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">11s</span> 67ms/step - accuracy: 0.6119 - loss: 0.8549 - val_accuracy: 0.6232 - val_loss: 0.8197
 Epoch 7/15
-141/141 [==============================] - 3s 18ms/step - loss: 0.9972 - accuracy: 0.4710 - val_loss: 0.9574 - val_accuracy: 0.5260
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">10s</span> 69ms/step - accuracy: 0.5971 - loss: 0.8328 - val_accuracy: 0.6099 - val_loss: 0.8470
 Epoch 8/15
-141/141 [==============================] - 3s 18ms/step - loss: 0.9842 - accuracy: 0.4825 - val_loss: 0.9475 - val_accuracy: 0.5366
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">9s</span> 59ms/step - accuracy: 0.6235 - loss: 0.8068 - val_accuracy: 0.6431 - val_loss: 0.8111
 Epoch 9/15
-141/141 [==============================] - 3s 19ms/step - loss: 0.9728 - accuracy: 0.4999 - val_loss: 0.9227 - val_accuracy: 0.5566
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">10s</span> 71ms/step - accuracy: 0.6290 - loss: 0.7944 - val_accuracy: 0.6192 - val_loss: 0.8518
 Epoch 10/15
-141/141 [==============================] - 3s 18ms/step - loss: 0.9897 - accuracy: 0.5052 - val_loss: 0.9453 - val_accuracy: 0.5459
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">10s</span> 67ms/step - accuracy: 0.6314 - loss: 0.7915 - val_accuracy: 0.6218 - val_loss: 0.8088
 Epoch 11/15
-141/141 [==============================] - 3s 19ms/step - loss: 0.9494 - accuracy: 0.5428 - val_loss: 0.9663 - val_accuracy: 0.5206
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">8s</span> 58ms/step - accuracy: 0.6417 - loss: 0.7811 - val_accuracy: 0.5979 - val_loss: 0.8322
 Epoch 12/15
-141/141 [==============================] - 3s 19ms/step - loss: 0.9504 - accuracy: 0.5307 - val_loss: 0.9612 - val_accuracy: 0.5193
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">11s</span> 61ms/step - accuracy: 0.6726 - loss: 0.7235 - val_accuracy: 0.6218 - val_loss: 0.8021
 Epoch 13/15
-141/141 [==============================] - 3s 19ms/step - loss: 0.9551 - accuracy: 0.5325 - val_loss: 0.9301 - val_accuracy: 0.5632
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">11s</span> 67ms/step - accuracy: 0.6703 - loss: 0.7187 - val_accuracy: 0.6152 - val_loss: 0.8122
 Epoch 14/15
-141/141 [==============================] - 3s 19ms/step - loss: 0.9412 - accuracy: 0.5141 - val_loss: 0.9355 - val_accuracy: 0.5632
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">10s</span> 67ms/step - accuracy: 0.6770 - loss: 0.7149 - val_accuracy: 0.6471 - val_loss: 0.8125
 Epoch 15/15
-141/141 [==============================] - 3s 18ms/step - loss: 0.9122 - accuracy: 0.5733 - val_loss: 0.9249 - val_accuracy: 0.5686
-24/24 [==============================] - 0s 6ms/step - loss: 0.9249 - accuracy: 0.5686
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">9s</span> 67ms/step - accuracy: 0.6825 - loss: 0.6860 - val_accuracy: 0.6232 - val_loss: 0.8849
+<span class=" -Color -Color-Bold">24/24</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 25ms/step - accuracy: 0.6121 - loss: 0.9606
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;loss&#39;: 0.9248688220977783, &#39;accuracy&#39;: 0.5685752034187317}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;loss&#39;: 0.8849406838417053, &#39;compile_metrics&#39;: 0.6231691241264343}
 </pre></div>
 </div>
 </div>
@@ -727,16 +744,17 @@ Epoch 15/15
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Normalized confusion matrix
-[[0.48305085 0.20762712 0.30932203]
- [0.05833333 0.67916667 0.2625    ]
- [0.28727273 0.16727273 0.54545455]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">24/24</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 26ms/step
+Normalized confusion matrix
+[[0.55769231 0.2        0.24230769]
+ [0.0292887  0.92050209 0.05020921]
+ [0.26190476 0.32936508 0.40873016]]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f74bf1c3370&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;Normalized confusion matrix&#39;}, xlabel=&#39;Predicted label&#39;, ylabel=&#39;True label&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/818898ad5c66a4464aefcd41004d30fdb4ad0d3e67d18af1e339de15af0479ff.png" src="../_images/818898ad5c66a4464aefcd41004d30fdb4ad0d3e67d18af1e339de15af0479ff.png" />
+<img alt="../_images/039631702cdecad20aa8d565121daa63fd5eb9ee54060970b6c524ebfb00f38b.png" src="../_images/039631702cdecad20aa8d565121daa63fd5eb9ee54060970b6c524ebfb00f38b.png" />
 </div>
 </div>
 </section>
@@ -777,7 +795,7 @@ Epoch 15/15
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8bee645810d2938efdca8bb30e594df3b024de4055e44102363693c0fe93b333.png" src="../_images/8bee645810d2938efdca8bb30e594df3b024de4055e44102363693c0fe93b333.png" />
+<img alt="../_images/fb438bf67fa666aef68cba0cf5c41b483b328cd941f504ba1a1c4f0bff72135e.png" src="../_images/fb438bf67fa666aef68cba0cf5c41b483b328cd941f504ba1a1c4f0bff72135e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -788,39 +806,39 @@ Epoch 15/15
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/15
-141/141 [==============================] - 3s 20ms/step - loss: 1.1366 - accuracy: 0.3932 - val_loss: 0.9753 - val_accuracy: 0.6458
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">11s</span> 62ms/step - accuracy: 0.4418 - loss: 1.1226 - val_accuracy: 0.6085 - val_loss: 0.9157
 Epoch 2/15
-141/141 [==============================] - 3s 18ms/step - loss: 0.9676 - accuracy: 0.5499 - val_loss: 0.9510 - val_accuracy: 0.5513
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">10s</span> 59ms/step - accuracy: 0.5626 - loss: 0.9337 - val_accuracy: 0.6378 - val_loss: 0.7739
 Epoch 3/15
-141/141 [==============================] - 3s 18ms/step - loss: 0.8886 - accuracy: 0.5938 - val_loss: 0.8310 - val_accuracy: 0.6591
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">11s</span> 65ms/step - accuracy: 0.6051 - loss: 0.8411 - val_accuracy: 0.6405 - val_loss: 0.7577
 Epoch 4/15
-141/141 [==============================] - 3s 18ms/step - loss: 0.8180 - accuracy: 0.6287 - val_loss: 0.7262 - val_accuracy: 0.7084
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">11s</span> 71ms/step - accuracy: 0.6368 - loss: 0.8208 - val_accuracy: 0.6858 - val_loss: 0.7430
 Epoch 5/15
-141/141 [==============================] - 3s 18ms/step - loss: 0.7335 - accuracy: 0.6893 - val_loss: 0.7712 - val_accuracy: 0.6671
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">9s</span> 66ms/step - accuracy: 0.6822 - loss: 0.7065 - val_accuracy: 0.7044 - val_loss: 0.7052
 Epoch 6/15
-141/141 [==============================] - 3s 18ms/step - loss: 0.7056 - accuracy: 0.6992 - val_loss: 0.6892 - val_accuracy: 0.7057
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">8s</span> 56ms/step - accuracy: 0.7372 - loss: 0.6665 - val_accuracy: 0.7230 - val_loss: 0.6823
 Epoch 7/15
-141/141 [==============================] - 3s 18ms/step - loss: 0.6646 - accuracy: 0.7138 - val_loss: 0.6665 - val_accuracy: 0.7217
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">12s</span> 67ms/step - accuracy: 0.7453 - loss: 0.6464 - val_accuracy: 0.7230 - val_loss: 0.6871
 Epoch 8/15
-141/141 [==============================] - 3s 18ms/step - loss: 0.6225 - accuracy: 0.7349 - val_loss: 0.7221 - val_accuracy: 0.7044
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">10s</span> 70ms/step - accuracy: 0.7457 - loss: 0.6077 - val_accuracy: 0.7257 - val_loss: 0.6831
 Epoch 9/15
-141/141 [==============================] - 3s 18ms/step - loss: 0.5744 - accuracy: 0.7654 - val_loss: 0.6893 - val_accuracy: 0.7270
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">10s</span> 70ms/step - accuracy: 0.7700 - loss: 0.5462 - val_accuracy: 0.7284 - val_loss: 0.6776
 Epoch 10/15
-141/141 [==============================] - 3s 20ms/step - loss: 0.5224 - accuracy: 0.7908 - val_loss: 0.6523 - val_accuracy: 0.7417
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">8s</span> 55ms/step - accuracy: 0.7877 - loss: 0.5261 - val_accuracy: 0.7656 - val_loss: 0.6554
 Epoch 11/15
-141/141 [==============================] - 2s 18ms/step - loss: 0.4752 - accuracy: 0.8087 - val_loss: 0.6232 - val_accuracy: 0.7430
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">11s</span> 59ms/step - accuracy: 0.7920 - loss: 0.4987 - val_accuracy: 0.7510 - val_loss: 0.6628
 Epoch 12/15
-141/141 [==============================] - 3s 18ms/step - loss: 0.4926 - accuracy: 0.8066 - val_loss: 0.6843 - val_accuracy: 0.7457
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">10s</span> 70ms/step - accuracy: 0.8247 - loss: 0.4640 - val_accuracy: 0.7150 - val_loss: 0.7567
 Epoch 13/15
-141/141 [==============================] - 3s 18ms/step - loss: 0.4509 - accuracy: 0.8346 - val_loss: 0.6546 - val_accuracy: 0.7563
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">9s</span> 66ms/step - accuracy: 0.8227 - loss: 0.4630 - val_accuracy: 0.7443 - val_loss: 0.6733
 Epoch 14/15
-141/141 [==============================] - 3s 18ms/step - loss: 0.4006 - accuracy: 0.8366 - val_loss: 0.7221 - val_accuracy: 0.7470
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">10s</span> 65ms/step - accuracy: 0.8522 - loss: 0.4137 - val_accuracy: 0.7510 - val_loss: 0.6674
 Epoch 15/15
-141/141 [==============================] - 2s 18ms/step - loss: 0.4072 - accuracy: 0.8469 - val_loss: 0.7341 - val_accuracy: 0.7443
-24/24 [==============================] - 0s 5ms/step - loss: 0.7341 - accuracy: 0.7443
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">9s</span> 57ms/step - accuracy: 0.8489 - loss: 0.3744 - val_accuracy: 0.7297 - val_loss: 0.7401
+<span class=" -Color -Color-Bold">24/24</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 41ms/step - accuracy: 0.7210 - loss: 0.7579
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;loss&#39;: 0.7341428995132446, &#39;accuracy&#39;: 0.7443408966064453}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;loss&#39;: 0.7401493787765503, &#39;compile_metrics&#39;: 0.7296937704086304}
 </pre></div>
 </div>
 </div>
@@ -833,16 +851,17 @@ Epoch 15/15
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Normalized confusion matrix
-[[0.74152542 0.05084746 0.20762712]
- [0.12916667 0.8        0.07083333]
- [0.21090909 0.09090909 0.69818182]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">24/24</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 26ms/step
+Normalized confusion matrix
+[[0.63076923 0.06153846 0.30769231]
+ [0.06694561 0.74476987 0.18828452]
+ [0.09920635 0.08333333 0.81746032]]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f74befe5cd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;Normalized confusion matrix&#39;}, xlabel=&#39;Predicted label&#39;, ylabel=&#39;True label&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/b5bf0cb6fe6e9d8b5f8ef441d2b0cb178214f3baf327d130dd05b4422b7b9bca.png" src="../_images/b5bf0cb6fe6e9d8b5f8ef441d2b0cb178214f3baf327d130dd05b4422b7b9bca.png" />
+<img alt="../_images/b3b49941a48d30e984c66bcc02d4db0ddaabd8ab02e1b5bc89315783e61030dc.png" src="../_images/b3b49941a48d30e984c66bcc02d4db0ddaabd8ab02e1b5bc89315783e61030dc.png" />
 </div>
 </div>
 <p>first level filters changed but not much</p>
@@ -854,7 +873,7 @@ Epoch 15/15
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.024149708
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float32(0.02194051)
 </pre></div>
 </div>
 </div>
@@ -866,17 +885,12 @@ Epoch 15/15
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8bee645810d2938efdca8bb30e594df3b024de4055e44102363693c0fe93b333.png" src="../_images/8bee645810d2938efdca8bb30e594df3b024de4055e44102363693c0fe93b333.png" />
+<img alt="../_images/fb438bf67fa666aef68cba0cf5c41b483b328cd941f504ba1a1c4f0bff72135e.png" src="../_images/fb438bf67fa666aef68cba0cf5c41b483b328cd941f504ba1a1c4f0bff72135e.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;alexnet_finetuned_minicifar.model&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Assets written to: alexnet_finetuned_minicifar.model/assets
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;alexnet_finetuned_minicifar.keras&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -897,15 +911,8 @@ Epoch 15/15
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4,0K -rw-rw-r-- 1 rlx rlx 3,5K Jan 27 21:11 alexnet_finetuned_minicifar.architecture.json
-
-alexnet_finetuned_minicifar.model:
-total 168K
-4,0K drwxr-xr-x 4 rlx rlx 4,0K Jan 27 21:11 .
-4,0K drwxr-xr-x 7 rlx rlx 4,0K Jan 27 21:11 ..
-4,0K drwxr-xr-x 2 rlx rlx 4,0K Jan 27 21:11 assets
-152K -rw-rw-r-- 1 rlx rlx 152K Jan 27 21:11 saved_model.pb
-4,0K drwxr-xr-x 2 rlx rlx 4,0K Jan 27 21:11 variables
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.0K -rw-r--r-- 1 root root 7.2K Sep  3 22:59 alexnet_finetuned_minicifar.architecture.json
+8.5M -rw-r--r-- 1 root root 8.5M Sep  3 22:59 alexnet_finetuned_minicifar.keras
 </pre></div>
 </div>
 </div>
@@ -917,7 +924,7 @@ total 168K
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&quot;class_name&quot;: &quot;Functional&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;model_1&quot;, &quot;layers&quot;: [{&quot;class_name&quot;: &quot;InputLayer&quot;, &quot;config&quot;: {&quot;batch_input_shape&quot;: [null, 32, 32, 3], &quot;dtype&quot;: &quot;float32&quot;, &quot;sparse&quot;: false, &quot;ragged&quot;: false, &quot;name&quot;: &quot;input_1&quot;}, &quot;name&quot;: &quot;input_1&quot;, &quot;inbound_nodes&quot;: []}, {&quot;class_name&quot;: &quot;Conv2D&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;conv2d_2&quot;, &quot;trainable&quot;: true, &quot;dtype&quot;: &quot;float32&quot;, &quot;filters&quot;: 96, &quot;kernel_size&quot;: [11, 11], &quot;strides&quot;: [1, 1], &quot;padding&quot;: &quot;valid&quot;, &quot;data_format&quot;: &quot;channels_last&quot;, &quot;dilation_rate&quot;: [1, 1], &quot;groups&quot;: 1, &quot;activation&quot;: &quot;relu&quot;, &quot;use_bias&quot;: true, &quot;kernel_initializer&quot;: {&quot;class_name&quot;: &quot;GlorotUniform&quot;, &quot;config&quot;: {&quot;seed&quot;: null}}, &quot;bias_initializer&quot;: {&quot;class_name&quot;: &quot;Zeros&quot;, &quot;config&quot;: {}}, &quot;kernel_regularizer&quot;: null, &quot;bias_regularizer&quot;: null, &quot;activity_regularizer&quot;: null, &quot;kernel_constraint&quot;: null, &quot;bias_constraint&quot;: null}, &quot;name&quot;: &quot;conv2d_2&quot;, &quot;inbound_nodes&quot;: [[[&quot;input_1&quot;, 0, 0, {}]]]}, {&quot;class_name&quot;: &quot;MaxPooling2D&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;max_pooling2d_1&quot;, &quot;trainable&quot;: true, &quot;dtype&quot;: &quot;float32&quot;, &quot;pool_size&quot;: [2, 2], &quot;padding&quot;: &quot;valid&quot;, &quot;strides&quot;: [2, 2], &quot;data_format&quot;: &quot;channels_last&quot;}, &quot;name&quot;: &quot;max_pooling2d_1&quot;, &quot;inbound_nodes&quot;: [[[&quot;conv2d_2&quot;, 0, 0, {}]]]}, {&quot;class_name&quot;: &quot;Conv2D&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;conv2d_3&quot;, &quot;trainable&quot;: true, &quot;dtype&quot;: &quot;float32&quot;, &quot;filters&quot;: 60, &quot;kernel_size&quot;: [11, 11], &quot;strides&quot;: [1, 1], &quot;padding&quot;: &quot;valid&quot;, &quot;data_format&quot;: &quot;channels_last&quot;, &quot;dilation_rate&quot;: [1, 1], &quot;groups&quot;: 1, &quot;activation&quot;: &quot;relu&quot;, &quot;use_bias&quot;: true, &quot;kernel_initializer&quot;: {&quot;class_name&quot;: &quot;GlorotUniform&quot;, &quot;config&quot;: {&quot;seed&quot;: null}}, &quot;bias_initializer&quot;: {&quot;class_name&quot;: &quot;Zeros&quot;, &quot;config&quot;: {}}, &quot;kernel_regularizer&quot;: null, &quot;bias_regularizer&quot;: null, &quot;activity_regularizer&quot;: null, &quot;kernel_constraint&quot;: null, &quot;bias_constraint&quot;: null}, &quot;name&quot;: &quot;conv2d_3&quot;, &quot;inbound_nodes&quot;: [[[&quot;max_pooling2d_1&quot;, 0, 0, {}]]]}, {&quot;class_name&quot;: &quot;Flatten&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;flatten_1&quot;, &quot;trainable&quot;: true, &quot;dtype&quot;: &quot;float32&quot;, &quot;data_format&quot;: &quot;channels_last&quot;}, &quot;name&quot;: &quot;flatten_1&quot;, &quot;inbound_nodes&quot;: [[[&quot;conv2d_3&quot;, 0, 0, {}]]]}, {&quot;class_name&quot;: &quot;Dropout&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;dropout_2&quot;, &quot;trainable&quot;: true, &quot;dtype&quot;: &quot;float32&quot;, &quot;rate&quot;: 0.4, &quot;noise_shape&quot;: null, &quot;seed&quot;: null}, &quot;name&quot;: &quot;dropout_2&quot;, &quot;inbound_nodes&quot;: [[[&quot;flatten_1&quot;, 0, 0, {}]]]}, {&quot;class_name&quot;: &quot;Dense&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;dense_1&quot;, &quot;trainable&quot;: true, &quot;dtype&quot;: &quot;float32&quot;, &quot;units&quot;: 16, &quot;activation&quot;: &quot;relu&quot;, &quot;use_bias&quot;: true, &quot;kernel_initializer&quot;: {&quot;class_name&quot;: &quot;GlorotUniform&quot;, &quot;config&quot;: {&quot;seed&quot;: null}}, &quot;bias_initializer&quot;: {&quot;class_name&quot;: &quot;Zeros&quot;, &quot;config&quot;: {}}, &quot;kernel_regularizer&quot;: null, &quot;bias_regularizer&quot;: null, &quot;activity_regularizer&quot;: null, &quot;kernel_constraint&quot;: null, &quot;bias_constraint&quot;: null}, &quot;name&quot;: &quot;dense_1&quot;, &quot;inbound_nodes&quot;: [[[&quot;dropout_2&quot;, 0, 0, {}]]]}, {&quot;class_name&quot;: &quot;Dropout&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;dropout_3&quot;, &quot;trainable&quot;: true, &quot;dtype&quot;: &quot;float32&quot;, &quot;rate&quot;: 0.4, &quot;noise_shape&quot;: null, &quot;seed&quot;: null}, &quot;name&quot;: &quot;dropout_3&quot;, &quot;inbound_nodes&quot;: [[[&quot;dense_1&quot;, 0, 0, {}]]]}, {&quot;class_name&quot;: &quot;Dense&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;output_1&quot;, &quot;trainable&quot;: true, &quot;dtype&quot;: &quot;float32&quot;, &quot;units&quot;: 3, &quot;activation&quot;: &quot;softmax&quot;, &quot;use_bias&quot;: true, &quot;kernel_initializer&quot;: {&quot;class_name&quot;: &quot;GlorotUniform&quot;, &quot;config&quot;: {&quot;seed&quot;: null}}, &quot;bias_initializer&quot;: {&quot;class_name&quot;: &quot;Zeros&quot;, &quot;config&quot;: {}}, &quot;kernel_regularizer&quot;: null, &quot;bias_regularizer&quot;: null, &quot;activity_regularizer&quot;: null, &quot;kernel_constraint&quot;: null, &quot;bias_constraint&quot;: null}, &quot;name&quot;: &quot;output_1&quot;, &quot;inbound_nodes&quot;: [[[&quot;dropout_3&quot;, 0, 0, {}]]]}], &quot;input_layers&quot;: [[&quot;input_1&quot;, 0, 0]], &quot;output_layers&quot;: [[&quot;output_1&quot;, 0, 0]]}, &quot;keras_version&quot;: &quot;2.4.0&quot;, &quot;backend&quot;: &quot;tensorflow&quot;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&quot;module&quot;: &quot;keras.src.models.functional&quot;, &quot;class_name&quot;: &quot;Functional&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;functional_2&quot;, &quot;trainable&quot;: true, &quot;layers&quot;: [{&quot;module&quot;: &quot;keras.layers&quot;, &quot;class_name&quot;: &quot;InputLayer&quot;, &quot;config&quot;: {&quot;batch_shape&quot;: [null, 32, 32, 3], &quot;dtype&quot;: &quot;float32&quot;, &quot;sparse&quot;: false, &quot;ragged&quot;: false, &quot;name&quot;: &quot;input_1&quot;}, &quot;registered_name&quot;: null, &quot;name&quot;: &quot;input_1&quot;, &quot;inbound_nodes&quot;: []}, {&quot;module&quot;: &quot;keras.layers&quot;, &quot;class_name&quot;: &quot;Conv2D&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;conv2d_4&quot;, &quot;trainable&quot;: true, &quot;dtype&quot;: {&quot;module&quot;: &quot;keras&quot;, &quot;class_name&quot;: &quot;DTypePolicy&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;float32&quot;}, &quot;registered_name&quot;: null}, &quot;filters&quot;: 96, &quot;kernel_size&quot;: [11, 11], &quot;strides&quot;: [1, 1], &quot;padding&quot;: &quot;valid&quot;, &quot;data_format&quot;: &quot;channels_last&quot;, &quot;dilation_rate&quot;: [1, 1], &quot;groups&quot;: 1, &quot;activation&quot;: &quot;relu&quot;, &quot;use_bias&quot;: true, &quot;kernel_initializer&quot;: {&quot;module&quot;: &quot;keras.initializers&quot;, &quot;class_name&quot;: &quot;GlorotUniform&quot;, &quot;config&quot;: {&quot;seed&quot;: null}, &quot;registered_name&quot;: null}, &quot;bias_initializer&quot;: {&quot;module&quot;: &quot;keras.initializers&quot;, &quot;class_name&quot;: &quot;Zeros&quot;, &quot;config&quot;: {}, &quot;registered_name&quot;: null}, &quot;kernel_regularizer&quot;: null, &quot;bias_regularizer&quot;: null, &quot;activity_regularizer&quot;: null, &quot;kernel_constraint&quot;: null, &quot;bias_constraint&quot;: null}, &quot;registered_name&quot;: null, &quot;build_config&quot;: {&quot;input_shape&quot;: [null, 32, 32, 3]}, &quot;name&quot;: &quot;conv2d_4&quot;, &quot;inbound_nodes&quot;: [{&quot;args&quot;: [{&quot;class_name&quot;: &quot;__keras_tensor__&quot;, &quot;config&quot;: {&quot;shape&quot;: [null, 32, 32, 3], &quot;dtype&quot;: &quot;float32&quot;, &quot;keras_history&quot;: [&quot;input_1&quot;, 0, 0]}}], &quot;kwargs&quot;: {}}]}, {&quot;module&quot;: &quot;keras.layers&quot;, &quot;class_name&quot;: &quot;MaxPooling2D&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;max_pooling2d_2&quot;, &quot;trainable&quot;: true, &quot;dtype&quot;: {&quot;module&quot;: &quot;keras&quot;, &quot;class_name&quot;: &quot;DTypePolicy&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;float32&quot;}, &quot;registered_name&quot;: null}, &quot;pool_size&quot;: [2, 2], &quot;padding&quot;: &quot;valid&quot;, &quot;strides&quot;: [2, 2], &quot;data_format&quot;: &quot;channels_last&quot;}, &quot;registered_name&quot;: null, &quot;name&quot;: &quot;max_pooling2d_2&quot;, &quot;inbound_nodes&quot;: [{&quot;args&quot;: [{&quot;class_name&quot;: &quot;__keras_tensor__&quot;, &quot;config&quot;: {&quot;shape&quot;: [null, 22, 22, 96], &quot;dtype&quot;: &quot;float32&quot;, &quot;keras_history&quot;: [&quot;conv2d_4&quot;, 0, 0]}}], &quot;kwargs&quot;: {}}]}, {&quot;module&quot;: &quot;keras.layers&quot;, &quot;class_name&quot;: &quot;Conv2D&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;conv2d_5&quot;, &quot;trainable&quot;: true, &quot;dtype&quot;: {&quot;module&quot;: &quot;keras&quot;, &quot;class_name&quot;: &quot;DTypePolicy&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;float32&quot;}, &quot;registered_name&quot;: null}, &quot;filters&quot;: 60, &quot;kernel_size&quot;: [11, 11], &quot;strides&quot;: [1, 1], &quot;padding&quot;: &quot;valid&quot;, &quot;data_format&quot;: &quot;channels_last&quot;, &quot;dilation_rate&quot;: [1, 1], &quot;groups&quot;: 1, &quot;activation&quot;: &quot;relu&quot;, &quot;use_bias&quot;: true, &quot;kernel_initializer&quot;: {&quot;module&quot;: &quot;keras.initializers&quot;, &quot;class_name&quot;: &quot;GlorotUniform&quot;, &quot;config&quot;: {&quot;seed&quot;: null}, &quot;registered_name&quot;: null}, &quot;bias_initializer&quot;: {&quot;module&quot;: &quot;keras.initializers&quot;, &quot;class_name&quot;: &quot;Zeros&quot;, &quot;config&quot;: {}, &quot;registered_name&quot;: null}, &quot;kernel_regularizer&quot;: null, &quot;bias_regularizer&quot;: null, &quot;activity_regularizer&quot;: null, &quot;kernel_constraint&quot;: null, &quot;bias_constraint&quot;: null}, &quot;registered_name&quot;: null, &quot;build_config&quot;: {&quot;input_shape&quot;: [null, 11, 11, 96]}, &quot;name&quot;: &quot;conv2d_5&quot;, &quot;inbound_nodes&quot;: [{&quot;args&quot;: [{&quot;class_name&quot;: &quot;__keras_tensor__&quot;, &quot;config&quot;: {&quot;shape&quot;: [null, 11, 11, 96], &quot;dtype&quot;: &quot;float32&quot;, &quot;keras_history&quot;: [&quot;max_pooling2d_2&quot;, 0, 0]}}], &quot;kwargs&quot;: {}}]}, {&quot;module&quot;: &quot;keras.layers&quot;, &quot;class_name&quot;: &quot;Flatten&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;flatten_2&quot;, &quot;trainable&quot;: true, &quot;dtype&quot;: {&quot;module&quot;: &quot;keras&quot;, &quot;class_name&quot;: &quot;DTypePolicy&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;float32&quot;}, &quot;registered_name&quot;: null}, &quot;data_format&quot;: &quot;channels_last&quot;}, &quot;registered_name&quot;: null, &quot;build_config&quot;: {&quot;input_shape&quot;: [null, 1, 1, 60]}, &quot;name&quot;: &quot;flatten_2&quot;, &quot;inbound_nodes&quot;: [{&quot;args&quot;: [{&quot;class_name&quot;: &quot;__keras_tensor__&quot;, &quot;config&quot;: {&quot;shape&quot;: [null, 1, 1, 60], &quot;dtype&quot;: &quot;float32&quot;, &quot;keras_history&quot;: [&quot;conv2d_5&quot;, 0, 0]}}], &quot;kwargs&quot;: {}}]}, {&quot;module&quot;: &quot;keras.layers&quot;, &quot;class_name&quot;: &quot;Dropout&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;dropout_4&quot;, &quot;trainable&quot;: true, &quot;dtype&quot;: {&quot;module&quot;: &quot;keras&quot;, &quot;class_name&quot;: &quot;DTypePolicy&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;float32&quot;}, &quot;registered_name&quot;: null}, &quot;rate&quot;: 0.4, &quot;seed&quot;: null, &quot;noise_shape&quot;: null}, &quot;registered_name&quot;: null, &quot;name&quot;: &quot;dropout_4&quot;, &quot;inbound_nodes&quot;: [{&quot;args&quot;: [{&quot;class_name&quot;: &quot;__keras_tensor__&quot;, &quot;config&quot;: {&quot;shape&quot;: [null, 60], &quot;dtype&quot;: &quot;float32&quot;, &quot;keras_history&quot;: [&quot;flatten_2&quot;, 0, 0]}}], &quot;kwargs&quot;: {&quot;training&quot;: false}}]}, {&quot;module&quot;: &quot;keras.layers&quot;, &quot;class_name&quot;: &quot;Dense&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;dense_2&quot;, &quot;trainable&quot;: true, &quot;dtype&quot;: {&quot;module&quot;: &quot;keras&quot;, &quot;class_name&quot;: &quot;DTypePolicy&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;float32&quot;}, &quot;registered_name&quot;: null}, &quot;units&quot;: 16, &quot;activation&quot;: &quot;relu&quot;, &quot;use_bias&quot;: true, &quot;kernel_initializer&quot;: {&quot;module&quot;: &quot;keras.initializers&quot;, &quot;class_name&quot;: &quot;GlorotUniform&quot;, &quot;config&quot;: {&quot;seed&quot;: null}, &quot;registered_name&quot;: null}, &quot;bias_initializer&quot;: {&quot;module&quot;: &quot;keras.initializers&quot;, &quot;class_name&quot;: &quot;Zeros&quot;, &quot;config&quot;: {}, &quot;registered_name&quot;: null}, &quot;kernel_regularizer&quot;: null, &quot;bias_regularizer&quot;: null, &quot;kernel_constraint&quot;: null, &quot;bias_constraint&quot;: null}, &quot;registered_name&quot;: null, &quot;build_config&quot;: {&quot;input_shape&quot;: [null, 60]}, &quot;name&quot;: &quot;dense_2&quot;, &quot;inbound_nodes&quot;: [{&quot;args&quot;: [{&quot;class_name&quot;: &quot;__keras_tensor__&quot;, &quot;config&quot;: {&quot;shape&quot;: [null, 60], &quot;dtype&quot;: &quot;float32&quot;, &quot;keras_history&quot;: [&quot;dropout_4&quot;, 0, 0]}}], &quot;kwargs&quot;: {}}]}, {&quot;module&quot;: &quot;keras.layers&quot;, &quot;class_name&quot;: &quot;Dropout&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;dropout_5&quot;, &quot;trainable&quot;: true, &quot;dtype&quot;: {&quot;module&quot;: &quot;keras&quot;, &quot;class_name&quot;: &quot;DTypePolicy&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;float32&quot;}, &quot;registered_name&quot;: null}, &quot;rate&quot;: 0.4, &quot;seed&quot;: null, &quot;noise_shape&quot;: null}, &quot;registered_name&quot;: null, &quot;name&quot;: &quot;dropout_5&quot;, &quot;inbound_nodes&quot;: [{&quot;args&quot;: [{&quot;class_name&quot;: &quot;__keras_tensor__&quot;, &quot;config&quot;: {&quot;shape&quot;: [null, 16], &quot;dtype&quot;: &quot;float32&quot;, &quot;keras_history&quot;: [&quot;dense_2&quot;, 0, 0]}}], &quot;kwargs&quot;: {&quot;training&quot;: false}}]}, {&quot;module&quot;: &quot;keras.layers&quot;, &quot;class_name&quot;: &quot;Dense&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;output_1&quot;, &quot;trainable&quot;: true, &quot;dtype&quot;: {&quot;module&quot;: &quot;keras&quot;, &quot;class_name&quot;: &quot;DTypePolicy&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;float32&quot;}, &quot;registered_name&quot;: null}, &quot;units&quot;: 3, &quot;activation&quot;: {&quot;module&quot;: &quot;builtins&quot;, &quot;class_name&quot;: &quot;function&quot;, &quot;config&quot;: &quot;softmax_v2&quot;, &quot;registered_name&quot;: &quot;function&quot;}, &quot;use_bias&quot;: true, &quot;kernel_initializer&quot;: {&quot;module&quot;: &quot;keras.initializers&quot;, &quot;class_name&quot;: &quot;GlorotUniform&quot;, &quot;config&quot;: {&quot;seed&quot;: null}, &quot;registered_name&quot;: null}, &quot;bias_initializer&quot;: {&quot;module&quot;: &quot;keras.initializers&quot;, &quot;class_name&quot;: &quot;Zeros&quot;, &quot;config&quot;: {}, &quot;registered_name&quot;: null}, &quot;kernel_regularizer&quot;: null, &quot;bias_regularizer&quot;: null, &quot;kernel_constraint&quot;: null, &quot;bias_constraint&quot;: null}, &quot;registered_name&quot;: null, &quot;build_config&quot;: {&quot;input_shape&quot;: [null, 16]}, &quot;name&quot;: &quot;output_1&quot;, &quot;inbound_nodes&quot;: [{&quot;args&quot;: [{&quot;class_name&quot;: &quot;__keras_tensor__&quot;, &quot;config&quot;: {&quot;shape&quot;: [null, 16], &quot;dtype&quot;: &quot;float32&quot;, &quot;keras_history&quot;: [&quot;dropout_5&quot;, 0, 0]}}], &quot;kwargs&quot;: {}}]}], &quot;input_layers&quot;: [[&quot;input_1&quot;, 0, 0]], &quot;output_layers&quot;: [[&quot;output_1&quot;, 0, 0]]}, &quot;registered_name&quot;: &quot;Functional&quot;, &quot;build_config&quot;: {&quot;input_shape&quot;: null}, &quot;compile_config&quot;: {&quot;optimizer&quot;: {&quot;module&quot;: &quot;keras.optimizers&quot;, &quot;class_name&quot;: &quot;Adam&quot;, &quot;config&quot;: {&quot;name&quot;: &quot;adam&quot;, &quot;learning_rate&quot;: 0.0010000000474974513, &quot;weight_decay&quot;: null, &quot;clipnorm&quot;: null, &quot;global_clipnorm&quot;: null, &quot;clipvalue&quot;: null, &quot;use_ema&quot;: false, &quot;ema_momentum&quot;: 0.99, &quot;ema_overwrite_frequency&quot;: null, &quot;loss_scale_factor&quot;: null, &quot;gradient_accumulation_steps&quot;: null, &quot;beta_1&quot;: 0.9, &quot;beta_2&quot;: 0.999, &quot;epsilon&quot;: 1e-07, &quot;amsgrad&quot;: false}, &quot;registered_name&quot;: null}, &quot;loss&quot;: &quot;sparse_categorical_crossentropy&quot;, &quot;loss_weights&quot;: null, &quot;metrics&quot;: [&quot;accuracy&quot;], &quot;weighted_metrics&quot;: null, &quot;run_eagerly&quot;: false, &quot;steps_per_execution&quot;: 1, &quot;jit_compile&quot;: false}}
 </pre></div>
 </div>
 </div>
@@ -971,39 +978,39 @@ total 168K
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/15
-141/141 [==============================] - 2s 10ms/step - loss: 1.3444 - accuracy: 0.3657 - val_loss: 0.9156 - val_accuracy: 0.5406
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">6s</span> 33ms/step - accuracy: 0.4030 - loss: 1.2848 - val_accuracy: 0.5686 - val_loss: 0.8850
 Epoch 2/15
-141/141 [==============================] - 1s 10ms/step - loss: 0.9494 - accuracy: 0.5068 - val_loss: 0.8395 - val_accuracy: 0.6059
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 34ms/step - accuracy: 0.5342 - loss: 0.9216 - val_accuracy: 0.6192 - val_loss: 0.8577
 Epoch 3/15
-141/141 [==============================] - 1s 9ms/step - loss: 0.8832 - accuracy: 0.5502 - val_loss: 0.7787 - val_accuracy: 0.7204
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">4s</span> 27ms/step - accuracy: 0.5781 - loss: 0.9034 - val_accuracy: 0.7017 - val_loss: 0.7563
 Epoch 4/15
-141/141 [==============================] - 1s 9ms/step - loss: 0.8231 - accuracy: 0.5990 - val_loss: 0.6660 - val_accuracy: 0.7683
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">4s</span> 31ms/step - accuracy: 0.6045 - loss: 0.8554 - val_accuracy: 0.7084 - val_loss: 0.7891
 Epoch 5/15
-141/141 [==============================] - 1s 9ms/step - loss: 0.7679 - accuracy: 0.6256 - val_loss: 0.6897 - val_accuracy: 0.7483
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 35ms/step - accuracy: 0.6349 - loss: 0.8040 - val_accuracy: 0.7443 - val_loss: 0.6905
 Epoch 6/15
-141/141 [==============================] - 1s 9ms/step - loss: 0.7963 - accuracy: 0.6048 - val_loss: 0.5991 - val_accuracy: 0.7656
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 32ms/step - accuracy: 0.6771 - loss: 0.7610 - val_accuracy: 0.7563 - val_loss: 0.6842
 Epoch 7/15
-141/141 [==============================] - 1s 10ms/step - loss: 0.7414 - accuracy: 0.6711 - val_loss: 0.6323 - val_accuracy: 0.7510
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">6s</span> 35ms/step - accuracy: 0.6954 - loss: 0.7413 - val_accuracy: 0.7523 - val_loss: 0.6848
 Epoch 8/15
-141/141 [==============================] - 1s 9ms/step - loss: 0.6887 - accuracy: 0.6659 - val_loss: 0.5820 - val_accuracy: 0.7750
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">4s</span> 27ms/step - accuracy: 0.6853 - loss: 0.7366 - val_accuracy: 0.7310 - val_loss: 0.6791
 Epoch 9/15
-141/141 [==============================] - 1s 9ms/step - loss: 0.6968 - accuracy: 0.6589 - val_loss: 0.5667 - val_accuracy: 0.7883
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">4s</span> 31ms/step - accuracy: 0.6737 - loss: 0.7366 - val_accuracy: 0.7443 - val_loss: 0.6842
 Epoch 10/15
-141/141 [==============================] - 1s 9ms/step - loss: 0.6699 - accuracy: 0.6929 - val_loss: 0.6296 - val_accuracy: 0.7870
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">6s</span> 39ms/step - accuracy: 0.7206 - loss: 0.6676 - val_accuracy: 0.7803 - val_loss: 0.6347
 Epoch 11/15
-141/141 [==============================] - 1s 9ms/step - loss: 0.6654 - accuracy: 0.6872 - val_loss: 0.5682 - val_accuracy: 0.7963
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">4s</span> 31ms/step - accuracy: 0.7241 - loss: 0.6732 - val_accuracy: 0.7830 - val_loss: 0.6340
 Epoch 12/15
-141/141 [==============================] - 1s 9ms/step - loss: 0.6421 - accuracy: 0.6983 - val_loss: 0.5988 - val_accuracy: 0.7763
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">4s</span> 27ms/step - accuracy: 0.7170 - loss: 0.6976 - val_accuracy: 0.7563 - val_loss: 0.6471
 Epoch 13/15
-141/141 [==============================] - 1s 9ms/step - loss: 0.6433 - accuracy: 0.6959 - val_loss: 0.5548 - val_accuracy: 0.7909
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">6s</span> 39ms/step - accuracy: 0.6831 - loss: 0.7246 - val_accuracy: 0.7417 - val_loss: 0.7406
 Epoch 14/15
-141/141 [==============================] - 1s 9ms/step - loss: 0.5953 - accuracy: 0.7325 - val_loss: 0.5475 - val_accuracy: 0.7870
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">4s</span> 31ms/step - accuracy: 0.7192 - loss: 0.6706 - val_accuracy: 0.7563 - val_loss: 0.6628
 Epoch 15/15
-141/141 [==============================] - 1s 8ms/step - loss: 0.5750 - accuracy: 0.7506 - val_loss: 0.5833 - val_accuracy: 0.7923
-24/24 [==============================] - 0s 6ms/step - loss: 0.5833 - accuracy: 0.7923
+<span class=" -Color -Color-Bold">141/141</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 32ms/step - accuracy: 0.7179 - loss: 0.6655 - val_accuracy: 0.7843 - val_loss: 0.6524
+<span class=" -Color -Color-Bold">24/24</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 28ms/step - accuracy: 0.7709 - loss: 0.7269
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;loss&#39;: 0.5832616686820984, &#39;accuracy&#39;: 0.7922769784927368}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;loss&#39;: 0.6523975729942322, &#39;compile_metrics&#39;: 0.7842876315116882}
 </pre></div>
 </div>
 </div>
@@ -1016,16 +1023,17 @@ Epoch 15/15
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Normalized confusion matrix
-[[0.75       0.05932203 0.19067797]
- [0.06666667 0.81666667 0.11666667]
- [0.13454545 0.05818182 0.80727273]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">24/24</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 27ms/step
+Normalized confusion matrix
+[[0.77307692 0.04230769 0.18461538]
+ [0.10041841 0.76987448 0.12970711]
+ [0.12698413 0.06349206 0.80952381]]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f74fc333490&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;Normalized confusion matrix&#39;}, xlabel=&#39;Predicted label&#39;, ylabel=&#39;True label&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/960db67ad651f60a63ade075389494dfaf7a1593c0cd1ae2ad28924c5a2d0d65.png" src="../_images/960db67ad651f60a63ade075389494dfaf7a1593c0cd1ae2ad28924c5a2d0d65.png" />
+<img alt="../_images/ae1923f55c1d8f6db82be5025d5a4cc6d29a730c22d2c6da708d7c5eba2a5e57.png" src="../_images/ae1923f55c1d8f6db82be5025d5a4cc6d29a730c22d2c6da708d7c5eba2a5e57.png" />
 </div>
 </div>
 <p>check filters did not change</p>
@@ -1037,7 +1045,7 @@ Epoch 15/15
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float32(0.0)
 </pre></div>
 </div>
 </div>
