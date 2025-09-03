@@ -458,20 +458,8 @@ document.write(`
 <p>The labs require a <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code> version lower than the default one used in Google Colab. Run the following cell to downgrade TensorFlow accordingly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">downgrade_tf_version</span><span class="p">():</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip uninstall -y tensorflow&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip install tensorflow==2.12.0&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="mi">9</span><span class="p">)</span>
-<span class="n">downgrade_tf_version</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
-<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -489,7 +477,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;TF_CPP_MIN_LOG_LEVEL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;3&#39;</span> 
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;TF_CPP_MIN_LOG_LEVEL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;3&#39;</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
@@ -498,6 +486,15 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">local.lib</span><span class="w"> </span><span class="kn">import</span> <span class="n">mlutils</span>
 <span class="n">tf</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The tensorboard extension is already loaded. To reload it, use:
+  %reload_ext tensorboard
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.19.0&#39;
 </pre></div>
 </div>
 </div>
@@ -544,19 +541,19 @@ b shapes [TensorShape([10]), TensorShape([5]), TensorShape([1])]
     <span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.activations</span><span class="w"> </span><span class="kn">import</span> <span class="n">relu</span><span class="p">,</span> <span class="n">sigmoid</span><span class="p">,</span> <span class="n">tanh</span><span class="p">,</span> <span class="n">linear</span>
     <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>    
+    <span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">MLP_class</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
         <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">neurons</span><span class="p">,</span> <span class="n">activations</span><span class="p">,</span> <span class="n">reg</span><span class="o">=</span><span class="mf">0.</span><span class="p">):</span>
             <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">activation_map</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;linear&quot;</span><span class="p">:</span> <span class="n">linear</span><span class="p">,</span> <span class="s2">&quot;relu&quot;</span><span class="p">:</span> <span class="n">relu</span><span class="p">,</span> <span class="s2">&quot;tanh&quot;</span><span class="p">:</span><span class="n">tanh</span><span class="p">,</span> <span class="s2">&quot;sigmoid&quot;</span><span class="p">:</span> <span class="n">sigmoid</span><span class="p">}</span>
-            
+
             <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">neurons</span><span class="p">)</span><span class="o">==</span><span class="nb">len</span><span class="p">(</span><span class="n">activations</span><span class="p">),</span> \
                         <span class="s2">&quot;must have the same number of neurons and activations&quot;</span>
-                
-            <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">alltrue</span><span class="p">([</span><span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation_map</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">activations</span><span class="p">]),</span> \
+
+            <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">([</span><span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation_map</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">activations</span><span class="p">]),</span> \
                                 <span class="s2">&quot;activation string not recognized&quot;</span>
-            
+
             <span class="bp">self</span><span class="o">.</span><span class="n">neurons</span> <span class="o">=</span> <span class="n">neurons</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">reg</span> <span class="o">=</span> <span class="n">reg</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">activations</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">activation_map</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">activations</span><span class="p">]</span>
@@ -569,7 +566,7 @@ b shapes [TensorShape([10]), TensorShape([5]), TensorShape([1])]
 
             <span class="o">...</span> <span class="c1"># YOUR CODE HERE</span>
 
-            
+
     <span class="k">return</span> <span class="n">MLP_class</span><span class="p">(</span><span class="n">neurons</span><span class="p">,</span> <span class="n">activations</span><span class="p">,</span> <span class="n">reg</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -604,21 +601,21 @@ b shapes [TensorShape([10]), TensorShape([5]), TensorShape([1])]
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">MLP2</span><span class="p">(</span><span class="n">neurons</span><span class="p">,</span> <span class="n">activations</span><span class="p">,</span> <span class="n">reg</span><span class="o">=</span><span class="mf">0.</span><span class="p">):</span>
-    
+
     <span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.activations</span><span class="w"> </span><span class="kn">import</span> <span class="n">relu</span><span class="p">,</span> <span class="n">sigmoid</span><span class="p">,</span> <span class="n">tanh</span><span class="p">,</span> <span class="n">linear</span>   
+    <span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.activations</span><span class="w"> </span><span class="kn">import</span> <span class="n">relu</span><span class="p">,</span> <span class="n">sigmoid</span><span class="p">,</span> <span class="n">tanh</span><span class="p">,</span> <span class="n">linear</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">MLP_class</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
         <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">neurons</span><span class="p">,</span> <span class="n">activations</span><span class="p">,</span> <span class="n">reg</span><span class="o">=</span><span class="mf">0.</span><span class="p">):</span>
             <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">activation_map</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;linear&quot;</span><span class="p">:</span> <span class="n">linear</span><span class="p">,</span> <span class="s2">&quot;relu&quot;</span><span class="p">:</span> <span class="n">relu</span><span class="p">,</span> <span class="s2">&quot;tanh&quot;</span><span class="p">:</span><span class="n">tanh</span><span class="p">,</span> <span class="s2">&quot;sigmoid&quot;</span><span class="p">:</span> <span class="n">sigmoid</span><span class="p">}</span>
-            
+
             <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">neurons</span><span class="p">)</span><span class="o">==</span><span class="nb">len</span><span class="p">(</span><span class="n">activations</span><span class="p">),</span> \
                         <span class="s2">&quot;must have the same number of neurons and activations&quot;</span>
-                
-            <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">alltrue</span><span class="p">([</span><span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation_map</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">activations</span><span class="p">]),</span> \
+
+            <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">true</span><span class="p">([</span><span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation_map</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">activations</span><span class="p">]),</span> \
                                 <span class="s2">&quot;activation string not recognized&quot;</span>
-            
+
             <span class="bp">self</span><span class="o">.</span><span class="n">neurons</span> <span class="o">=</span> <span class="n">neurons</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">reg</span> <span class="o">=</span> <span class="n">reg</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">activations</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">activation_map</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">activations</span><span class="p">]</span>
@@ -630,12 +627,12 @@ b shapes [TensorShape([10]), TensorShape([5]), TensorShape([1])]
             <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="p">[]</span>
 
             <span class="o">...</span> <span class="c1"># YOUR CODE HERE (copy from previous task )</span>
-            
+
         <span class="nd">@tf</span><span class="o">.</span><span class="n">function</span>
         <span class="k">def</span><span class="w"> </span><span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
             <span class="n">a</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># YOUR CODE HERE</span>
             <span class="k">return</span> <span class="n">s</span>
-        
+
     <span class="k">return</span> <span class="n">MLP_class</span><span class="p">(</span><span class="n">neurons</span><span class="p">,</span> <span class="n">activations</span><span class="p">,</span> <span class="n">reg</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -681,21 +678,21 @@ b shapes [TensorShape([10]), TensorShape([5]), TensorShape([1])]
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">MLP3</span><span class="p">(</span><span class="n">neurons</span><span class="p">,</span> <span class="n">activations</span><span class="p">,</span> <span class="n">reg</span><span class="o">=</span><span class="mf">0.</span><span class="p">):</span>
-    
+
     <span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.activations</span><span class="w"> </span><span class="kn">import</span> <span class="n">relu</span><span class="p">,</span> <span class="n">sigmoid</span><span class="p">,</span> <span class="n">tanh</span><span class="p">,</span> <span class="n">linear</span>   
+    <span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.activations</span><span class="w"> </span><span class="kn">import</span> <span class="n">relu</span><span class="p">,</span> <span class="n">sigmoid</span><span class="p">,</span> <span class="n">tanh</span><span class="p">,</span> <span class="n">linear</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">MLP_class</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
         <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">neurons</span><span class="p">,</span> <span class="n">activations</span><span class="p">,</span> <span class="n">reg</span><span class="o">=</span><span class="mf">0.</span><span class="p">):</span>
             <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">activation_map</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;linear&quot;</span><span class="p">:</span> <span class="n">linear</span><span class="p">,</span> <span class="s2">&quot;relu&quot;</span><span class="p">:</span> <span class="n">relu</span><span class="p">,</span> <span class="s2">&quot;tanh&quot;</span><span class="p">:</span><span class="n">tanh</span><span class="p">,</span> <span class="s2">&quot;sigmoid&quot;</span><span class="p">:</span> <span class="n">sigmoid</span><span class="p">}</span>
-            
+
             <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">neurons</span><span class="p">)</span><span class="o">==</span><span class="nb">len</span><span class="p">(</span><span class="n">activations</span><span class="p">),</span> \
                         <span class="s2">&quot;must have the same number of neurons and activations&quot;</span>
-                
-            <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">alltrue</span><span class="p">([</span><span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation_map</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">activations</span><span class="p">]),</span> \
+
+            <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">([</span><span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation_map</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">activations</span><span class="p">]),</span> \
                                 <span class="s2">&quot;activation string not recognized&quot;</span>
-            
+
             <span class="bp">self</span><span class="o">.</span><span class="n">neurons</span> <span class="o">=</span> <span class="n">neurons</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">reg</span> <span class="o">=</span> <span class="n">reg</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">activations</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">activation_map</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">activations</span><span class="p">]</span>
@@ -707,18 +704,18 @@ b shapes [TensorShape([10]), TensorShape([5]), TensorShape([1])]
             <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="p">[]</span>
 
             <span class="o">...</span> <span class="c1"># YOUR CODE HERE (copy from previous task)</span>
-            
+
         <span class="nd">@tf</span><span class="o">.</span><span class="n">function</span>
         <span class="k">def</span><span class="w"> </span><span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
             <span class="n">a</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># YOUR CODE HERE (copy from previous task)</span>
             <span class="k">return</span> <span class="n">s</span>
 
-        
+
         <span class="nd">@tf</span><span class="o">.</span><span class="n">function</span>
-        <span class="k">def</span><span class="w"> </span><span class="nf">loss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">custom_loss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
             <span class="n">r</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># YOUR CODE HERE</span>
             <span class="k">return</span> <span class="o">...</span>
-        
+
     <span class="k">return</span> <span class="n">MLP_class</span><span class="p">(</span><span class="n">neurons</span><span class="p">,</span> <span class="n">activations</span><span class="p">,</span> <span class="n">reg</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -731,7 +728,15 @@ b shapes [TensorShape([10]), TensorShape([5]), TensorShape([1])]
 <span class="n">y_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">),</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="n">neurons</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
 <span class="n">mlp</span> <span class="o">=</span> <span class="n">MLP3</span><span class="p">(</span><span class="n">neurons</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">activations</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span> <span class="s2">&quot;sigmoid&quot;</span><span class="p">],</span> <span class="n">reg</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
-<span class="n">mlp</span><span class="o">.</span><span class="n">loss</span><span class="p">(</span><span class="n">mlp</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">y_true</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="n">mlp</span><span class="o">.</span><span class="n">custom_loss</span><span class="p">(</span><span class="n">mlp</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">y_true</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:5 out of the last 6 calls to &lt;function MLP3.&lt;locals&gt;.MLP_class.call at 0x7d11dcfabba0&gt; triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float32(0.25332093)
 </pre></div>
 </div>
 </div>
@@ -743,6 +748,11 @@ b shapes [TensorShape([10]), TensorShape([5]), TensorShape([1])]
 <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">mlp</span><span class="o">.</span><span class="n">b</span><span class="p">]</span>
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">sigm</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">W</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">+</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">W</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">+</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="p">((</span><span class="n">y_pred</span><span class="o">-</span><span class="n">y_true</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">+</span> <span class="n">mlp</span><span class="o">.</span><span class="n">reg</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([(</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">mlp</span><span class="o">.</span><span class="n">W</span><span class="o">+</span><span class="n">mlp</span><span class="o">.</span><span class="n">b</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float32(0.25332093)
 </pre></div>
 </div>
 </div>
@@ -768,12 +778,18 @@ b shapes [TensorShape([10]), TensorShape([5]), TensorShape([1])]
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7d11c3910830&gt;
+</pre></div>
+</div>
+<img alt="../_images/9f0defe8de2bc17e2cd784cd963068be71741c90527d97d478caa4ba5ed35753.png" src="../_images/9f0defe8de2bc17e2cd784cd963068be71741c90527d97d478caa4ba5ed35753.png" />
+</div>
 </div>
 <p>create MLP and train!!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mlp</span> <span class="o">=</span> <span class="n">MLP3</span><span class="p">(</span><span class="n">neurons</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">activations</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tanh&quot;</span><span class="p">,</span><span class="s2">&quot;sigmoid&quot;</span><span class="p">],</span> <span class="n">reg</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
-<span class="n">mlp</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">loss</span><span class="o">=</span><span class="n">mlp</span><span class="o">.</span><span class="n">loss</span><span class="p">,</span>
+<span class="n">mlp</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">loss</span><span class="o">=</span><span class="n">mlp</span><span class="o">.</span><span class="n">custom_loss</span><span class="p">,</span>
            <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">mae</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">binary_accuracy</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -783,8 +799,13 @@ b shapes [TensorShape([10]), TensorShape([5]), TensorShape([1])]
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>rm<span class="w"> </span>-rf<span class="w"> </span>logs
 <span class="n">tensorboard_callback</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">TensorBoard</span><span class="p">(</span><span class="n">log_dir</span><span class="o">=</span><span class="s2">&quot;logs/no_regularization&quot;</span><span class="p">)</span>
-<span class="n">mlp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+<span class="n">mlp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
         <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">tensorboard_callback</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.src.callbacks.history.History at 0x7d11c3910530&gt;
 </pre></div>
 </div>
 </div>
@@ -798,6 +819,13 @@ b shapes [TensorShape([10]), TensorShape([5]), TensorShape([1])]
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">1250/1250</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 667us/step
+<span class=" -Color -Color-Bold">7/7</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 8ms/step 
+</pre></div>
+</div>
+<img alt="../_images/51d8bfcc62b6d90bc97d6bd889b3ae67c089960ea5ac6da9786c28959f022b2d.png" src="../_images/51d8bfcc62b6d90bc97d6bd889b3ae67c089960ea5ac6da9786c28959f022b2d.png" />
+</div>
 </div>
 <p>regularization must work!!!</p>
 <div class="cell docutils container">
@@ -805,7 +833,7 @@ b shapes [TensorShape([10]), TensorShape([5]), TensorShape([1])]
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tensorboard_callback</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">TensorBoard</span><span class="p">(</span><span class="n">log_dir</span><span class="o">=</span><span class="s2">&quot;logs/with_regularization&quot;</span><span class="p">)</span>
 <span class="n">mlp</span> <span class="o">=</span> <span class="n">MLP3</span><span class="p">(</span><span class="n">neurons</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">activations</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tanh&quot;</span><span class="p">,</span><span class="s2">&quot;sigmoid&quot;</span><span class="p">],</span> <span class="n">reg</span><span class="o">=</span><span class="mf">0.005</span><span class="p">)</span>
 
-<span class="n">mlp</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">loss</span><span class="o">=</span><span class="n">mlp</span><span class="o">.</span><span class="n">loss</span><span class="p">,</span>
+<span class="n">mlp</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">loss</span><span class="o">=</span><span class="n">mlp</span><span class="o">.</span><span class="n">custom_loss</span><span class="p">,</span>
            <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">mae</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">binary_accuracy</span><span class="p">])</span>
 
 <span class="n">mlp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">tensorboard_callback</span><span class="p">])</span>
@@ -813,6 +841,13 @@ b shapes [TensorShape([10]), TensorShape([5]), TensorShape([1])]
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;accuracy </span><span class="si">%.2f</span><span class="s2">&quot;</span><span class="o">%</span><span class="k">np</span>.mean(predict(X)==y.reshape(-1)));
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">1250/1250</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 670us/step
+<span class=" -Color -Color-Bold">7/7</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 8ms/step 
+</pre></div>
+</div>
+<img alt="../_images/3caeb8aa62aacef2c14b9c8f773dbed0190bde0885c95e1976a3294b3565a487.png" src="../_images/3caeb8aa62aacef2c14b9c8f773dbed0190bde0885c95e1976a3294b3565a487.png" />
 </div>
 </div>
 <p>and inspect tensorboard</p>
