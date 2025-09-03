@@ -455,20 +455,8 @@ document.write(`
 <p>The labs require a <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code> version lower than the default one used in Google Colab. Run the following cell to downgrade TensorFlow accordingly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">downgrade_tf_version</span><span class="p">():</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip uninstall -y tensorflow&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip install tensorflow==2.12.0&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="mi">9</span><span class="p">)</span>
-<span class="n">downgrade_tf_version</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
-<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> <span class="n">init</span><span class="o">.</span><span class="n">get_weblink</span><span class="p">()</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> <span class="n">init</span><span class="o">.</span><span class="n">get_weblink</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -477,7 +465,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">local.lib.rlxmoocapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">submit</span><span class="p">,</span> <span class="n">session</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
-<span class="n">session</span><span class="o">.</span><span class="n">LoginSequence</span><span class="p">(</span><span class="n">endpoint</span><span class="o">=</span><span class="n">init</span><span class="o">.</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">course_id</span><span class="o">=</span><span class="n">init</span><span class="o">.</span><span class="n">course_id</span><span class="p">,</span> <span class="n">lab_id</span><span class="o">=</span><span class="s2">&quot;L02.03&quot;</span><span class="p">,</span> <span class="n">varname</span><span class="o">=</span><span class="s2">&quot;student&quot;</span><span class="p">);</span>
+<span class="n">session</span><span class="o">.</span><span class="n">LoginSequence</span><span class="p">(</span><span class="n">endpoint</span><span class="o">=</span><span class="n">init</span><span class="o">.</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">course_id</span><span class="o">=</span><span class="n">init</span><span class="o">.</span><span class="n">course_id</span><span class="p">,</span> <span class="n">session_id</span><span class="o">=</span><span class="s1">&#39;udea.pre.20252&#39;</span><span class="p">,</span> <span class="n">lab_id</span><span class="o">=</span><span class="s2">&quot;L02.03&quot;</span><span class="p">,</span> <span class="n">varname</span><span class="o">=</span><span class="s2">&quot;student&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -506,11 +494,21 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dimension de las imagenes y las clases (1500, 784) (1500,)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Xtr</span><span class="p">,</span> <span class="n">Xts</span><span class="p">,</span> <span class="n">ytr</span><span class="p">,</span> <span class="n">yts</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
 <span class="n">Xtr</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">ytr</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">Xts</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">yts</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((1050, 784), (1050,), (450, 784), (450,))
 </pre></div>
 </div>
 </div>
@@ -529,7 +527,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">pairup</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n_pairs_per_class</span><span class="p">,</span> <span class="n">same_class</span><span class="p">):</span>
-    
+
     <span class="n">idxs</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">:</span>
@@ -539,26 +537,25 @@ document.write(`
                     <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">idxs_p1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_pairs_per_class</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
                     <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">idxs_p2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_pairs_per_class</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="p">])</span><span class="o">.</span><span class="n">T</span>
-        
+
         <span class="n">idxs</span> <span class="o">=</span> <span class="n">c</span> <span class="k">if</span> <span class="n">idxs</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">idxs</span><span class="p">,</span><span class="n">c</span><span class="p">))</span>
-        
+
     <span class="n">X_pairs</span> <span class="o">=</span> <span class="p">[</span><span class="n">X</span><span class="p">[</span><span class="n">idxs</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]],</span><span class="n">X</span><span class="p">[</span><span class="n">idxs</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]]]</span>
     <span class="n">y_pairs</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="n">idxs</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]],</span><span class="n">y</span><span class="p">[</span><span class="n">idxs</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]]]</span>
-    <span class="n">y_labels</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">idxs</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]]</span><span class="o">==</span><span class="n">y</span><span class="p">[</span><span class="n">idxs</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]]</span>        
-        
+    <span class="n">y_labels</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">idxs</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]]</span><span class="o">==</span><span class="n">y</span><span class="p">[</span><span class="n">idxs</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]]</span>
+
     <span class="k">return</span> <span class="n">idxs</span><span class="p">,</span> <span class="n">X_pairs</span><span class="p">,</span> <span class="n">y_pairs</span><span class="p">,</span> <span class="n">y_labels</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">build_image_pairs</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">n_pairs_per_class</span><span class="p">):</span>
     <span class="n">idxs0</span><span class="p">,</span> <span class="n">pX0</span><span class="p">,</span> <span class="n">py0</span><span class="p">,</span> <span class="n">ey0</span> <span class="o">=</span> <span class="n">pairup</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n_pairs_per_class</span><span class="p">,</span> <span class="n">same_class</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">idxs1</span><span class="p">,</span> <span class="n">pX1</span><span class="p">,</span> <span class="n">py1</span><span class="p">,</span> <span class="n">ey1</span> <span class="o">=</span> <span class="n">pairup</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n_pairs_per_class</span><span class="p">,</span> <span class="n">same_class</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    
+
     <span class="n">pX</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">pX0</span><span class="p">,</span> <span class="n">pX1</span><span class="p">)]</span>
     <span class="n">py</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">py0</span><span class="p">,</span> <span class="n">py1</span><span class="p">)]</span>
     <span class="n">ey</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">ey0</span><span class="p">,</span> <span class="n">ey1</span><span class="p">))</span>
     <span class="n">idxs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">idxs0</span><span class="p">,</span> <span class="n">idxs1</span><span class="p">))</span>
-    
+
     <span class="k">return</span> <span class="n">idxs</span><span class="p">,</span> <span class="n">pX</span><span class="p">,</span> <span class="n">py</span><span class="p">,</span> <span class="n">ey</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-    
 </pre></div>
 </div>
 </div>
@@ -614,21 +611,21 @@ document.write(`
     <span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pXtr</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">pXtr</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys_r</span><span class="p">);</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">pXtr</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys_r</span><span class="p">);</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;CLASS </span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">eytr</span><span class="p">[</span><span class="n">i</span><span class="p">]));</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;pair_0 :     </span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">pytr</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]));</span> <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([],[]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([],[])</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">pXtr</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys_r</span><span class="p">);</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">pXtr</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys_r</span><span class="p">);</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;pair_1 :     </span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="k">pytr</span>[1][i]); plt.xticks([],[]); plt.yticks([],[])
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d8874b413d8c5ace84d941835c4df182226bcb797ecb84bd037a9f88411471f4.png" src="../_images/d8874b413d8c5ace84d941835c4df182226bcb797ecb84bd037a9f88411471f4.png" />
-<img alt="../_images/cdefe1a999f6e9b26bbe0b10809b3af6d5b0f5009a50b3930744878dce18825a.png" src="../_images/cdefe1a999f6e9b26bbe0b10809b3af6d5b0f5009a50b3930744878dce18825a.png" />
-<img alt="../_images/2b45fe010aca48509d13997b04342b4118022ecd3cb2b0b5119041c013eb9f45.png" src="../_images/2b45fe010aca48509d13997b04342b4118022ecd3cb2b0b5119041c013eb9f45.png" />
-<img alt="../_images/764b8a2bb06f31f78bca9223c72749cdc89bae34ae78fee58187bdc250f75469.png" src="../_images/764b8a2bb06f31f78bca9223c72749cdc89bae34ae78fee58187bdc250f75469.png" />
-<img alt="../_images/0a586bd3bb5c200bbf7508cad6da5ad6dc9aa7a5512055242d2da066a80b02a9.png" src="../_images/0a586bd3bb5c200bbf7508cad6da5ad6dc9aa7a5512055242d2da066a80b02a9.png" />
+<img alt="../_images/fb70d734c4caa6017bacdf7dacfeb2ad6f77ce9ef16cdd58583ac1eb7da01391.png" src="../_images/fb70d734c4caa6017bacdf7dacfeb2ad6f77ce9ef16cdd58583ac1eb7da01391.png" />
+<img alt="../_images/2ab2c94497eae716c394a93438a6da533de1db3113ddeb615a188e6f26b59176.png" src="../_images/2ab2c94497eae716c394a93438a6da533de1db3113ddeb615a188e6f26b59176.png" />
+<img alt="../_images/e0e28000291aebab7582a4e210a0d527c6bf881bab1a1b2fc467f3d64b5a897c.png" src="../_images/e0e28000291aebab7582a4e210a0d527c6bf881bab1a1b2fc467f3d64b5a897c.png" />
+<img alt="../_images/d6bf6e60a84c1c69de551e48a7868771d04bbcac9ba98647b70230e81fb1df7b.png" src="../_images/d6bf6e60a84c1c69de551e48a7868771d04bbcac9ba98647b70230e81fb1df7b.png" />
+<img alt="../_images/bf1ae5e80e9f5543deedbfdae72c55035c4227c450024548216f903d2b0fea8d.png" src="../_images/bf1ae5e80e9f5543deedbfdae72c55035c4227c450024548216f903d2b0fea8d.png" />
 </div>
 </div>
 </section>
@@ -651,45 +648,51 @@ document.write(`
 <ul class="simple">
 <li><p>it will have <strong>TWO</strong> input layers with <code class="docutils literal notranslate"><span class="pre">input_dim=784</span></code> neurons each.</p></li>
 <li><p>there is ony <strong>ONE</strong> output neuron.</p></li>
-<li><p>the model summary should be as follows and <strong>MUST NAME THE LAYERS ACCORDINGLY</strong> (but not the <code class="docutils literal notranslate"><span class="pre">tf.concat</span></code> which is just an operation, not a layer):</p></li>
+<li><p>the model summary should be as follows and <strong>MUST NAME THE LAYERS ACCORDINGLY</strong>. For concatenation just use the class <code class="docutils literal notranslate"><span class="pre">Concat</span></code> provided:</p></li>
 </ul>
-<pre>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┓
+┃ Layer (type)        ┃ Output Shape      ┃    Param # ┃ Connected to      ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━┩
+│ input_img0          │ (None, 784)       │          0 │ -                 │
+│ (InputLayer)        │                   │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ input_img1          │ (None, 784)       │          0 │ -                 │
+│ (InputLayer)        │                   │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ layer1_img0 (Dense) │ (None, 100)       │     78,500 │ input_img0[0][0]  │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ layer1_img1 (Dense) │ (None, 100)       │     78,500 │ input_img1[0][0]  │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ concat (Concat)     │ (None, 200)       │          0 │ layer1_img0[0][0… │
+│                     │                   │            │ layer1_img1[0][0] │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ layer2_common       │ (None, 100)       │     20,100 │ concat[0][0]      │
+│ (Dense)             │                   │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ output (Dense)      │ (None, 1)         │        101 │ layer2_common[0]… │
+└─────────────────────┴───────────────────┴────────────┴───────────────────┘
 
-    __________________________________________________________________________________________________
-    Layer (type)                    Output Shape         Param #     Connected to                     
-    ==================================================================================================
-    input_img0 (InputLayer)         [(None, 784)]        0                                            
-    __________________________________________________________________________________________________
-    input_img1 (InputLayer)         [(None, 784)]        0                                            
-    __________________________________________________________________________________________________
-    layer1_img0 (Dense)             (None, 100)          78500       input_img0[0][0]                 
-    __________________________________________________________________________________________________
-    layer1_img1 (Dense)             (None, 100)          78500       input_img1[0][0]                 
-    __________________________________________________________________________________________________
-    tf_op_layer_concat_39 (TensorFl [(None, 200)]        0           layer1_img0[0][0]                
-                                                                     layer1_img1[0][0]                
-    __________________________________________________________________________________________________
-    layer2_common (Dense)           (None, 100)          20100       tf_op_layer_concat_39[0][0]      
-    __________________________________________________________________________________________________
-    output (Dense)                  (None, 1)            101         layer2_common[0][0]              
-    ==================================================================================================
-    Total params: 177,201
-    Trainable params: 177,201
-    Non-trainable params: 0
-    __________________________________________________________________________________________________
-</pre><div class="cell docutils container">
+ Total params: 177,201 (692.19 KB)
+ Trainable params: 177,201 (692.19 KB)
+ Non-trainable params: 0 (0.00 B)
+</pre></div>
+</div>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_model</span><span class="p">(</span><span class="n">input_dim</span><span class="p">):</span>
-    
-    <span class="n">inputs1</span>  <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;input_img0&quot;</span><span class="p">)</span>
-    <span class="n">inputs2</span>  <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;input_img1&quot;</span><span class="p">)</span>
-    
+
+    <span class="k">class</span><span class="w"> </span><span class="nc">Concat</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Layer</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layers</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">inputs1</span>  <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;input_img0&quot;</span><span class="p">)</span>
+    <span class="n">inputs2</span>  <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;input_img1&quot;</span><span class="p">)</span>
+
     <span class="o">...</span>
-    
+
     <span class="n">outputs</span> <span class="o">=</span> <span class="o">...</span>
 
-    <span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">inputs1</span><span class="p">,</span> <span class="n">inputs2</span><span class="p">],</span> <span class="n">outputs</span><span class="o">=</span><span class="n">outputs</span><span class="p">)</span>    
-    
+    <span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">inputs1</span><span class="p">,</span> <span class="n">inputs2</span><span class="p">],</span> <span class="n">outputs</span><span class="o">=</span><span class="n">outputs</span><span class="p">)</span>
     <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mse&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">model</span>
 </pre></div>
@@ -765,7 +768,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
+<div class="output text_html">
+  <div id="df-d5f93e4d-62ba-4919-9ccb-7ac4822e97d6" class="colab-df-container">
+    <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -792,42 +797,252 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>4</td>
+      <td>6</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>8</td>
+      <td>7</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>8</td>
+      <td>5</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>1</td>
+      <td>4</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2</td>
+      <td>7</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
     </tr>
   </tbody>
 </table>
-</div></div></div>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-d5f93e4d-62ba-4919-9ccb-7ac4822e97d6')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-d5f93e4d-62ba-4919-9ccb-7ac4822e97d6 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-d5f93e4d-62ba-4919-9ccb-7ac4822e97d6');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-a432bfee-1ead-4697-bd1f-6de353e4c970">
+      <button class="colab-df-quickchart" onclick="quickchart('df-a432bfee-1ead-4697-bd1f-6de353e4c970')"
+                title="Suggest charts"
+                style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-a432bfee-1ead-4697-bd1f-6de353e4c970 button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+    </div>
+  </div>
+</div></div>
 </div>
 <p>of course, the <code class="docutils literal notranslate"><span class="pre">true</span></code> value coincides with <code class="docutils literal notranslate"><span class="pre">pair_0</span></code> being equal or different from <code class="docutils literal notranslate"><span class="pre">pair_1</span></code>.</p>
 <div class="cell docutils container">
@@ -837,7 +1052,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(1.0)
 </pre></div>
 </div>
 </div>
@@ -880,7 +1095,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">perclass_bin_accuracy</span><span class="p">(</span><span class="n">ts</span><span class="p">):</span>
-        
+
     <span class="n">r</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">pair_0</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="o">+</span> <span class="n">ts</span><span class="o">.</span><span class="n">pair_1</span><span class="o">.</span><span class="n">tolist</span><span class="p">()):</span>
         <span class="o">...</span>
@@ -898,7 +1113,7 @@ document.write(`
         <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
                   <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
                   <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-                  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]),</span> 
+                  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]),</span>
     <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pair_0&quot;</span><span class="p">,</span> <span class="s2">&quot;pair_1&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;pred&quot;</span><span class="p">])</span>
 <span class="n">perclass_bin_accuracy</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 </pre></div>

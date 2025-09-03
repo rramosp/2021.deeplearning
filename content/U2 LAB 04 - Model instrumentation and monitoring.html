@@ -457,20 +457,8 @@ document.write(`
 <p>The labs require a <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code> version lower than the default one used in Google Colab. Run the following cell to downgrade TensorFlow accordingly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">downgrade_tf_version</span><span class="p">():</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip uninstall -y tensorflow&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip install tensorflow==2.12.0&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="mi">9</span><span class="p">)</span>
-<span class="n">downgrade_tf_version</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
-<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> <span class="n">init</span><span class="o">.</span><span class="n">get_weblink</span><span class="p">()</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> <span class="n">init</span><span class="o">.</span><span class="n">get_weblink</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -479,7 +467,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">local.lib.rlxmoocapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">submit</span><span class="p">,</span> <span class="n">session</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
-<span class="n">session</span><span class="o">.</span><span class="n">LoginSequence</span><span class="p">(</span><span class="n">endpoint</span><span class="o">=</span><span class="n">init</span><span class="o">.</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">course_id</span><span class="o">=</span><span class="n">init</span><span class="o">.</span><span class="n">course_id</span><span class="p">,</span> <span class="n">lab_id</span><span class="o">=</span><span class="s2">&quot;L02.04&quot;</span><span class="p">,</span> <span class="n">varname</span><span class="o">=</span><span class="s2">&quot;student&quot;</span><span class="p">);</span>
+<span class="n">session</span><span class="o">.</span><span class="n">LoginSequence</span><span class="p">(</span><span class="n">endpoint</span><span class="o">=</span><span class="n">init</span><span class="o">.</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">course_id</span><span class="o">=</span><span class="n">init</span><span class="o">.</span><span class="n">course_id</span><span class="p">,</span> <span class="n">session_id</span><span class="o">=</span><span class="s1">&#39;udea.pre.20252&#39;</span><span class="p">,</span> <span class="n">lab_id</span><span class="o">=</span><span class="s2">&quot;L02.04&quot;</span><span class="p">,</span> <span class="n">varname</span><span class="o">=</span><span class="s2">&quot;student&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -514,6 +502,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dimension de las imagenes y las clases (1500, 784) (1500,)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -524,6 +517,11 @@ document.write(`
 <span class="n">y_train_oh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">10</span><span class="p">)[</span><span class="n">y_train</span><span class="p">]</span>
 <span class="n">y_test_oh</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">10</span><span class="p">)[</span><span class="n">y_test</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_train_oh</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1200, 784) (1200, 10)
 </pre></div>
 </div>
 </div>
@@ -547,13 +545,13 @@ document.write(`
 
     <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">activation</span><span class="p">,</span> <span class="n">input_dim</span><span class="o">=</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Layer_</span><span class="si">%02d</span><span class="s2">_Input&quot;</span><span class="o">%</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
-    
+
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_hidden_layers</span><span class="p">):</span>
         <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">activation</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Layer_</span><span class="si">%02d</span><span class="s2">_Hidden&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)))</span>
-   
+
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">output_dim</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;softmax&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Layer_</span><span class="si">%02d</span><span class="s2">_Output&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">num_hidden_layers</span><span class="o">+</span><span class="mi">1</span><span class="p">)))</span>
     <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
-    
+
     <span class="k">return</span> <span class="n">model</span>
 </pre></div>
 </div>
@@ -572,21 +570,22 @@ document.write(`
 <p>When used with a model, at the end of any training it will contain a list of weights means and another list of weights stds, both with one element per each epoch. With this we can monitor how the weights in a specific layer progress over the training process. Tensorboard offers a similar functionality, but the goal with this task is to get acquainted with the callback mechanism.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">LayerWeightsCallback</span><span class="p">(</span><span class="n">layer_name</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">LayerWeightsCallback</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">):</span>
     <span class="k">class</span><span class="w"> </span><span class="nc">LayerWeightsCallback_class</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
 
-        <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">):</span>
             <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">mean_per_epoch</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">std_per_epoch</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">layer_name</span> <span class="o">=</span> <span class="n">layer_name</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">user_model</span> <span class="o">=</span> <span class="n">model</span>
 
         <span class="k">def</span><span class="w"> </span><span class="nf">on_epoch_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-            <span class="n">w</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># get the weights from layer_name in self.model</span>
-            <span class="o">...</span> <span class="c1"># append to self.mean_per_epoch the weights mean </span>
-            <span class="o">...</span> <span class="c1"># append to self.std_per_epoch the weights std </span>
-    
-    <span class="k">return</span> <span class="n">LayerWeightsCallback_class</span><span class="p">(</span><span class="n">layer_name</span><span class="p">)</span>
+            <span class="n">w</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># get the weights from layer_name in self.user_model</span>
+            <span class="o">...</span> <span class="c1"># append to self.mean_per_epoch the weights mean</span>
+            <span class="o">...</span> <span class="c1"># append to self.std_per_epoch the weights std</span>
+
+    <span class="k">return</span> <span class="n">LayerWeightsCallback_class</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -598,17 +597,16 @@ document.write(`
 <span class="n">layer_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span> <span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;Input&quot;</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
 <span class="n">layer</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_layer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">layer_names</span><span class="p">))</span>
 
-<span class="n">cb</span> <span class="o">=</span> <span class="n">LayerWeightsCallback</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-<span class="n">cb</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+<span class="n">cb</span> <span class="o">=</span> <span class="n">LayerWeightsCallback</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
 <span class="n">m</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">wh</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
     <span class="n">w</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">wh</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
     <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;epoch&quot;</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="s2">&quot;weights mean/std&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">w</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
-    <span class="n">cb</span><span class="o">.</span><span class="n">on_epoch_end</span><span class="p">(</span><span class="n">epoch</span><span class="p">)</span>    
-    <span class="n">layer</span><span class="o">.</span><span class="n">set_weights</span><span class="p">([</span><span class="n">i</span><span class="o">*</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()])</span>    
-    
+    <span class="n">cb</span><span class="o">.</span><span class="n">on_epoch_end</span><span class="p">(</span><span class="n">epoch</span><span class="p">)</span>
+    <span class="n">layer</span><span class="o">.</span><span class="n">set_weights</span><span class="p">([</span><span class="n">i</span><span class="o">*</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()])</span>
+
 <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">weight mean at each epoch&quot;</span><span class="p">,</span> <span class="n">cb</span><span class="o">.</span><span class="n">mean_per_epoch</span><span class="p">)</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;weight std  at each epoch&quot;</span><span class="p">,</span> <span class="n">cb</span><span class="o">.</span><span class="n">std_per_epoch</span><span class="p">)</span>
 </pre></div>
@@ -620,8 +618,8 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">get_model</span><span class="p">(</span><span class="n">num_hidden_layers</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;sigmoid&quot;</span><span class="p">)</span>
-<span class="n">cbs</span> <span class="o">=</span> <span class="p">[</span><span class="n">LayerWeightsCallback</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">]</span>
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_oh</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> 
+<span class="n">cbs</span> <span class="o">=</span> <span class="p">[</span><span class="n">LayerWeightsCallback</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">i</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">]</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_oh</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
           <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test_oh</span><span class="p">),</span> <span class="n">callbacks</span><span class="o">=</span><span class="n">cbs</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -641,13 +639,13 @@ document.write(`
         <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cb</span><span class="o">.</span><span class="n">std_per_epoch</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">cb</span><span class="o">.</span><span class="n">layer_name</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cm</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">255</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cbset</span><span class="p">)))))</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;epochs&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="o">+</span><span class="s2">&quot; std&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
-    
+
 <span class="n">plot_epochs</span><span class="p">(</span><span class="n">cbs</span><span class="p">,</span> <span class="s2">&quot;WEIGHTS&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/09118a224366b3b27772256063639b34bbc7571f17999ed9f3ac9003422df1d3.png" src="../_images/09118a224366b3b27772256063639b34bbc7571f17999ed9f3ac9003422df1d3.png" />
+<img alt="../_images/194c12627cb1a27ddd42245874561d2e5a1dbf2f22cca820d2c6557c513fccf4.png" src="../_images/194c12627cb1a27ddd42245874561d2e5a1dbf2f22cca820d2c6557c513fccf4.png" />
 </div>
 </div>
 <p><strong>Registra tu solución en linea</strong></p>
@@ -691,18 +689,19 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">TrainValActivationsCallback</span><span class="p">(</span><span class="n">layer_name</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
     <span class="k">class</span><span class="w"> </span><span class="nc">TrainValActivationsCallback_class</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
 
-        <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
             <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">mean_per_epoch</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">std_per_epoch</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">layer_name</span> <span class="o">=</span> <span class="n">layer_name</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">user_model</span> <span class="o">=</span> <span class="n">model</span>
 
         <span class="k">def</span><span class="w"> </span><span class="nf">on_epoch_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-            <span class="n">a</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># feed self.X into self.model and get the activations at layer_name</span>
-            <span class="o">...</span> <span class="c1"># append to self.mean_per_epoch the activations mean </span>
-            <span class="o">...</span> <span class="c1"># append to self.std_per_epoch the activations std </span>
-    
+            <span class="n">a</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># feed self.X into self.user_model and get the activations at layer_name</span>
+            <span class="o">...</span> <span class="c1"># append to self.mean_per_epoch the activations mean</span>
+            <span class="o">...</span> <span class="c1"># append to self.std_per_epoch the activations std</span>
+
     <span class="k">return</span> <span class="n">TrainValActivationsCallback_class</span><span class="p">(</span><span class="n">layer_name</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -723,15 +722,14 @@ document.write(`
 <span class="n">layer_name</span> <span class="o">=</span> <span class="s1">&#39;Layer_02_Hidden&#39;</span>
 <span class="n">layer</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_layer</span><span class="p">(</span><span class="n">layer_name</span><span class="p">)</span>
 
-<span class="n">cb</span> <span class="o">=</span> <span class="n">TrainValActivationsCallback</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">X_in</span><span class="p">)</span>
-<span class="n">cb</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
-<span class="n">cb</span><span class="o">.</span><span class="n">on_epoch_end</span><span class="p">(</span><span class="n">epoch</span><span class="p">)</span>    
-    
+<span class="n">cb</span> <span class="o">=</span> <span class="n">TrainValActivationsCallback</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">X_in</span><span class="p">)</span>
+<span class="n">cb</span><span class="o">.</span><span class="n">on_epoch_end</span><span class="p">(</span><span class="n">epoch</span><span class="p">)</span>
+
 <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">activations at&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">)</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">activation mean/std with your callback&quot;</span><span class="p">,</span> <span class="n">cb</span><span class="o">.</span><span class="n">mean_per_epoch</span><span class="p">,</span> <span class="n">cb</span><span class="o">.</span><span class="n">std_per_epoch</span><span class="p">)</span>
 
 <span class="n">l0</span><span class="p">,</span><span class="n">l1</span><span class="p">,</span><span class="n">l2</span><span class="p">,</span><span class="n">l3</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">l2</span><span class="p">(</span><span class="n">l1</span><span class="p">(</span><span class="n">l0</span><span class="p">(</span><span class="n">X_in</span><span class="p">)))</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> 
+<span class="n">a</span> <span class="o">=</span> <span class="n">l2</span><span class="p">(</span><span class="n">l1</span><span class="p">(</span><span class="n">l0</span><span class="p">(</span><span class="n">X_in</span><span class="p">)))</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;using model layer functions            &quot;</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">a</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
 
 <span class="n">a</span> <span class="o">=</span> <span class="n">X_in</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">l0</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">l1</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">l2</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
@@ -746,9 +744,9 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">get_model</span><span class="p">(</span><span class="n">num_hidden_layers</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;sigmoid&quot;</span><span class="p">)</span>
-<span class="n">cbs_train</span> <span class="o">=</span> <span class="p">[</span><span class="n">TrainValActivationsCallback</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">X_train</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">]</span>
-<span class="n">cbs_test</span>  <span class="o">=</span> <span class="p">[</span><span class="n">TrainValActivationsCallback</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">X_test</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">]</span>
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_oh</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> 
+<span class="n">cbs_train</span> <span class="o">=</span> <span class="p">[</span><span class="n">TrainValActivationsCallback</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">i</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">X_train</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">]</span>
+<span class="n">cbs_test</span>  <span class="o">=</span> <span class="p">[</span><span class="n">TrainValActivationsCallback</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">i</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">X_test</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">]</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_oh</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
           <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test_oh</span><span class="p">),</span> <span class="n">callbacks</span><span class="o">=</span><span class="n">cbs_train</span><span class="o">+</span><span class="n">cbs_test</span><span class="p">)</span>
 </pre></div>
 </div>
