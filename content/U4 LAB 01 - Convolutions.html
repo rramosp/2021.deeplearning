@@ -455,20 +455,21 @@ document.write(`
 <p>The labs require a <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code> version lower than the default one used in Google Colab. Run the following cell to downgrade TensorFlow accordingly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">downgrade_tf_version</span><span class="p">():</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip uninstall -y tensorflow&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip install tensorflow==2.12.0&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="mi">9</span><span class="p">)</span>
-<span class="n">downgrade_tf_version</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
+<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/content/init.py:2: SyntaxWarning: invalid escape sequence &#39;\S&#39;
+  course_id = &#39;\S*deeplearning\S*&#39;
+</pre></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
-<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> 
+<div class="output text_html">
+<meta name="google-signin-client_id"
+      content="461673936472-kdjosv61up3ac1ajeuq6qqu72upilmls.apps.googleusercontent.com"/>
+<script src="https://apis.google.com/js/client:platform.js?onload=google_button_start"></script>
+    </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>replicating local resources
 </pre></div>
 </div>
 </div>
@@ -489,6 +490,11 @@ document.write(`
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="n">tf</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.19.0&#39;
 </pre></div>
 </div>
 </div>
@@ -596,7 +602,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/39f16005526aaf2cc724b33dd8f0cfd1fa0ecec35a45c6c7bdb9e84bb054cdef.png" src="../_images/39f16005526aaf2cc724b33dd8f0cfd1fa0ecec35a45c6c7bdb9e84bb054cdef.png" />
+<img alt="../_images/8d34dc0fa2c7be4c73118010284a0e1e06352fb22da49bf1aca2828a2ffa076d.png" src="../_images/8d34dc0fa2c7be4c73118010284a0e1e06352fb22da49bf1aca2828a2ffa076d.png" />
 </div>
 </div>
 <p><strong>Registra tu solución en linea</strong></p>
@@ -676,33 +682,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[206., 192., 236., 220.],
-       [191., 202., 148., 151.],
-       [196., 182., 159., 151.],
-       [160., 214., 194., 159.],
-       [ 88., 143., 185., 166.],
-       [122., 145., 191., 217.],
-       [164., 243., 209., 216.]])
-</pre></div>
-</div>
-</div>
 </div>
 <p>which we can compare with your previous function</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">convolution_byhand</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">linear</span><span class="p">)[</span><span class="mi">0</span><span class="p">,:,:,</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[206., 192., 236., 220.],
-       [191., 202., 148., 151.],
-       [196., 182., 159., 151.],
-       [160., 214., 194., 159.],
-       [ 88., 143., 185., 166.],
-       [122., 145., 191., 217.],
-       [164., 243., 209., 216.]])
 </pre></div>
 </div>
 </div>
@@ -766,7 +750,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">compute_nb_weights</span><span class="p">(</span><span class="n">input_shape</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="n">dense_shapes</span><span class="p">):</span>
     <span class="c1"># YOUR CODE HERE</span>
-    <span class="n">r</span> <span class="o">=</span> <span class="o">...</span> 
+    <span class="n">r</span> <span class="o">=</span> <span class="o">...</span>
     <span class="k">return</span> <span class="n">r</span>
 </pre></div>
 </div>
@@ -787,7 +771,7 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Conv2D</span><span class="p">,</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Flatten</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">tf_build_model</span><span class="p">(</span><span class="n">input_shape</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="n">dense_shapes</span><span class="p">):</span>
-    
+
     <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">input_shape</span><span class="p">))</span>  <span class="c1"># 250x250 RGB images</span>
     <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">filters</span><span class="p">:</span>
@@ -795,7 +779,7 @@ document.write(`
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Flatten</span><span class="p">())</span>
     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">dense_shapes</span><span class="p">:</span>
         <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
-        
+
     <span class="k">return</span> <span class="n">model</span>
 </pre></div>
 </div>
