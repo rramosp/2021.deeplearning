@@ -459,7 +459,20 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
-<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/content/init.py:2: SyntaxWarning: invalid escape sequence &#39;\S&#39;
+  course_id = &#39;\S*deeplearning\S*&#39;
+</pre></div>
+</div>
+<div class="output text_html">
+<meta name="google-signin-client_id"
+      content="461673936472-kdjosv61up3ac1ajeuq6qqu72upilmls.apps.googleusercontent.com"/>
+<script src="https://apis.google.com/js/client:platform.js?onload=google_button_start"></script>
+    </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>replicating local resources
 </pre></div>
 </div>
 </div>
@@ -478,11 +491,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The tensorboard extension is already loaded. To reload it, use:
-  %reload_ext tensorboard
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.4.0&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.19.0&#39;
 </pre></div>
 </div>
 </div>
@@ -603,7 +612,7 @@ filter
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/82ad510c11f1217e9087731e37669a7daebbfe21432d4c741c9afb9a2bfe8937.png" src="../_images/82ad510c11f1217e9087731e37669a7daebbfe21432d4c741c9afb9a2bfe8937.png" />
+<img alt="../_images/74cccf01e92bd39d976cff7a167f6370fb78a7e622d107ad2055f5266df47171.png" src="../_images/74cccf01e92bd39d976cff7a167f6370fb78a7e622d107ad2055f5266df47171.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -614,7 +623,7 @@ filter
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/21ba15894c8728aaae37c9a30ccc20e7bfb21e059ea0e662875f36881d94c736.png" src="../_images/21ba15894c8728aaae37c9a30ccc20e7bfb21e059ea0e662875f36881d94c736.png" />
+<img alt="../_images/8a8f733d33efb003ba3a1a4791766b566c7c0fdc75d55fde1b5d9aa21ad03941.png" src="../_images/8a8f733d33efb003ba3a1a4791766b566c7c0fdc75d55fde1b5d9aa21ad03941.png" />
 </div>
 </div>
 </section>
@@ -705,7 +714,7 @@ filter
 <p>a transposed convolution implemented with a regular convolution</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dkernel</span> <span class="o">=</span> <span class="n">akernel</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># hacking to conform to TF </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dkernel</span> <span class="o">=</span> <span class="n">akernel</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># hacking to conform to TF</span>
 
 <span class="n">c1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="n">dkernel</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s2">&quot;VALID&quot;</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
 <span class="n">c1</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">simg</span><span class="p">[:,:,</span><span class="kc">None</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">])</span>
@@ -764,26 +773,6 @@ filter
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ct</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2DTranspose</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dilation_rate</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="n">akernel</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
-<span class="n">ct</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">am</span><span class="p">[:,:,</span><span class="kc">None</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">])</span>
-<span class="n">ct</span><span class="o">.</span><span class="n">set_weights</span><span class="p">((</span><span class="n">akernel</span><span class="p">[:,:,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-<span class="n">ct</span><span class="p">(</span><span class="n">am</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:,</span> <span class="kc">None</span><span class="p">])</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">,:,:,</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 6140.,  7640., -2456., -3056.,  6140.,  7640.],
-       [ 5910.,  6600., -2364., -2640.,  5910.,  6600.],
-       [ 6140.,  7640.,     0.,     0., 18420., 22920.],
-       [ 5910.,  6600.,     0.,     0., 17730., 19800.],
-       [18420., 22920., 18420., 22920.,  -614.,  -764.],
-       [17730., 19800., 17730., 19800.,  -591.,  -660.]], dtype=float32)
-</pre></div>
-</div>
-</div>
-</div>
 <p>which is equivalent to a convolution with dilation on the input image</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -807,7 +796,7 @@ filter
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dkernel</span> <span class="o">=</span> <span class="n">akernel</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># hacking to conform to TF </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dkernel</span> <span class="o">=</span> <span class="n">akernel</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># hacking to conform to TF</span>
 
 <span class="n">c1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="n">dkernel</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s2">&quot;VALID&quot;</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
 <span class="n">c1</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">simg</span><span class="p">[:,:,</span><span class="kc">None</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">])</span>
@@ -859,23 +848,26 @@ filter
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;model_3&quot;
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-input_1 (InputLayer)         [(None, 4, 4, 1)]         0         
-_________________________________________________________________
-conv2d_102 (Conv2D)          (None, 4, 4, 1)           10        
-_________________________________________________________________
-conv2d_transpose_37 (Conv2DT (None, 4, 4, 1)           10        
-=================================================================
-Total params: 20
-Trainable params: 10
-Non-trainable params: 10
-_________________________________________________________________
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "functional"</span>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)                    </span>┃<span style="font-weight: bold"> Output Shape           </span>┃<span style="font-weight: bold">       Param # </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ input_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">InputLayer</span>)            │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">4</span>, <span style="color: #00af00; text-decoration-color: #00af00">4</span>, <span style="color: #00af00; text-decoration-color: #00af00">1</span>)        │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d_4 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)               │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">4</span>, <span style="color: #00af00; text-decoration-color: #00af00">4</span>, <span style="color: #00af00; text-decoration-color: #00af00">1</span>)        │            <span style="color: #00af00; text-decoration-color: #00af00">10</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d_transpose_4              │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">4</span>, <span style="color: #00af00; text-decoration-color: #00af00">4</span>, <span style="color: #00af00; text-decoration-color: #00af00">1</span>)        │            <span style="color: #00af00; text-decoration-color: #00af00">10</span> │
+│ (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2DTranspose</span>)               │                        │               │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">20</span> (80.00 B)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">10</span> (40.00 B)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">10</span> (40.00 B)
+</pre>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -892,7 +884,7 @@ _________________________________________________________________
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7fb07b14a640&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.src.callbacks.history.History at 0x79c5944704d0&gt;
 </pre></div>
 </div>
 </div>
@@ -905,10 +897,10 @@ _________________________________________________________________
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[3.2036772, 3.7963479, 6.2032294, 6.6606402],
-       [1.9207318, 7.7766604, 9.257421 , 7.304693 ],
-       [3.5610216, 7.463056 , 9.20143  , 4.6204095],
-       [3.9210246, 2.9471133, 4.64958  , 6.73765  ]], dtype=float32)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[3.6894827, 4.0357714, 6.010421 , 7.1442747],
+       [2.2414048, 7.59128  , 8.780073 , 7.7545385],
+       [3.7473285, 6.9444914, 8.552898 , 4.787974 ],
+       [4.658065 , 3.4127903, 4.7543545, 6.9866705]], dtype=float32)
 </pre></div>
 </div>
 </div>
@@ -950,9 +942,9 @@ _________________________________________________________________
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.0047086 , -0.00065021, -0.00595336],
-       [ 0.0004696 , -0.00192431,  0.01631924],
-       [-0.00721471,  0.0180657 , -0.01472471]], dtype=float32)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.00405932, -0.00111854, -0.00293583],
+       [ 0.00037578, -0.00354484,  0.01345906],
+       [-0.00630359,  0.0161382 , -0.01294528]], dtype=float32)
 </pre></div>
 </div>
 </div>
@@ -1032,23 +1024,26 @@ _________________________________________________________________
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;model_4&quot;
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-input_1 (InputLayer)         [(None, 32, 32, 1)]       0         
-_________________________________________________________________
-conv2d_104 (Conv2D)          (None, 16, 16, 15)        150       
-_________________________________________________________________
-conv2d_transpose_38 (Conv2DT (None, 32, 32, 1)         136       
-=================================================================
-Total params: 286
-Trainable params: 136
-Non-trainable params: 150
-_________________________________________________________________
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "functional_1"</span>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)                    </span>┃<span style="font-weight: bold"> Output Shape           </span>┃<span style="font-weight: bold">       Param # </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ input_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">InputLayer</span>)            │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>, <span style="color: #00af00; text-decoration-color: #00af00">1</span>)      │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d_6 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)               │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>, <span style="color: #00af00; text-decoration-color: #00af00">15</span>)     │           <span style="color: #00af00; text-decoration-color: #00af00">150</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d_transpose_5              │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>, <span style="color: #00af00; text-decoration-color: #00af00">1</span>)      │           <span style="color: #00af00; text-decoration-color: #00af00">136</span> │
+│ (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2DTranspose</span>)               │                        │               │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">286</span> (1.12 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">136</span> (544.00 B)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">150</span> (600.00 B)
+</pre>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1058,48 +1053,48 @@ _________________________________________________________________
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/20
-1000/1000 [==============================] - 1s 499us/step - loss: 0.1086 - mse: 0.1086
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 2ms/step - loss: 0.0847 - mse: 0.0847
 Epoch 2/20
-1000/1000 [==============================] - 0s 484us/step - loss: 0.0557 - mse: 0.0557
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 2ms/step - loss: 0.0463 - mse: 0.0463
 Epoch 3/20
-1000/1000 [==============================] - 1s 506us/step - loss: 0.0518 - mse: 0.0518
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 2ms/step - loss: 0.0368 - mse: 0.0368
 Epoch 4/20
-1000/1000 [==============================] - 0s 482us/step - loss: 0.0429 - mse: 0.0429
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">3s</span> 2ms/step - loss: 0.0298 - mse: 0.0298
 Epoch 5/20
-1000/1000 [==============================] - 0s 493us/step - loss: 0.0367 - mse: 0.0367
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 2ms/step - loss: 0.0238 - mse: 0.0238
 Epoch 6/20
-1000/1000 [==============================] - 0s 484us/step - loss: 0.0322 - mse: 0.0322
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 2ms/step - loss: 0.0197 - mse: 0.0197
 Epoch 7/20
-1000/1000 [==============================] - 1s 634us/step - loss: 0.0289 - mse: 0.0289
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">3s</span> 2ms/step - loss: 0.0164 - mse: 0.0164
 Epoch 8/20
-1000/1000 [==============================] - 1s 558us/step - loss: 0.0249 - mse: 0.0249
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">3s</span> 2ms/step - loss: 0.0143 - mse: 0.0143
 Epoch 9/20
-1000/1000 [==============================] - 1s 512us/step - loss: 0.0208 - mse: 0.0208
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 2ms/step - loss: 0.0127 - mse: 0.0127
 Epoch 10/20
-1000/1000 [==============================] - 0s 490us/step - loss: 0.0186 - mse: 0.0186
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 2ms/step - loss: 0.0114 - mse: 0.0114
 Epoch 11/20
-1000/1000 [==============================] - 1s 516us/step - loss: 0.0172 - mse: 0.0172
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 2ms/step - loss: 0.0099 - mse: 0.0099
 Epoch 12/20
-1000/1000 [==============================] - 1s 716us/step - loss: 0.0151 - mse: 0.0151
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">3s</span> 2ms/step - loss: 0.0097 - mse: 0.0097
 Epoch 13/20
-1000/1000 [==============================] - 1s 596us/step - loss: 0.0127 - mse: 0.0127
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 2ms/step - loss: 0.0092 - mse: 0.0092
 Epoch 14/20
-1000/1000 [==============================] - 1s 561us/step - loss: 0.0115 - mse: 0.0115
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 2ms/step - loss: 0.0084 - mse: 0.0084
 Epoch 15/20
-1000/1000 [==============================] - 1s 508us/step - loss: 0.0109 - mse: 0.0109
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 2ms/step - loss: 0.0080 - mse: 0.0080
 Epoch 16/20
-1000/1000 [==============================] - 1s 517us/step - loss: 0.0093 - mse: 0.0093
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 2ms/step - loss: 0.0077 - mse: 0.0077
 Epoch 17/20
-1000/1000 [==============================] - 0s 500us/step - loss: 0.0084 - mse: 0.0084
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 2ms/step - loss: 0.0071 - mse: 0.0071
 Epoch 18/20
-1000/1000 [==============================] - 1s 539us/step - loss: 0.0081 - mse: 0.0081
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">3s</span> 2ms/step - loss: 0.0068 - mse: 0.0068
 Epoch 19/20
-1000/1000 [==============================] - 1s 508us/step - loss: 0.0078 - mse: 0.0078
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 2ms/step - loss: 0.0068 - mse: 0.0068
 Epoch 20/20
-1000/1000 [==============================] - 1s 511us/step - loss: 0.0073 - mse: 0.0073
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">3s</span> 2ms/step - loss: 0.0067 - mse: 0.0067
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7fb060b5cf10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.src.callbacks.history.History at 0x79c594472fc0&gt;
 </pre></div>
 </div>
 </div>
@@ -1107,6 +1102,11 @@ Epoch 20/20
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">px_cifar</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_cifar</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">32/32</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 8ms/step
 </pre></div>
 </div>
 </div>
@@ -1122,16 +1122,16 @@ Epoch 20/20
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c4fb2351eb2c28ec163b562fb19e65ebdfd91b1f56af782fc1f2ab4dccb12eef.png" src="../_images/c4fb2351eb2c28ec163b562fb19e65ebdfd91b1f56af782fc1f2ab4dccb12eef.png" />
-<img alt="../_images/055b86ee1fb5c1777a6b83ac8aefb7e42e0d4eeb17af125d17bc8f325801f59d.png" src="../_images/055b86ee1fb5c1777a6b83ac8aefb7e42e0d4eeb17af125d17bc8f325801f59d.png" />
-<img alt="../_images/17e9b877c9c81888b63e5c7b23553cdf36278b3117aa1b15deea4796f70b270a.png" src="../_images/17e9b877c9c81888b63e5c7b23553cdf36278b3117aa1b15deea4796f70b270a.png" />
-<img alt="../_images/560224cde4d43e036f09ca016f339e6146ceab2a1b6547d4797c709df602c2f7.png" src="../_images/560224cde4d43e036f09ca016f339e6146ceab2a1b6547d4797c709df602c2f7.png" />
-<img alt="../_images/f786e77833192aac84e7416d67b4b12413602460a62df5ad00a69c27f9f47316.png" src="../_images/f786e77833192aac84e7416d67b4b12413602460a62df5ad00a69c27f9f47316.png" />
-<img alt="../_images/e6767e23773357f4462dc43d876912f5011dd509a9a9371f1ae53641e6ce9c9b.png" src="../_images/e6767e23773357f4462dc43d876912f5011dd509a9a9371f1ae53641e6ce9c9b.png" />
-<img alt="../_images/c3b8168f2eecee9454e44011acdb20939a3480534bb888a49dfe19fc90f21476.png" src="../_images/c3b8168f2eecee9454e44011acdb20939a3480534bb888a49dfe19fc90f21476.png" />
-<img alt="../_images/2040be0463fcd1fb2fd6a595d0f344f915ac0d351048d37a53f086bb8b70448c.png" src="../_images/2040be0463fcd1fb2fd6a595d0f344f915ac0d351048d37a53f086bb8b70448c.png" />
-<img alt="../_images/408a4bb221b8caf5ae07bd9e94450760152cdbf248c5af64b06b9feaf9dcc461.png" src="../_images/408a4bb221b8caf5ae07bd9e94450760152cdbf248c5af64b06b9feaf9dcc461.png" />
-<img alt="../_images/d39b3b72f301c1711b4b373684bc92acb3954d63af3c5a315a658f7f89b30b1c.png" src="../_images/d39b3b72f301c1711b4b373684bc92acb3954d63af3c5a315a658f7f89b30b1c.png" />
+<img alt="../_images/391a6580387ee14217e5b613c586eda14590902a43fe6bf30241016fcd670fca.png" src="../_images/391a6580387ee14217e5b613c586eda14590902a43fe6bf30241016fcd670fca.png" />
+<img alt="../_images/d619dec3f58487b06d43cd2393b61d4af2e74d438332505f2116b99923f8f98b.png" src="../_images/d619dec3f58487b06d43cd2393b61d4af2e74d438332505f2116b99923f8f98b.png" />
+<img alt="../_images/5646c30aba57219f004a96a4fbc0195ea23bfcdd44540f0e56950613cfd5b8fa.png" src="../_images/5646c30aba57219f004a96a4fbc0195ea23bfcdd44540f0e56950613cfd5b8fa.png" />
+<img alt="../_images/e97535541a17a35bca0cb5ac2b86d335355f62cb76f342c9c09e40852e67a18f.png" src="../_images/e97535541a17a35bca0cb5ac2b86d335355f62cb76f342c9c09e40852e67a18f.png" />
+<img alt="../_images/fa44ea6a08ecc3344c4a4b91bc50c0b48504854e26fe900bd30bd0e017ea1882.png" src="../_images/fa44ea6a08ecc3344c4a4b91bc50c0b48504854e26fe900bd30bd0e017ea1882.png" />
+<img alt="../_images/77bacde25d48c3c141c6134d9c06a247da1d744252acfec87f8004b551af0c3a.png" src="../_images/77bacde25d48c3c141c6134d9c06a247da1d744252acfec87f8004b551af0c3a.png" />
+<img alt="../_images/904bf6129a0b2081ea043d681a088bb4bea6705549a45554fe961b23976ac9d5.png" src="../_images/904bf6129a0b2081ea043d681a088bb4bea6705549a45554fe961b23976ac9d5.png" />
+<img alt="../_images/a8685487f54ce700a4eb248a0f590784fc138d0e594e6eaeef832df2ce2e6c2e.png" src="../_images/a8685487f54ce700a4eb248a0f590784fc138d0e594e6eaeef832df2ce2e6c2e.png" />
+<img alt="../_images/ae9d1bbf0cf67adbb8080b58394e1d9818442c44ccc76789ab13fce79960bf66.png" src="../_images/ae9d1bbf0cf67adbb8080b58394e1d9818442c44ccc76789ab13fce79960bf66.png" />
+<img alt="../_images/3bce4f8f1d879ce92c3e26fe821d79dfc50204a049f41dca08e8dc89a02306a1.png" src="../_images/3bce4f8f1d879ce92c3e26fe821d79dfc50204a049f41dca08e8dc89a02306a1.png" />
 </div>
 </div>
 </section>

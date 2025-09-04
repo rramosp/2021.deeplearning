@@ -464,12 +464,20 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
-<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>replicating local resources
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/content/init.py:2: SyntaxWarning: invalid escape sequence &#39;\S&#39;
+  course_id = &#39;\S*deeplearning\S*&#39;
+</pre></div>
+</div>
+<div class="output text_html">
+<meta name="google-signin-client_id"
+      content="461673936472-kdjosv61up3ac1ajeuq6qqu72upilmls.apps.googleusercontent.com"/>
+<script src="https://apis.google.com/js/client:platform.js?onload=google_button_start"></script>
+    </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>replicating local resources
 </pre></div>
 </div>
 </div>
@@ -501,7 +509,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.4.1&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.19.0&#39;
 </pre></div>
 </div>
 </div>
@@ -514,26 +522,26 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sat Mar 20 21:06:07 2021       
-+-----------------------------------------------------------------------------+
-| NVIDIA-SMI 460.56       Driver Version: 460.32.03    CUDA Version: 11.2     |
-|-------------------------------+----------------------+----------------------+
-| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
-| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
-|                               |                      |               MIG M. |
-|===============================+======================+======================|
-|   0  Tesla T4            Off  | 00000000:00:04.0 Off |                    0 |
-| N/A   37C    P8    10W /  70W |      0MiB / 15109MiB |      0%      Default |
-|                               |                      |                  N/A |
-+-------------------------------+----------------------+----------------------+
-                                                                               
-+-----------------------------------------------------------------------------+
-| Processes:                                                                  |
-|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
-|        ID   ID                                                   Usage      |
-|=============================================================================|
-|  No running processes found                                                 |
-+-----------------------------------------------------------------------------+
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Thu Sep  4 00:14:08 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |
+| N/A   50C    P8             12W /   70W |       0MiB /  15360MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
 </pre></div>
 </div>
 </div>
@@ -558,30 +566,23 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">bash</span>
 export KAGGLE_CONFIG_DIR=.
-kaggle competitions download data-science-bowl-2018 -f stage1_train.zip 
-kaggle competitions download data-science-bowl-2018 -f stage1_test.zip 
+chmod 600 kaggle.json
+kaggle competitions download data-science-bowl-2018 -f stage1_train.zip
+kaggle competitions download data-science-bowl-2018 -f stage1_test.zip
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: Your Kaggle API key is readable by other users on this system! To fix this, you can run &#39;chmod 600 ./kaggle.json&#39;
-Downloading stage1_train.zip to /content
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading stage1_train.zip to /content
 
-Warning: Your Kaggle API key is readable by other users on this system! To fix this, you can run &#39;chmod 600 ./kaggle.json&#39;
 Downloading stage1_test.zip to /content
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0.00/79.1M [00:00&lt;?, ?B/s]
-  6%|6         | 5.00M/79.1M [00:00&lt;00:02, 36.0MB/s]
- 20%|##        | 16.0M/79.1M [00:00&lt;00:01, 45.2MB/s]
- 37%|###6      | 29.0M/79.1M [00:00&lt;00:00, 56.4MB/s]
- 72%|#######2  | 57.0M/79.1M [00:00&lt;00:00, 74.3MB/s]
- 89%|########8 | 70.0M/79.1M [00:00&lt;00:00, 81.5MB/s]
-100%|##########| 79.1M/79.1M [00:00&lt;00:00, 125MB/s] 
+100%|██████████| 79.1M/79.1M [00:00&lt;00:00, 1.36GB/s]
 
   0%|          | 0.00/9.10M [00:00&lt;?, ?B/s]
- 55%|#####4    | 5.00M/9.10M [00:00&lt;00:00, 32.0MB/s]
-100%|##########| 9.10M/9.10M [00:00&lt;00:00, 44.6MB/s]
+100%|██████████| 9.10M/9.10M [00:00&lt;00:00, 722MB/s]
 </pre></div>
 </div>
 </div>
@@ -644,7 +645,7 @@ Downloading stage1_test.zip to /content
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.4.1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.19.0
 </pre></div>
 </div>
 </div>
@@ -673,16 +674,16 @@ Downloading stage1_test.zip to /content
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(360, 360, 3)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(256, 256, 3)
 (256, 256, 3)
 (256, 256, 3)
+(520, 696, 3)
 (256, 256, 3)
-(256, 256, 3)
-(256, 256, 3)
-(256, 256, 3)
-(256, 256, 3)
-(256, 256, 3)
-(256, 256, 3)
+(512, 640, 3)
+(1024, 1024, 3)
+(256, 320, 3)
+(1040, 1388, 3)
+(256, 320, 3)
 </pre></div>
 </div>
 </div>
@@ -702,12 +703,12 @@ Downloading stage1_test.zip to /content
     <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">IMG_HEIGHT</span><span class="p">,</span> <span class="n">IMG_WIDTH</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">mask_file</span> <span class="ow">in</span> <span class="nb">next</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s1">&#39;/masks/&#39;</span><span class="p">))[</span><span class="mi">2</span><span class="p">]:</span>
         <span class="n">mask_</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s1">&#39;/masks/&#39;</span> <span class="o">+</span> <span class="n">mask_file</span><span class="p">)</span>
-        <span class="n">mask_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">resize</span><span class="p">(</span><span class="n">mask_</span><span class="p">,</span> <span class="p">(</span><span class="n">IMG_HEIGHT</span><span class="p">,</span> <span class="n">IMG_WIDTH</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">,</span> 
+        <span class="n">mask_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">resize</span><span class="p">(</span><span class="n">mask_</span><span class="p">,</span> <span class="p">(</span><span class="n">IMG_HEIGHT</span><span class="p">,</span> <span class="n">IMG_WIDTH</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">,</span>
                                       <span class="n">preserve_range</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">mask_</span><span class="p">)</span>
     <span class="n">Y_train</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">mask</span>
 
-    
+
 <span class="c1"># Get and resize test images</span>
 <span class="n">X_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">test_ids</span><span class="p">),</span> <span class="n">IMG_HEIGHT</span><span class="p">,</span> <span class="n">IMG_WIDTH</span><span class="p">,</span> <span class="n">IMG_CHANNELS</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
 <span class="n">sizes_test</span> <span class="o">=</span> <span class="p">[]</span>
@@ -719,7 +720,7 @@ Downloading stage1_test.zip to /content
     <span class="n">sizes_test</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
     <span class="n">img</span> <span class="o">=</span> <span class="n">resize</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="n">IMG_HEIGHT</span><span class="p">,</span> <span class="n">IMG_WIDTH</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="n">preserve_range</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">X_test</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">img</span>
-    
+
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Done!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -728,13 +729,13 @@ Downloading stage1_test.zip to /content
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Getting and resizing train images and masks ... 
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100% (670 of 670) |######################| Elapsed Time: 0:05:51 Time:  0:05:51
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100% (670 of 670) |######################| Elapsed Time: 0:04:24 Time:  0:04:24
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Getting and resizing test images ... 
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100% (65 of 65) |########################| Elapsed Time: 0:00:01 Time:  0:00:01
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100% (65 of 65) |########################| Elapsed Time: 0:00:02 Time:  0:00:02
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done!
@@ -760,7 +761,7 @@ Downloading stage1_test.zip to /content
     <span class="k">else</span><span class="p">:</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
-    
+
 <span class="n">ival</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mf">0.9</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ival</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
@@ -779,7 +780,7 @@ Downloading stage1_test.zip to /content
 [61, 59, 24, 39, 49]
 </pre></div>
 </div>
-<img alt="../_images/e865d6f2e37d5fdd4ca89b868f5829b10bdcaf19a7e6b423ba2d4f267b215969.png" src="../_images/e865d6f2e37d5fdd4ca89b868f5829b10bdcaf19a7e6b423ba2d4f267b215969.png" />
+<img alt="../_images/e05fe1159cd3b2293133c5d21bc10fe0d076eef68ff5af5eb98ffd43a54d21bb.png" src="../_images/e05fe1159cd3b2293133c5d21bc10fe0d076eef68ff5af5eb98ffd43a54d21bb.png" />
 </div>
 </div>
 <p>Seems good!</p>
@@ -791,7 +792,7 @@ Downloading stage1_test.zip to /content
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_model_UNET</span><span class="p">(</span><span class="n">IMG_HEIGHT</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">IMG_WIDTH</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">IMG_CHANNELS</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
-    
+
     <span class="c1"># Build U-Net model</span>
     <span class="n">inputs</span> <span class="o">=</span> <span class="n">Input</span><span class="p">((</span><span class="n">IMG_HEIGHT</span><span class="p">,</span> <span class="n">IMG_WIDTH</span><span class="p">,</span> <span class="n">IMG_CHANNELS</span><span class="p">))</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">Lambda</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">/</span> <span class="mi">255</span><span class="p">)</span> <span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
@@ -848,7 +849,7 @@ Downloading stage1_test.zip to /content
 
     <span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">inputs</span><span class="p">],</span> <span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="n">outputs</span><span class="p">])</span>
     <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;binary_crossentropy&#39;</span><span class="p">)</span>
-    
+
     <span class="k">return</span> <span class="n">model</span>
 </pre></div>
 </div>
@@ -862,105 +863,142 @@ Downloading stage1_test.zip to /content
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;model&quot;
-__________________________________________________________________________________________________
-Layer (type)                    Output Shape         Param #     Connected to                     
-==================================================================================================
-input_1 (InputLayer)            [(None, 128, 128, 3) 0                                            
-__________________________________________________________________________________________________
-lambda (Lambda)                 (None, 128, 128, 3)  0           input_1[0][0]                    
-__________________________________________________________________________________________________
-conv2d (Conv2D)                 (None, 128, 128, 16) 448         lambda[0][0]                     
-__________________________________________________________________________________________________
-dropout (Dropout)               (None, 128, 128, 16) 0           conv2d[0][0]                     
-__________________________________________________________________________________________________
-conv2d_1 (Conv2D)               (None, 128, 128, 16) 2320        dropout[0][0]                    
-__________________________________________________________________________________________________
-max_pooling2d (MaxPooling2D)    (None, 64, 64, 16)   0           conv2d_1[0][0]                   
-__________________________________________________________________________________________________
-conv2d_2 (Conv2D)               (None, 64, 64, 32)   4640        max_pooling2d[0][0]              
-__________________________________________________________________________________________________
-dropout_1 (Dropout)             (None, 64, 64, 32)   0           conv2d_2[0][0]                   
-__________________________________________________________________________________________________
-conv2d_3 (Conv2D)               (None, 64, 64, 32)   9248        dropout_1[0][0]                  
-__________________________________________________________________________________________________
-max_pooling2d_1 (MaxPooling2D)  (None, 32, 32, 32)   0           conv2d_3[0][0]                   
-__________________________________________________________________________________________________
-conv2d_4 (Conv2D)               (None, 32, 32, 64)   18496       max_pooling2d_1[0][0]            
-__________________________________________________________________________________________________
-dropout_2 (Dropout)             (None, 32, 32, 64)   0           conv2d_4[0][0]                   
-__________________________________________________________________________________________________
-conv2d_5 (Conv2D)               (None, 32, 32, 64)   36928       dropout_2[0][0]                  
-__________________________________________________________________________________________________
-max_pooling2d_2 (MaxPooling2D)  (None, 16, 16, 64)   0           conv2d_5[0][0]                   
-__________________________________________________________________________________________________
-conv2d_6 (Conv2D)               (None, 16, 16, 128)  73856       max_pooling2d_2[0][0]            
-__________________________________________________________________________________________________
-dropout_3 (Dropout)             (None, 16, 16, 128)  0           conv2d_6[0][0]                   
-__________________________________________________________________________________________________
-conv2d_7 (Conv2D)               (None, 16, 16, 128)  147584      dropout_3[0][0]                  
-__________________________________________________________________________________________________
-max_pooling2d_3 (MaxPooling2D)  (None, 8, 8, 128)    0           conv2d_7[0][0]                   
-__________________________________________________________________________________________________
-conv2d_8 (Conv2D)               (None, 8, 8, 256)    295168      max_pooling2d_3[0][0]            
-__________________________________________________________________________________________________
-dropout_4 (Dropout)             (None, 8, 8, 256)    0           conv2d_8[0][0]                   
-__________________________________________________________________________________________________
-conv2d_9 (Conv2D)               (None, 8, 8, 256)    590080      dropout_4[0][0]                  
-__________________________________________________________________________________________________
-conv2d_transpose (Conv2DTranspo (None, 16, 16, 128)  131200      conv2d_9[0][0]                   
-__________________________________________________________________________________________________
-concatenate (Concatenate)       (None, 16, 16, 256)  0           conv2d_transpose[0][0]           
-                                                                 conv2d_7[0][0]                   
-__________________________________________________________________________________________________
-conv2d_10 (Conv2D)              (None, 16, 16, 128)  295040      concatenate[0][0]                
-__________________________________________________________________________________________________
-dropout_5 (Dropout)             (None, 16, 16, 128)  0           conv2d_10[0][0]                  
-__________________________________________________________________________________________________
-conv2d_11 (Conv2D)              (None, 16, 16, 128)  147584      dropout_5[0][0]                  
-__________________________________________________________________________________________________
-conv2d_transpose_1 (Conv2DTrans (None, 32, 32, 64)   32832       conv2d_11[0][0]                  
-__________________________________________________________________________________________________
-concatenate_1 (Concatenate)     (None, 32, 32, 128)  0           conv2d_transpose_1[0][0]         
-                                                                 conv2d_5[0][0]                   
-__________________________________________________________________________________________________
-conv2d_12 (Conv2D)              (None, 32, 32, 64)   73792       concatenate_1[0][0]              
-__________________________________________________________________________________________________
-dropout_6 (Dropout)             (None, 32, 32, 64)   0           conv2d_12[0][0]                  
-__________________________________________________________________________________________________
-conv2d_13 (Conv2D)              (None, 32, 32, 64)   36928       dropout_6[0][0]                  
-__________________________________________________________________________________________________
-conv2d_transpose_2 (Conv2DTrans (None, 64, 64, 32)   8224        conv2d_13[0][0]                  
-__________________________________________________________________________________________________
-concatenate_2 (Concatenate)     (None, 64, 64, 64)   0           conv2d_transpose_2[0][0]         
-                                                                 conv2d_3[0][0]                   
-__________________________________________________________________________________________________
-conv2d_14 (Conv2D)              (None, 64, 64, 32)   18464       concatenate_2[0][0]              
-__________________________________________________________________________________________________
-dropout_7 (Dropout)             (None, 64, 64, 32)   0           conv2d_14[0][0]                  
-__________________________________________________________________________________________________
-conv2d_15 (Conv2D)              (None, 64, 64, 32)   9248        dropout_7[0][0]                  
-__________________________________________________________________________________________________
-conv2d_transpose_3 (Conv2DTrans (None, 128, 128, 16) 2064        conv2d_15[0][0]                  
-__________________________________________________________________________________________________
-concatenate_3 (Concatenate)     (None, 128, 128, 32) 0           conv2d_transpose_3[0][0]         
-                                                                 conv2d_1[0][0]                   
-__________________________________________________________________________________________________
-conv2d_16 (Conv2D)              (None, 128, 128, 16) 4624        concatenate_3[0][0]              
-__________________________________________________________________________________________________
-dropout_8 (Dropout)             (None, 128, 128, 16) 0           conv2d_16[0][0]                  
-__________________________________________________________________________________________________
-conv2d_17 (Conv2D)              (None, 128, 128, 16) 2320        dropout_8[0][0]                  
-__________________________________________________________________________________________________
-conv2d_18 (Conv2D)              (None, 128, 128, 1)  17          conv2d_17[0][0]                  
-==================================================================================================
-Total params: 1,941,105
-Trainable params: 1,941,105
-Non-trainable params: 0
-__________________________________________________________________________________________________
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "functional"</span>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)        </span>┃<span style="font-weight: bold"> Output Shape      </span>┃<span style="font-weight: bold">    Param # </span>┃<span style="font-weight: bold"> Connected to      </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━┩
+│ input_layer         │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>,  │          <span style="color: #00af00; text-decoration-color: #00af00">0</span> │ -                 │
+│ (<span style="color: #0087ff; text-decoration-color: #0087ff">InputLayer</span>)        │ <span style="color: #00af00; text-decoration-color: #00af00">3</span>)                │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ lambda (<span style="color: #0087ff; text-decoration-color: #0087ff">Lambda</span>)     │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>,  │          <span style="color: #00af00; text-decoration-color: #00af00">0</span> │ input_layer[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>] │
+│                     │ <span style="color: #00af00; text-decoration-color: #00af00">3</span>)                │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ conv2d (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)     │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>,  │        <span style="color: #00af00; text-decoration-color: #00af00">448</span> │ lambda[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]      │
+│                     │ <span style="color: #00af00; text-decoration-color: #00af00">16</span>)               │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ dropout (<span style="color: #0087ff; text-decoration-color: #0087ff">Dropout</span>)   │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>,  │          <span style="color: #00af00; text-decoration-color: #00af00">0</span> │ conv2d[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]      │
+│                     │ <span style="color: #00af00; text-decoration-color: #00af00">16</span>)               │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ conv2d_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)   │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>,  │      <span style="color: #00af00; text-decoration-color: #00af00">2,320</span> │ dropout[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]     │
+│                     │ <span style="color: #00af00; text-decoration-color: #00af00">16</span>)               │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ max_pooling2d       │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>,    │          <span style="color: #00af00; text-decoration-color: #00af00">0</span> │ conv2d_1[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]    │
+│ (<span style="color: #0087ff; text-decoration-color: #0087ff">MaxPooling2D</span>)      │ <span style="color: #00af00; text-decoration-color: #00af00">16</span>)               │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ conv2d_2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)   │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>,    │      <span style="color: #00af00; text-decoration-color: #00af00">4,640</span> │ max_pooling2d[<span style="color: #00af00; text-decoration-color: #00af00">0</span>]… │
+│                     │ <span style="color: #00af00; text-decoration-color: #00af00">32</span>)               │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ dropout_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dropout</span>) │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>,    │          <span style="color: #00af00; text-decoration-color: #00af00">0</span> │ conv2d_2[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]    │
+│                     │ <span style="color: #00af00; text-decoration-color: #00af00">32</span>)               │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ conv2d_3 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)   │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>,    │      <span style="color: #00af00; text-decoration-color: #00af00">9,248</span> │ dropout_1[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]   │
+│                     │ <span style="color: #00af00; text-decoration-color: #00af00">32</span>)               │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ max_pooling2d_1     │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>,    │          <span style="color: #00af00; text-decoration-color: #00af00">0</span> │ conv2d_3[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]    │
+│ (<span style="color: #0087ff; text-decoration-color: #0087ff">MaxPooling2D</span>)      │ <span style="color: #00af00; text-decoration-color: #00af00">32</span>)               │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ conv2d_4 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)   │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>,    │     <span style="color: #00af00; text-decoration-color: #00af00">18,496</span> │ max_pooling2d_1[<span style="color: #00af00; text-decoration-color: #00af00">…</span> │
+│                     │ <span style="color: #00af00; text-decoration-color: #00af00">64</span>)               │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ dropout_2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dropout</span>) │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>,    │          <span style="color: #00af00; text-decoration-color: #00af00">0</span> │ conv2d_4[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]    │
+│                     │ <span style="color: #00af00; text-decoration-color: #00af00">64</span>)               │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ conv2d_5 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)   │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>,    │     <span style="color: #00af00; text-decoration-color: #00af00">36,928</span> │ dropout_2[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]   │
+│                     │ <span style="color: #00af00; text-decoration-color: #00af00">64</span>)               │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ max_pooling2d_2     │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>,    │          <span style="color: #00af00; text-decoration-color: #00af00">0</span> │ conv2d_5[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]    │
+│ (<span style="color: #0087ff; text-decoration-color: #0087ff">MaxPooling2D</span>)      │ <span style="color: #00af00; text-decoration-color: #00af00">64</span>)               │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ conv2d_6 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)   │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>,    │     <span style="color: #00af00; text-decoration-color: #00af00">73,856</span> │ max_pooling2d_2[<span style="color: #00af00; text-decoration-color: #00af00">…</span> │
+│                     │ <span style="color: #00af00; text-decoration-color: #00af00">128</span>)              │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ dropout_3 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dropout</span>) │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>,    │          <span style="color: #00af00; text-decoration-color: #00af00">0</span> │ conv2d_6[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]    │
+│                     │ <span style="color: #00af00; text-decoration-color: #00af00">128</span>)              │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ conv2d_7 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)   │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>,    │    <span style="color: #00af00; text-decoration-color: #00af00">147,584</span> │ dropout_3[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]   │
+│                     │ <span style="color: #00af00; text-decoration-color: #00af00">128</span>)              │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ max_pooling2d_3     │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">8</span>, <span style="color: #00af00; text-decoration-color: #00af00">8</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>) │          <span style="color: #00af00; text-decoration-color: #00af00">0</span> │ conv2d_7[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]    │
+│ (<span style="color: #0087ff; text-decoration-color: #0087ff">MaxPooling2D</span>)      │                   │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ conv2d_8 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)   │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">8</span>, <span style="color: #00af00; text-decoration-color: #00af00">8</span>, <span style="color: #00af00; text-decoration-color: #00af00">256</span>) │    <span style="color: #00af00; text-decoration-color: #00af00">295,168</span> │ max_pooling2d_3[<span style="color: #00af00; text-decoration-color: #00af00">…</span> │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ dropout_4 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dropout</span>) │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">8</span>, <span style="color: #00af00; text-decoration-color: #00af00">8</span>, <span style="color: #00af00; text-decoration-color: #00af00">256</span>) │          <span style="color: #00af00; text-decoration-color: #00af00">0</span> │ conv2d_8[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]    │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ conv2d_9 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)   │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">8</span>, <span style="color: #00af00; text-decoration-color: #00af00">8</span>, <span style="color: #00af00; text-decoration-color: #00af00">256</span>) │    <span style="color: #00af00; text-decoration-color: #00af00">590,080</span> │ dropout_4[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ conv2d_transpose    │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>,    │    <span style="color: #00af00; text-decoration-color: #00af00">131,200</span> │ conv2d_9[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]    │
+│ (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2DTranspose</span>)   │ <span style="color: #00af00; text-decoration-color: #00af00">128</span>)              │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ concatenate         │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>,    │          <span style="color: #00af00; text-decoration-color: #00af00">0</span> │ conv2d_transpose… │
+│ (<span style="color: #0087ff; text-decoration-color: #0087ff">Concatenate</span>)       │ <span style="color: #00af00; text-decoration-color: #00af00">256</span>)              │            │ conv2d_7[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]    │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ conv2d_10 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)  │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>,    │    <span style="color: #00af00; text-decoration-color: #00af00">295,040</span> │ concatenate[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>] │
+│                     │ <span style="color: #00af00; text-decoration-color: #00af00">128</span>)              │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ dropout_5 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dropout</span>) │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>,    │          <span style="color: #00af00; text-decoration-color: #00af00">0</span> │ conv2d_10[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]   │
+│                     │ <span style="color: #00af00; text-decoration-color: #00af00">128</span>)              │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ conv2d_11 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)  │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>, <span style="color: #00af00; text-decoration-color: #00af00">16</span>,    │    <span style="color: #00af00; text-decoration-color: #00af00">147,584</span> │ dropout_5[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]   │
+│                     │ <span style="color: #00af00; text-decoration-color: #00af00">128</span>)              │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ conv2d_transpose_1  │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>,    │     <span style="color: #00af00; text-decoration-color: #00af00">32,832</span> │ conv2d_11[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]   │
+│ (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2DTranspose</span>)   │ <span style="color: #00af00; text-decoration-color: #00af00">64</span>)               │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ concatenate_1       │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>,    │          <span style="color: #00af00; text-decoration-color: #00af00">0</span> │ conv2d_transpose… │
+│ (<span style="color: #0087ff; text-decoration-color: #0087ff">Concatenate</span>)       │ <span style="color: #00af00; text-decoration-color: #00af00">128</span>)              │            │ conv2d_5[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]    │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ conv2d_12 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)  │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>,    │     <span style="color: #00af00; text-decoration-color: #00af00">73,792</span> │ concatenate_1[<span style="color: #00af00; text-decoration-color: #00af00">0</span>]… │
+│                     │ <span style="color: #00af00; text-decoration-color: #00af00">64</span>)               │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ dropout_6 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dropout</span>) │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>,    │          <span style="color: #00af00; text-decoration-color: #00af00">0</span> │ conv2d_12[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]   │
+│                     │ <span style="color: #00af00; text-decoration-color: #00af00">64</span>)               │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ conv2d_13 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)  │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>,    │     <span style="color: #00af00; text-decoration-color: #00af00">36,928</span> │ dropout_6[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]   │
+│                     │ <span style="color: #00af00; text-decoration-color: #00af00">64</span>)               │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ conv2d_transpose_2  │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>,    │      <span style="color: #00af00; text-decoration-color: #00af00">8,224</span> │ conv2d_13[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]   │
+│ (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2DTranspose</span>)   │ <span style="color: #00af00; text-decoration-color: #00af00">32</span>)               │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ concatenate_2       │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>,    │          <span style="color: #00af00; text-decoration-color: #00af00">0</span> │ conv2d_transpose… │
+│ (<span style="color: #0087ff; text-decoration-color: #0087ff">Concatenate</span>)       │ <span style="color: #00af00; text-decoration-color: #00af00">64</span>)               │            │ conv2d_3[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]    │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ conv2d_14 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)  │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>,    │     <span style="color: #00af00; text-decoration-color: #00af00">18,464</span> │ concatenate_2[<span style="color: #00af00; text-decoration-color: #00af00">0</span>]… │
+│                     │ <span style="color: #00af00; text-decoration-color: #00af00">32</span>)               │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ dropout_7 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dropout</span>) │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>,    │          <span style="color: #00af00; text-decoration-color: #00af00">0</span> │ conv2d_14[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]   │
+│                     │ <span style="color: #00af00; text-decoration-color: #00af00">32</span>)               │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ conv2d_15 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)  │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>,    │      <span style="color: #00af00; text-decoration-color: #00af00">9,248</span> │ dropout_7[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]   │
+│                     │ <span style="color: #00af00; text-decoration-color: #00af00">32</span>)               │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ conv2d_transpose_3  │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>,  │      <span style="color: #00af00; text-decoration-color: #00af00">2,064</span> │ conv2d_15[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]   │
+│ (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2DTranspose</span>)   │ <span style="color: #00af00; text-decoration-color: #00af00">16</span>)               │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ concatenate_3       │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>,  │          <span style="color: #00af00; text-decoration-color: #00af00">0</span> │ conv2d_transpose… │
+│ (<span style="color: #0087ff; text-decoration-color: #0087ff">Concatenate</span>)       │ <span style="color: #00af00; text-decoration-color: #00af00">32</span>)               │            │ conv2d_1[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]    │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ conv2d_16 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)  │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>,  │      <span style="color: #00af00; text-decoration-color: #00af00">4,624</span> │ concatenate_3[<span style="color: #00af00; text-decoration-color: #00af00">0</span>]… │
+│                     │ <span style="color: #00af00; text-decoration-color: #00af00">16</span>)               │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ dropout_8 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dropout</span>) │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>,  │          <span style="color: #00af00; text-decoration-color: #00af00">0</span> │ conv2d_16[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]   │
+│                     │ <span style="color: #00af00; text-decoration-color: #00af00">16</span>)               │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ conv2d_17 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)  │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>,  │      <span style="color: #00af00; text-decoration-color: #00af00">2,320</span> │ dropout_8[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]   │
+│                     │ <span style="color: #00af00; text-decoration-color: #00af00">16</span>)               │            │                   │
+├─────────────────────┼───────────────────┼────────────┼───────────────────┤
+│ conv2d_18 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)  │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>,  │         <span style="color: #00af00; text-decoration-color: #00af00">17</span> │ conv2d_17[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]   │
+│                     │ <span style="color: #00af00; text-decoration-color: #00af00">1</span>)                │            │                   │
+└─────────────────────┴───────────────────┴────────────┴───────────────────┘
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">1,941,105</span> (7.40 MB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">1,941,105</span> (7.40 MB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">0</span> (0.00 B)
+</pre>
+</div></div>
 </div>
 <p><em>Update: Changed to ELU units, added dropout.</em></p>
 <p>Next we fit the model on the training data, using a validation split of 0.1. We use a small batch size because we have so little data. I recommend using checkpointing and early stopping when training your model. I won’t do it here to make things a bit more reproducible (although it’s very likely that your results will be different anyway). I’ll just train for 10 epochs, which takes around 10 minutes in the Kaggle kernel with the current parameters.</p>
@@ -974,7 +1012,16 @@ ________________________________________________________________________________
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File ‘model-dsbowl2018-1.h5’ already there; not retrieving.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2025-09-04 00:30:27--  https://s3.amazonaws.com/rlx/model-dsbowl2018-1.h5
+Resolving s3.amazonaws.com (s3.amazonaws.com)... 16.182.39.216, 16.15.196.0, 54.231.130.104, ...
+Connecting to s3.amazonaws.com (s3.amazonaws.com)|16.182.39.216|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 23524888 (22M) [application/x-hdf]
+Saving to: ‘model-dsbowl2018-1.h5’
+
+model-dsbowl2018-1. 100%[===================&gt;]  22.43M  26.1MB/s    in 0.9s    
+
+2025-09-04 00:30:29 (26.1 MB/s) - ‘model-dsbowl2018-1.h5’ saved [23524888/23524888]
 </pre></div>
 </div>
 </div>
@@ -984,133 +1031,161 @@ ________________________________________________________________________________
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fit model</span>
 <span class="n">earlystopper</span> <span class="o">=</span> <span class="n">EarlyStopping</span><span class="p">(</span><span class="n">patience</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">checkpointer</span> <span class="o">=</span> <span class="n">ModelCheckpoint</span><span class="p">(</span><span class="s1">&#39;model-dsbowl2018-1.h5&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> 
+<span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
                     <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">earlystopper</span><span class="p">,</span> <span class="n">checkpointer</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/30
-76/76 [==============================] - 37s 35ms/step - loss: 0.4688 - val_loss: 0.2949
-
-Epoch 00001: val_loss improved from inf to 0.29486, saving model to model-dsbowl2018-1.h5
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 193ms/step - loss: 0.4625
+Epoch 1: val_loss improved from inf to 0.23217, saving model to model-dsbowl2018-1.h5
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:absl:You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save(&#39;my_model.keras&#39;)` or `keras.saving.save_model(model, &#39;my_model.keras&#39;)`. 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">42s</span> 235ms/step - loss: 0.4608 - val_loss: 0.2322
 Epoch 2/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.1743 - val_loss: 0.1939
-
-Epoch 00002: val_loss improved from 0.29486 to 0.19387, saving model to model-dsbowl2018-1.h5
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 22ms/step - loss: 0.1774
+Epoch 2: val_loss improved from 0.23217 to 0.17737, saving model to model-dsbowl2018-1.h5
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:absl:You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save(&#39;my_model.keras&#39;)` or `keras.saving.save_model(model, &#39;my_model.keras&#39;)`. 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">7s</span> 26ms/step - loss: 0.1772 - val_loss: 0.1774
 Epoch 3/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.1445 - val_loss: 0.1649
-
-Epoch 00003: val_loss improved from 0.19387 to 0.16486, saving model to model-dsbowl2018-1.h5
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 20ms/step - loss: 0.1628
+Epoch 3: val_loss did not improve from 0.17737
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 22ms/step - loss: 0.1627 - val_loss: 0.1820
 Epoch 4/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.1457 - val_loss: 0.1190
-
-Epoch 00004: val_loss improved from 0.16486 to 0.11898, saving model to model-dsbowl2018-1.h5
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 20ms/step - loss: 0.1394
+Epoch 4: val_loss improved from 0.17737 to 0.14883, saving model to model-dsbowl2018-1.h5
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:absl:You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save(&#39;my_model.keras&#39;)` or `keras.saving.save_model(model, &#39;my_model.keras&#39;)`. 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">3s</span> 24ms/step - loss: 0.1394 - val_loss: 0.1488
 Epoch 5/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.1252 - val_loss: 0.1301
-
-Epoch 00005: val_loss did not improve from 0.11898
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 21ms/step - loss: 0.1394
+Epoch 5: val_loss improved from 0.14883 to 0.11482, saving model to model-dsbowl2018-1.h5
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:absl:You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save(&#39;my_model.keras&#39;)` or `keras.saving.save_model(model, &#39;my_model.keras&#39;)`. 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 27ms/step - loss: 0.1394 - val_loss: 0.1148
 Epoch 6/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.1107 - val_loss: 0.1116
-
-Epoch 00006: val_loss improved from 0.11898 to 0.11157, saving model to model-dsbowl2018-1.h5
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 20ms/step - loss: 0.1166
+Epoch 6: val_loss improved from 0.11482 to 0.10615, saving model to model-dsbowl2018-1.h5
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:absl:You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save(&#39;my_model.keras&#39;)` or `keras.saving.save_model(model, &#39;my_model.keras&#39;)`. 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 24ms/step - loss: 0.1166 - val_loss: 0.1061
 Epoch 7/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.1038 - val_loss: 0.0940
-
-Epoch 00007: val_loss improved from 0.11157 to 0.09399, saving model to model-dsbowl2018-1.h5
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 20ms/step - loss: 0.1070
+Epoch 7: val_loss improved from 0.10615 to 0.10025, saving model to model-dsbowl2018-1.h5
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:absl:You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save(&#39;my_model.keras&#39;)` or `keras.saving.save_model(model, &#39;my_model.keras&#39;)`. 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">3s</span> 24ms/step - loss: 0.1071 - val_loss: 0.1003
 Epoch 8/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.1017 - val_loss: 0.0907
-
-Epoch 00008: val_loss improved from 0.09399 to 0.09072, saving model to model-dsbowl2018-1.h5
+<span class=" -Color -Color-Bold">75/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 20ms/step - loss: 0.1062
+Epoch 8: val_loss did not improve from 0.10025
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 22ms/step - loss: 0.1061 - val_loss: 0.1009
 Epoch 9/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.0972 - val_loss: 0.0890
-
-Epoch 00009: val_loss improved from 0.09072 to 0.08904, saving model to model-dsbowl2018-1.h5
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 20ms/step - loss: 0.1000
+Epoch 9: val_loss did not improve from 0.10025
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 22ms/step - loss: 0.1000 - val_loss: 0.1008
 Epoch 10/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.0887 - val_loss: 0.0864
-
-Epoch 00010: val_loss improved from 0.08904 to 0.08641, saving model to model-dsbowl2018-1.h5
+<span class=" -Color -Color-Bold">75/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 21ms/step - loss: 0.1032
+Epoch 10: val_loss improved from 0.10025 to 0.09507, saving model to model-dsbowl2018-1.h5
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:absl:You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save(&#39;my_model.keras&#39;)` or `keras.saving.save_model(model, &#39;my_model.keras&#39;)`. 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">3s</span> 26ms/step - loss: 0.1031 - val_loss: 0.0951
 Epoch 11/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.0922 - val_loss: 0.1307
-
-Epoch 00011: val_loss did not improve from 0.08641
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 21ms/step - loss: 0.0945
+Epoch 11: val_loss did not improve from 0.09507
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 22ms/step - loss: 0.0945 - val_loss: 0.0954
 Epoch 12/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.0960 - val_loss: 0.0943
-
-Epoch 00012: val_loss did not improve from 0.08641
+<span class=" -Color -Color-Bold">74/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 21ms/step - loss: 0.0882
+Epoch 12: val_loss improved from 0.09507 to 0.08887, saving model to model-dsbowl2018-1.h5
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:absl:You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save(&#39;my_model.keras&#39;)` or `keras.saving.save_model(model, &#39;my_model.keras&#39;)`. 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 25ms/step - loss: 0.0883 - val_loss: 0.0889
 Epoch 13/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.0907 - val_loss: 0.0836
-
-Epoch 00013: val_loss improved from 0.08641 to 0.08361, saving model to model-dsbowl2018-1.h5
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 20ms/step - loss: 0.0900
+Epoch 13: val_loss did not improve from 0.08887
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 22ms/step - loss: 0.0900 - val_loss: 0.0990
 Epoch 14/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.0860 - val_loss: 0.0847
-
-Epoch 00014: val_loss did not improve from 0.08361
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 20ms/step - loss: 0.0871
+Epoch 14: val_loss did not improve from 0.08887
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">3s</span> 22ms/step - loss: 0.0871 - val_loss: 0.0893
 Epoch 15/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.0773 - val_loss: 0.0878
-
-Epoch 00015: val_loss did not improve from 0.08361
+<span class=" -Color -Color-Bold">75/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 21ms/step - loss: 0.0851
+Epoch 15: val_loss did not improve from 0.08887
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">3s</span> 22ms/step - loss: 0.0852 - val_loss: 0.0941
 Epoch 16/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.0831 - val_loss: 0.0849
-
-Epoch 00016: val_loss did not improve from 0.08361
+<span class=" -Color -Color-Bold">75/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━</span><span class=" -Color -Color-White">━</span> <span class=" -Color -Color-Bold">0s</span> 21ms/step - loss: 0.0874
+Epoch 16: val_loss improved from 0.08887 to 0.08873, saving model to model-dsbowl2018-1.h5
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:absl:You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save(&#39;my_model.keras&#39;)` or `keras.saving.save_model(model, &#39;my_model.keras&#39;)`. 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">3s</span> 26ms/step - loss: 0.0874 - val_loss: 0.0887
 Epoch 17/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.0849 - val_loss: 0.0780
-
-Epoch 00017: val_loss improved from 0.08361 to 0.07798, saving model to model-dsbowl2018-1.h5
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 21ms/step - loss: 0.0878
+Epoch 17: val_loss improved from 0.08873 to 0.08503, saving model to model-dsbowl2018-1.h5
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:absl:You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save(&#39;my_model.keras&#39;)` or `keras.saving.save_model(model, &#39;my_model.keras&#39;)`. 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 24ms/step - loss: 0.0877 - val_loss: 0.0850
 Epoch 18/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.0921 - val_loss: 0.0812
-
-Epoch 00018: val_loss did not improve from 0.07798
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 21ms/step - loss: 0.0812
+Epoch 18: val_loss did not improve from 0.08503
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 22ms/step - loss: 0.0813 - val_loss: 0.0974
 Epoch 19/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.0787 - val_loss: 0.0767
-
-Epoch 00019: val_loss improved from 0.07798 to 0.07668, saving model to model-dsbowl2018-1.h5
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 21ms/step - loss: 0.0876
+Epoch 19: val_loss did not improve from 0.08503
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">3s</span> 22ms/step - loss: 0.0875 - val_loss: 0.0886
 Epoch 20/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.0749 - val_loss: 0.0791
-
-Epoch 00020: val_loss did not improve from 0.07668
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 21ms/step - loss: 0.0853
+Epoch 20: val_loss did not improve from 0.08503
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">3s</span> 22ms/step - loss: 0.0853 - val_loss: 0.0904
 Epoch 21/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.0781 - val_loss: 0.0787
-
-Epoch 00021: val_loss did not improve from 0.07668
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 21ms/step - loss: 0.0805
+Epoch 21: val_loss did not improve from 0.08503
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">3s</span> 23ms/step - loss: 0.0805 - val_loss: 0.0875
 Epoch 22/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.0796 - val_loss: 0.0769
-
-Epoch 00022: val_loss did not improve from 0.07668
-Epoch 23/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.0728 - val_loss: 0.0753
-
-Epoch 00023: val_loss improved from 0.07668 to 0.07530, saving model to model-dsbowl2018-1.h5
-Epoch 24/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.0748 - val_loss: 0.0782
-
-Epoch 00024: val_loss did not improve from 0.07530
-Epoch 25/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.0794 - val_loss: 0.0715
-
-Epoch 00025: val_loss improved from 0.07530 to 0.07148, saving model to model-dsbowl2018-1.h5
-Epoch 26/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.0703 - val_loss: 0.0731
-
-Epoch 00026: val_loss did not improve from 0.07148
-Epoch 27/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.0731 - val_loss: 0.0743
-
-Epoch 00027: val_loss did not improve from 0.07148
-Epoch 28/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.0715 - val_loss: 0.0754
-
-Epoch 00028: val_loss did not improve from 0.07148
-Epoch 29/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.0716 - val_loss: 0.0741
-
-Epoch 00029: val_loss did not improve from 0.07148
-Epoch 30/30
-76/76 [==============================] - 2s 22ms/step - loss: 0.0691 - val_loss: 0.0739
-
-Epoch 00030: val_loss did not improve from 0.07148
-Epoch 00030: early stopping
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 21ms/step - loss: 0.0835
+Epoch 22: val_loss did not improve from 0.08503
+<span class=" -Color -Color-Bold">76/76</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 22ms/step - loss: 0.0834 - val_loss: 0.0869
+Epoch 22: early stopping
 </pre></div>
 </div>
 </div>
@@ -1138,16 +1213,19 @@ Epoch 00030: early stopping
 <span class="c1"># Create list of upsampled test masks</span>
 <span class="n">preds_test_upsampled</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">preds_test</span><span class="p">)):</span>
-    <span class="n">preds_test_upsampled</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">resize</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">preds_test</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> 
-                                       <span class="p">(</span><span class="n">sizes_test</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">sizes_test</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]),</span> 
+    <span class="n">preds_test_upsampled</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">resize</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">preds_test</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>
+                                       <span class="p">(</span><span class="n">sizes_test</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">sizes_test</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]),</span>
                                        <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="n">preserve_range</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>19/19 [==============================] - 2s 50ms/step
-3/3 [==============================] - 0s 19ms/step
-3/3 [==============================] - 0s 147ms/step
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:absl:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">19/19</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">6s</span> 173ms/step
+<span class=" -Color -Color-Bold">3/3</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 314ms/step
+<span class=" -Color -Color-Bold">3/3</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 693ms/step
 </pre></div>
 </div>
 </div>
@@ -1170,7 +1248,7 @@ Epoch 00030: early stopping
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b5e54e46228f8cdec761f2eb6b5c828cca374bc3a804b9f04a015320ca91f48b.png" src="../_images/b5e54e46228f8cdec761f2eb6b5c828cca374bc3a804b9f04a015320ca91f48b.png" />
+<img alt="../_images/7a4c172f8a593b3fac7630ee097f71ba9ce86476fae24c53e19f1cca703861d2.png" src="../_images/7a4c172f8a593b3fac7630ee097f71ba9ce86476fae24c53e19f1cca703861d2.png" />
 </div>
 </div>
 </section>
@@ -1190,7 +1268,7 @@ Epoch 00030: early stopping
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/cc1615b35cc6d1219aa29bcb965e69d6c6bf24ab4940a02fb40c407ed6960b4f.png" src="../_images/cc1615b35cc6d1219aa29bcb965e69d6c6bf24ab4940a02fb40c407ed6960b4f.png" />
+<img alt="../_images/a29f50bf75969ad461a32ac595682eedda7753271d7644a633bbf665e5848d0f.png" src="../_images/a29f50bf75969ad461a32ac595682eedda7753271d7644a633bbf665e5848d0f.png" />
 </div>
 </div>
 </section>

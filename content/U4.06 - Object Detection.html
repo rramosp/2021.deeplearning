@@ -468,7 +468,20 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
-<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/content/init.py:2: SyntaxWarning: invalid escape sequence &#39;\S&#39;
+  course_id = &#39;\S*deeplearning\S*&#39;
+</pre></div>
+</div>
+<div class="output text_html">
+<meta name="google-signin-client_id"
+      content="461673936472-kdjosv61up3ac1ajeuq6qqu72upilmls.apps.googleusercontent.com"/>
+<script src="https://apis.google.com/js/client:platform.js?onload=google_button_start"></script>
+    </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>replicating local resources
 </pre></div>
 </div>
 </div>
@@ -491,11 +504,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The tensorboard extension is already loaded. To reload it, use:
-  %reload_ext tensorboard
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.4.1&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.19.0&#39;
 </pre></div>
 </div>
 </div>
@@ -532,19 +541,23 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2021-01-27 21:15:00--  https://storage.googleapis.com/openimages/v5/class-descriptions-boxable.csv
-Resolving storage.googleapis.com (storage.googleapis.com)... 172.217.173.48, 142.250.78.48, 142.250.78.16, ...
-Connecting to storage.googleapis.com (storage.googleapis.com)|172.217.173.48|:443... connected.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2025-09-03 23:13:40--  https://storage.googleapis.com/openimages/v5/class-descriptions-boxable.csv
+Resolving storage.googleapis.com (storage.googleapis.com)... 192.178.163.207, 173.194.202.207, 173.194.203.207, ...
+Connecting to storage.googleapis.com (storage.googleapis.com)|192.178.163.207|:443... connected.
 HTTP request sent, awaiting response... 200 OK
 Length: 12011 (12K) [text/csv]
 Saving to: ‘class-descriptions-boxable.csv’
 
-class-descriptions- 100%[===================&gt;]  11,73K  --.-KB/s    in 0,002s  
 
-2021-01-27 21:15:01 (6,82 MB/s) - ‘class-descriptions-boxable.csv’ saved [12011/12011]
+          class-des   0%[                    ]       0  --.-KB/s               
+class-descriptions- 100%[===================&gt;]  11.73K  --.-KB/s    in 0s      
+
+2025-09-03 23:13:40 (69.3 MB/s) - ‘class-descriptions-boxable.csv’ saved [12011/12011]
 </pre></div>
 </div>
-<div class="output text_html"><div>
+<div class="output text_html">
+  <div id="df-7a00182b-74c6-4d21-a10c-83baefc9cc8b" class="colab-df-container">
+    <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -592,7 +605,217 @@ class-descriptions- 100%[===================&gt;]  11,73K  --.-KB/s    in 0,002s
     </tr>
   </tbody>
 </table>
-</div></div></div>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-7a00182b-74c6-4d21-a10c-83baefc9cc8b')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-7a00182b-74c6-4d21-a10c-83baefc9cc8b button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-7a00182b-74c6-4d21-a10c-83baefc9cc8b');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-40d7ec36-b0b3-4ba5-b559-0b0efe88aaad">
+      <button class="colab-df-quickchart" onclick="quickchart('df-40d7ec36-b0b3-4ba5-b559-0b0efe88aaad')"
+                title="Suggest charts"
+                style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-40d7ec36-b0b3-4ba5-b559-0b0efe88aaad button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+    </div>
+  </div>
+</div></div>
 </div>
 <p><strong>An example image</strong></p>
 <div class="cell docutils container">
@@ -604,10 +827,10 @@ class-descriptions- 100%[===================&gt;]  11,73K  --.-KB/s    in 0,002s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fa1c5eb8dc0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7982598908f0&gt;
 </pre></div>
 </div>
-<img alt="../_images/80bd70b6db275ba0c750e228ed3f6ede7a81e210bfe3969c219b951c48c2d04b.png" src="../_images/80bd70b6db275ba0c750e228ed3f6ede7a81e210bfe3969c219b951c48c2d04b.png" />
+<img alt="../_images/571165699a862a64b975ab9e55df14eede2acc0bc3b78790091017d10f7396c4.png" src="../_images/571165699a862a64b975ab9e55df14eede2acc0bc3b78790091017d10f7396c4.png" />
 </div>
 </div>
 <p><strong>with its annotations</strong></p>
@@ -619,7 +842,9 @@ class-descriptions- 100%[===================&gt;]  11,73K  --.-KB/s    in 0,002s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
+<div class="output text_html">
+  <div id="df-02909b65-b48d-4f80-8263-74a93ee2d94e" class="colab-df-container">
+    <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1240,7 +1465,272 @@ class-descriptions- 100%[===================&gt;]  11,73K  --.-KB/s    in 0,002s
   </tbody>
 </table>
 <p>24 rows × 21 columns</p>
-</div></div></div>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-02909b65-b48d-4f80-8263-74a93ee2d94e')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-02909b65-b48d-4f80-8263-74a93ee2d94e button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-02909b65-b48d-4f80-8263-74a93ee2d94e');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-76d9fda8-a269-44be-be45-60beaa8d89cb">
+      <button class="colab-df-quickchart" onclick="quickchart('df-76d9fda8-a269-44be-be45-60beaa8d89cb')"
+                title="Suggest charts"
+                style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-76d9fda8-a269-44be-be45-60beaa8d89cb button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+  <div id="id_78eff18f-6e72-4cee-b351-373bc485b9d1">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('boxes')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_78eff18f-6e72-4cee-b351-373bc485b9d1 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('boxes');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div>
 </div>
 <p><strong>the annotations of this image</strong></p>
 <div class="cell docutils container">
@@ -1250,21 +1740,57 @@ class-descriptions- 100%[===================&gt;]  11,73K  --.-KB/s    in 0,002s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Land vehicle    10
-Person           5
-Tree             5
-Traffic sign     2
-Umbrella         2
-dtype: int64
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Land vehicle</th>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>Tree</th>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>Person</th>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>Traffic sign</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Umbrella</th>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div><br><label><b>dtype:</b> int64</label></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.patches</span><span class="w"> </span><span class="kn">import</span> <span class="n">Rectangle</span>
 <span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">boxes</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">10</span><span class="p">));</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">10</span><span class="p">));</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 <span class="n">h</span><span class="p">,</span><span class="n">w</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
@@ -1277,7 +1803,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/251afb2e05c8c321ce7b7b9faa00b2e77849aab268b16a08221e2edae27d8f9d.png" src="../_images/251afb2e05c8c321ce7b7b9faa00b2e77849aab268b16a08221e2edae27d8f9d.png" />
+<img alt="../_images/05dded66f52429f74f3ab27810d184add723c4e3a81b4d733c783a9c1c4db6e1.png" src="../_images/05dded66f52429f74f3ab27810d184add723c4e3a81b4d733c783a9c1c4db6e1.png" />
 </div>
 </div>
 </section>
@@ -1286,8 +1812,8 @@ dtype: int64
 <p>some sample patches</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patches</span> <span class="o">=</span> <span class="p">[</span><span class="n">img</span><span class="p">[</span><span class="mi">190</span><span class="p">:</span><span class="mi">300</span><span class="p">,</span> <span class="mi">150</span><span class="p">:</span><span class="mi">270</span><span class="p">],</span> 
-           <span class="n">img</span><span class="p">[</span><span class="mi">200</span><span class="p">:</span><span class="mi">300</span><span class="p">,</span> <span class="mi">600</span><span class="p">:</span><span class="mi">700</span><span class="p">],</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patches</span> <span class="o">=</span> <span class="p">[</span><span class="n">img</span><span class="p">[</span><span class="mi">190</span><span class="p">:</span><span class="mi">300</span><span class="p">,</span> <span class="mi">150</span><span class="p">:</span><span class="mi">270</span><span class="p">],</span>
+           <span class="n">img</span><span class="p">[</span><span class="mi">200</span><span class="p">:</span><span class="mi">300</span><span class="p">,</span> <span class="mi">600</span><span class="p">:</span><span class="mi">700</span><span class="p">],</span>
            <span class="n">img</span><span class="p">[</span><span class="mi">400</span><span class="p">:</span><span class="mi">500</span><span class="p">,</span> <span class="mi">400</span><span class="p">:</span><span class="mi">500</span><span class="p">],</span>
            <span class="n">img</span><span class="p">[</span><span class="mi">200</span><span class="p">:</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">:</span><span class="mi">400</span><span class="p">],</span>
            <span class="n">img</span><span class="p">[</span><span class="mi">220</span><span class="p">:</span><span class="mi">290</span><span class="p">,</span> <span class="mi">325</span><span class="p">:</span><span class="mi">360</span><span class="p">],</span>
@@ -1300,7 +1826,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/522dac9a64a7d824f21fc1dcead93eec2f0b104e5e349b7e816c4518e14acecd.png" src="../_images/522dac9a64a7d824f21fc1dcead93eec2f0b104e5e349b7e816c4518e14acecd.png" />
+<img alt="../_images/696c1370d51d016831e5bcfd2f52be91e8f3373e7cdb570b7c79a57c585a8997.png" src="../_images/696c1370d51d016831e5bcfd2f52be91e8f3373e7cdb570b7c79a57c585a8997.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1313,7 +1839,7 @@ dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading data from https://storage.googleapis.com/tensorflow/keras-applications/inception_v3/inception_v3_weights_tf_dim_ordering_tf_kernels.h5
-96116736/96112376 [==============================] - 33s 0us/step
+<span class=" -Color -Color-Bold">96112376/96112376</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 0us/step
 </pre></div>
 </div>
 </div>
@@ -1334,7 +1860,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3e0ff425f75f8616889931d5445679c7f61dd38c9d11117954c0d417b551a327.png" src="../_images/3e0ff425f75f8616889931d5445679c7f61dd38c9d11117954c0d417b551a327.png" />
+<img alt="../_images/416e13cc47a14e56dff51ffb6a2dd5e1b94badbf8f74e12654363c09c801c145.png" src="../_images/416e13cc47a14e56dff51ffb6a2dd5e1b94badbf8f74e12654363c09c801c145.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1346,7 +1872,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/268c48edf2c2f92650c59dff556398d7deb0b62fdee1b8736e082ca2b3d492c3.png" src="../_images/268c48edf2c2f92650c59dff556398d7deb0b62fdee1b8736e082ca2b3d492c3.png" />
+<img alt="../_images/d076c10f11eb8e7b4055697aa199705f5801c8d2d5819584a72c628fce7e143a.png" src="../_images/d076c10f11eb8e7b4055697aa199705f5801c8d2d5819584a72c628fce7e143a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1357,6 +1883,9 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">1/1</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">3s</span> 3s/step
+</pre></div>
+</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 1000)
 </pre></div>
 </div>
@@ -1371,7 +1900,7 @@ dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading data from https://storage.googleapis.com/download.tensorflow.org/data/imagenet_class_index.json
-40960/35363 [==================================] - 0s 1us/step
+<span class=" -Color -Color-Bold">35363/35363</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 0us/step
 </pre></div>
 </div>
 </div>
@@ -1388,7 +1917,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0ab6cddb0e106df75da35dd1e032ffde10df958e011f93080e67e071b192e064.png" src="../_images/0ab6cddb0e106df75da35dd1e032ffde10df958e011f93080e67e071b192e064.png" />
+<img alt="../_images/d80d3254ab913884136c49d25322f2420155ddbe3e38a2841f5f0e8a3de4b748.png" src="../_images/d80d3254ab913884136c49d25322f2420155ddbe3e38a2841f5f0e8a3de4b748.png" />
 </div>
 </div>
 <p>observe how we decode prediction classes. We would nee to <strong>align</strong> them with our detectiond dataset.</p>
@@ -1430,32 +1959,918 @@ dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classnames</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://storage.googleapis.com/download.tensorflow.org/data/ImageNetLabels.txt&#39;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">])</span>
+
 <span class="k">if</span> <span class="ow">not</span> <span class="s1">&#39;m&#39;</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">():</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
-        <span class="n">hub</span><span class="o">.</span><span class="n">KerasLayer</span><span class="p">(</span><span class="s2">&quot;https://tfhub.dev/google/imagenet/inception_resnet_v2/classification/4&quot;</span><span class="p">)</span>
-    <span class="p">])</span>
-    <span class="n">m</span><span class="o">.</span><span class="n">build</span><span class="p">([</span><span class="kc">None</span><span class="p">,</span> <span class="mi">299</span><span class="p">,</span> <span class="mi">299</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>  
+  <span class="n">m</span> <span class="o">=</span> <span class="n">hub</span><span class="o">.</span><span class="n">KerasLayer</span><span class="p">(</span><span class="s2">&quot;https://tfhub.dev/google/imagenet/inception_resnet_v2/classification/4&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">w</span><span class="o">.</span><span class="n">shape</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">weights</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;sequential&quot;
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-keras_layer (KerasLayer)     (None, 1001)              55875273  
-=================================================================
-Total params: 55,875,273
-Trainable params: 0
-Non-trainable params: 55,875,273
-_________________________________________________________________
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[TensorShape([1, 1, 1088, 192]),
+ TensorShape([3, 1, 224, 256]),
+ TensorShape([3, 3, 3, 32]),
+ TensorShape([32]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([3, 3, 32, 48]),
+ TensorShape([384]),
+ TensorShape([7, 1, 160, 192]),
+ TensorShape([1, 1, 448, 2080]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([7, 1, 160, 192]),
+ TensorShape([1, 1, 384, 1088]),
+ TensorShape([1, 1, 384, 1088]),
+ TensorShape([224]),
+ TensorShape([2080]),
+ TensorShape([192]),
+ TensorShape([1, 1, 128, 320]),
+ TensorShape([3, 3, 32, 32]),
+ TensorShape([320]),
+ TensorShape([32]),
+ TensorShape([1088]),
+ TensorShape([1, 1, 1088, 128]),
+ TensorShape([128]),
+ TensorShape([224]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([3, 3, 48, 64]),
+ TensorShape([7, 1, 160, 192]),
+ TensorShape([1, 1, 1088, 192]),
+ TensorShape([1, 7, 128, 160]),
+ TensorShape([7, 1, 160, 192]),
+ TensorShape([192]),
+ TensorShape([1, 1, 1088, 192]),
+ TensorShape([1, 1, 128, 320]),
+ TensorShape([32]),
+ TensorShape([320]),
+ TensorShape([128]),
+ TensorShape([192]),
+ TensorShape([1, 7, 128, 160]),
+ TensorShape([192]),
+ TensorShape([1, 3, 192, 224]),
+ TensorShape([1, 1, 384, 1088]),
+ TensorShape([64]),
+ TensorShape([3, 3, 32, 32]),
+ TensorShape([1, 7, 128, 160]),
+ TensorShape([192]),
+ TensorShape([128]),
+ TensorShape([3, 3, 288, 320]),
+ TensorShape([2080]),
+ TensorShape([192]),
+ TensorShape([3, 3, 32, 32]),
+ TensorShape([3, 3, 32, 48]),
+ TensorShape([160]),
+ TensorShape([1, 1, 1088, 128]),
+ TensorShape([192]),
+ TensorShape([1088]),
+ TensorShape([3, 3, 32, 48]),
+ TensorShape([192]),
+ TensorShape([1, 7, 128, 160]),
+ TensorShape([1, 1, 2080, 192]),
+ TensorShape([2080]),
+ TensorShape([128]),
+ TensorShape([3, 3, 32, 32]),
+ TensorShape([32]),
+ TensorShape([3, 3, 48, 64]),
+ TensorShape([160]),
+ TensorShape([1, 1, 384, 1088]),
+ TensorShape([320]),
+ TensorShape([7, 1, 160, 192]),
+ TensorShape([256]),
+ TensorShape([224]),
+ TensorShape([1, 1, 2080, 192]),
+ TensorShape([192]),
+ TensorShape([1, 3, 192, 224]),
+ TensorShape([1, 1, 1088, 128]),
+ TensorShape([192]),
+ TensorShape([1, 3, 192, 224]),
+ TensorShape([48]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([1, 1, 384, 1088]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([32]),
+ TensorShape([1, 1, 128, 320]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([1, 1, 384, 1088]),
+ TensorShape([192]),
+ TensorShape([1, 1, 1088, 192]),
+ TensorShape([1, 7, 128, 160]),
+ TensorShape([256]),
+ TensorShape([1, 7, 128, 160]),
+ TensorShape([192]),
+ TensorShape([1088]),
+ TensorShape([32]),
+ TensorShape([48]),
+ TensorShape([64]),
+ TensorShape([3, 3, 48, 64]),
+ TensorShape([160]),
+ TensorShape([3, 3, 32, 48]),
+ TensorShape([1, 3, 192, 224]),
+ TensorShape([160]),
+ TensorShape([128]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([320]),
+ TensorShape([1088]),
+ TensorShape([1, 1, 384, 1088]),
+ TensorShape([1088]),
+ TensorShape([1, 1, 448, 2080]),
+ TensorShape([1001]),
+ TensorShape([192]),
+ TensorShape([1, 1, 64, 80]),
+ TensorShape([64]),
+ TensorShape([32]),
+ TensorShape([48]),
+ TensorShape([64]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([48]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([3, 1, 224, 256]),
+ TensorShape([224]),
+ TensorShape([1, 1, 1088, 128]),
+ TensorShape([3, 3, 32, 48]),
+ TensorShape([3, 3, 64, 96]),
+ TensorShape([32]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([1, 7, 128, 160]),
+ TensorShape([1, 1, 384, 1088]),
+ TensorShape([1, 1, 1088, 128]),
+ TensorShape([160]),
+ TensorShape([192]),
+ TensorShape([1, 1, 2080, 192]),
+ TensorShape([1, 1, 1088, 128]),
+ TensorShape([224]),
+ TensorShape([3, 3, 48, 64]),
+ TensorShape([1, 7, 128, 160]),
+ TensorShape([192]),
+ TensorShape([160]),
+ TensorShape([1, 7, 128, 160]),
+ TensorShape([1, 1, 384, 1088]),
+ TensorShape([256]),
+ TensorShape([1, 3, 192, 224]),
+ TensorShape([1, 1, 1088, 192]),
+ TensorShape([3, 3, 256, 288]),
+ TensorShape([1, 3, 192, 224]),
+ TensorShape([3, 3, 32, 48]),
+ TensorShape([1, 7, 128, 160]),
+ TensorShape([192]),
+ TensorShape([256]),
+ TensorShape([1, 1, 2080, 192]),
+ TensorShape([160]),
+ TensorShape([192]),
+ TensorShape([48]),
+ TensorShape([1, 7, 128, 160]),
+ TensorShape([288]),
+ TensorShape([320]),
+ TensorShape([320]),
+ TensorShape([160]),
+ TensorShape([224]),
+ TensorShape([1, 1, 2080, 192]),
+ TensorShape([3, 3, 80, 192]),
+ TensorShape([1, 7, 128, 160]),
+ TensorShape([1, 1, 384, 1088]),
+ TensorShape([192]),
+ TensorShape([3, 1, 224, 256]),
+ TensorShape([64]),
+ TensorShape([192]),
+ TensorShape([32]),
+ TensorShape([160]),
+ TensorShape([1, 1, 1088, 192]),
+ TensorShape([1536, 1001]),
+ TensorShape([1, 1, 448, 2080]),
+ TensorShape([192]),
+ TensorShape([1, 1, 1088, 128]),
+ TensorShape([1, 1, 384, 1088]),
+ TensorShape([48]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([1, 7, 128, 160]),
+ TensorShape([128]),
+ TensorShape([1, 1, 1088, 192]),
+ TensorShape([1, 1, 448, 2080]),
+ TensorShape([2080]),
+ TensorShape([1, 1, 2080, 192]),
+ TensorShape([128]),
+ TensorShape([1088]),
+ TensorShape([7, 1, 160, 192]),
+ TensorShape([3, 3, 48, 64]),
+ TensorShape([128]),
+ TensorShape([1, 1, 1088, 128]),
+ TensorShape([7, 1, 160, 192]),
+ TensorShape([192]),
+ TensorShape([1, 1, 448, 2080]),
+ TensorShape([1, 1, 384, 1088]),
+ TensorShape([1, 1, 1088, 256]),
+ TensorShape([3, 3, 32, 48]),
+ TensorShape([1, 1, 1088, 192]),
+ TensorShape([1, 1, 1088, 192]),
+ TensorShape([128]),
+ TensorShape([160]),
+ TensorShape([1, 1, 448, 2080]),
+ TensorShape([7, 1, 160, 192]),
+ TensorShape([128]),
+ TensorShape([192]),
+ TensorShape([3, 1, 224, 256]),
+ TensorShape([192]),
+ TensorShape([256]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([3, 3, 32, 32]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([7, 1, 160, 192]),
+ TensorShape([7, 1, 160, 192]),
+ TensorShape([1, 3, 192, 224]),
+ TensorShape([1, 1, 128, 320]),
+ TensorShape([1, 1, 192, 96]),
+ TensorShape([3, 3, 48, 64]),
+ TensorShape([64]),
+ TensorShape([1, 1, 128, 320]),
+ TensorShape([7, 1, 160, 192]),
+ TensorShape([7, 1, 160, 192]),
+ TensorShape([1, 1, 1088, 128]),
+ TensorShape([128]),
+ TensorShape([224]),
+ TensorShape([1, 1, 2080, 192]),
+ TensorShape([1, 1, 384, 1088]),
+ TensorShape([1, 1, 2080, 192]),
+ TensorShape([1, 1, 2080, 192]),
+ TensorShape([192]),
+ TensorShape([2080]),
+ TensorShape([3, 3, 32, 64]),
+ TensorShape([32]),
+ TensorShape([3, 3, 32, 32]),
+ TensorShape([64]),
+ TensorShape([3, 3, 32, 48]),
+ TensorShape([1088]),
+ TensorShape([1, 1, 2080, 192]),
+ TensorShape([1, 1, 1088, 192]),
+ TensorShape([1, 1, 1088, 256]),
+ TensorShape([32]),
+ TensorShape([48]),
+ TensorShape([192]),
+ TensorShape([1, 1, 1088, 192]),
+ TensorShape([1, 1, 1088, 192]),
+ TensorShape([1, 1, 1088, 128]),
+ TensorShape([1088]),
+ TensorShape([1, 1, 1088, 256]),
+ TensorShape([7, 1, 160, 192]),
+ TensorShape([1, 1, 2080, 192]),
+ TensorShape([1088]),
+ TensorShape([1, 1, 384, 1088]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([1, 1, 2080, 192]),
+ TensorShape([1, 1, 128, 320]),
+ TensorShape([3, 3, 48, 64]),
+ TensorShape([192]),
+ TensorShape([160]),
+ TensorShape([1, 1, 1088, 128]),
+ TensorShape([1088]),
+ TensorShape([1, 7, 128, 160]),
+ TensorShape([192]),
+ TensorShape([256]),
+ TensorShape([48]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([3, 3, 32, 48]),
+ TensorShape([64]),
+ TensorShape([384]),
+ TensorShape([128]),
+ TensorShape([1, 3, 192, 224]),
+ TensorShape([1, 1, 448, 2080]),
+ TensorShape([256]),
+ TensorShape([256]),
+ TensorShape([1, 1, 2080, 192]),
+ TensorShape([2080]),
+ TensorShape([192]),
+ TensorShape([96]),
+ TensorShape([32]),
+ TensorShape([48]),
+ TensorShape([1, 1, 128, 320]),
+ TensorShape([3, 3, 32, 32]),
+ TensorShape([160]),
+ TensorShape([1, 1, 448, 2080]),
+ TensorShape([64]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([32]),
+ TensorShape([1088]),
+ TensorShape([7, 1, 160, 192]),
+ TensorShape([1, 1, 384, 1088]),
+ TensorShape([1088]),
+ TensorShape([1, 7, 128, 160]),
+ TensorShape([256]),
+ TensorShape([3, 1, 224, 256]),
+ TensorShape([224]),
+ TensorShape([1, 1, 2080, 192]),
+ TensorShape([2080]),
+ TensorShape([1, 1, 448, 2080]),
+ TensorShape([192]),
+ TensorShape([1, 1, 2080, 192]),
+ TensorShape([192]),
+ TensorShape([48]),
+ TensorShape([1, 1, 192, 64]),
+ TensorShape([32]),
+ TensorShape([160]),
+ TensorShape([1, 7, 128, 160]),
+ TensorShape([7, 1, 160, 192]),
+ TensorShape([1, 1, 192, 64]),
+ TensorShape([1, 1, 128, 320]),
+ TensorShape([2080]),
+ TensorShape([1088]),
+ TensorShape([1, 1, 2080, 192]),
+ TensorShape([160]),
+ TensorShape([32]),
+ TensorShape([64]),
+ TensorShape([32]),
+ TensorShape([128]),
+ TensorShape([1, 1, 1088, 128]),
+ TensorShape([160]),
+ TensorShape([1088]),
+ TensorShape([7, 1, 160, 192]),
+ TensorShape([3, 1, 224, 256]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([320]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([192]),
+ TensorShape([1, 7, 128, 160]),
+ TensorShape([160]),
+ TensorShape([1536]),
+ TensorShape([160]),
+ TensorShape([256]),
+ TensorShape([7, 1, 160, 192]),
+ TensorShape([32]),
+ TensorShape([64]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([32]),
+ TensorShape([3, 3, 32, 32]),
+ TensorShape([1, 1, 384, 1088]),
+ TensorShape([3, 1, 224, 256]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([1, 1, 1088, 192]),
+ TensorShape([192]),
+ TensorShape([1, 7, 128, 160]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([3, 1, 224, 256]),
+ TensorShape([3, 1, 224, 256]),
+ TensorShape([1, 1, 1088, 128]),
+ TensorShape([3, 3, 48, 64]),
+ TensorShape([320]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([32]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([1, 1, 384, 1088]),
+ TensorShape([128]),
+ TensorShape([1, 1, 2080, 192]),
+ TensorShape([192]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([320]),
+ TensorShape([32]),
+ TensorShape([1, 7, 128, 160]),
+ TensorShape([7, 1, 160, 192]),
+ TensorShape([1, 1, 384, 1088]),
+ TensorShape([7, 1, 160, 192]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([1, 1, 2080, 192]),
+ TensorShape([1, 1, 2080, 192]),
+ TensorShape([192]),
+ TensorShape([80]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([64]),
+ TensorShape([1, 1, 128, 320]),
+ TensorShape([192]),
+ TensorShape([1, 1, 1088, 192]),
+ TensorShape([128]),
+ TensorShape([256]),
+ TensorShape([3, 3, 256, 288]),
+ TensorShape([3, 3, 96, 96]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([64]),
+ TensorShape([1, 1, 128, 320]),
+ TensorShape([1088]),
+ TensorShape([7, 1, 160, 192]),
+ TensorShape([192]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([3, 3, 256, 384]),
+ TensorShape([1, 1, 1088, 128]),
+ TensorShape([192]),
+ TensorShape([1, 1, 2080, 192]),
+ TensorShape([3, 3, 48, 64]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([3, 3, 32, 48]),
+ TensorShape([320]),
+ TensorShape([256]),
+ TensorShape([1088]),
+ TensorShape([1, 1, 1088, 192]),
+ TensorShape([192]),
+ TensorShape([1088]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([160]),
+ TensorShape([1, 1, 1088, 192]),
+ TensorShape([1, 3, 192, 224]),
+ TensorShape([224]),
+ TensorShape([128]),
+ TensorShape([3, 3, 32, 32]),
+ TensorShape([96]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([1, 1, 1088, 192]),
+ TensorShape([1, 1, 1088, 128]),
+ TensorShape([1, 1, 384, 1088]),
+ TensorShape([256]),
+ TensorShape([128]),
+ TensorShape([320]),
+ TensorShape([5, 5, 48, 64]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([48]),
+ TensorShape([3, 3, 48, 64]),
+ TensorShape([192]),
+ TensorShape([128]),
+ TensorShape([224]),
+ TensorShape([128]),
+ TensorShape([192]),
+ TensorShape([3, 3, 256, 384]),
+ TensorShape([1, 3, 192, 224]),
+ TensorShape([1, 1, 1088, 128]),
+ TensorShape([1, 1, 192, 48]),
+ TensorShape([64]),
+ TensorShape([3, 3, 320, 384]),
+ TensorShape([1, 1, 1088, 128]),
+ TensorShape([192]),
+ TensorShape([1, 1, 320, 256]),
+ TensorShape([256]),
+ TensorShape([96]),
+ TensorShape([3, 3, 32, 32]),
+ TensorShape([32]),
+ TensorShape([192]),
+ TensorShape([1, 1, 384, 1088]),
+ TensorShape([160]),
+ TensorShape([192]),
+ TensorShape([1, 1, 448, 2080]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([256]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([3, 3, 32, 32]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([384]),
+ TensorShape([1, 1, 1088, 192]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([3, 1, 224, 256]),
+ TensorShape([2080]),
+ TensorShape([1, 1, 2080, 1536]),
+ TensorShape([3, 3, 256, 256]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([1, 1, 1088, 128]),
+ TensorShape([1, 1, 1088, 192]),
+ TensorShape([192]),
+ TensorShape([1, 1, 1088, 128]),
+ TensorShape([160]),
+ TensorShape([288]),
+ TensorShape([192]),
+ TensorShape([1, 1, 1088, 192]),
+ TensorShape([128]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([1, 1, 320, 32]),
+ TensorShape([1088]),
+ TensorShape([1, 7, 128, 160]),
+ TensorShape([2080]),
+ TensorShape([1, 1, 1088, 128]),
+ TensorShape([1088]),
+ TensorShape([1088]),
+ TensorShape([192]),
+ TensorShape([256]),
+ TensorShape([224]),
+ TensorShape([192]),
+ TensorShape([32]),
+ TensorShape([64]),
+ TensorShape([64]),
+ TensorShape([48]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([256]),
+ TensorShape([192]),
+ TensorShape([288]),
+ TensorShape([256]),
+ TensorShape([224]),
+ TensorShape([128]),
+ TensorShape([96]),
+ TensorShape([64]),
+ TensorShape([32]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([160]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([256]),
+ TensorShape([192]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([64]),
+ TensorShape([64]),
+ TensorShape([192]),
+ TensorShape([256]),
+ TensorShape([192]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([384]),
+ TensorShape([192]),
+ TensorShape([128]),
+ TensorShape([192]),
+ TensorShape([256]),
+ TensorShape([192]),
+ TensorShape([96]),
+ TensorShape([64]),
+ TensorShape([64]),
+ TensorShape([32]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([224]),
+ TensorShape([64]),
+ TensorShape([64]),
+ TensorShape([32]),
+ TensorShape([384]),
+ TensorShape([160]),
+ TensorShape([160]),
+ TensorShape([96]),
+ TensorShape([64]),
+ TensorShape([32]),
+ TensorShape([48]),
+ TensorShape([32]),
+ TensorShape([128]),
+ TensorShape([192]),
+ TensorShape([32]),
+ TensorShape([48]),
+ TensorShape([64]),
+ TensorShape([160]),
+ TensorShape([192]),
+ TensorShape([160]),
+ TensorShape([128]),
+ TensorShape([224]),
+ TensorShape([192]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([256]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([128]),
+ TensorShape([96]),
+ TensorShape([48]),
+ TensorShape([32]),
+ TensorShape([64]),
+ TensorShape([128]),
+ TensorShape([160]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([160]),
+ TensorShape([192]),
+ TensorShape([64]),
+ TensorShape([192]),
+ TensorShape([384]),
+ TensorShape([256]),
+ TensorShape([128]),
+ TensorShape([224]),
+ TensorShape([192]),
+ TensorShape([64]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([48]),
+ TensorShape([256]),
+ TensorShape([160]),
+ TensorShape([128]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([32]),
+ TensorShape([48]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([224]),
+ TensorShape([224]),
+ TensorShape([128]),
+ TensorShape([160]),
+ TensorShape([224]),
+ TensorShape([32]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([128]),
+ TensorShape([32]),
+ TensorShape([256]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([32]),
+ TensorShape([128]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([128]),
+ TensorShape([160]),
+ TensorShape([192]),
+ TensorShape([160]),
+ TensorShape([32]),
+ TensorShape([128]),
+ TensorShape([192]),
+ TensorShape([160]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([160]),
+ TensorShape([192]),
+ TensorShape([128]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([64]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([160]),
+ TensorShape([192]),
+ TensorShape([128]),
+ TensorShape([256]),
+ TensorShape([192]),
+ TensorShape([64]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([128]),
+ TensorShape([192]),
+ TensorShape([128]),
+ TensorShape([128]),
+ TensorShape([256]),
+ TensorShape([192]),
+ TensorShape([48]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([192]),
+ TensorShape([256]),
+ TensorShape([192]),
+ TensorShape([160]),
+ TensorShape([64]),
+ TensorShape([48]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([224]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([256]),
+ TensorShape([128]),
+ TensorShape([384]),
+ TensorShape([48]),
+ TensorShape([32]),
+ TensorShape([48]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([160]),
+ TensorShape([192]),
+ TensorShape([256]),
+ TensorShape([288]),
+ TensorShape([128]),
+ TensorShape([192]),
+ TensorShape([32]),
+ TensorShape([160]),
+ TensorShape([192]),
+ TensorShape([224]),
+ TensorShape([256]),
+ TensorShape([192]),
+ TensorShape([128]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([192]),
+ TensorShape([224]),
+ TensorShape([128]),
+ TensorShape([192]),
+ TensorShape([128]),
+ TensorShape([224]),
+ TensorShape([192]),
+ TensorShape([48]),
+ TensorShape([192]),
+ TensorShape([160]),
+ TensorShape([256]),
+ TensorShape([192]),
+ TensorShape([128]),
+ TensorShape([32]),
+ TensorShape([48]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([160]),
+ TensorShape([128]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([224]),
+ TensorShape([256]),
+ TensorShape([256]),
+ TensorShape([288]),
+ TensorShape([192]),
+ TensorShape([1536]),
+ TensorShape([96]),
+ TensorShape([32]),
+ TensorShape([160]),
+ TensorShape([128]),
+ TensorShape([160]),
+ TensorShape([224]),
+ TensorShape([224]),
+ TensorShape([192]),
+ TensorShape([32]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([128]),
+ TensorShape([128]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([64]),
+ TensorShape([128]),
+ TensorShape([192]),
+ TensorShape([256]),
+ TensorShape([32]),
+ TensorShape([64]),
+ TensorShape([128]),
+ TensorShape([256]),
+ TensorShape([192]),
+ TensorShape([224]),
+ TensorShape([160]),
+ TensorShape([192]),
+ TensorShape([128]),
+ TensorShape([80]),
+ TensorShape([48]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([64]),
+ TensorShape([160]),
+ TensorShape([384]),
+ TensorShape([32]),
+ TensorShape([64]),
+ TensorShape([32]),
+ TensorShape([48]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([224]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([64]),
+ TensorShape([64]),
+ TensorShape([160]),
+ TensorShape([160]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([256]),
+ TensorShape([32]),
+ TensorShape([64]),
+ TensorShape([48]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([160]),
+ TensorShape([256]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([160]),
+ TensorShape([192]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([48]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([32]),
+ TensorShape([64]),
+ TensorShape([32]),
+ TensorShape([160]),
+ TensorShape([160]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([160]),
+ TensorShape([256]),
+ TensorShape([160]),
+ TensorShape([160]),
+ TensorShape([32]),
+ TensorShape([64]),
+ TensorShape([32]),
+ TensorShape([48]),
+ TensorShape([128]),
+ TensorShape([288]),
+ TensorShape([224]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([192]),
+ TensorShape([128]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([256]),
+ TensorShape([192]),
+ TensorShape([256]),
+ TensorShape([96]),
+ TensorShape([48]),
+ TensorShape([48]),
+ TensorShape([160]),
+ TensorShape([192]),
+ TensorShape([128]),
+ TensorShape([192]),
+ TensorShape([256]),
+ TensorShape([192]),
+ TensorShape([64]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([128]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([320]),
+ TensorShape([224]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([160]),
+ TensorShape([192]),
+ TensorShape([32]),
+ TensorShape([160]),
+ TensorShape([160]),
+ TensorShape([192]),
+ TensorShape([224]),
+ TensorShape([80]),
+ TensorShape([48]),
+ TensorShape([48]),
+ TensorShape([32]),
+ TensorShape([128]),
+ TensorShape([192]),
+ TensorShape([160]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([256]),
+ TensorShape([32]),
+ TensorShape([160]),
+ TensorShape([128]),
+ TensorShape([1536]),
+ TensorShape([48]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([384]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([320]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([128]),
+ TensorShape([128]),
+ TensorShape([192]),
+ TensorShape([256]),
+ TensorShape([32]),
+ TensorShape([64]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([32]),
+ TensorShape([192]),
+ TensorShape([192]),
+ TensorShape([160]),
+ TensorShape([160]),
+ TensorShape([192]),
+ TensorShape([128]),
+ TensorShape([256])]
 </pre></div>
 </div>
 </div>
@@ -1469,7 +2884,7 @@ _________________________________________________________________
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0000002
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float32(1.0000001)
 </pre></div>
 </div>
 </div>
@@ -1484,7 +2899,9 @@ _________________________________________________________________
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
+<div class="output text_html">
+  <div id="df-b70881bd-1744-46a6-aafd-24e903d5f337" class="colab-df-container">
+    <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1520,7 +2937,7 @@ _________________________________________________________________
     <tr>
       <th>870</th>
       <td>trench coat</td>
-      <td>0.031472</td>
+      <td>0.031471</td>
     </tr>
     <tr>
       <th>835</th>
@@ -1534,7 +2951,217 @@ _________________________________________________________________
     </tr>
   </tbody>
 </table>
-</div></div></div>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-b70881bd-1744-46a6-aafd-24e903d5f337')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-b70881bd-1744-46a6-aafd-24e903d5f337 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-b70881bd-1744-46a6-aafd-24e903d5f337');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-0318d4b6-6fac-4948-8dd6-0f11f5c0226d">
+      <button class="colab-df-quickchart" onclick="quickchart('df-0318d4b6-6fac-4948-8dd6-0f11f5c0226d')"
+                title="Suggest charts"
+                style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-0318d4b6-6fac-4948-8dd6-0f11f5c0226d button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+    </div>
+  </div>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1548,7 +3175,7 @@ _________________________________________________________________
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e38bc1b668181307ef1a2dd9c975592a34e310fe741362bfb33acfa5e3bb6935.png" src="../_images/e38bc1b668181307ef1a2dd9c975592a34e310fe741362bfb33acfa5e3bb6935.png" />
+<img alt="../_images/25ca0c58141ffa9a6e14fb29b66d50bccd3c5f4e27f097fd3f7b00b1c141e36a.png" src="../_images/25ca0c58141ffa9a6e14fb29b66d50bccd3c5f4e27f097fd3f7b00b1c141e36a.png" />
 </div>
 </div>
 </section>
@@ -1565,7 +3192,7 @@ _________________________________________________________________
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/922c81ed9569c670fac0f6caee89533d8b7cbf5e72acdd25d47bdc1be0b5c16a.png"><img alt="../_images/922c81ed9569c670fac0f6caee89533d8b7cbf5e72acdd25d47bdc1be0b5c16a.png" src="../_images/922c81ed9569c670fac0f6caee89533d8b7cbf5e72acdd25d47bdc1be0b5c16a.png" style="width: 300px;" />
+<a class="reference internal image-reference" href="../_images/b4e9838565d56ac755798ac7299982f53174b642535525b02e3e563d1f85ce05.png"><img alt="../_images/b4e9838565d56ac755798ac7299982f53174b642535525b02e3e563d1f85ce05.png" src="../_images/b4e9838565d56ac755798ac7299982f53174b642535525b02e3e563d1f85ce05.png" style="width: 300px;" />
 </a>
 </div>
 </div>
@@ -1583,10 +3210,10 @@ _________________________________________________________________
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">//</span><span class="n">n</span><span class="o">*</span><span class="n">i</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">//</span><span class="n">n</span><span class="o">*</span><span class="n">i</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
-    
+
 <span class="n">k</span> <span class="o">=</span> <span class="n">boxes</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">label</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">k</span><span class="o">.</span><span class="n">LabelName</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">Rectangle</span><span class="p">((</span><span class="n">k</span><span class="o">.</span><span class="n">XMin</span><span class="o">*</span><span class="n">w</span><span class="p">,</span><span class="n">k</span><span class="o">.</span><span class="n">YMin</span><span class="o">*</span><span class="n">h</span><span class="p">),(</span><span class="n">k</span><span class="o">.</span><span class="n">XMax</span><span class="o">-</span><span class="n">k</span><span class="o">.</span><span class="n">XMin</span><span class="p">)</span><span class="o">*</span><span class="n">w</span><span class="p">,(</span><span class="n">k</span><span class="o">.</span><span class="n">YMax</span><span class="o">-</span><span class="n">k</span><span class="o">.</span><span class="n">YMin</span><span class="p">)</span><span class="o">*</span><span class="n">h</span><span class="p">,</span> 
+<span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">Rectangle</span><span class="p">((</span><span class="n">k</span><span class="o">.</span><span class="n">XMin</span><span class="o">*</span><span class="n">w</span><span class="p">,</span><span class="n">k</span><span class="o">.</span><span class="n">YMin</span><span class="o">*</span><span class="n">h</span><span class="p">),(</span><span class="n">k</span><span class="o">.</span><span class="n">XMax</span><span class="o">-</span><span class="n">k</span><span class="o">.</span><span class="n">XMin</span><span class="p">)</span><span class="o">*</span><span class="n">w</span><span class="p">,(</span><span class="n">k</span><span class="o">.</span><span class="n">YMax</span><span class="o">-</span><span class="n">k</span><span class="o">.</span><span class="n">YMin</span><span class="p">)</span><span class="o">*</span><span class="n">h</span><span class="p">,</span>
                        <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">XMin</span><span class="o">*</span><span class="n">w</span><span class="p">,</span> <span class="n">k</span><span class="o">.</span><span class="n">YMin</span><span class="o">*</span><span class="n">h</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">XMin</span><span class="o">*</span><span class="n">w</span><span class="o">+</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">XMax</span><span class="o">-</span><span class="n">k</span><span class="o">.</span><span class="n">XMin</span><span class="p">)</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="mf">.5</span><span class="p">,</span><span class="n">k</span><span class="o">.</span><span class="n">YMin</span><span class="o">*</span><span class="n">h</span><span class="o">+</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">YMax</span><span class="o">-</span><span class="n">k</span><span class="o">.</span><span class="n">YMin</span><span class="p">)</span><span class="o">*</span><span class="n">h</span><span class="o">*</span><span class="mf">.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
@@ -1594,10 +3221,10 @@ _________________________________________________________________
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fa055077df0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x798223eab620&gt;
 </pre></div>
 </div>
-<img alt="../_images/af480965189f0b3bfe09618ba8016f86b05d32709a4d35ce907a7f27a6b513fd.png" src="../_images/af480965189f0b3bfe09618ba8016f86b05d32709a4d35ce907a7f27a6b513fd.png" />
+<img alt="../_images/076394dc102e2f8a4cb4e610564d4b3f00aa378bb3fcbb130695f3a8e3f67d43.png" src="../_images/076394dc102e2f8a4cb4e610564d4b3f00aa378bb3fcbb130695f3a8e3f67d43.png" />
 </div>
 </div>
 </section>
