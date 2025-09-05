@@ -454,26 +454,19 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-4-2-transfer-learning">
 <h1>LAB 4.2 - Transfer learning<a class="headerlink" href="#lab-4-2-transfer-learning" title="Link to this heading">#</a></h1>
-<p>The labs require a <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code> version lower than the default one used in Google Colab. Run the following cell to downgrade TensorFlow accordingly.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">downgrade_tf_version</span><span class="p">():</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip uninstall -y tensorflow&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip install tensorflow==2.12.0&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="mi">9</span><span class="p">)</span>
-<span class="n">downgrade_tf_version</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
-<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<meta name="google-signin-client_id"
+      content="461673936472-kdjosv61up3ac1ajeuq6qqu72upilmls.apps.googleusercontent.com"/>
+<script src="https://apis.google.com/js/client:platform.js?onload=google_button_start"></script>
+    </div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -525,12 +518,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f33e28aff10&gt;
-</pre></div>
-</div>
-<img alt="../_images/ae84680384d6484addee0fcfa21aa16a3f3a008f43285ed9acb910bae01a31df.png" src="../_images/ae84680384d6484addee0fcfa21aa16a3f3a008f43285ed9acb910bae01a31df.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -541,10 +528,10 @@ document.write(`
 
     <span class="kn">from</span><span class="w"> </span><span class="nn">skimage.transform</span><span class="w"> </span><span class="kn">import</span> <span class="n">resize</span>
 
-    <span class="n">m</span> <span class="o">=</span>  <span class="o">...</span>     <span class="c1"># load the tensorflow hub model</span>
-    <span class="n">rimg</span> <span class="o">=</span> <span class="o">...</span>   <span class="c1"># resize and reshape the image to [1,224,224,3] </span>
+    <span class="n">m</span> <span class="o">=</span>  <span class="o">...</span>     <span class="c1"># load the tensorflow hub model, follow the example in notebook 4.6</span>
+    <span class="n">rimg</span> <span class="o">=</span> <span class="o">...</span>   <span class="c1"># resize and reshape the image to [1,224,224,3]</span>
     <span class="n">rimg</span> <span class="o">=</span> <span class="o">...</span>   <span class="c1"># normalize the image to a [0,1] range</span>
-    <span class="n">logits</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># feed the image into the model to obtain the logits </span>
+    <span class="n">logits</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># feed the image into the model to obtain the logits</span>
     <span class="n">probs</span>  <span class="o">=</span> <span class="o">...</span> <span class="c1"># convert logits to probabilities</span>
     <span class="n">r</span> <span class="o">=</span> <span class="o">...</span>      <span class="c1"># get the top 3 labels according to the probabilitys into a dict</span>
     <span class="k">return</span> <span class="n">r</span>
@@ -570,14 +557,6 @@ document.write(`
 <span class="n">get_top3_inceptionv1_labels</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">labels_list</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;chimpanzee&#39;: 0.96279883,
- &#39;hippopotamus&#39;: 0.0016488637,
- &#39;gorilla&#39;: 0.0013446786}
-</pre></div>
-</div>
-<img alt="../_images/01846450cd33230c071f3ca89e3f51b6f45104423dea498c2962455288c8ebc2.png" src="../_images/01846450cd33230c071f3ca89e3f51b6f45104423dea498c2962455288c8ebc2.png" />
 </div>
 </div>
 <p><strong>Registra tu solución en linea</strong></p>
@@ -619,7 +598,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">feature_vector_inceptionv1</span><span class="p">(</span><span class="n">imgs</span><span class="p">):</span>
     <span class="c1"># YOUR CODE HERE</span>
-    <span class="n">features</span> <span class="o">=</span> <span class="o">...</span>  
+    <span class="n">features</span> <span class="o">=</span> <span class="o">...</span>  <span class="c1"># load the model such as in notebook 4.6</span>
     <span class="k">return</span> <span class="n">features</span>
 </pre></div>
 </div>
@@ -630,6 +609,11 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xf_cifar</span> <span class="o">=</span> <span class="n">feature_vector_inceptionv1</span><span class="p">(</span><span class="n">x_cifar</span><span class="p">)</span>
 <span class="n">xf_cifar</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1000, 1024)
 </pre></div>
 </div>
 </div>
@@ -669,12 +653,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>similarity in feature space 41.228073
-</pre></div>
-</div>
-<img alt="../_images/b2d7b0370684ac679a6c2946e929b44ea8632e5e00ce27c510b6e3f76f2e237b.png" src="../_images/b2d7b0370684ac679a6c2946e929b44ea8632e5e00ce27c510b6e3f76f2e237b.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -709,6 +687,15 @@ document.write(`
 <li><p>one <code class="docutils literal notranslate"><span class="pre">Dense</span></code> layer with <code class="docutils literal notranslate"><span class="pre">dense_size</span></code> neurons and <code class="docutils literal notranslate"><span class="pre">relu</span></code> activation</p></li>
 <li><p>one <code class="docutils literal notranslate"><span class="pre">Dense</span></code> layer as output with 3 neurons (one for each class) and <code class="docutils literal notranslate"><span class="pre">softmax</span></code> activation</p></li>
 </ul>
+<p><strong>Recommendation</strong>: embed the <code class="docutils literal notranslate"><span class="pre">hub.KerasLayer</span></code> within a <code class="docutils literal notranslate"><span class="pre">Lambda</span></code> layer</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+                          <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Lambda</span><span class="p">(</span>
+                              <span class="n">hub</span><span class="o">.</span><span class="n">KerasLayer</span><span class="p">(</span><span class="s2">&quot;https://tfhub.dev/tensorflow/efficientnet/b7/feature-vector/1&quot;</span><span class="p">,</span><span class="n">trainable</span><span class="o">=</span><span class="n">trainable</span><span class="p">)</span>
+                              <span class="p">),</span>
+                              <span class="o">...</span>
+                      <span class="p">])</span>
+</pre></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">create_model</span><span class="p">(</span><span class="n">trainable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dense_size</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
@@ -730,26 +717,27 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</div>
+<p>you can now train your model. If you set <code class="docutils literal notranslate"><span class="pre">trainable=True</span></code> you should get &gt;80% accuracy in validation with 10-30 epochs</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="p">(</span><span class="n">x_cifar</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;sequential_4&quot;
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-keras_layer_4 (KerasLayer)   (None, 2560)              64097680  
-_________________________________________________________________
-dense (Dense)                (None, 100)               256100    
-_________________________________________________________________
-dense_1 (Dense)              (None, 3)                 303       
-=================================================================
-Total params: 64,354,083
-Trainable params: 64,043,363
-Non-trainable params: 310,720
-_________________________________________________________________
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tf.Tensor: shape=(1000, 3), dtype=float32, numpy=
+array([[0.09418883, 0.07144819, 0.834363  ],
+       [0.09804779, 0.07389595, 0.8280562 ],
+       [0.10172211, 0.06369718, 0.8345807 ],
+       ...,
+       [0.08896706, 0.06528997, 0.84574294],
+       [0.0961605 , 0.07172165, 0.8321178 ],
+       [0.10430062, 0.07245324, 0.8232461 ]], dtype=float32)&gt;
 </pre></div>
 </div>
 </div>
 </div>
-<p>you can now train your model. If you set <code class="docutils literal notranslate"><span class="pre">trainable=True</span></code> you should get &gt;80% accuracy in validation with 10-30 epochs</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
@@ -767,7 +755,106 @@ _________________________________________________________________
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;sparse_categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
-<span class="n">m</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+<span class="n">m</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">[:</span><span class="mi">100</span><span class="p">],</span> <span class="n">y_train</span><span class="p">[:</span><span class="mi">100</span><span class="p">],</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
+<span class=" -Color -Color-Bold">3/7</span> <span class=" -Color -Color-Green">━━━━━━━━</span><span class=" -Color -Color-White">━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1:42</span> 26s/step - accuracy: 0.5035 - loss: 3.0860
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">/tmp/ipython-input-306640133.py</span> in <span class="ni">&lt;cell line: 0&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">m</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;sparse_categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">m</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">[:</span><span class="mi">100</span><span class="p">],</span> <span class="n">y_train</span><span class="p">[:</span><span class="mi">100</span><span class="p">],</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+
+<span class="nn">/usr/local/lib/python3.12/dist-packages/keras/src/utils/traceback_utils.py</span> in <span class="ni">error_handler</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">115</span>         <span class="n">filtered_tb</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">116</span>         <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">117</span>             <span class="k">return</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">118</span>         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">119</span>             <span class="n">filtered_tb</span> <span class="o">=</span> <span class="n">_process_traceback_frames</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">__traceback__</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.12/dist-packages/keras/src/backend/tensorflow/trainer.py</span> in <span class="ni">fit</span><span class="nt">(self, x, y, batch_size, epochs, verbose, callbacks, validation_split, validation_data, shuffle, class_weight, sample_weight, initial_epoch, steps_per_epoch, validation_steps, validation_batch_size, validation_freq)</span>
+<span class="g g-Whitespace">    </span><span class="mi">375</span>                 <span class="k">for</span> <span class="n">step</span><span class="p">,</span> <span class="n">iterator</span> <span class="ow">in</span> <span class="n">epoch_iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">376</span>                     <span class="n">callbacks</span><span class="o">.</span><span class="n">on_train_batch_begin</span><span class="p">(</span><span class="n">step</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">377</span>                     <span class="n">logs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_function</span><span class="p">(</span><span class="n">iterator</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">378</span>                     <span class="n">callbacks</span><span class="o">.</span><span class="n">on_train_batch_end</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">logs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">379</span>                     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop_training</span><span class="p">:</span>
+
+<span class="nn">/usr/local/lib/python3.12/dist-packages/keras/src/backend/tensorflow/trainer.py</span> in <span class="ni">function</span><span class="nt">(iterator)</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span>                 <span class="n">iterator</span><span class="p">,</span> <span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Iterator</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">distribute</span><span class="o">.</span><span class="n">DistributedIterator</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span>             <span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">220</span>                 <span class="n">opt_outputs</span> <span class="o">=</span> <span class="n">multi_step_on_iterator</span><span class="p">(</span><span class="n">iterator</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span>                 <span class="k">if</span> <span class="ow">not</span> <span class="n">opt_outputs</span><span class="o">.</span><span class="n">has_value</span><span class="p">():</span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span>                     <span class="k">raise</span> <span class="ne">StopIteration</span>
+
+<span class="nn">/usr/local/lib/python3.12/dist-packages/tensorflow/python/util/traceback_utils.py</span> in <span class="ni">error_handler</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">148</span>     <span class="n">filtered_tb</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">149</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">150</span>       <span class="k">return</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">151</span>     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">152</span>       <span class="n">filtered_tb</span> <span class="o">=</span> <span class="n">_process_traceback_frames</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">__traceback__</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.12/dist-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py</span> in <span class="ni">__call__</span><span class="nt">(self, *args, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">831</span> 
+<span class="g g-Whitespace">    </span><span class="mi">832</span>       <span class="k">with</span> <span class="n">OptionalXlaContext</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_jit_compile</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">833</span>         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">834</span> 
+<span class="g g-Whitespace">    </span><span class="mi">835</span>       <span class="n">new_tracing_count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">experimental_get_tracing_count</span><span class="p">()</span>
+
+<span class="nn">/usr/local/lib/python3.12/dist-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py</span> in <span class="ni">_call</span><span class="nt">(self, *args, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">876</span>       <span class="c1"># In this case we have not created variables on the first call. So we can</span>
+<span class="g g-Whitespace">    </span><span class="mi">877</span>       <span class="c1"># run the first trace but we should fail if variables are created.</span>
+<span class="ne">--&gt; </span><span class="mi">878</span>       <span class="n">results</span> <span class="o">=</span> <span class="n">tracing_compilation</span><span class="o">.</span><span class="n">call_function</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">879</span>           <span class="n">args</span><span class="p">,</span> <span class="n">kwds</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variable_creation_config</span>
+<span class="g g-Whitespace">    </span><span class="mi">880</span>       <span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.12/dist-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py</span> in <span class="ni">call_function</span><span class="nt">(args, kwargs, tracing_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">137</span>   <span class="n">bound_args</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">function_type</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span>   <span class="n">flat_inputs</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">function_type</span><span class="o">.</span><span class="n">unpack_inputs</span><span class="p">(</span><span class="n">bound_args</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">139</span>   <span class="k">return</span> <span class="n">function</span><span class="o">.</span><span class="n">_call_flat</span><span class="p">(</span>  <span class="c1"># pylint: disable=protected-access</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span>       <span class="n">flat_inputs</span><span class="p">,</span> <span class="n">captured_inputs</span><span class="o">=</span><span class="n">function</span><span class="o">.</span><span class="n">captured_inputs</span>
+<span class="g g-Whitespace">    </span><span class="mi">141</span>   <span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.12/dist-packages/tensorflow/python/eager/polymorphic_function/concrete_function.py</span> in <span class="ni">_call_flat</span><span class="nt">(self, tensor_inputs, captured_inputs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1320</span>         <span class="ow">and</span> <span class="n">executing_eagerly</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1321</span>       <span class="c1"># No tape is watching; skip to running the function.</span>
+<span class="ne">-&gt; </span><span class="mi">1322</span>       <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inference_function</span><span class="o">.</span><span class="n">call_preflattened</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1323</span>     <span class="n">forward_backward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_select_forward_and_backward_functions</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1324</span>         <span class="n">args</span><span class="p">,</span>
+
+<span class="nn">/usr/local/lib/python3.12/dist-packages/tensorflow/python/eager/polymorphic_function/atomic_function.py</span> in <span class="ni">call_preflattened</span><span class="nt">(self, args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">214</span>   <span class="k">def</span><span class="w"> </span><span class="nf">call_preflattened</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">core</span><span class="o">.</span><span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">215</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Calls with flattened tensor inputs and returns the structured output.&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">216</span>     <span class="n">flat_outputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">call_flat</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">217</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">function_type</span><span class="o">.</span><span class="n">pack_output</span><span class="p">(</span><span class="n">flat_outputs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span> 
+
+<span class="nn">/usr/local/lib/python3.12/dist-packages/tensorflow/python/eager/polymorphic_function/atomic_function.py</span> in <span class="ni">call_flat</span><span class="nt">(self, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">249</span>         <span class="k">with</span> <span class="n">record</span><span class="o">.</span><span class="n">stop_recording</span><span class="p">():</span>
+<span class="g g-Whitespace">    </span><span class="mi">250</span>           <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bound_context</span><span class="o">.</span><span class="n">executing_eagerly</span><span class="p">():</span>
+<span class="ne">--&gt; </span><span class="mi">251</span>             <span class="n">outputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bound_context</span><span class="o">.</span><span class="n">call_function</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">252</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">253</span>                 <span class="nb">list</span><span class="p">(</span><span class="n">args</span><span class="p">),</span>
+
+<span class="nn">/usr/local/lib/python3.12/dist-packages/tensorflow/python/eager/context.py</span> in <span class="ni">call_function</span><span class="nt">(self, name, tensor_inputs, num_outputs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1686</span>     <span class="n">cancellation_context</span> <span class="o">=</span> <span class="n">cancellation</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1687</span>     <span class="k">if</span> <span class="n">cancellation_context</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1688</span>       <span class="n">outputs</span> <span class="o">=</span> <span class="n">execute</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1689</span>           <span class="n">name</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1690</span>           <span class="n">num_outputs</span><span class="o">=</span><span class="n">num_outputs</span><span class="p">,</span>
+
+<span class="nn">/usr/local/lib/python3.12/dist-packages/tensorflow/python/eager/execute.py</span> in <span class="ni">quick_execute</span><span class="nt">(op_name, num_outputs, inputs, attrs, ctx, name)</span>
+<span class="g g-Whitespace">     </span><span class="mi">51</span>   <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span>     <span class="n">ctx</span><span class="o">.</span><span class="n">ensure_initialized</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">53</span>     <span class="n">tensors</span> <span class="o">=</span> <span class="n">pywrap_tfe</span><span class="o">.</span><span class="n">TFE_Py_Execute</span><span class="p">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">device_name</span><span class="p">,</span> <span class="n">op_name</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">54</span>                                         <span class="n">inputs</span><span class="p">,</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">num_outputs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span>   <span class="k">except</span> <span class="n">core</span><span class="o">.</span><span class="n">_NotOkStatusException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -779,13 +866,6 @@ _________________________________________________________________
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-                    <b>T2 submitted.</b> <b><font color="blue">your grade is 5</font></b> 
-                    <p/><pre>----- grader message -------</pre>testing your code with sample imgs<br/><b>correct</b><pre>----------------------------</pre>
-                    <p/><p/>
-                    <div style="font-size:10px"><b>SUBMISSION CODE</b> Za6VY4Y14Q2eX2IjjwwaCqvygwivT0STNcd6UGnTRXPzIqbyUkisCYmLwXxTiaDrvHig901ZkHkiOolIbGrsXShSJMjOkrGe83dum7+ioWAn2P+z6GjZ09QEb8aB1dhc</div>
-                    </div></div>
 </div>
 </section>
 </section>

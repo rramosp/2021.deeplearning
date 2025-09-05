@@ -454,26 +454,19 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-4-3-object-detection">
 <h1>LAB 4.3 - Object detection<a class="headerlink" href="#lab-4-3-object-detection" title="Link to this heading">#</a></h1>
-<p>The labs require a <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code> version lower than the default one used in Google Colab. Run the following cell to downgrade TensorFlow accordingly.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">downgrade_tf_version</span><span class="p">():</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip uninstall -y tensorflow&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip install tensorflow==2.12.0&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="mi">9</span><span class="p">)</span>
-<span class="n">downgrade_tf_version</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
-<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<meta name="google-signin-client_id"
+      content="461673936472-kdjosv61up3ac1ajeuq6qqu72upilmls.apps.googleusercontent.com"/>
+<script src="https://apis.google.com/js/client:platform.js?onload=google_button_start"></script>
+    </div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -530,7 +523,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.patches</span><span class="w"> </span><span class="kn">import</span> <span class="n">Rectangle</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">));</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">));</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">X</span><span class="p">)[:</span><span class="mi">25</span><span class="p">]:</span>
@@ -539,7 +532,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c0defbe64bec87d3c66510850c5e456c2358268b5bc521e171cd9e3057396998.png" src="../_images/c0defbe64bec87d3c66510850c5e456c2358268b5bc521e171cd9e3057396998.png" />
+<img alt="../_images/d9fe51535d734952a8d6d23873712e079f9255787c042b3c150f57679beeb31e.png" src="../_images/d9fe51535d734952a8d6d23873712e079f9255787c042b3c150f57679beeb31e.png" />
 </div>
 </div>
 <p>Complete the following function such that it creates <code class="docutils literal notranslate"><span class="pre">n</span></code> anchor boxes from the bounding boxes in <code class="docutils literal notranslate"><span class="pre">X</span></code> using <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html">sklearn.cluster.KMeans</a> with <code class="docutils literal notranslate"><span class="pre">n_clusters</span></code> set to the number of anchor boxes desired. After fitting KMeans, return  cluster centers. Use the <code class="docutils literal notranslate"><span class="pre">random_state</span></code> passed as argument in KMeans.</p>
@@ -548,7 +541,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_anchor_boxes</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span>
     <span class="c1"># YOUR CODE HERE</span>
-    <span class="n">km</span> <span class="o">=</span> <span class="o">...</span> 
+    <span class="n">km</span> <span class="o">=</span> <span class="o">...</span>
     <span class="k">return</span> <span class="o">...</span>
 </pre></div>
 </div>
@@ -570,7 +563,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.patches</span><span class="w"> </span><span class="kn">import</span> <span class="n">Rectangle</span>
 <span class="n">anchors</span> <span class="o">=</span> <span class="n">get_anchor_boxes</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">));</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">));</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="ow">in</span> <span class="n">anchors</span><span class="p">:</span>
@@ -586,6 +579,13 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+                    <b>T1 submitted.</b> <b><font color="blue">your grade is 5</font></b> 
+                    <p/><pre>----- grader message -------</pre>correct<pre>----------------------------</pre>
+                    <p/><p/>
+                    <div style="font-size:10px"><b>SUBMISSION CODE</b> 8j8NVncV3clNGUh0NA14l+Ayuh+/YrTCTmTv6UiTpihOSq3j9xDy1WSLgUNzA0/VkFY8L4KhBpAwKIqkpWhtjD4O+8JmQOprnLVQXTV0WjXKb0a7J5oHbBP+rP6ij5WLn/YB1admmvVVKjTlZ7WNvAQt5StuVigXvu4k0d0o/4I=</div>
+                    </div></div>
 </div>
 </section>
 <section id="task-2-get-closest-anchor">
@@ -597,7 +597,7 @@ document.write(`
        <span class="mf">0.28577818</span><span class="p">,</span> <span class="mf">0.32945173</span><span class="p">,</span> <span class="mf">0.23846835</span><span class="p">,</span> <span class="mf">0.18874274</span><span class="p">,</span> <span class="mf">0.48914381</span><span class="p">,</span>
        <span class="mf">0.25347843</span><span class="p">,</span> <span class="mf">0.77500826</span><span class="p">,</span> <span class="mf">0.45506799</span><span class="p">,</span> <span class="mf">0.51589807</span><span class="p">,</span> <span class="mf">0.83168319</span><span class="p">,</span>
        <span class="mf">0.39802428</span><span class="p">,</span> <span class="mf">0.5539543</span> <span class="p">,</span> <span class="mf">0.86824085</span><span class="p">,</span> <span class="mf">0.93553054</span><span class="p">,</span> <span class="mf">0.89561131</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">kc</span> <span class="o">=</span> <span class="n">kc</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">kc</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))]</span>
+<span class="n">kc</span> <span class="o">=</span> <span class="n">kc</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">kc</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))]</span>
 <span class="n">anchors</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">kc</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">])</span>
 <span class="n">anchors</span>
 </pre></div>
@@ -634,7 +634,7 @@ returns the index of the most similar anchor to the bouding box.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">));</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">));</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">))]</span>
     <span class="n">bx</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">XMin</span> <span class="o">+</span> <span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">XMax</span><span class="o">-</span><span class="n">b</span><span class="o">.</span><span class="n">XMin</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">YMin</span> <span class="o">+</span> <span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">YMax</span><span class="o">-</span><span class="n">b</span><span class="o">.</span><span class="n">YMin</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
@@ -658,6 +658,13 @@ returns the index of the most similar anchor to the bouding box.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+                    <b>T2 submitted.</b> <b><font color="blue">your grade is 5</font></b> 
+                    <p/><pre>----- grader message -------</pre>correct<pre>----------------------------</pre>
+                    <p/><p/>
+                    <div style="font-size:10px"><b>SUBMISSION CODE</b> bS2DFRHH3oDevM1dYcVWUgrc1HPE6JdGH/IgH6ykBNITtwvLXT2Ro7X4XQGuI7x7T34RyoQnuKncFVuVKLdSo0c2Gjmn4pGNXnoU65iqL65Ji49cfZMYd0TDwcoK7v7PN0j1OKvG33BBeaShjmXq+wCoRo+cdBk6t8wCIFVHycw=</div>
+                    </div></div>
 </div>
 </section>
 <section id="task-3-compute-desired-model-bounding-box-predictions">
@@ -690,7 +697,7 @@ returns the index of the most similar anchor to the bouding box.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_model_target_predictions</span><span class="p">(</span><span class="n">bx</span><span class="p">,</span> <span class="n">by</span><span class="p">,</span> <span class="n">bw</span><span class="p">,</span> <span class="n">bh</span><span class="p">,</span> <span class="n">pw</span><span class="p">,</span> <span class="n">ph</span><span class="p">,</span> <span class="n">nw</span><span class="p">,</span> <span class="n">nh</span><span class="p">):</span>
     <span class="c1"># assume all x,y,w,h are in the [0,1] range, and nw, nh &gt; 2</span>
-    
+
     <span class="n">nx</span> <span class="o">=</span> <span class="o">...</span>
     <span class="n">ny</span> <span class="o">=</span> <span class="o">...</span>
     <span class="n">tx</span> <span class="o">=</span> <span class="o">...</span>
@@ -743,6 +750,13 @@ returns the index of the most similar anchor to the bouding box.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+                    <b>T3 submitted.</b> <b><font color="blue">your grade is 5</font></b> 
+                    <p/><pre>----- grader message -------</pre>correct<pre>----------------------------</pre>
+                    <p/><p/>
+                    <div style="font-size:10px"><b>SUBMISSION CODE</b> PmaHzEWVq/6OSmmJ5AZg58ksye8Z6CTkr3TL3z1mfLv0WNDsm0/NwJIKFefQxP7jDmaVKch9gxxDvnpSajaKrnFzI0eAdeUG5qO0u5O2DdMSac8C0s4U6O9ne6rYJPMLWZ/CXo5qmn4NkuzhG3huWuEwF/qWJyLRrVddCQi8UCs=</div>
+                    </div></div>
 </div>
 </section>
 </section>
