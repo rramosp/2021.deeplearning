@@ -686,7 +686,7 @@ document.write(`
 <p>When used with a model, at the end of any training it will contain a list of activations means and another list of activation stds, both with one element per each epoch. With this we can monitor how the activation in a specific layer progress over the training process. Tensorboard offers a similar functionality, but the goal with this task is to get acquainted with the callback mechanism.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">TrainValActivationsCallback</span><span class="p">(</span><span class="n">layer_name</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">TrainValActivationsCallback</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
     <span class="k">class</span><span class="w"> </span><span class="nc">TrainValActivationsCallback_class</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
 
         <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
