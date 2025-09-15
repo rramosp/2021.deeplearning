@@ -453,19 +453,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lstm-and-gru">
 <h1>5.2 LSTM and GRU<a class="headerlink" href="#lstm-and-gru" title="Link to this heading">#</a></h1>
-<p>Course’s materials require a <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code> version lower than the default one used in Google Colab. Run the following cell to downgrade TensorFlow accordingly.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">downgrade_tf_version</span><span class="p">():</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip uninstall -y tensorflow&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip install tensorflow==2.12.0&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="mi">9</span><span class="p">)</span>
-<span class="n">downgrade_tf_version</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
@@ -551,7 +538,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/be295af0fc024a76dcd367462b7db88d5e5eb8bf9c594ea33bb319024d12e623.png" src="../_images/be295af0fc024a76dcd367462b7db88d5e5eb8bf9c594ea33bb319024d12e623.png" />
+<img alt="../_images/0aba17be1dbdcce3c5272539b3433ef658cba0d582f68a734ecb437bcb165761.png" src="../_images/0aba17be1dbdcce3c5272539b3433ef658cba0d582f68a734ecb437bcb165761.png" />
 </div>
 </div>
 <p>The LSTM network uses the same principle the level of memory or time dependence, but instead of one controling parameter, it define <strong>gates</strong> adjusted during the training phase.</p>
@@ -596,23 +583,9 @@ document.write(`
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequential</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">LSTM</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">GRU</span><span class="p">,</span> <span class="n">SimpleRNN</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">LSTM</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">GRU</span><span class="p">,</span> <span class="n">SimpleRNN</span><span class="p">,</span> <span class="n">Input</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_squared_error</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Esta celda es por problemas de compatibilidad con la GPU en la última actualización</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.compat.v1</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfigProto</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.compat.v1</span><span class="w"> </span><span class="kn">import</span> <span class="n">InteractiveSession</span>
-
-<span class="n">config</span> <span class="o">=</span> <span class="n">ConfigProto</span><span class="p">()</span>
-<span class="n">config</span><span class="o">.</span><span class="n">gpu_options</span><span class="o">.</span><span class="n">allow_growth</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">session</span> <span class="o">=</span> <span class="n">InteractiveSession</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -733,7 +706,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/fc43c1fc9bf0a898d51a0209dd58281798a22f3b49a0bf6aa0772f6186c51154.png" src="../_images/fc43c1fc9bf0a898d51a0209dd58281798a22f3b49a0bf6aa0772f6186c51154.png" />
+<img alt="../_images/28c20bdd595bc1d580c877ea53dc7b78048005501fc584161e2586e541396dd9.png" src="../_images/28c20bdd595bc1d580c877ea53dc7b78048005501fc584161e2586e541396dd9.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -766,8 +739,9 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The RNN architecture</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">1</span><span class="p">)))</span>
 <span class="c1"># First RNN layer with Dropout regularisation</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">SimpleRNN</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">1</span><span class="p">)))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">SimpleRNN</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">50</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.2</span><span class="p">))</span>
 <span class="c1"># The output layer</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
@@ -782,23 +756,25 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;sequential&quot;
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-simple_rnn (SimpleRNN)       (None, 50)                2600      
-_________________________________________________________________
-dropout (Dropout)            (None, 50)                0         
-_________________________________________________________________
-dense (Dense)                (None, 1)                 51        
-=================================================================
-Total params: 2,651
-Trainable params: 2,651
-Non-trainable params: 0
-_________________________________________________________________
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "sequential"</span>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)                    </span>┃<span style="font-weight: bold"> Output Shape           </span>┃<span style="font-weight: bold">       Param # </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ simple_rnn (<span style="color: #0087ff; text-decoration-color: #0087ff">SimpleRNN</span>)          │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">50</span>)             │         <span style="color: #00af00; text-decoration-color: #00af00">2,600</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout (<span style="color: #0087ff; text-decoration-color: #0087ff">Dropout</span>)               │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">50</span>)             │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                   │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">1</span>)              │            <span style="color: #00af00; text-decoration-color: #00af00">51</span> │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">2,651</span> (10.36 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">2,651</span> (10.36 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">0</span> (0.00 B)
+</pre>
+</div></div>
 </div>
 <p>Let’s remember what a RNN can do:</p>
 <div class="cell docutils container">
@@ -812,108 +788,108 @@ _________________________________________________________________
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/50
-79/79 [==============================] - 1s 3ms/step - loss: 0.0477
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 657us/step - loss: 0.0611 
 Epoch 2/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0058
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 562us/step - loss: 0.0064
 Epoch 3/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0040
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 563us/step - loss: 0.0046
 Epoch 4/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0034
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 563us/step - loss: 0.0040
 Epoch 5/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0031
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 570us/step - loss: 0.0035
 Epoch 6/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0025
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 563us/step - loss: 0.0030
 Epoch 7/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0026
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 559us/step - loss: 0.0029
 Epoch 8/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0024
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 561us/step - loss: 0.0027
 Epoch 9/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0024
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 559us/step - loss: 0.0026
 Epoch 10/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0022
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 558us/step - loss: 0.0026
 Epoch 11/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0023
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 560us/step - loss: 0.0025
 Epoch 12/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0021
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 559us/step - loss: 0.0021
 Epoch 13/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0023
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 562us/step - loss: 0.0020
 Epoch 14/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0019
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 559us/step - loss: 0.0019
 Epoch 15/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0018
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 563us/step - loss: 0.0022
 Epoch 16/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0016
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 566us/step - loss: 0.0019
 Epoch 17/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0019
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 560us/step - loss: 0.0022
 Epoch 18/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0017
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 561us/step - loss: 0.0019
 Epoch 19/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0017
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 588us/step - loss: 0.0020
 Epoch 20/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0016
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 584us/step - loss: 0.0019
 Epoch 21/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0016
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 577us/step - loss: 0.0016
 Epoch 22/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0016
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 582us/step - loss: 0.0019
 Epoch 23/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0019
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 572us/step - loss: 0.0016
 Epoch 24/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0013
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 584us/step - loss: 0.0017
 Epoch 25/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0015
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 597us/step - loss: 0.0016
 Epoch 26/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0013
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 589us/step - loss: 0.0015
 Epoch 27/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0017
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 579us/step - loss: 0.0016
 Epoch 28/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0014
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 883us/step - loss: 0.0016
 Epoch 29/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0012
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 593us/step - loss: 0.0014
 Epoch 30/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0012
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 616us/step - loss: 0.0013
 Epoch 31/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0012
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 614us/step - loss: 0.0013
 Epoch 32/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0012
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 649us/step - loss: 0.0012
 Epoch 33/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0012
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 641us/step - loss: 0.0012
 Epoch 34/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0012
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 617us/step - loss: 0.0012  
 Epoch 35/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0010
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 632us/step - loss: 0.0011  
 Epoch 36/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0011
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 635us/step - loss: 0.0011
 Epoch 37/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0012
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 635us/step - loss: 9.8205e-04
 Epoch 38/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0011
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 616us/step - loss: 0.0012
 Epoch 39/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0010
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 612us/step - loss: 9.8427e-04
 Epoch 40/50
-79/79 [==============================] - 0s 3ms/step - loss: 9.5213e-04
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 612us/step - loss: 0.0010
 Epoch 41/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0010
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 622us/step - loss: 0.0010  
 Epoch 42/50
-79/79 [==============================] - 0s 3ms/step - loss: 0.0010
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 622us/step - loss: 9.7476e-04
 Epoch 43/50
-79/79 [==============================] - 0s 3ms/step - loss: 9.9394e-04
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 618us/step - loss: 9.1240e-04
 Epoch 44/50
-79/79 [==============================] - 0s 3ms/step - loss: 9.0539e-04
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 633us/step - loss: 0.0011
 Epoch 45/50
-79/79 [==============================] - 0s 3ms/step - loss: 8.6087e-04
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 645us/step - loss: 8.2203e-04
 Epoch 46/50
-79/79 [==============================] - 0s 3ms/step - loss: 8.1194e-04
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 648us/step - loss: 9.9008e-04
 Epoch 47/50
-79/79 [==============================] - 0s 3ms/step - loss: 9.0362e-04
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 627us/step - loss: 8.7365e-04
 Epoch 48/50
-79/79 [==============================] - 0s 3ms/step - loss: 8.2673e-04
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 955us/step - loss: 9.1499e-04
 Epoch 49/50
-79/79 [==============================] - 0s 3ms/step - loss: 8.6558e-04
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 627us/step - loss: 9.0956e-04
 Epoch 50/50
-79/79 [==============================] - 0s 3ms/step - loss: 9.0674e-04
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 640us/step - loss: 8.3333e-04
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7fedb4135d90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.src.callbacks.history.History at 0x32b78d6a0&gt;
 </pre></div>
 </div>
 </div>
@@ -948,6 +924,11 @@ Epoch 50/50
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">16/16</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 4ms/step
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -963,7 +944,7 @@ Epoch 50/50
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/270ebf61f714145ec8afbff067f47a553bd2de0c33ff3861317da63e224ebc2a.png" src="../_images/270ebf61f714145ec8afbff067f47a553bd2de0c33ff3861317da63e224ebc2a.png" />
+<img alt="../_images/ed0c7aea903ba3ea777d53d39af8e140728e533b5bdbbede23585782a07cc8b2.png" src="../_images/ed0c7aea903ba3ea777d53d39af8e140728e533b5bdbbede23585782a07cc8b2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -977,7 +958,7 @@ Epoch 50/50
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The root mean squared error is 0.9446786845179417.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The root mean squared error is 0.7130857635072282.
 </pre></div>
 </div>
 </div>
@@ -987,8 +968,9 @@ Epoch 50/50
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The LSTM architecture</span>
 <span class="n">regressor</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<span class="n">regressor</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">1</span><span class="p">)))</span>
 <span class="c1"># First LSTM layer with Dropout regularisation</span>
-<span class="n">regressor</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">1</span><span class="p">)))</span>
+<span class="n">regressor</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">50</span><span class="p">))</span>
 <span class="n">regressor</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.3</span><span class="p">))</span>
 <span class="n">regressor</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 </pre></div>
@@ -1002,34 +984,29 @@ Epoch 50/50
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;sequential_1&quot;
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-lstm (LSTM)                  (None, 50)                10400     
-_________________________________________________________________
-dropout_1 (Dropout)          (None, 50)                0         
-_________________________________________________________________
-dense_1 (Dense)              (None, 1)                 51        
-=================================================================
-Total params: 10,451
-Trainable params: 10,451
-Non-trainable params: 0
-_________________________________________________________________
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "sequential_1"</span>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)                    </span>┃<span style="font-weight: bold"> Output Shape           </span>┃<span style="font-weight: bold">       Param # </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ lstm (<span style="color: #0087ff; text-decoration-color: #0087ff">LSTM</span>)                     │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">50</span>)             │        <span style="color: #00af00; text-decoration-color: #00af00">10,400</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dropout</span>)             │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">50</span>)             │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                 │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">1</span>)              │            <span style="color: #00af00; text-decoration-color: #00af00">51</span> │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">10,451</span> (40.82 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">10,451</span> (40.82 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">0</span> (0.00 B)
+</pre>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The LSTM architecture</span>
-<span class="n">regressor</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
-<span class="c1"># First LSTM layer with Dropout regularisation</span>
-<span class="n">regressor</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">1</span><span class="p">)))</span>
-<span class="n">regressor</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.3</span><span class="p">))</span>
-<span class="n">regressor</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-
-<span class="c1"># Compiling the RNN</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compiling the RNN</span>
 <span class="n">regressor</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mean_squared_error&#39;</span><span class="p">)</span>
 <span class="c1"># Fitting to the training set</span>
 <span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">look_back</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">y_train</span><span class="p">,</span><span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
@@ -1038,108 +1015,108 @@ _________________________________________________________________
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/50
-79/79 [==============================] - 2s 2ms/step - loss: 0.0975
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.1272
 Epoch 2/50
-79/79 [==============================] - 0s 1ms/step - loss: 0.0068
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 990us/step - loss: 0.0066
 Epoch 3/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0047
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0048  
 Epoch 4/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0042
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0043  
 Epoch 5/50
-79/79 [==============================] - 0s 1ms/step - loss: 0.0039
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0040  
 Epoch 6/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0038
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 991us/step - loss: 0.0038
 Epoch 7/50
-79/79 [==============================] - 0s 1ms/step - loss: 0.0035
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 992us/step - loss: 0.0035
 Epoch 8/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0034
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 985us/step - loss: 0.0035
 Epoch 9/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0032
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 984us/step - loss: 0.0037
 Epoch 10/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0030
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 981us/step - loss: 0.0033
 Epoch 11/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0030
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 981us/step - loss: 0.0028
 Epoch 12/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0026
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0032  
 Epoch 13/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0028
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0029
 Epoch 14/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0028
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0026  
 Epoch 15/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0025
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 986us/step - loss: 0.0029
 Epoch 16/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0027
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 990us/step - loss: 0.0027
 Epoch 17/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0027
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 985us/step - loss: 0.0026
 Epoch 18/50
-79/79 [==============================] - 0s 1ms/step - loss: 0.0023
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 985us/step - loss: 0.0027
 Epoch 19/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0024
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 978us/step - loss: 0.0025
 Epoch 20/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0022
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 982us/step - loss: 0.0026
 Epoch 21/50
-79/79 [==============================] - 0s 1ms/step - loss: 0.0022
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 981us/step - loss: 0.0024
 Epoch 22/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0021
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 982us/step - loss: 0.0028
 Epoch 23/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0021
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 985us/step - loss: 0.0023
 Epoch 24/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0021
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 983us/step - loss: 0.0023
 Epoch 25/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0018
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 986us/step - loss: 0.0021
 Epoch 26/50
-79/79 [==============================] - 0s 1ms/step - loss: 0.0020
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 983us/step - loss: 0.0024
 Epoch 27/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0020
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 984us/step - loss: 0.0020
 Epoch 28/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0018
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 983us/step - loss: 0.0021
 Epoch 29/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0017
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 992us/step - loss: 0.0018
 Epoch 30/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0019
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0020  
 Epoch 31/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0017
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0019  
 Epoch 32/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0016
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 991us/step - loss: 0.0019
 Epoch 33/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0018
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0017  
 Epoch 34/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0017
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0018  
 Epoch 35/50
-79/79 [==============================] - 0s 1ms/step - loss: 0.0017
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 993us/step - loss: 0.0017
 Epoch 36/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0014
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 990us/step - loss: 0.0017
 Epoch 37/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0015
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 987us/step - loss: 0.0015
 Epoch 38/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0014
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 988us/step - loss: 0.0016
 Epoch 39/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0015
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 989us/step - loss: 0.0015
 Epoch 40/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0013
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0014  
 Epoch 41/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0013
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0013  
 Epoch 42/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0014
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0016  
 Epoch 43/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0014
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0015
 Epoch 44/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0013
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0014  
 Epoch 45/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0013
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0014  
 Epoch 46/50
-79/79 [==============================] - 0s 1ms/step - loss: 0.0014
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0014  
 Epoch 47/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0012
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0013  
 Epoch 48/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0013
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0014  
 Epoch 49/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0013
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0013  
 Epoch 50/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0012
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0012  
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7fed80592250&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.src.callbacks.history.History at 0x32ce9a190&gt;
 </pre></div>
 </div>
 </div>
@@ -1148,6 +1125,11 @@ Epoch 50/50
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predicted_stock_price</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="n">predicted_stock_price</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">predicted_stock_price</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">16/16</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 3ms/step 
 </pre></div>
 </div>
 </div>
@@ -1166,7 +1148,7 @@ Epoch 50/50
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9a4c293e99e7ae5a392d0fc27ac133bb71fd78041224a5ab6249f864b3aa9c75.png" src="../_images/9a4c293e99e7ae5a392d0fc27ac133bb71fd78041224a5ab6249f864b3aa9c75.png" />
+<img alt="../_images/1b67f956e269971bdf3797d08612d79429c7b9276d8c69b960ec16380076ddd3.png" src="../_images/1b67f956e269971bdf3797d08612d79429c7b9276d8c69b960ec16380076ddd3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1178,7 +1160,7 @@ Epoch 50/50
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The root mean squared error is 0.7668002979683394.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The root mean squared error is 0.8338981916716676.
 </pre></div>
 </div>
 </div>
@@ -1212,8 +1194,9 @@ Epoch 50/50
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The GRU architecture</span>
 <span class="n">regressor2</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<span class="n">regressor2</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">1</span><span class="p">)))</span>
 <span class="c1"># First GRU layer with Dropout regularisation</span>
-<span class="n">regressor2</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">GRU</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">1</span><span class="p">)))</span>
+<span class="n">regressor2</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">GRU</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">50</span><span class="p">))</span>
 <span class="n">regressor2</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.3</span><span class="p">))</span>
 <span class="c1"># The output layer</span>
 <span class="n">regressor2</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
@@ -1228,23 +1211,25 @@ Epoch 50/50
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;sequential_3&quot;
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-gru (GRU)                    (None, 50)                7950      
-_________________________________________________________________
-dropout_3 (Dropout)          (None, 50)                0         
-_________________________________________________________________
-dense_3 (Dense)              (None, 1)                 51        
-=================================================================
-Total params: 8,001
-Trainable params: 8,001
-Non-trainable params: 0
-_________________________________________________________________
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "sequential_2"</span>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)                    </span>┃<span style="font-weight: bold"> Output Shape           </span>┃<span style="font-weight: bold">       Param # </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ gru (<span style="color: #0087ff; text-decoration-color: #0087ff">GRU</span>)                       │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">50</span>)             │         <span style="color: #00af00; text-decoration-color: #00af00">7,950</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout_2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dropout</span>)             │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">50</span>)             │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                 │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">1</span>)              │            <span style="color: #00af00; text-decoration-color: #00af00">51</span> │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">8,001</span> (31.25 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">8,001</span> (31.25 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">0</span> (0.00 B)
+</pre>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1257,108 +1242,108 @@ _________________________________________________________________
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/50
-79/79 [==============================] - 1s 2ms/step - loss: 0.1456
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 1ms/step - loss: 0.0943
 Epoch 2/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0070
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0055
 Epoch 3/50
-79/79 [==============================] - 0s 1ms/step - loss: 0.0062
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0048
 Epoch 4/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0049
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0039
 Epoch 5/50
-79/79 [==============================] - 0s 1ms/step - loss: 0.0048
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0036
 Epoch 6/50
-79/79 [==============================] - 0s 1ms/step - loss: 0.0038
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0032
 Epoch 7/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0038
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0031
 Epoch 8/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0034
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0031
 Epoch 9/50
-79/79 [==============================] - 0s 1ms/step - loss: 0.0032
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0031
 Epoch 10/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0032
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0030
 Epoch 11/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0033
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0028
 Epoch 12/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0033
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0031
 Epoch 13/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0027
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0027
 Epoch 14/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0027
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0028
 Epoch 15/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0028
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0022
 Epoch 16/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0024
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0023
 Epoch 17/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0026
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0024
 Epoch 18/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0026
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0022
 Epoch 19/50
-79/79 [==============================] - 0s 1ms/step - loss: 0.0025
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0022
 Epoch 20/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0026
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0024
 Epoch 21/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0024
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0021
 Epoch 22/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0023
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0021
 Epoch 23/50
-79/79 [==============================] - 0s 1ms/step - loss: 0.0023
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0020
 Epoch 24/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0021
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0019
 Epoch 25/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0019
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0018
 Epoch 26/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0021
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0020
 Epoch 27/50
-79/79 [==============================] - 0s 1ms/step - loss: 0.0020
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0017
 Epoch 28/50
-79/79 [==============================] - 0s 1ms/step - loss: 0.0020
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0017
 Epoch 29/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0017
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0017
 Epoch 30/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0019
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0015
 Epoch 31/50
-79/79 [==============================] - 0s 1ms/step - loss: 0.0016
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0014
 Epoch 32/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0018
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0014
 Epoch 33/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0017
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0014
 Epoch 34/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0017
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0013
 Epoch 35/50
-79/79 [==============================] - 0s 1ms/step - loss: 0.0016
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0014
 Epoch 36/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0016
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0014
 Epoch 37/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0016
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0013
 Epoch 38/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0014
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0012
 Epoch 39/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0015
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0013
 Epoch 40/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0013
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0014
 Epoch 41/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0013
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0012
 Epoch 42/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0013
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0012
 Epoch 43/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0012
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0013
 Epoch 44/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0013
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0011
 Epoch 45/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0012
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0013
 Epoch 46/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0011
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0011
 Epoch 47/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0011
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0011
 Epoch 48/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0011
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0011
 Epoch 49/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0011
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - loss: 0.0010
 Epoch 50/50
-79/79 [==============================] - 0s 2ms/step - loss: 0.0010
+<span class=" -Color -Color-Bold">79/79</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 0.0011
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7fed302f34d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.src.callbacks.history.History at 0x32cf73e20&gt;
 </pre></div>
 </div>
 </div>
@@ -1368,6 +1353,11 @@ Epoch 50/50
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predicted_stock_price</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="n">predicted_stock_price</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">predicted_stock_price</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">16/16</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step 
 </pre></div>
 </div>
 </div>
@@ -1386,7 +1376,7 @@ Epoch 50/50
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b30262f816dde332154c144bcd0cb2e99315adce17fd705b95a7f850cd34d0e0.png" src="../_images/b30262f816dde332154c144bcd0cb2e99315adce17fd705b95a7f850cd34d0e0.png" />
+<img alt="../_images/0bcdeac6fd285c159f1e6be111dacb2ca88c45cc28f9a9154658b4dfa5a9528d.png" src="../_images/0bcdeac6fd285c159f1e6be111dacb2ca88c45cc28f9a9154658b4dfa5a9528d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1398,7 +1388,7 @@ Epoch 50/50
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The root mean squared error is 0.7668002979683394.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The root mean squared error is 0.8338981916716676.
 </pre></div>
 </div>
 </div>
