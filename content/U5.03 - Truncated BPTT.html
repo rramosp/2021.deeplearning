@@ -461,19 +461,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="truncated-bptt">
 <h1>5.3 Truncated BPTT<a class="headerlink" href="#truncated-bptt" title="Link to this heading">#</a></h1>
-<p>Course’s materials require a <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code> version lower than the default one used in Google Colab. Run the following cell to downgrade TensorFlow accordingly.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">downgrade_tf_version</span><span class="p">():</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip uninstall -y tensorflow&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip install tensorflow==2.12.0&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="mi">9</span><span class="p">)</span>
-<span class="n">downgrade_tf_version</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>When the sequences are very long (thousands of points), the network training can be very slow and the memory requirements increase. The truncated BPTT is an alternative similar to mini-batch training in Dense Networks, even though in RNN the batch parameter can also be used.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -491,6 +478,11 @@ document.write(`
     <span class="o">%</span><span class="k">tensorflow_version</span> 2.x
 <span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
 <span class="n">tf</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.19.0&#39;
 </pre></div>
 </div>
 </div>
@@ -540,22 +532,22 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1. 0. 0. 0. 0.]
  [0. 0. 0. 0. 0.]
  [0. 0. 0. 0. 0.]
- [1. 0. 0. 0. 0.]
- [1. 0. 0. 0. 0.]
  [0. 0. 0. 0. 0.]
  [0. 0. 0. 0. 0.]
  [0. 0. 0. 0. 0.]
  [1. 0. 0. 0. 0.]
- [1. 0. 0. 0. 0.]]
+ [1. 0. 0. 0. 0.]
+ [1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
 [[1. 0. 0. 0. 0.]
  [1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
  [1. 0. 0. 0. 0.]
  [1. 0. 0. 0. 0.]
  [1. 0. 0. 0. 0.]
  [0. 0. 0. 0. 0.]
  [0. 0. 0. 0. 0.]
- [1. 0. 0. 0. 0.]
- [1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
  [0. 0. 0. 0. 0.]]
 </pre></div>
 </div>
@@ -681,21 +673,8 @@ document.write(`
 <h3>Let’s train a regular LSTM network<a class="headerlink" href="#let-s-train-a-regular-lstm-network" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">LSTM</span><span class="p">,</span> <span class="n">Dense</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">LSTM</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Input</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequential</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Para resolver problema de compatibilidad tf 2.4 con algunas GPUs</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.compat.v1</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfigProto</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.compat.v1</span><span class="w"> </span><span class="kn">import</span> <span class="n">InteractiveSession</span>
-
-<span class="n">config</span> <span class="o">=</span> <span class="n">ConfigProto</span><span class="p">()</span>
-<span class="n">config</span><span class="o">.</span><span class="n">gpu_options</span><span class="o">.</span><span class="n">allow_growth</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">session</span> <span class="o">=</span> <span class="n">InteractiveSession</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -709,7 +688,8 @@ document.write(`
 <span class="n">max_len</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">11</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">stateful</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">stateful</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;binary_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">X_train</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
@@ -721,15 +701,15 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Building STATELESS model...
 Epoch 1/5
-91/91 [==============================] - 3s 6ms/step - loss: 0.6856 - accuracy: 0.5882 - val_loss: 0.3346 - val_accuracy: 1.0000
+<span class=" -Color -Color-Bold">91/91</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 2ms/step - accuracy: 0.6195 - loss: 0.6845 - val_accuracy: 1.0000 - val_loss: 0.3576
 Epoch 2/5
-91/91 [==============================] - 0s 2ms/step - loss: 0.2117 - accuracy: 1.0000 - val_loss: 0.0778 - val_accuracy: 1.0000
+<span class=" -Color -Color-Bold">91/91</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - accuracy: 1.0000 - loss: 0.2445 - val_accuracy: 1.0000 - val_loss: 0.1088
 Epoch 3/5
-91/91 [==============================] - 0s 2ms/step - loss: 0.0652 - accuracy: 1.0000 - val_loss: 0.0351 - val_accuracy: 1.0000
+<span class=" -Color -Color-Bold">91/91</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - accuracy: 1.0000 - loss: 0.0904 - val_accuracy: 1.0000 - val_loss: 0.0507
 Epoch 4/5
-91/91 [==============================] - 0s 2ms/step - loss: 0.0302 - accuracy: 1.0000 - val_loss: 0.0204 - val_accuracy: 1.0000
+<span class=" -Color -Color-Bold">91/91</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - accuracy: 1.0000 - loss: 0.0432 - val_accuracy: 1.0000 - val_loss: 0.0281
 Epoch 5/5
-91/91 [==============================] - 0s 2ms/step - loss: 0.0185 - accuracy: 1.0000 - val_loss: 0.0141 - val_accuracy: 1.0000
+<span class=" -Color -Color-Bold">91/91</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - accuracy: 1.0000 - loss: 0.0251 - val_accuracy: 1.0000 - val_loss: 0.0185
 </pre></div>
 </div>
 </div>
@@ -755,7 +735,8 @@ Epoch 5/5
 <span class="n">max_len</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">max_len</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">stateful</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">max_len</span><span class="p">,</span><span class="mi">1</span><span class="p">)))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">stateful</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;binary_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
@@ -767,35 +748,35 @@ Epoch 5/5
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Building STATELESS model...
 Epoch 1/15
-1000/1000 [==============================] - 2s 2ms/step - loss: 0.5768 - accuracy: 0.7036 - val_loss: 0.4794 - val_accuracy: 0.7500
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 628us/step - accuracy: 0.6097 - loss: 0.5924 - val_accuracy: 0.7500 - val_loss: 0.4794
 Epoch 2/15
-1000/1000 [==============================] - 2s 2ms/step - loss: 0.4783 - accuracy: 0.7574 - val_loss: 0.4785 - val_accuracy: 0.7500
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 566us/step - accuracy: 0.7491 - loss: 0.4807 - val_accuracy: 0.7500 - val_loss: 0.4785
 Epoch 3/15
-1000/1000 [==============================] - 2s 2ms/step - loss: 0.4774 - accuracy: 0.7574 - val_loss: 0.4782 - val_accuracy: 0.7500
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 570us/step - accuracy: 0.7491 - loss: 0.4798 - val_accuracy: 0.7500 - val_loss: 0.4781
 Epoch 4/15
-1000/1000 [==============================] - 2s 2ms/step - loss: 0.4771 - accuracy: 0.7574 - val_loss: 0.4780 - val_accuracy: 0.7500
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 570us/step - accuracy: 0.7491 - loss: 0.4794 - val_accuracy: 0.7500 - val_loss: 0.4779
 Epoch 5/15
-1000/1000 [==============================] - 2s 2ms/step - loss: 0.4769 - accuracy: 0.7574 - val_loss: 0.4779 - val_accuracy: 0.7500
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 592us/step - accuracy: 0.7491 - loss: 0.4792 - val_accuracy: 0.7500 - val_loss: 0.4778
 Epoch 6/15
-1000/1000 [==============================] - 2s 2ms/step - loss: 0.4767 - accuracy: 0.7574 - val_loss: 0.4779 - val_accuracy: 0.7500
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 573us/step - accuracy: 0.7491 - loss: 0.4791 - val_accuracy: 0.7500 - val_loss: 0.4777
 Epoch 7/15
-1000/1000 [==============================] - 2s 2ms/step - loss: 0.4766 - accuracy: 0.7574 - val_loss: 0.4778 - val_accuracy: 0.7500
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 574us/step - accuracy: 0.7491 - loss: 0.4789 - val_accuracy: 0.7500 - val_loss: 0.4777
 Epoch 8/15
-1000/1000 [==============================] - 2s 2ms/step - loss: 0.4765 - accuracy: 0.7574 - val_loss: 0.4778 - val_accuracy: 0.7500
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 589us/step - accuracy: 0.7491 - loss: 0.4788 - val_accuracy: 0.7500 - val_loss: 0.4776
 Epoch 9/15
-1000/1000 [==============================] - 2s 2ms/step - loss: 0.4765 - accuracy: 0.7574 - val_loss: 0.4777 - val_accuracy: 0.7500
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 577us/step - accuracy: 0.7491 - loss: 0.4788 - val_accuracy: 0.7500 - val_loss: 0.4776
 Epoch 10/15
-1000/1000 [==============================] - 2s 2ms/step - loss: 0.4764 - accuracy: 0.7574 - val_loss: 0.4777 - val_accuracy: 0.7500
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 580us/step - accuracy: 0.7491 - loss: 0.4787 - val_accuracy: 0.7500 - val_loss: 0.4775
 Epoch 11/15
-1000/1000 [==============================] - 2s 2ms/step - loss: 0.4764 - accuracy: 0.7574 - val_loss: 0.4777 - val_accuracy: 0.7500
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 581us/step - accuracy: 0.7491 - loss: 0.4786 - val_accuracy: 0.7500 - val_loss: 0.4775
 Epoch 12/15
-1000/1000 [==============================] - 2s 2ms/step - loss: 0.4763 - accuracy: 0.7574 - val_loss: 0.4777 - val_accuracy: 0.7500
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 582us/step - accuracy: 0.7491 - loss: 0.4786 - val_accuracy: 0.7500 - val_loss: 0.4775
 Epoch 13/15
-1000/1000 [==============================] - 2s 2ms/step - loss: 0.4763 - accuracy: 0.7574 - val_loss: 0.4776 - val_accuracy: 0.7500
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 582us/step - accuracy: 0.7491 - loss: 0.4785 - val_accuracy: 0.7500 - val_loss: 0.4775
 Epoch 14/15
-1000/1000 [==============================] - 2s 2ms/step - loss: 0.4762 - accuracy: 0.7574 - val_loss: 0.4776 - val_accuracy: 0.7500
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 602us/step - accuracy: 0.7491 - loss: 0.4785 - val_accuracy: 0.7500 - val_loss: 0.4774
 Epoch 15/15
-1000/1000 [==============================] - 2s 2ms/step - loss: 0.4762 - accuracy: 0.7574 - val_loss: 0.4776 - val_accuracy: 0.7500
+<span class=" -Color -Color-Bold">1000/1000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 582us/step - accuracy: 0.7491 - loss: 0.4785 - val_accuracy: 0.7500 - val_loss: 0.4774
 </pre></div>
 </div>
 </div>
@@ -827,7 +808,8 @@ Epoch 15/15
 <span class="n">n_partitions</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">batch</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="n">max_len</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">stateful</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">max_len</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">stateful</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;binary_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
 </pre></div>
@@ -853,7 +835,7 @@ Epoch 15/15
             <span class="n">tr_loss</span><span class="p">,</span> <span class="n">tr_acc</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">train_on_batch</span><span class="p">(</span><span class="n">x_train</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">,:,:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">max_len</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">y_train</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">,:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
             <span class="n">mean_tr_acc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tr_acc</span><span class="p">)</span>
             <span class="n">mean_tr_loss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tr_loss</span><span class="p">)</span>
-        <span class="n">model</span><span class="o">.</span><span class="n">reset_states</span><span class="p">()</span>    
+        <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reset_states</span><span class="p">()</span>    
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;accuracy training = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">mean_tr_acc</span><span class="p">)))</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;loss training = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">mean_tr_loss</span><span class="p">)))</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;___________________________________&#39;</span><span class="p">)</span>
@@ -865,7 +847,7 @@ Epoch 15/15
             <span class="n">te_loss</span><span class="p">,</span> <span class="n">te_acc</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">test_on_batch</span><span class="p">(</span><span class="n">x_test</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">,:,:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">max_len</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">y_test</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">,:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
             <span class="n">mean_te_acc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">te_acc</span><span class="p">)</span>
             <span class="n">mean_te_loss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">te_loss</span><span class="p">)</span>
-        <span class="n">model</span><span class="o">.</span><span class="n">reset_states</span><span class="p">()</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reset_states</span><span class="p">()</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;accuracy testing = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">mean_te_acc</span><span class="p">)))</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;loss testing = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">mean_te_loss</span><span class="p">)))</span>
@@ -875,35 +857,35 @@ Epoch 15/15
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train...
-accuracy training = 0.97
-loss training = 0.0724665543687297
+accuracy training = 0.8727690577507019
+loss training = 0.23629359900951385
 ___________________________________
-accuracy testing = 1.0
-loss testing = 0.0010425312793813646
+accuracy testing = 0.9667946100234985
+loss testing = 0.07307052612304688
 ___________________________________
-accuracy training = 1.0
-loss training = 0.0005047061592849786
+accuracy training = 0.977907121181488
+loss training = 0.048978641629219055
 ___________________________________
-accuracy testing = 1.0
-loss testing = 0.00022369572980096564
+accuracy testing = 0.9841359853744507
+loss testing = 0.03531878814101219
 ___________________________________
-accuracy training = 1.0
-loss training = 0.00012951270282610493
+accuracy training = 0.9872968792915344
+loss training = 0.02832924574613571
 ___________________________________
-accuracy testing = 1.0
-loss testing = 6.860588746349094e-05
+accuracy testing = 0.9895753264427185
+loss testing = 0.023273712024092674
 ___________________________________
-accuracy training = 1.0
-loss training = 4.184540016831306e-05
+accuracy training = 0.9910579919815063
+loss training = 0.019974345341324806
 ___________________________________
-accuracy testing = 1.0
-loss testing = 2.338519880140666e-05
+accuracy testing = 0.9922366142272949
+loss testing = 0.017347801476716995
 ___________________________________
-accuracy training = 1.0
-loss training = 1.4540311468635991e-05
+accuracy training = 0.9930955767631531
+loss training = 0.015431100502610207
 ___________________________________
-accuracy testing = 1.0
-loss testing = 8.292114785035665e-06
+accuracy testing = 0.9938153028488159
+loss testing = 0.013824365101754665
 ___________________________________
 </pre></div>
 </div>
@@ -920,11 +902,12 @@ ___________________________________
 
     <span class="k">def</span><span class="w"> </span><span class="nf">on_batch_begin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="p">{}):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">%</span> <span class="n">n_partitions</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">reset_states</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reset_states</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="n">max_len</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">stateful</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">max_len</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">stateful</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;binary_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">ResetStatesCallback</span><span class="p">()],</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -932,20 +915,19 @@ ___________________________________
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train on 2000 samples
-Epoch 1/5
-2000/2000 [==============================] - 11s 5ms/sample - loss: 0.0740 - accuracy: 0.9625
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/5
+<span class=" -Color -Color-Bold">2000/2000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 561us/step - accuracy: 0.8624 - loss: 0.2455
 Epoch 2/5
-2000/2000 [==============================] - 10s 5ms/sample - loss: 4.8555e-04 - accuracy: 1.0000
+<span class=" -Color -Color-Bold">2000/2000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 557us/step - accuracy: 1.0000 - loss: 0.0012
 Epoch 3/5
-2000/2000 [==============================] - 12s 6ms/sample - loss: 1.2338e-04 - accuracy: 1.0000
+<span class=" -Color -Color-Bold">2000/2000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 557us/step - accuracy: 1.0000 - loss: 2.6386e-04
 Epoch 4/5
-2000/2000 [==============================] - 10s 5ms/sample - loss: 3.9900e-05 - accuracy: 1.0000
+<span class=" -Color -Color-Bold">2000/2000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 558us/step - accuracy: 1.0000 - loss: 8.2083e-05
 Epoch 5/5
-2000/2000 [==============================] - 8s 4ms/sample - loss: 1.3916e-05 - accuracy: 1.0000
+<span class=" -Color -Color-Bold">2000/2000</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 571us/step - accuracy: 1.0000 - loss: 2.8112e-05
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7f82dc08b850&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.src.callbacks.history.History at 0x1774afbe0&gt;
 </pre></div>
 </div>
 </div>
@@ -954,31 +936,41 @@ Epoch 5/5
 <p>*<strong>Example</strong>: The following code does not have relation with the previous examples!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># configure network</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="c1"># configure network</span>
 <span class="n">n_batch</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">n_epoch</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">n_epoch</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">n_neurons</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="c1"># design network</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="n">n_neurons</span><span class="p">,</span> <span class="n">batch_input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">n_batch</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="n">stateful</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span><span class="n">batch_size</span><span class="o">=</span><span class="n">n_batch</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="n">n_neurons</span><span class="p">,</span> <span class="n">stateful</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mean_squared_error&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">)</span>
 <span class="c1"># fit network</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_epoch</span><span class="p">):</span>
     <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">n_batch</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">reset_states</span><span class="p">()</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reset_states</span><span class="p">()</span>
 <span class="c1"># re-define the batch size</span>
 
 <span class="n">n_batch</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="c1"># re-define model</span>
 <span class="n">new_model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
-<span class="n">new_model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="n">n_neurons</span><span class="p">,</span> <span class="n">batch_input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">n_batch</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="n">stateful</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">new_model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span><span class="n">batch_size</span><span class="o">=</span><span class="n">n_batch</span><span class="p">))</span>
+<span class="n">new_model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="n">n_neurons</span><span class="p">,</span> <span class="n">stateful</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 <span class="n">new_model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 <span class="c1"># copy weights</span>
 <span class="n">old_weights</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
 <span class="n">new_model</span><span class="o">.</span><span class="n">set_weights</span><span class="p">(</span><span class="n">old_weights</span><span class="p">)</span>
 <span class="c1"># compile model</span>
 <span class="n">new_model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mean_squared_error&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 1.2503  
+<span class=" -Color -Color-Bold">34/34</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 596us/step - loss: 1.2227
 </pre></div>
 </div>
 </div>
