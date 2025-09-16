@@ -454,19 +454,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sequences-generation">
 <h1>5.5 Sequences generation<a class="headerlink" href="#sequences-generation" title="Link to this heading">#</a></h1>
-<p>Course’s materials require a <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code> version lower than the default one used in Google Colab. Run the following cell to downgrade TensorFlow accordingly.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">downgrade_tf_version</span><span class="p">():</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip uninstall -y tensorflow&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip install tensorflow==2.12.0&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="mi">9</span><span class="p">)</span>
-<span class="n">downgrade_tf_version</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
@@ -484,6 +471,15 @@ document.write(`
     <span class="o">%</span><span class="k">load_ext</span> tensorboard
 <span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
 <span class="n">tf</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jdariasl/.cache/uv/archive-v0/mTE5xBvw1heDpxC7T3_--/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the &#39;ssl&#39; module is compiled with &#39;LibreSSL 2.8.3&#39;. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.19.0&#39;
 </pre></div>
 </div>
 </div>
@@ -511,31 +507,10 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequential</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Masking</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dropout</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">LSTM</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Masking</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">LSTM</span><span class="p">,</span> <span class="n">Input</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.optimizers</span><span class="w"> </span><span class="kn">import</span> <span class="n">RMSprop</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.callbacks</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelCheckpoint</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">keras.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">np_utils</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using TensorFlow backend.
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#This code is to fix a compatibility problem of TF 2.4 with some GPUs</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.compat.v1</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfigProto</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.compat.v1</span><span class="w"> </span><span class="kn">import</span> <span class="n">InteractiveSession</span>
-
-<span class="n">config</span> <span class="o">=</span> <span class="n">ConfigProto</span><span class="p">()</span>
-<span class="n">config</span><span class="o">.</span><span class="n">gpu_options</span><span class="o">.</span><span class="n">allow_growth</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">session</span> <span class="o">=</span> <span class="n">InteractiveSession</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">keras.utils</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np_utils</span>
 </pre></div>
 </div>
 </div>
@@ -548,8 +523,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package gutenberg to /home/julian/nltk_data...
-[nltk_data]   Package gutenberg is already up-to-date!
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package gutenberg to
+[nltk_data]     /Users/jdariasl/nltk_data...
+[nltk_data]   Unzipping corpora/gutenberg.zip.
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
@@ -734,7 +710,8 @@ Total Vocab:  75
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">256</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">)</span>
 </pre></div>
@@ -757,415 +734,6 @@ Total Vocab:  75
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/200
-521/521 [==============================] - 6s 8ms/step - loss: 3.2294
-Epoch 2/200
-521/521 [==============================] - 3s 5ms/step - loss: 2.8156
-Epoch 3/200
-521/521 [==============================] - 3s 7ms/step - loss: 2.6550
-Epoch 4/200
-521/521 [==============================] - 3s 6ms/step - loss: 2.5924
-Epoch 5/200
-521/521 [==============================] - 5s 9ms/step - loss: 2.5289
-Epoch 6/200
-521/521 [==============================] - 4s 8ms/step - loss: 2.4810
-Epoch 7/200
-521/521 [==============================] - 3s 7ms/step - loss: 2.4409
-Epoch 8/200
-521/521 [==============================] - 5s 10ms/step - loss: 2.4070
-Epoch 9/200
-521/521 [==============================] - 4s 8ms/step - loss: 2.3840
-Epoch 10/200
-521/521 [==============================] - 5s 9ms/step - loss: 2.3453
-Epoch 11/200
-521/521 [==============================] - 5s 9ms/step - loss: 2.3121
-Epoch 12/200
-521/521 [==============================] - 5s 9ms/step - loss: 2.2972
-Epoch 13/200
-521/521 [==============================] - 5s 9ms/step - loss: 2.2715
-Epoch 14/200
-521/521 [==============================] - 4s 8ms/step - loss: 2.2433
-Epoch 15/200
-521/521 [==============================] - 5s 9ms/step - loss: 2.2105
-Epoch 16/200
-521/521 [==============================] - 4s 8ms/step - loss: 2.2033
-Epoch 17/200
-521/521 [==============================] - 3s 6ms/step - loss: 2.1662
-Epoch 18/200
-521/521 [==============================] - 4s 8ms/step - loss: 2.1614
-Epoch 19/200
-521/521 [==============================] - 4s 8ms/step - loss: 2.1302
-Epoch 20/200
-521/521 [==============================] - 4s 8ms/step - loss: 2.1122
-Epoch 21/200
-521/521 [==============================] - 5s 9ms/step - loss: 2.0818
-Epoch 22/200
-521/521 [==============================] - 5s 9ms/step - loss: 2.0597
-Epoch 23/200
-521/521 [==============================] - 4s 8ms/step - loss: 2.0347
-Epoch 24/200
-521/521 [==============================] - 5s 10ms/step - loss: 2.0123
-Epoch 25/200
-521/521 [==============================] - 6s 11ms/step - loss: 2.0003
-Epoch 26/200
-521/521 [==============================] - 4s 8ms/step - loss: 1.9707
-Epoch 27/200
-521/521 [==============================] - 4s 7ms/step - loss: 1.9547
-Epoch 28/200
-521/521 [==============================] - 4s 7ms/step - loss: 1.9284
-Epoch 29/200
-521/521 [==============================] - 4s 8ms/step - loss: 1.9163
-Epoch 30/200
-521/521 [==============================] - 3s 5ms/step - loss: 1.8940
-Epoch 31/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.8689
-Epoch 32/200
-521/521 [==============================] - 3s 5ms/step - loss: 1.8399
-Epoch 33/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.8204
-Epoch 34/200
-521/521 [==============================] - 4s 7ms/step - loss: 1.8123
-Epoch 35/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.7942
-Epoch 36/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.7545
-Epoch 37/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.7423
-Epoch 38/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.7241
-Epoch 39/200
-521/521 [==============================] - 3s 5ms/step - loss: 1.7037
-Epoch 40/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.6715
-Epoch 41/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.6630
-Epoch 42/200
-521/521 [==============================] - 3s 5ms/step - loss: 1.6391
-Epoch 43/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.6251
-Epoch 44/200
-521/521 [==============================] - 3s 5ms/step - loss: 1.5998
-Epoch 45/200
-521/521 [==============================] - 3s 5ms/step - loss: 1.5725
-Epoch 46/200
-521/521 [==============================] - 3s 7ms/step - loss: 1.5625
-Epoch 47/200
-521/521 [==============================] - 4s 7ms/step - loss: 1.5433
-Epoch 48/200
-521/521 [==============================] - 4s 8ms/step - loss: 1.5173
-Epoch 49/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.5175
-Epoch 50/200
-521/521 [==============================] - 4s 7ms/step - loss: 1.4908
-Epoch 51/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.4646
-Epoch 52/200
-521/521 [==============================] - 3s 5ms/step - loss: 1.4495
-Epoch 53/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.4396
-Epoch 54/200
-521/521 [==============================] - 3s 7ms/step - loss: 1.4203
-Epoch 55/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.4160
-Epoch 56/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.3794
-Epoch 57/200
-521/521 [==============================] - 4s 7ms/step - loss: 1.3661
-Epoch 58/200
-521/521 [==============================] - 4s 7ms/step - loss: 1.3628
-Epoch 59/200
-521/521 [==============================] - 5s 9ms/step - loss: 1.3514
-Epoch 60/200
-521/521 [==============================] - 4s 7ms/step - loss: 1.3292
-Epoch 61/200
-521/521 [==============================] - 4s 7ms/step - loss: 1.3190
-Epoch 62/200
-521/521 [==============================] - 4s 7ms/step - loss: 1.3168
-Epoch 63/200
-521/521 [==============================] - 5s 9ms/step - loss: 1.2908
-Epoch 64/200
-521/521 [==============================] - 4s 7ms/step - loss: 1.2733
-Epoch 65/200
-521/521 [==============================] - 4s 8ms/step - loss: 1.2741
-Epoch 66/200
-521/521 [==============================] - 4s 8ms/step - loss: 1.2581
-Epoch 67/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.2615
-Epoch 68/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.3300
-Epoch 69/200
-521/521 [==============================] - 3s 5ms/step - loss: 1.3073
-Epoch 70/200
-521/521 [==============================] - 3s 5ms/step - loss: 1.2368
-Epoch 71/200
-521/521 [==============================] - 3s 5ms/step - loss: 1.2135
-Epoch 72/200
-521/521 [==============================] - 4s 8ms/step - loss: 1.1927
-Epoch 73/200
-521/521 [==============================] - 4s 8ms/step - loss: 1.1833
-Epoch 74/200
-521/521 [==============================] - 4s 8ms/step - loss: 1.1753
-Epoch 75/200
-521/521 [==============================] - 4s 8ms/step - loss: 1.1791
-Epoch 76/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.1697
-Epoch 77/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.1770
-Epoch 78/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.1577
-Epoch 79/200
-521/521 [==============================] - 4s 7ms/step - loss: 1.1238
-Epoch 80/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.1283
-Epoch 81/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.1239
-Epoch 82/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.1071
-Epoch 83/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.1245
-Epoch 84/200
-521/521 [==============================] - 4s 7ms/step - loss: 1.0958
-Epoch 85/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.0738
-Epoch 86/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.0657
-Epoch 87/200
-521/521 [==============================] - 4s 7ms/step - loss: 1.0716
-Epoch 88/200
-521/521 [==============================] - 4s 8ms/step - loss: 1.0861
-Epoch 89/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.0640
-Epoch 90/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.0391
-Epoch 91/200
-521/521 [==============================] - 4s 7ms/step - loss: 1.0259
-Epoch 92/200
-521/521 [==============================] - 4s 7ms/step - loss: 1.0702
-Epoch 93/200
-521/521 [==============================] - 4s 7ms/step - loss: 1.0005
-Epoch 94/200
-521/521 [==============================] - 4s 7ms/step - loss: 1.0025
-Epoch 95/200
-521/521 [==============================] - 4s 7ms/step - loss: 0.9959
-Epoch 96/200
-521/521 [==============================] - 3s 5ms/step - loss: 0.9941
-Epoch 97/200
-521/521 [==============================] - 4s 7ms/step - loss: 0.9868
-Epoch 98/200
-521/521 [==============================] - 4s 7ms/step - loss: 1.0211
-Epoch 99/200
-521/521 [==============================] - 4s 7ms/step - loss: 0.9525
-Epoch 100/200
-521/521 [==============================] - 5s 9ms/step - loss: 0.9613
-Epoch 101/200
-521/521 [==============================] - 5s 9ms/step - loss: 0.9612
-Epoch 102/200
-521/521 [==============================] - 3s 6ms/step - loss: 0.9432
-Epoch 103/200
-521/521 [==============================] - 4s 8ms/step - loss: 0.9590
-Epoch 104/200
-521/521 [==============================] - 5s 9ms/step - loss: 0.9434
-Epoch 105/200
-521/521 [==============================] - 4s 8ms/step - loss: 0.9466
-Epoch 106/200
-521/521 [==============================] - 4s 8ms/step - loss: 0.9258
-Epoch 107/200
-521/521 [==============================] - 5s 9ms/step - loss: 0.9225
-Epoch 108/200
-521/521 [==============================] - 4s 8ms/step - loss: 0.9239
-Epoch 109/200
-521/521 [==============================] - 5s 9ms/step - loss: 0.9067
-Epoch 110/200
-521/521 [==============================] - 5s 11ms/step - loss: 0.8950
-Epoch 111/200
-521/521 [==============================] - 5s 9ms/step - loss: 0.9142
-Epoch 112/200
-521/521 [==============================] - 5s 10ms/step - loss: 0.8786
-Epoch 113/200
-521/521 [==============================] - 5s 9ms/step - loss: 0.8703
-Epoch 114/200
-521/521 [==============================] - 5s 10ms/step - loss: 0.8730
-Epoch 115/200
-521/521 [==============================] - 4s 8ms/step - loss: 0.8649
-Epoch 116/200
-521/521 [==============================] - 5s 9ms/step - loss: 0.8649
-Epoch 117/200
-521/521 [==============================] - 4s 8ms/step - loss: 0.8481
-Epoch 118/200
-521/521 [==============================] - 3s 6ms/step - loss: 0.8408
-Epoch 119/200
-521/521 [==============================] - 5s 9ms/step - loss: 0.8518
-Epoch 120/200
-521/521 [==============================] - 4s 8ms/step - loss: 0.8585
-Epoch 121/200
-521/521 [==============================] - 4s 7ms/step - loss: 0.8506
-Epoch 122/200
-521/521 [==============================] - 5s 9ms/step - loss: 0.8088
-Epoch 123/200
-521/521 [==============================] - 5s 10ms/step - loss: 0.8321
-Epoch 124/200
-521/521 [==============================] - 5s 9ms/step - loss: 0.8818
-Epoch 125/200
-521/521 [==============================] - 4s 8ms/step - loss: 0.8057
-Epoch 126/200
-521/521 [==============================] - 5s 10ms/step - loss: 0.8122
-Epoch 127/200
-521/521 [==============================] - 4s 8ms/step - loss: 0.8208
-Epoch 128/200
-521/521 [==============================] - 5s 9ms/step - loss: 0.7973
-Epoch 129/200
-521/521 [==============================] - 5s 9ms/step - loss: 0.7867
-Epoch 130/200
-521/521 [==============================] - 3s 6ms/step - loss: 0.8401
-Epoch 131/200
-521/521 [==============================] - 4s 7ms/step - loss: 0.8098
-Epoch 132/200
-521/521 [==============================] - 4s 7ms/step - loss: 0.7664
-Epoch 133/200
-521/521 [==============================] - 3s 7ms/step - loss: 0.7790
-Epoch 134/200
-521/521 [==============================] - 3s 7ms/step - loss: 0.7787
-Epoch 135/200
-521/521 [==============================] - 6s 11ms/step - loss: 0.7645
-Epoch 136/200
-521/521 [==============================] - 4s 8ms/step - loss: 0.8066
-Epoch 137/200
-521/521 [==============================] - 5s 9ms/step - loss: 0.8463
-Epoch 138/200
-521/521 [==============================] - 4s 8ms/step - loss: 0.7783
-Epoch 139/200
-521/521 [==============================] - 4s 8ms/step - loss: 0.7693
-Epoch 140/200
-521/521 [==============================] - 4s 8ms/step - loss: 0.7327
-Epoch 141/200
-521/521 [==============================] - 4s 7ms/step - loss: 0.7230
-Epoch 142/200
-521/521 [==============================] - 4s 8ms/step - loss: 0.7498
-Epoch 143/200
-521/521 [==============================] - 4s 8ms/step - loss: 0.7597
-Epoch 144/200
-521/521 [==============================] - 4s 8ms/step - loss: 0.7823
-Epoch 145/200
-521/521 [==============================] - 3s 6ms/step - loss: 0.7268
-Epoch 146/200
-521/521 [==============================] - 3s 6ms/step - loss: 0.7482
-Epoch 147/200
-521/521 [==============================] - 4s 7ms/step - loss: 0.7101
-Epoch 148/200
-521/521 [==============================] - 4s 7ms/step - loss: 0.7199
-Epoch 149/200
-521/521 [==============================] - 4s 7ms/step - loss: 0.7128
-Epoch 150/200
-521/521 [==============================] - 4s 7ms/step - loss: 0.7161
-Epoch 151/200
-521/521 [==============================] - 3s 6ms/step - loss: 0.7046
-Epoch 152/200
-521/521 [==============================] - 4s 8ms/step - loss: 0.6901
-Epoch 153/200
-521/521 [==============================] - 3s 6ms/step - loss: 0.7059
-Epoch 154/200
-521/521 [==============================] - 3s 5ms/step - loss: 0.6859
-Epoch 155/200
-521/521 [==============================] - 3s 6ms/step - loss: 0.7286
-Epoch 156/200
-521/521 [==============================] - 3s 6ms/step - loss: 0.7667
-Epoch 157/200
-521/521 [==============================] - 3s 6ms/step - loss: 0.6656
-Epoch 158/200
-521/521 [==============================] - 3s 6ms/step - loss: 0.6651
-Epoch 159/200
-521/521 [==============================] - 3s 6ms/step - loss: 0.6823
-Epoch 160/200
-521/521 [==============================] - 3s 6ms/step - loss: 1.1258
-Epoch 161/200
-521/521 [==============================] - 3s 5ms/step - loss: 0.6587
-Epoch 162/200
-521/521 [==============================] - 4s 7ms/step - loss: 0.6688
-Epoch 163/200
-521/521 [==============================] - 3s 6ms/step - loss: 0.6616
-Epoch 164/200
-521/521 [==============================] - 3s 6ms/step - loss: 0.6522
-Epoch 165/200
-521/521 [==============================] - 4s 7ms/step - loss: 0.6574
-Epoch 166/200
-521/521 [==============================] - 3s 6ms/step - loss: 0.6765
-Epoch 167/200
-521/521 [==============================] - 3s 5ms/step - loss: 0.6188
-Epoch 168/200
-521/521 [==============================] - 4s 7ms/step - loss: 0.6417
-Epoch 169/200
-521/521 [==============================] - 4s 8ms/step - loss: 0.6775
-Epoch 170/200
-521/521 [==============================] - 4s 7ms/step - loss: 0.7435
-Epoch 171/200
-521/521 [==============================] - 4s 7ms/step - loss: 0.6036
-Epoch 172/200
-521/521 [==============================] - 4s 7ms/step - loss: 0.6266
-Epoch 173/200
-521/521 [==============================] - 3s 6ms/step - loss: 0.6163
-Epoch 174/200
-521/521 [==============================] - 3s 5ms/step - loss: 0.6069
-Epoch 175/200
-521/521 [==============================] - 4s 8ms/step - loss: 0.6732
-Epoch 176/200
-521/521 [==============================] - 4s 7ms/step - loss: 0.6543
-Epoch 177/200
-521/521 [==============================] - 3s 6ms/step - loss: 0.6134
-Epoch 178/200
-521/521 [==============================] - 4s 8ms/step - loss: 0.5893
-Epoch 179/200
-521/521 [==============================] - 3s 6ms/step - loss: 0.6064
-Epoch 180/200
-521/521 [==============================] - 4s 7ms/step - loss: 0.6139
-Epoch 181/200
-521/521 [==============================] - 3s 6ms/step - loss: 0.7111
-Epoch 182/200
-521/521 [==============================] - 3s 7ms/step - loss: 0.6698
-Epoch 183/200
-521/521 [==============================] - 3s 6ms/step - loss: 0.6161
-Epoch 184/200
-521/521 [==============================] - 3s 6ms/step - loss: 0.5821
-Epoch 185/200
-521/521 [==============================] - 4s 8ms/step - loss: 0.5722
-Epoch 186/200
-521/521 [==============================] - 4s 7ms/step - loss: 0.5964
-Epoch 187/200
-521/521 [==============================] - 3s 5ms/step - loss: 0.5999
-Epoch 188/200
-521/521 [==============================] - 3s 6ms/step - loss: 0.6639
-Epoch 189/200
-521/521 [==============================] - 4s 8ms/step - loss: 0.5951
-Epoch 190/200
-521/521 [==============================] - 4s 7ms/step - loss: 0.6253
-Epoch 191/200
-521/521 [==============================] - 4s 8ms/step - loss: 0.5794
-Epoch 192/200
-521/521 [==============================] - 3s 6ms/step - loss: 0.5785
-Epoch 193/200
-521/521 [==============================] - 3s 5ms/step - loss: 0.5747
-Epoch 194/200
-521/521 [==============================] - 4s 8ms/step - loss: 0.5823
-Epoch 195/200
-521/521 [==============================] - 3s 7ms/step - loss: 0.5734
-Epoch 196/200
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>521/521 [==============================] - 4s 9ms/step - loss: 0.5941
-Epoch 197/200
-521/521 [==============================] - 4s 7ms/step - loss: 0.8470
-Epoch 198/200
-521/521 [==============================] - 4s 8ms/step - loss: 0.5750
-Epoch 199/200
-521/521 [==============================] - 4s 7ms/step - loss: 0.5531
-Epoch 200/200
-521/521 [==============================] - 4s 7ms/step - loss: 0.5230
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7fc1405288d0&gt;
 </pre></div>
 </div>
 </div>
@@ -1256,7 +824,8 @@ Done.
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="n">rate</span><span class="o">=</span><span class="mf">0.2</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">256</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="n">rate</span><span class="o">=</span><span class="mf">0.2</span><span class="p">))</span>
@@ -1736,7 +1305,8 @@ Epoch 200/200
 <span class="n">n_batch</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="c1"># re-define model</span>
 <span class="n">new_model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
-<span class="n">new_model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">batch_input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">n_batch</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">new_model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span><span class="n">batch_size</span><span class="o">=</span><span class="n">n_batch</span><span class="p">)</span>
+<span class="n">new_model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 <span class="n">new_model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="n">rate</span><span class="o">=</span><span class="mf">0.2</span><span class="p">))</span>
 <span class="n">new_model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">256</span><span class="p">))</span>
 <span class="n">new_model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="n">rate</span><span class="o">=</span><span class="mf">0.2</span><span class="p">))</span>
