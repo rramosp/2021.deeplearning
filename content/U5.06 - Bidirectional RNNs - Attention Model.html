@@ -463,36 +463,10 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="bidirectional-rnns">
 <h1>5.6 Bidirectional RNNs<a class="headerlink" href="#bidirectional-rnns" title="Link to this heading">#</a></h1>
-<p>Course’s materials require a <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code> version lower than the default one used in Google Colab. Run the following cell to downgrade TensorFlow accordingly.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">downgrade_tf_version</span><span class="p">():</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip uninstall -y tensorflow&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip install tensorflow==2.12.0&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="mi">9</span><span class="p">)</span>
-<span class="n">downgrade_tf_version</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
 <span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> 
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
-<span class="k">if</span> <span class="s1">&#39;google.colab&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;setting tensorflow version in colab&quot;</span><span class="p">)</span>
-    <span class="o">%</span><span class="k">tensorflow_version</span> 2.x
-    <span class="o">%</span><span class="k">load_ext</span> tensorboard
-<span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
-<span class="n">tf</span><span class="o">.</span><span class="n">__version__</span>
 </pre></div>
 </div>
 </div>
@@ -512,6 +486,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jdariasl/.cache/uv/archive-v0/mTE5xBvw1heDpxC7T3_--/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the &#39;ssl&#39; module is compiled with &#39;LibreSSL 2.8.3&#39;. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -520,18 +500,6 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Embedding</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.optimizers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Adam</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.losses</span><span class="w"> </span><span class="kn">import</span> <span class="n">sparse_categorical_crossentropy</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.compat.v1</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfigProto</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.compat.v1</span><span class="w"> </span><span class="kn">import</span> <span class="n">InteractiveSession</span>
-
-<span class="n">config</span> <span class="o">=</span> <span class="n">ConfigProto</span><span class="p">()</span>
-<span class="n">config</span><span class="o">.</span><span class="n">gpu_options</span><span class="o">.</span><span class="n">allow_growth</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">session</span> <span class="o">=</span> <span class="n">InteractiveSession</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -561,7 +529,7 @@ document.write(`
     <span class="s1">&#39;spa-eng.zip&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;http://storage.googleapis.com/download.tensorflow.org/data/spa-eng.zip&#39;</span><span class="p">,</span>
     <span class="n">extract</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="n">path_to_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path_to_zip</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;/spa-eng/spa.txt&quot;</span>
+<span class="n">path_to_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path_to_zip</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;/spa-eng_extracted/spa-eng/spa.txt&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -762,16 +730,22 @@ b&#39;&lt;start&gt; \xc2\xbf puedo tomar prestado este libro ? &lt;end&gt;&#39;
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Input Language; index to word mapping
 1 ----&gt; &lt;start&gt;
-20 ----&gt; por
-1929 ----&gt; supuesto
-84 ----&gt; !
+88 ----&gt; ya
+102 ----&gt; habia
+1171 ----&gt; tomado
+238 ----&gt; cafe
+3 ----&gt; .
 2 ----&gt; &lt;end&gt;
 
 Target Language; index to word mapping
 1 ----&gt; &lt;start&gt;
-18 ----&gt; of
-1209 ----&gt; course
-119 ----&gt; !
+4 ----&gt; i
+71 ----&gt; ve
+236 ----&gt; already
+60 ----&gt; had
+9 ----&gt; a
+283 ----&gt; coffee
+3 ----&gt; .
 2 ----&gt; &lt;end&gt;
 </pre></div>
 </div>
@@ -896,113 +870,6 @@ Target Language; index to word mapping
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/50
-1487/1487 [==============================] - 21s 13ms/step - loss: 1.7278
-Epoch 2/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.8353
-Epoch 3/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.8065
-Epoch 4/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.7849
-Epoch 5/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.7667
-Epoch 6/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.7551
-Epoch 7/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.7422
-Epoch 8/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.7314
-Epoch 9/50
-1487/1487 [==============================] - 18s 12ms/step - loss: 0.7216
-Epoch 10/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.7123
-Epoch 11/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.7078
-Epoch 12/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.7031
-Epoch 13/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6971
-Epoch 14/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6919
-Epoch 15/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6891
-Epoch 16/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6833
-Epoch 17/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6787
-Epoch 18/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6776
-Epoch 19/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6745
-Epoch 20/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6708
-Epoch 21/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6684
-Epoch 22/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6634
-Epoch 23/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6624
-Epoch 24/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6604
-Epoch 25/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6584
-Epoch 26/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6555
-Epoch 27/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6545
-Epoch 28/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6490
-Epoch 29/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6521
-Epoch 30/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6474
-Epoch 31/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6473
-Epoch 32/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6452
-Epoch 33/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6443
-Epoch 34/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6427
-Epoch 35/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6403
-Epoch 36/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6395
-Epoch 37/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6381
-Epoch 38/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6379
-Epoch 39/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6338
-Epoch 40/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6348
-Epoch 41/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6333
-Epoch 42/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6308
-Epoch 43/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6324
-Epoch 44/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6304
-Epoch 45/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6276
-Epoch 46/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6285
-Epoch 47/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6293
-Epoch 48/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6260
-Epoch 49/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6260
-Epoch 50/50
-1487/1487 [==============================] - 19s 13ms/step - loss: 0.6241
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7f08f0c0e190&gt;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1011,25 +878,30 @@ Epoch 50/50
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;model&quot;
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-input_1 (InputLayer)         [(None, 53, 1)]           0         
-_________________________________________________________________
-lstm (LSTM)                  (None, 53, 128)           66560     
-_________________________________________________________________
-time_distributed (TimeDistri (None, 53, 12934)         1668486   
-_________________________________________________________________
-activation (Activation)      (None, 53, 12934)         0         
-=================================================================
-Total params: 1,735,046
-Trainable params: 1,735,046
-Non-trainable params: 0
-_________________________________________________________________
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "functional"</span>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)                    </span>┃<span style="font-weight: bold"> Output Shape           </span>┃<span style="font-weight: bold">       Param # </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ input_layer (<span style="color: #0087ff; text-decoration-color: #0087ff">InputLayer</span>)        │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">53</span>, <span style="color: #00af00; text-decoration-color: #00af00">1</span>)          │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ lstm (<span style="color: #0087ff; text-decoration-color: #0087ff">LSTM</span>)                     │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">53</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>)        │        <span style="color: #00af00; text-decoration-color: #00af00">66,560</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ time_distributed                │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">53</span>, <span style="color: #00af00; text-decoration-color: #00af00">12934</span>)      │     <span style="color: #00af00; text-decoration-color: #00af00">1,668,486</span> │
+│ (<span style="color: #0087ff; text-decoration-color: #0087ff">TimeDistributed</span>)               │                        │               │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ activation (<span style="color: #0087ff; text-decoration-color: #0087ff">Activation</span>)         │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">53</span>, <span style="color: #00af00; text-decoration-color: #00af00">12934</span>)      │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">5,205,140</span> (19.86 MB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">1,735,046</span> (6.62 MB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">0</span> (0.00 B)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Optimizer params: </span><span style="color: #00af00; text-decoration-color: #00af00">3,470,094</span> (13.24 MB)
+</pre>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1073,11 +945,12 @@ _________________________________________________________________
     <span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.001</span>
     <span class="n">rnn</span> <span class="o">=</span> <span class="n">LSTM</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)</span>
     
-    <span class="n">embedding</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">spanish_vocab_size</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">input_length</span><span class="o">=</span><span class="n">input_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> 
+    <span class="n">embedding</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">spanish_vocab_size</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span> 
     <span class="n">logits</span> <span class="o">=</span> <span class="n">TimeDistributed</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">english_vocab_size</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;softmax&quot;</span><span class="p">))</span>
     
     <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
     <span class="c1">#em can only be used in first layer --&gt; Keras Documentation</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">input_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],)))</span>
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">embedding</span><span class="p">)</span>
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">rnn</span><span class="p">)</span>
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">logits</span><span class="p">)</span>
@@ -1098,110 +971,10 @@ _________________________________________________________________
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:Layer lstm_1 will not use cuDNN kernel since it doesn&#39;t meet the cuDNN kernel criteria. It will use generic GPU kernel as fallback when running on GPU
-Epoch 1/50
-1487/1487 [==============================] - 64s 42ms/step - loss: 1.8983
-Epoch 2/50
-1487/1487 [==============================] - 63s 42ms/step - loss: 0.8322
-Epoch 3/50
-1487/1487 [==============================] - 61s 41ms/step - loss: 0.7871
-Epoch 4/50
-1487/1487 [==============================] - 61s 41ms/step - loss: 0.7457
-Epoch 5/50
-1487/1487 [==============================] - 61s 41ms/step - loss: 0.6958
-Epoch 6/50
-1487/1487 [==============================] - 61s 41ms/step - loss: 0.7349
-Epoch 7/50
-1487/1487 [==============================] - 61s 41ms/step - loss: 0.6359
-Epoch 8/50
-1487/1487 [==============================] - 61s 41ms/step - loss: 0.6000
-Epoch 9/50
-1487/1487 [==============================] - 61s 41ms/step - loss: 0.6514
-Epoch 10/50
-1487/1487 [==============================] - 61s 41ms/step - loss: 0.5742
-Epoch 11/50
-1487/1487 [==============================] - 61s 41ms/step - loss: 0.5382
-Epoch 12/50
-1487/1487 [==============================] - 61s 41ms/step - loss: 0.5120
-Epoch 13/50
-1487/1487 [==============================] - 56s 37ms/step - loss: 0.4876
-Epoch 14/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.4689
-Epoch 15/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.4456
-Epoch 16/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.4239
-Epoch 17/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.4042
-Epoch 18/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.3902
-Epoch 19/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.3726
-Epoch 20/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.4074
-Epoch 21/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.4412
-Epoch 22/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.4736
-Epoch 23/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.3713
-Epoch 24/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.3520
-Epoch 25/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.3399
-Epoch 26/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.3268
-Epoch 27/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.3204
-Epoch 28/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.3127
-Epoch 29/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.3055
-Epoch 30/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.3009
-Epoch 31/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.2975
-Epoch 32/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.2906
-Epoch 33/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.2853
-Epoch 34/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.2817
-Epoch 35/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.2798
-Epoch 36/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.2704
-Epoch 37/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.6574
-Epoch 38/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.6323
-Epoch 39/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.5575
-Epoch 40/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.5642
-Epoch 41/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 4.0330
-Epoch 42/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 1.1101
-Epoch 43/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.7931
-Epoch 44/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.7545
-Epoch 45/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.6761
-Epoch 46/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.7052
-Epoch 47/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.6167
-Epoch 48/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.6019
-Epoch 49/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.5874
-Epoch 50/50
-1487/1487 [==============================] - 55s 37ms/step - loss: 0.5286
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">1487/1487</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">565s</span> 379ms/step - loss: 2.2396
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7f08f098e810&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.src.callbacks.history.History at 0x17f2929a0&gt;
 </pre></div>
 </div>
 </div>
@@ -1247,7 +1020,8 @@ Epoch 50/50
    
     <span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.001</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Embedding</span><span class="p">(</span><span class="n">spanish_vocab_size</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">input_length</span><span class="o">=</span><span class="n">input_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> 
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">input_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],)))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Embedding</span><span class="p">(</span><span class="n">spanish_vocab_size</span><span class="p">,</span> <span class="mi">64</span><span class="p">))</span> 
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Bidirectional</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">return_sequences</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">dropout</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)))</span>
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TimeDistributed</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">english_vocab_size</span><span class="p">,</span> <span class="n">activation</span> <span class="o">=</span> <span class="s1">&#39;softmax&#39;</span><span class="p">)))</span>
     <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span> <span class="o">=</span> <span class="n">sparse_categorical_crossentropy</span><span class="p">,</span> 
@@ -1482,7 +1256,8 @@ _________________________________________________________________
   
     <span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.001</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Embedding</span><span class="p">(</span><span class="n">input_dim</span><span class="o">=</span><span class="n">english_vocab_size</span><span class="p">,</span> <span class="n">output_dim</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">input_length</span><span class="o">=</span><span class="n">input_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> 
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">input_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],)))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Embedding</span><span class="p">(</span><span class="n">input_dim</span><span class="o">=</span><span class="n">english_vocab_size</span><span class="p">,</span> <span class="n">output_dim</span><span class="o">=</span><span class="mi">64</span><span class="p">))</span> 
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Bidirectional</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">return_sequences</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)))</span>
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">RepeatVector</span><span class="p">(</span><span class="n">output_sequence_length</span><span class="p">))</span>
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">return_sequences</span> <span class="o">=</span> <span class="kc">True</span><span class="p">))</span>

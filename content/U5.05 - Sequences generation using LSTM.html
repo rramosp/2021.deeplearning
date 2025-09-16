@@ -457,7 +457,16 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
-<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<meta name="google-signin-client_id"
+      content="461673936472-kdjosv61up3ac1ajeuq6qqu72upilmls.apps.googleusercontent.com"/>
+<script src="https://apis.google.com/js/client:platform.js?onload=google_button_start"></script>
+    </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>replicating local resources
 </pre></div>
 </div>
 </div>
@@ -475,8 +484,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jdariasl/.cache/uv/archive-v0/mTE5xBvw1heDpxC7T3_--/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the &#39;ssl&#39; module is compiled with &#39;LibreSSL 2.8.3&#39;. See: https://github.com/urllib3/urllib3/issues/3020
-  warnings.warn(
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>setting tensorflow version in colab
+Colab only includes TensorFlow 2.x; %tensorflow_version has no effect.
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.19.0&#39;
@@ -523,8 +532,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package gutenberg to
-[nltk_data]     /Users/jdariasl/nltk_data...
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package gutenberg to /root/nltk_data...
 [nltk_data]   Unzipping corpora/gutenberg.zip.
 </pre></div>
 </div>
@@ -737,6 +745,413 @@ Total Vocab:  75
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">7s</span> 9ms/step - loss: 3.2394
+Epoch 2/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 2.8380
+Epoch 3/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 2.6651
+Epoch 4/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 2.5972
+Epoch 5/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 2.5402
+Epoch 6/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 2.5043
+Epoch 7/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 2.4655
+Epoch 8/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 2.4288
+Epoch 9/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 2.4015
+Epoch 10/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 2.3626
+Epoch 11/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 2.3428
+Epoch 12/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 2.3193
+Epoch 13/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 2.2862
+Epoch 14/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 2.2651
+Epoch 15/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 2.2432
+Epoch 16/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 2.2204
+Epoch 17/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 2.1990
+Epoch 18/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 2.1699
+Epoch 19/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 2.1396
+Epoch 20/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 2.1321
+Epoch 21/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 2.1024
+Epoch 22/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 2.0806
+Epoch 23/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 2.0819
+Epoch 24/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 2.0450
+Epoch 25/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 2.0350
+Epoch 26/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 2.0037
+Epoch 27/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.9811
+Epoch 28/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.9615
+Epoch 29/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.9455
+Epoch 30/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.9273
+Epoch 31/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.8968
+Epoch 32/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.8813
+Epoch 33/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.8621
+Epoch 34/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 1.8444
+Epoch 35/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.8197
+Epoch 36/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.8057
+Epoch 37/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.7844
+Epoch 38/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.7618
+Epoch 39/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.7459
+Epoch 40/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.7293
+Epoch 41/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 1.6968
+Epoch 42/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.6714
+Epoch 43/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.6687
+Epoch 44/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.6505
+Epoch 45/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.6269
+Epoch 46/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 1.6167
+Epoch 47/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.5986
+Epoch 48/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 1.5741
+Epoch 49/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.5755
+Epoch 50/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.5455
+Epoch 51/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.5258
+Epoch 52/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.5070
+Epoch 53/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 1.4997
+Epoch 54/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.4799
+Epoch 55/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.4692
+Epoch 56/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.4617
+Epoch 57/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.4405
+Epoch 58/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 1.4272
+Epoch 59/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.4093
+Epoch 60/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.3963
+Epoch 61/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.3829
+Epoch 62/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.3615
+Epoch 63/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.3552
+Epoch 64/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.3416
+Epoch 65/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.3192
+Epoch 66/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.3203
+Epoch 67/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.2948
+Epoch 68/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 1.2755
+Epoch 69/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.2827
+Epoch 70/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.2739
+Epoch 71/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.2782
+Epoch 72/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.2668
+Epoch 73/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.2423
+Epoch 74/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.2238
+Epoch 75/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.2224
+Epoch 76/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 1.1871
+Epoch 77/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.1871
+Epoch 78/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.1770
+Epoch 79/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.1803
+Epoch 80/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 1.1528
+Epoch 81/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.1450
+Epoch 82/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 1.1419
+Epoch 83/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.1529
+Epoch 84/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.1328
+Epoch 85/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.1066
+Epoch 86/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.1042
+Epoch 87/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.0991
+Epoch 88/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.0804
+Epoch 89/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.0868
+Epoch 90/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.0557
+Epoch 91/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.0593
+Epoch 92/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 1.0710
+Epoch 93/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.0527
+Epoch 94/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.0280
+Epoch 95/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.0371
+Epoch 96/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.0681
+Epoch 97/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 1.0289
+Epoch 98/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.9916
+Epoch 99/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.0164
+Epoch 100/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 1.0012
+Epoch 101/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.9892
+Epoch 102/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.9922
+Epoch 103/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.9619
+Epoch 104/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.9699
+Epoch 105/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.9584
+Epoch 106/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.9709
+Epoch 107/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.9623
+Epoch 108/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.9773
+Epoch 109/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.9338
+Epoch 110/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.9301
+Epoch 111/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.9390
+Epoch 112/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.9261
+Epoch 113/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.9335
+Epoch 114/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.9233
+Epoch 115/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.9209
+Epoch 116/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.8926
+Epoch 117/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.9061
+Epoch 118/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.9191
+Epoch 119/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.8766
+Epoch 120/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.8668
+Epoch 121/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.8790
+Epoch 122/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.8689
+Epoch 123/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.8483
+Epoch 124/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.8740
+Epoch 125/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.8635
+Epoch 126/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.9182
+Epoch 127/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.8355
+Epoch 128/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.8259
+Epoch 129/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.8357
+Epoch 130/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.8493
+Epoch 131/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.8192
+Epoch 132/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.8251
+Epoch 133/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.8240
+Epoch 134/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.8274
+Epoch 135/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.8150
+Epoch 136/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.8270
+Epoch 137/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.8199
+Epoch 138/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.7735
+Epoch 139/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.7903
+Epoch 140/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.7771
+Epoch 141/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.8136
+Epoch 142/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.7894
+Epoch 143/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.7768
+Epoch 144/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.8003
+Epoch 145/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.7731
+Epoch 146/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.7675
+Epoch 147/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.7548
+Epoch 148/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.7397
+Epoch 149/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.7591
+Epoch 150/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.7482
+Epoch 151/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.7378
+Epoch 152/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.7479
+Epoch 153/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.7272
+Epoch 154/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.7635
+Epoch 155/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.7294
+Epoch 156/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.7394
+Epoch 157/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.7294
+Epoch 158/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.7369
+Epoch 159/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.7095
+Epoch 160/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.7222
+Epoch 161/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.6835
+Epoch 162/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.7216
+Epoch 163/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.6801
+Epoch 164/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.6978
+Epoch 165/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.6934
+Epoch 166/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.6849
+Epoch 167/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.6904
+Epoch 168/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.7037
+Epoch 169/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.6854
+Epoch 170/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.6622
+Epoch 171/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.7095
+Epoch 172/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.6643
+Epoch 173/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.6493
+Epoch 174/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.7029
+Epoch 175/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.6822
+Epoch 176/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.6608
+Epoch 177/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.7001
+Epoch 178/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.6585
+Epoch 179/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.6293
+Epoch 180/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">10s</span> 10ms/step - loss: 0.6874
+Epoch 181/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.7237
+Epoch 182/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.6297
+Epoch 183/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.6462
+Epoch 184/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.6545
+Epoch 185/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.6101
+Epoch 186/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.6184
+Epoch 187/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.6304
+Epoch 188/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.7979
+Epoch 189/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.6113
+Epoch 190/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.6050
+Epoch 191/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.6132
+Epoch 192/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.7227
+Epoch 193/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.6218
+Epoch 194/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.6143
+Epoch 195/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.5991
+Epoch 196/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.6099
+Epoch 197/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.6203
+Epoch 198/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.6039
+Epoch 199/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 9ms/step - loss: 0.5957
+Epoch 200/200
+<span class=" -Color -Color-Bold">521/521</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 10ms/step - loss: 0.6121
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.src.callbacks.history.History at 0x790125ece0f0&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -769,26 +1184,26 @@ Total Vocab:  75
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Seed:
-&quot; s, saying, Jacob hath taken
-away all that was our father&#39;s;  &quot;
-and he hoeeml in uher ph thi liude tf mrte iv mes.hrst. 
-20:3 And the senea tayt,ov Suonpha, whei sho ln hed teme upene thkt the gare of thed, 
-6::7 Tnenef tha woin oa Sebha Icble tee Bumpae,ii Noarcrhr, 
-26:2 And Eoruel dngu, and Hamaa&#39; and Jaiae, and Jahlap, and Jedmah, and Tekah,
-and Tekaha, and Teblhc: 36:1 And AnzaNa aid Bihi tii teie  shecn ia haa mam, and toet hem: ant there Ara cadh hamk aw uhr fnadmt&#39;onth mi  and seee in pas  end hete it
-unto mh.
-and siat kere hete tham
- 
-20:61 Nnt mhe elies wf Loau,w gifser Gamoh  ae shen N bayerees tvto the eeyh of my cirthed.
-and dare nl uhe
-drd  and hit iind fo?thor hidst, and he tas teet it wate
-tp tef khrhe if mae wo hr deci;s aarhmt. 
-15:54 And the men woie oht wwon thes hs the coes of Rodn: anr the same grsmd mor finye fir 
-and hes is c phlel sf dr ters woan
-fo hanher; aea uh tyelk ny sinv  wha hrued afuer hfm,
+&quot; nd it was told Laban on the third day that Jacob was fled.
 
-32:18 And the men woie on ham tien, sh c mivt ma dadkte to doean thth my, theke wer betsle grmme abseer rnw thy natterts,
-tha
+ &quot;
+44:2 And Jbcob gassrr ir the fiid of Edyaa whe wondo sfnha and ailrh yuaer,of his,sane. thyung, Whs ih boit, and,hn hl hnrde  thie S miv seke thi tho cuonh. 
+4:: 9 di Nbcrllh hsn the creedrgn Hadhb&#39;o sonsins in the eayte; 19:52 Aod he lan toto mhe sevt sherg oh she cattht, and whrt yhll Ioteph woy wate ueie io thi grrst, thtd gn
+ttes thoe
+ciree mh 
+33:24 And Ibcab shad unto Jaca, theee wsro them  T ar the GORD ho mlcd Pia andu ho m 
+jnos thtu moattdnt thi wiol
+fe thv whec. and whru bivse clsm mo mof vhath, and bevsedn ho tht ferd: and I cas dr fi wh,t yill
+w haneh in teers. and whsu bilsn f fiost  and coddd thto mis soon thet
+yhenh ho cntnre thi eeaem oi
+hif seren sekh?
+2911 Ant see snea  and sald 
+Ir marh dr the tooeg oh mha ywon ho thi land of his sone.
+anr
+whe flpane waa fedbn ie
+the LORD with the sems of Nicn.o gonde. and snuo thed, and tayt mu butthe thte mo  anc fs fo thel miyeeted 
+and thes cil that here tpe fay  
+31: A Ni Eva efter is thr glihm, and poltipd aro thee, and pe sea
 Done.
 </pre></div>
 </div>
@@ -838,36 +1253,39 @@ Done.
 <p>More data could produce memory erros so we have to create a data_generator function for the problem:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">KerasBatchGenerator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">to_categorical</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">KerasBatchGenerator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">vocabulary</span><span class="p">,</span> <span class="n">skip_step</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">char_to_int</span><span class="p">,</span> <span class="n">n_vocab</span><span class="p">,</span> <span class="n">skip_step</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">num_steps</span> <span class="o">=</span> <span class="n">num_steps</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vocabulary</span> <span class="o">=</span> <span class="n">vocabulary</span>
-        <span class="c1"># this will track the progress of the batches sequentially through the</span>
-        <span class="c1"># data set - once the data reaches the end of the data set it will reset</span>
-        <span class="c1"># back to zero</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">char_to_int</span> <span class="o">=</span> <span class="n">char_to_int</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_vocab</span> <span class="o">=</span> <span class="n">n_vocab</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">current_idx</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="c1"># skip_step is the number of words which will be skipped before the next</span>
-        <span class="c1"># batch is skimmed from the data set</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">skip_step</span> <span class="o">=</span> <span class="n">skip_step</span>
-        
+
     <span class="k">def</span><span class="w"> </span><span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_steps</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">vocabulary</span><span class="p">))</span>
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_steps</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_vocab</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">):</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_idx</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_steps</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">):</span>
                     <span class="c1"># reset the index back to the start of the data set</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">current_idx</span> <span class="o">=</span> <span class="mi">0</span>
+
                 <span class="n">seq_in</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">current_idx</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">current_idx</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_steps</span><span class="p">]</span>
-                <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">char_to_int</span><span class="p">[</span><span class="n">char</span><span class="p">]</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">seq_in</span><span class="p">])</span><span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_vocab</span><span class="p">)</span>
+                <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">char_to_int</span><span class="p">[</span><span class="n">char</span><span class="p">]</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">seq_in</span><span class="p">])</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_vocab</span><span class="p">)</span>
+
                 <span class="n">seq_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">current_idx</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_steps</span><span class="p">]</span>
-                <span class="n">temp_y</span> <span class="o">=</span> <span class="n">char_to_int</span><span class="p">[</span><span class="n">seq_out</span><span class="p">]</span>
+                <span class="n">temp_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">char_to_int</span><span class="p">[</span><span class="n">seq_out</span><span class="p">]</span>
+
                 <span class="c1"># convert all of temp_y into a one hot representation</span>
-                <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np_utils</span><span class="o">.</span><span class="n">to_categorical</span><span class="p">(</span><span class="n">temp_y</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">vocabulary</span><span class="p">)</span>
+                <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">temp_y</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_vocab</span><span class="p">)</span>
+
                 <span class="bp">self</span><span class="o">.</span><span class="n">current_idx</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">skip_step</span>
+
             <span class="k">yield</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
 </pre></div>
 </div>
@@ -876,424 +1294,82 @@ Done.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span>
-<span class="n">train_data_generator</span> <span class="o">=</span> <span class="n">KerasBatchGenerator</span><span class="p">(</span><span class="n">raw_text</span><span class="p">,</span> <span class="n">seq_length</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">n_vocab</span><span class="p">,</span> <span class="n">skip_step</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">train_data_generator</span> <span class="o">=</span> <span class="n">KerasBatchGenerator</span><span class="p">(</span><span class="n">raw_text</span><span class="p">,</span> <span class="n">seq_length</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">char_to_int</span><span class="p">,</span> <span class="n">n_vocab</span><span class="p">,</span> <span class="n">skip_step</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#model.fit_generator(train_data_generator.generate(), epochs=30, steps_per_epoch=n_chars/batch_size)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_data_generator</span><span class="o">.</span><span class="n">generate</span><span class="p">(),</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">steps_per_epoch</span><span class="o">=</span><span class="n">n_chars</span><span class="o">//</span><span class="n">batch_size</span><span class="p">)</span>
+<span class="c1">#model.fit(X, y, epochs=200, batch_size=32)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/200
-2083/2083 [==============================] - 26s 12ms/step - loss: 3.0367
-Epoch 2/200
-2083/2083 [==============================] - 24s 11ms/step - loss: 2.5037
-Epoch 3/200
-2083/2083 [==============================] - 25s 12ms/step - loss: 2.3439
-Epoch 4/200
-2083/2083 [==============================] - 27s 13ms/step - loss: 2.2347
-Epoch 5/200
-2083/2083 [==============================] - 26s 12ms/step - loss: 2.1483
-Epoch 6/200
-2083/2083 [==============================] - 24s 11ms/step - loss: 2.0631
-Epoch 7/200
-2083/2083 [==============================] - 23s 11ms/step - loss: 1.9892
-Epoch 8/200
-2083/2083 [==============================] - 27s 13ms/step - loss: 1.9368
-Epoch 9/200
-2083/2083 [==============================] - 32s 16ms/step - loss: 1.8735
-Epoch 10/200
-2083/2083 [==============================] - 28s 13ms/step - loss: 1.8218
-Epoch 11/200
-2083/2083 [==============================] - 29s 14ms/step - loss: 1.7650
-Epoch 12/200
-2083/2083 [==============================] - 26s 12ms/step - loss: 1.7209
-Epoch 13/200
-2083/2083 [==============================] - 34s 16ms/step - loss: 1.6791
-Epoch 14/200
-2083/2083 [==============================] - 29s 14ms/step - loss: 1.6435
-Epoch 15/200
-2083/2083 [==============================] - 22s 11ms/step - loss: 1.5907
-Epoch 16/200
-2083/2083 [==============================] - 28s 14ms/step - loss: 1.5612
-Epoch 17/200
-2083/2083 [==============================] - 21s 10ms/step - loss: 1.5159
-Epoch 18/200
-2083/2083 [==============================] - 20s 10ms/step - loss: 1.5025
-Epoch 19/200
-2083/2083 [==============================] - 20s 10ms/step - loss: 1.4749
-Epoch 20/200
-2083/2083 [==============================] - 22s 10ms/step - loss: 1.4397
-Epoch 21/200
-2083/2083 [==============================] - 30s 14ms/step - loss: 1.3992
-Epoch 22/200
-2083/2083 [==============================] - 23s 11ms/step - loss: 1.3764
-Epoch 23/200
-2083/2083 [==============================] - 27s 13ms/step - loss: 1.3350
-Epoch 24/200
-2083/2083 [==============================] - 28s 14ms/step - loss: 1.3210
-Epoch 25/200
-2083/2083 [==============================] - 28s 14ms/step - loss: 1.2972
-Epoch 26/200
-2083/2083 [==============================] - 28s 14ms/step - loss: 1.2743
-Epoch 27/200
-2083/2083 [==============================] - 28s 13ms/step - loss: 1.2628
-Epoch 28/200
-2083/2083 [==============================] - 27s 13ms/step - loss: 1.2338
-Epoch 29/200
-2083/2083 [==============================] - 24s 11ms/step - loss: 1.2126
-Epoch 30/200
-2083/2083 [==============================] - 29s 14ms/step - loss: 1.1936
-Epoch 31/200
-2083/2083 [==============================] - 30s 14ms/step - loss: 1.1889
-Epoch 32/200
-2083/2083 [==============================] - 30s 14ms/step - loss: 1.1614
-Epoch 33/200
-2083/2083 [==============================] - 29s 14ms/step - loss: 1.1415
-Epoch 34/200
-2083/2083 [==============================] - 33s 16ms/step - loss: 1.1335
-Epoch 35/200
-2083/2083 [==============================] - 21s 10ms/step - loss: 1.1311
-Epoch 36/200
-2083/2083 [==============================] - 22s 11ms/step - loss: 1.1187
-Epoch 37/200
-2083/2083 [==============================] - 34s 16ms/step - loss: 1.1038
-Epoch 38/200
-2083/2083 [==============================] - 36s 17ms/step - loss: 1.0968
-Epoch 39/200
-2083/2083 [==============================] - 26s 13ms/step - loss: 1.0790
-Epoch 40/200
-2083/2083 [==============================] - 31s 15ms/step - loss: 1.0745
-Epoch 41/200
-2083/2083 [==============================] - 28s 13ms/step - loss: 1.0655
-Epoch 42/200
-2083/2083 [==============================] - 21s 10ms/step - loss: 1.0480
-Epoch 43/200
-2083/2083 [==============================] - 27s 13ms/step - loss: 1.0453
-Epoch 44/200
-2083/2083 [==============================] - 32s 16ms/step - loss: 1.0395
-Epoch 45/200
-2083/2083 [==============================] - 35s 17ms/step - loss: 1.0238
-Epoch 46/200
-2083/2083 [==============================] - 27s 13ms/step - loss: 1.0261
-Epoch 47/200
-2083/2083 [==============================] - 27s 13ms/step - loss: 1.0142
-Epoch 48/200
-2083/2083 [==============================] - 22s 11ms/step - loss: 1.0148
-Epoch 49/200
-2083/2083 [==============================] - 25s 12ms/step - loss: 0.9909
-Epoch 50/200
-2083/2083 [==============================] - 21s 10ms/step - loss: 0.9929
-Epoch 51/200
-2083/2083 [==============================] - 28s 13ms/step - loss: 0.9913
-Epoch 52/200
-2083/2083 [==============================] - 34s 16ms/step - loss: 0.9861
-Epoch 53/200
-2083/2083 [==============================] - 35s 17ms/step - loss: 0.9852
-Epoch 54/200
-2083/2083 [==============================] - 32s 15ms/step - loss: 0.9682
-Epoch 55/200
-2083/2083 [==============================] - 32s 15ms/step - loss: 0.9794
-Epoch 56/200
-2083/2083 [==============================] - 36s 17ms/step - loss: 0.9594
-Epoch 57/200
-2083/2083 [==============================] - 37s 18ms/step - loss: 0.9570
-Epoch 58/200
-2083/2083 [==============================] - 34s 16ms/step - loss: 0.9623
-Epoch 59/200
-2083/2083 [==============================] - 37s 18ms/step - loss: 0.9515
-Epoch 60/200
-2083/2083 [==============================] - 34s 16ms/step - loss: 0.9419
-Epoch 61/200
-2083/2083 [==============================] - 36s 17ms/step - loss: 0.9560
-Epoch 62/200
-2083/2083 [==============================] - 33s 16ms/step - loss: 0.9503
-Epoch 63/200
-2083/2083 [==============================] - 34s 16ms/step - loss: 0.9428
-Epoch 64/200
-2083/2083 [==============================] - 34s 16ms/step - loss: 0.9426
-Epoch 65/200
-2083/2083 [==============================] - 34s 16ms/step - loss: 0.9448
-Epoch 66/200
-2083/2083 [==============================] - 26s 13ms/step - loss: 0.9434
-Epoch 67/200
-2083/2083 [==============================] - 32s 15ms/step - loss: 0.9406
-Epoch 68/200
-2083/2083 [==============================] - 33s 16ms/step - loss: 0.9244
-Epoch 69/200
-2083/2083 [==============================] - 35s 17ms/step - loss: 0.9323
-Epoch 70/200
-2083/2083 [==============================] - 38s 18ms/step - loss: 0.9361
-Epoch 71/200
-2083/2083 [==============================] - 33s 16ms/step - loss: 0.9252
-Epoch 72/200
-2083/2083 [==============================] - 36s 17ms/step - loss: 0.9325
-Epoch 73/200
-2083/2083 [==============================] - 34s 16ms/step - loss: 0.9312
-Epoch 74/200
-2083/2083 [==============================] - 30s 15ms/step - loss: 0.9343
-Epoch 75/200
-2083/2083 [==============================] - 33s 16ms/step - loss: 0.9346
-Epoch 76/200
-2083/2083 [==============================] - 36s 17ms/step - loss: 0.9198
-Epoch 77/200
-2083/2083 [==============================] - 35s 17ms/step - loss: 0.9331
-Epoch 78/200
-2083/2083 [==============================] - 34s 16ms/step - loss: 1.7209
-Epoch 79/200
-2083/2083 [==============================] - 37s 18ms/step - loss: 3.7659
-Epoch 80/200
-2083/2083 [==============================] - 32s 15ms/step - loss: 3.1665
-Epoch 81/200
-2083/2083 [==============================] - 36s 17ms/step - loss: 2.8868
-Epoch 82/200
-2083/2083 [==============================] - 30s 15ms/step - loss: 2.7156
-Epoch 83/200
-2083/2083 [==============================] - 35s 17ms/step - loss: 2.6041
-Epoch 84/200
-2083/2083 [==============================] - 37s 18ms/step - loss: 2.5368
-Epoch 85/200
-2083/2083 [==============================] - 32s 16ms/step - loss: 2.4605
-Epoch 86/200
-2083/2083 [==============================] - 25s 12ms/step - loss: 2.3947
-Epoch 87/200
-2083/2083 [==============================] - 31s 15ms/step - loss: 2.3747
-Epoch 88/200
-2083/2083 [==============================] - 36s 17ms/step - loss: 2.3057
-Epoch 89/200
-2083/2083 [==============================] - 31s 15ms/step - loss: 2.2391
-Epoch 90/200
-2083/2083 [==============================] - 34s 16ms/step - loss: 2.1357
-Epoch 91/200
-2083/2083 [==============================] - 32s 16ms/step - loss: 2.0559
-Epoch 92/200
-2083/2083 [==============================] - 35s 17ms/step - loss: 1.9769
-Epoch 93/200
-2083/2083 [==============================] - 29s 14ms/step - loss: 1.9188
-Epoch 94/200
-2083/2083 [==============================] - 37s 18ms/step - loss: 1.8637
-Epoch 95/200
-2083/2083 [==============================] - 39s 19ms/step - loss: 1.7961
-Epoch 96/200
-2083/2083 [==============================] - 41s 20ms/step - loss: 1.7647
-Epoch 97/200
-2083/2083 [==============================] - 41s 20ms/step - loss: 1.7186
-Epoch 98/200
-2083/2083 [==============================] - 37s 18ms/step - loss: 1.6773
-Epoch 99/200
-2083/2083 [==============================] - 39s 19ms/step - loss: 1.6338
-Epoch 100/200
-2083/2083 [==============================] - 36s 17ms/step - loss: 1.6125
-Epoch 101/200
-2083/2083 [==============================] - 39s 19ms/step - loss: 1.5730
-Epoch 102/200
-2083/2083 [==============================] - 36s 17ms/step - loss: 1.5506
-Epoch 103/200
-2083/2083 [==============================] - 36s 17ms/step - loss: 1.5189
-Epoch 104/200
-2083/2083 [==============================] - 40s 19ms/step - loss: 1.5105
-Epoch 105/200
-2083/2083 [==============================] - 39s 19ms/step - loss: 1.4798
-Epoch 106/200
-2083/2083 [==============================] - 37s 18ms/step - loss: 1.4562
-Epoch 107/200
-2083/2083 [==============================] - 41s 20ms/step - loss: 1.5138
-Epoch 108/200
-2083/2083 [==============================] - 36s 17ms/step - loss: 1.4241
-Epoch 109/200
-2083/2083 [==============================] - 38s 18ms/step - loss: 1.4028
-Epoch 110/200
-2083/2083 [==============================] - 41s 20ms/step - loss: 1.3790
-Epoch 111/200
-2083/2083 [==============================] - 38s 18ms/step - loss: 1.3591
-Epoch 112/200
-2083/2083 [==============================] - 39s 18ms/step - loss: 1.3491
-Epoch 113/200
-2083/2083 [==============================] - 37s 18ms/step - loss: 1.3394
-Epoch 114/200
-2083/2083 [==============================] - 37s 18ms/step - loss: 1.3289
-Epoch 115/200
-2083/2083 [==============================] - 41s 20ms/step - loss: 1.3135
-Epoch 116/200
-2083/2083 [==============================] - 38s 18ms/step - loss: 1.2875
-Epoch 117/200
-2083/2083 [==============================] - 39s 19ms/step - loss: 1.2790
-Epoch 118/200
-2083/2083 [==============================] - 40s 19ms/step - loss: 1.2759
-Epoch 119/200
-2083/2083 [==============================] - 32s 15ms/step - loss: 1.2641
-Epoch 120/200
-2083/2083 [==============================] - 40s 19ms/step - loss: 1.2541
-Epoch 121/200
-2083/2083 [==============================] - 39s 19ms/step - loss: 1.2385
-Epoch 122/200
-2083/2083 [==============================] - 39s 19ms/step - loss: 1.2549
-Epoch 123/200
-2083/2083 [==============================] - 39s 19ms/step - loss: 1.2160
-Epoch 124/200
-2083/2083 [==============================] - 37s 18ms/step - loss: 1.2087
-Epoch 125/200
-2083/2083 [==============================] - 39s 19ms/step - loss: 1.2009
-Epoch 126/200
-2083/2083 [==============================] - 39s 19ms/step - loss: 1.1916
-Epoch 127/200
-2083/2083 [==============================] - 38s 18ms/step - loss: 1.1804
-Epoch 128/200
-2083/2083 [==============================] - 39s 19ms/step - loss: 1.1824
-Epoch 129/200
-2083/2083 [==============================] - 31s 15ms/step - loss: 1.1581
-Epoch 130/200
-2083/2083 [==============================] - 28s 14ms/step - loss: 1.1485
-Epoch 131/200
-2083/2083 [==============================] - 34s 16ms/step - loss: 1.1538
-Epoch 132/200
-2083/2083 [==============================] - 35s 17ms/step - loss: 1.1451
-Epoch 133/200
-2083/2083 [==============================] - 32s 15ms/step - loss: 1.1317
-Epoch 134/200
-2083/2083 [==============================] - 31s 15ms/step - loss: 1.2675
-Epoch 135/200
-2083/2083 [==============================] - 37s 18ms/step - loss: 1.5304
-Epoch 136/200
-2083/2083 [==============================] - 35s 17ms/step - loss: 1.5561
-Epoch 137/200
-2083/2083 [==============================] - 39s 19ms/step - loss: 1.2676
-Epoch 138/200
-2083/2083 [==============================] - 33s 16ms/step - loss: 1.1609
-Epoch 139/200
-2083/2083 [==============================] - 37s 18ms/step - loss: 1.1298
-Epoch 140/200
-2083/2083 [==============================] - 34s 16ms/step - loss: 1.1255
-Epoch 141/200
-2083/2083 [==============================] - 33s 16ms/step - loss: 1.1045
-Epoch 142/200
-2083/2083 [==============================] - 38s 18ms/step - loss: 1.1079
-Epoch 143/200
-2083/2083 [==============================] - 32s 15ms/step - loss: 1.1177
-Epoch 144/200
-2083/2083 [==============================] - 28s 13ms/step - loss: 1.1079
-Epoch 145/200
-2083/2083 [==============================] - 32s 15ms/step - loss: 1.1024
-Epoch 146/200
-2083/2083 [==============================] - 38s 18ms/step - loss: 1.1011
-Epoch 147/200
-2083/2083 [==============================] - 31s 15ms/step - loss: 1.0886
-Epoch 148/200
-2083/2083 [==============================] - 26s 13ms/step - loss: 1.0800
-Epoch 149/200
-2083/2083 [==============================] - 32s 15ms/step - loss: 1.0748
-Epoch 150/200
-2083/2083 [==============================] - 26s 13ms/step - loss: 1.1929
-Epoch 151/200
-2083/2083 [==============================] - 22s 11ms/step - loss: 1.1015
-Epoch 152/200
-2083/2083 [==============================] - 28s 13ms/step - loss: 1.0581
-Epoch 153/200
-2083/2083 [==============================] - 27s 13ms/step - loss: 1.7733
-Epoch 154/200
-2083/2083 [==============================] - 22s 11ms/step - loss: 4.7665
-Epoch 155/200
-2083/2083 [==============================] - 27s 13ms/step - loss: 3.7679
-Epoch 156/200
-2083/2083 [==============================] - 23s 11ms/step - loss: 3.0387
-Epoch 157/200
-2083/2083 [==============================] - 24s 12ms/step - loss: 2.7524
-Epoch 158/200
-2083/2083 [==============================] - 25s 12ms/step - loss: 2.4446
-Epoch 159/200
-2083/2083 [==============================] - 18s 9ms/step - loss: 1.6476
-Epoch 160/200
-2083/2083 [==============================] - 25s 12ms/step - loss: 1.3003
-Epoch 161/200
-2083/2083 [==============================] - 17s 8ms/step - loss: 1.1860
-Epoch 162/200
-2083/2083 [==============================] - 14s 7ms/step - loss: 1.1493
-Epoch 163/200
-2083/2083 [==============================] - 14s 7ms/step - loss: 1.1235
-Epoch 164/200
-2083/2083 [==============================] - 14s 7ms/step - loss: 1.0983
-Epoch 165/200
-2083/2083 [==============================] - 14s 7ms/step - loss: 1.0867
-Epoch 166/200
-2083/2083 [==============================] - 14s 7ms/step - loss: 1.0771
-Epoch 167/200
-2083/2083 [==============================] - 14s 7ms/step - loss: 1.0721
-Epoch 168/200
-2083/2083 [==============================] - 14s 7ms/step - loss: 1.0495
-Epoch 169/200
-2083/2083 [==============================] - 22s 11ms/step - loss: 1.0529
-Epoch 170/200
-2083/2083 [==============================] - 20s 10ms/step - loss: 1.0311
-Epoch 171/200
-2083/2083 [==============================] - 23s 11ms/step - loss: 1.0332
-Epoch 172/200
-2083/2083 [==============================] - 21s 10ms/step - loss: 1.0385
-Epoch 173/200
-2083/2083 [==============================] - 20s 10ms/step - loss: 1.0314
-Epoch 174/200
-2083/2083 [==============================] - 22s 10ms/step - loss: 1.0018
-Epoch 175/200
-2083/2083 [==============================] - 20s 10ms/step - loss: 1.0124
-Epoch 176/200
-2083/2083 [==============================] - 21s 10ms/step - loss: 1.0036
-Epoch 177/200
-2083/2083 [==============================] - 22s 11ms/step - loss: 0.9950
-Epoch 178/200
-2083/2083 [==============================] - 23s 11ms/step - loss: 0.9993
-Epoch 179/200
-2083/2083 [==============================] - 21s 10ms/step - loss: 0.9909
-Epoch 180/200
-2083/2083 [==============================] - 32s 15ms/step - loss: 0.9957
-Epoch 181/200
-2083/2083 [==============================] - 22s 10ms/step - loss: 0.9966
-Epoch 182/200
-2083/2083 [==============================] - 24s 12ms/step - loss: 0.9896
-Epoch 183/200
-2083/2083 [==============================] - 23s 11ms/step - loss: 0.9803
-Epoch 184/200
-2083/2083 [==============================] - 23s 11ms/step - loss: 0.9797
-Epoch 185/200
-2083/2083 [==============================] - 24s 12ms/step - loss: 0.9621
-Epoch 186/200
-2083/2083 [==============================] - 22s 11ms/step - loss: 0.9808
-Epoch 187/200
-2083/2083 [==============================] - 22s 11ms/step - loss: 0.9747
-Epoch 188/200
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">33s</span> 21ms/step - loss: 2.4504
+Epoch 2/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 21ms/step - loss: 2.2917
+Epoch 3/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 21ms/step - loss: 2.2230
+Epoch 4/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 21ms/step - loss: 2.1850
+Epoch 5/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 21ms/step - loss: 2.1429
+Epoch 6/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 21ms/step - loss: 1.9989
+Epoch 7/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 21ms/step - loss: 2.0430
+Epoch 8/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 21ms/step - loss: 1.9867
+Epoch 9/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 20ms/step - loss: 1.8116
+Epoch 10/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 21ms/step - loss: 1.8121
+Epoch 11/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 21ms/step - loss: 1.8064
+Epoch 12/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 21ms/step - loss: 1.8789
+Epoch 13/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 21ms/step - loss: 1.7496
+Epoch 14/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 21ms/step - loss: 1.8017
+Epoch 15/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 21ms/step - loss: 1.8482
+Epoch 16/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 21ms/step - loss: 1.6041
+Epoch 17/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 21ms/step - loss: 1.6403
+Epoch 18/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 21ms/step - loss: 1.6420
+Epoch 19/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 20ms/step - loss: 1.7593
+Epoch 20/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 21ms/step - loss: 1.5478
+Epoch 21/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 21ms/step - loss: 1.7173
+Epoch 22/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 21ms/step - loss: 1.8039
+Epoch 23/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 21ms/step - loss: 1.5312
+Epoch 24/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 21ms/step - loss: 1.5308
+Epoch 25/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">33s</span> 21ms/step - loss: 1.5187
+Epoch 26/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 21ms/step - loss: 1.7089
+Epoch 27/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 21ms/step - loss: 1.5227
+Epoch 28/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 21ms/step - loss: 1.5929
+Epoch 29/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 21ms/step - loss: 1.7020
+Epoch 30/30
+<span class=" -Color -Color-Bold">1562/1562</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">32s</span> 21ms/step - loss: 1.5079
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2083/2083 [==============================] - 28s 14ms/step - loss: 0.9642
-Epoch 189/200
-2083/2083 [==============================] - 28s 14ms/step - loss: 0.9633
-Epoch 190/200
-2083/2083 [==============================] - 29s 14ms/step - loss: 0.9460
-Epoch 191/200
-2083/2083 [==============================] - 25s 12ms/step - loss: 0.9605
-Epoch 192/200
-2083/2083 [==============================] - 29s 14ms/step - loss: 0.9480
-Epoch 193/200
-2083/2083 [==============================] - 26s 13ms/step - loss: 0.9451
-Epoch 194/200
-2083/2083 [==============================] - 19s 9ms/step - loss: 0.9382
-Epoch 195/200
-2083/2083 [==============================] - 20s 10ms/step - loss: 0.9595
-Epoch 196/200
-2083/2083 [==============================] - 24s 11ms/step - loss: 0.9227
-Epoch 197/200
-2083/2083 [==============================] - 24s 11ms/step - loss: 0.9242
-Epoch 198/200
-2083/2083 [==============================] - 17s 8ms/step - loss: 0.9273
-Epoch 199/200
-2083/2083 [==============================] - 20s 10ms/step - loss: 0.9230
-Epoch 200/200
-2083/2083 [==============================] - 23s 11ms/step - loss: 0.9315
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7fc096a35150&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.src.callbacks.history.History at 0x79008c3bc530&gt;
 </pre></div>
 </div>
 </div>
@@ -1305,7 +1381,7 @@ Epoch 200/200
 <span class="n">n_batch</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="c1"># re-define model</span>
 <span class="n">new_model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
-<span class="n">new_model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span><span class="n">batch_size</span><span class="o">=</span><span class="n">n_batch</span><span class="p">)</span>
+<span class="n">new_model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span><span class="n">batch_size</span><span class="o">=</span><span class="n">n_batch</span><span class="p">))</span>
 <span class="n">new_model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 <span class="n">new_model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="n">rate</span><span class="o">=</span><span class="mf">0.2</span><span class="p">))</span>
 <span class="n">new_model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">256</span><span class="p">))</span>
@@ -1344,26 +1420,23 @@ Epoch 200/200
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Seed:
-&quot; e said, Is not he rightly named Jacob? for he hath
-supplante &quot;
-d him anl that which
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/julian/.local/lib/python3.7/site-packages/ipykernel_launcher.py:4: RuntimeWarning: divide by zero encountered in log
-  after removing the cwd from sys.path.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> was in his son.
+&quot;  the
+youngest, and his corn money. And he did according to t &quot;
+he LORD shall be she poiest shat were dorrt and she LORD bome tnto the LORD.
 
-26:15 And the seven oe the man of Earaham stoedn them ont, and grom the land of Cgypt.
+22:18 These was the family of the LORD shall be spooe for a swoat so the children of Israel.
 
-40:48 And the waters were iim to the len of the darth, and the sons of Esau, and the cameed a samoon in the land of Cgypt. 
-44:48 And the seventg day wat anl that he had mado of to drenk aerrreng, and the camees,
-and the famene which he had spoken of the man; and he said, She caughter ald the diildren of Searaoh iis sesvants,
-and said unto him, Where oe my mister Aaraham and the food of the land of Cgypt, and the wasers were the seven go twene betuid, and sent me to thei fown to the mend of Cgypt, and seid unto him, There on the land of Cgypt, and with thee and the men shall be mnten.
+22:13 And the LORD said unto Moses, The LORD shall spread unto the LORD.
 
-34:32 And the cemer were there things, and taid unto him, There oe my mister said unto him, Tho hs the land of Cgypt, and the farthin of the hand of Egypt, and terv them in the land of Cgypt. 
-44:40 And the sons of Dasaham&#39;s sarvant, and said unto Abramam, Iehold, ie and the theii
+22:16 And the LORD said unto Moses, Ge thou shalt not be a servant offering of the camp of the camp.
+
+25:10 And the LORD said unto Moses, Boe the seventh cay of the camp of the camt, the sons of the LORD shall be all the sabernacle of the LORD: and the LORD said unto Moses, Tat the LORD shall be a senvart of the service of the children of Israel.
+
+22:19 And the LORD said unto Moses, Ge thou shalt sake the LORD, the sons of the LORD shall be a pamestard ay the family of the LORD.
+
+23:14 And the LORD said unto Moses, The LORD said unto Moses, The LORD shall be the campelitt of the LORD, and the people of the family of the camp of the sabernacle of the LORD.
+
+22:26 And the LORD said unto Moses and the son of Eanah, the son of Mamanieh, the son of 
 Done.
 </pre></div>
 </div>
@@ -1376,7 +1449,7 @@ Done.
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;modelgenDNNLSTM.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
     <span class="n">json_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">model_json</span><span class="p">)</span>
 <span class="c1"># serialize weights to HDF5</span>
-<span class="n">new_model</span><span class="o">.</span><span class="n">save_weights</span><span class="p">(</span><span class="s2">&quot;modelgenDNNLSTM.h5&quot;</span><span class="p">)</span>
+<span class="n">new_model</span><span class="o">.</span><span class="n">save_weights</span><span class="p">(</span><span class="s2">&quot;modelgenDNNLSTM.weights.h5&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Saved model to disk&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
