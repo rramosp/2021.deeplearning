@@ -449,8 +449,9 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#word-embeddings">Word embeddings</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#word2vec">word2vec</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-activation-functions">Alternative activation functions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cbow">CBOW</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skip-gram">Skip-gram</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-build-a-word2vec-model-using-tf">Let’s build a word2vec model using <code class="docutils literal notranslate"><span class="pre">tf</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#there-are-other-two-widely-used-representations-based-on-matrix-factorization">There are other two widely used representations based on Matrix factorization:</a></li>
 </ul>
 </li>
@@ -471,19 +472,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="text-processing">
 <h1>5.4 Text processing<a class="headerlink" href="#text-processing" title="Link to this heading">#</a></h1>
-<p>Course’s materials require a <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code> version lower than the default one used in Google Colab. Run the following cell to downgrade TensorFlow accordingly.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">downgrade_tf_version</span><span class="p">():</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip uninstall -y tensorflow&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;!yes | pip install tensorflow==2.12.0&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="mi">9</span><span class="p">)</span>
-<span class="n">downgrade_tf_version</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
@@ -513,6 +501,18 @@ document.write(`
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2.0.2&#39;
+</pre></div>
+</div>
+</div>
+</div>
 <p>There exists several applications that require the processing of text, e.g. machine translation, sentiment analysis, semantic word similarity, part of speech tagging, to name just a few. However, in order to solve those problems, the text needs to be transformed into something that can be understood by the models. In the following some of the basic preprocessing steps that must be applied to text are going to be presented.</p>
 <p>Natural Language Toolkit
 <a class="reference external" href="https://www.nltk.org/index.html">https://www.nltk.org/index.html</a></p>
@@ -523,7 +523,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
-<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt_tab&#39;</span><span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">nltk</span><span class="w"> </span><span class="kn">import</span> <span class="n">word_tokenize</span> 
 
 <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;ejemplo de texto a ser procesado&#39;</span>
@@ -532,8 +532,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt to /home/julian/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt_tab to
+[nltk_data]     /Users/jdariasl/nltk_data...
+[nltk_data]   Package punkt_tab is already up-to-date!
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;ejemplo&#39;, &#39;de&#39;, &#39;texto&#39;, &#39;a&#39;, &#39;ser&#39;, &#39;procesado&#39;]
@@ -550,6 +551,7 @@ document.write(`
 <span class="n">max_fatures</span> <span class="o">=</span> <span class="mi">8</span>
 <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">(</span><span class="n">num_words</span><span class="o">=</span><span class="n">max_fatures</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
 <span class="n">tokenizer</span><span class="o">.</span><span class="n">fit_on_texts</span><span class="p">([</span><span class="n">text</span><span class="p">])</span>
+<span class="n">tokenizer</span><span class="o">.</span><span class="n">word_index</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;&lt;pad&gt;&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">texts_to_sequences</span><span class="p">([</span><span class="n">text</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">([</span><span class="n">text</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
@@ -571,7 +573,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;ejemplo&#39;: 1, &#39;de&#39;: 2, &#39;texto&#39;: 3, &#39;a&#39;: 4, &#39;ser&#39;: 5, &#39;procesado&#39;: 6}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;ejemplo&#39;: 1,
+ &#39;de&#39;: 2,
+ &#39;texto&#39;: 3,
+ &#39;a&#39;: 4,
+ &#39;ser&#39;: 5,
+ &#39;procesado&#39;: 6,
+ &#39;&lt;pad&gt;&#39;: 0}
 </pre></div>
 </div>
 </div>
@@ -588,7 +596,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to /home/julian/nltk_data...
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to
+[nltk_data]     /Users/jdariasl/nltk_data...
 [nltk_data]   Package stopwords is already up-to-date!
 </pre></div>
 </div>
@@ -638,8 +647,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 569 µs, sys: 272 µs, total: 841 µs
-Wall time: 607 µs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1.98 ms, sys: 244 µs, total: 2.22 ms
+Wall time: 2.2 ms
 (3, 18)
 </pre></div>
 </div>
@@ -652,29 +661,14 @@ Wall time: 607 µs
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count_vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count_vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;algunos&#39;,
- &#39;complejos&#39;,
- &#39;dar&#39;,
- &#39;de&#39;,
- &#39;ejemplo&#39;,
- &#39;ejemplos&#39;,
- &#39;más&#39;,
- &#39;no&#39;,
- &#39;otros&#39;,
- &#39;posible&#39;,
- &#39;procesado&#39;,
- &#39;puenden&#39;,
- &#39;que&#39;,
- &#39;se&#39;,
- &#39;sea&#39;,
- &#39;ser&#39;,
- &#39;si&#39;,
- &#39;texto&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;algunos&#39;, &#39;complejos&#39;, &#39;dar&#39;, &#39;de&#39;, &#39;ejemplo&#39;, &#39;ejemplos&#39;, &#39;más&#39;,
+       &#39;no&#39;, &#39;otros&#39;, &#39;posible&#39;, &#39;procesado&#39;, &#39;puenden&#39;, &#39;que&#39;, &#39;se&#39;,
+       &#39;sea&#39;, &#39;ser&#39;, &#39;si&#39;, &#39;texto&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -694,28 +688,14 @@ Wall time: 607 µs
                                  <span class="n">min_df</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 
 <span class="n">count_matrix</span> <span class="o">=</span> <span class="n">count_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">synopsesStem</span><span class="p">)</span> <span class="c1">#fit the vectorizer to synopses</span>
-<span class="n">count_vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span>
+<span class="n">count_vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;algun&#39;,
- &#39;complej&#39;,
- &#39;dar&#39;,
- &#39;de&#39;,
- &#39;ejempl&#39;,
- &#39;mas&#39;,
- &#39;no&#39;,
- &#39;otros&#39;,
- &#39;posibl&#39;,
- &#39;proces&#39;,
- &#39;puend&#39;,
- &#39;que&#39;,
- &#39;se&#39;,
- &#39;sea&#39;,
- &#39;ser&#39;,
- &#39;si&#39;,
- &#39;text&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;algun&#39;, &#39;complej&#39;, &#39;dar&#39;, &#39;de&#39;, &#39;ejempl&#39;, &#39;mas&#39;, &#39;no&#39;, &#39;otros&#39;,
+       &#39;posibl&#39;, &#39;proces&#39;, &#39;puend&#39;, &#39;que&#39;, &#39;se&#39;, &#39;sea&#39;, &#39;ser&#39;, &#39;si&#39;,
+       &#39;text&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -776,8 +756,8 @@ Wall time: 607 µs
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 15.2 ms, sys: 446 µs, total: 15.7 ms
-Wall time: 15 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 24.5 ms, sys: 2.87 ms, total: 27.4 ms
+Wall time: 27.4 ms
 (3, 33)
 [[0.         0.         0.         0.         0.         0.
   0.         0.         0.20977061 0.         0.         0.35517252
@@ -799,16 +779,20 @@ Wall time: 15 ms
   0.         0.         0.        ]]
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jdariasl/Documents/MaterialesClase/Fund_Deep_Learning/.venv/lib/python3.9/site-packages/sklearn/feature_extraction/text.py:517: UserWarning: The parameter &#39;token_pattern&#39; will not be used since &#39;tokenizer&#39; is not None&#39;
+  warnings.warn(
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">tfidf_vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">(),</span> <span class="n">tfidf_vectorizer</span><span class="o">.</span><span class="n">idf_</span><span class="p">)))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">tfidf_vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">(),</span> <span class="n">tfidf_vectorizer</span><span class="o">.</span><span class="n">idf_</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;algun&#39;: 1.2876820724517808, &#39;algun ejempl&#39;: 1.2876820724517808, &#39;algun ejempl puend&#39;: 1.6931471805599454, &#39;complej&#39;: 1.6931471805599454, &#39;complej ejempl&#39;: 1.6931471805599454, &#39;dar&#39;: 1.6931471805599454, &#39;dar algun&#39;: 1.6931471805599454, &#39;dar algun ejempl&#39;: 1.6931471805599454, &#39;ejempl&#39;: 1.0, &#39;ejempl puend&#39;: 1.6931471805599454, &#39;ejempl puend ser&#39;: 1.6931471805599454, &#39;ejempl text&#39;: 1.6931471805599454, &#39;ejempl text ser&#39;: 1.6931471805599454, &#39;mas&#39;: 1.6931471805599454, &#39;mas complej&#39;: 1.6931471805599454, &#39;mas complej ejempl&#39;: 1.6931471805599454, &#39;posibl&#39;: 1.6931471805599454, &#39;posibl dar&#39;: 1.6931471805599454, &#39;posibl dar algun&#39;: 1.6931471805599454, &#39;proces&#39;: 1.6931471805599454, &#39;puend&#39;: 1.6931471805599454, &#39;puend ser&#39;: 1.6931471805599454, &#39;puend ser mas&#39;: 1.6931471805599454, &#39;ser&#39;: 1.2876820724517808, &#39;ser mas&#39;: 1.6931471805599454, &#39;ser mas complej&#39;: 1.6931471805599454, &#39;ser proces&#39;: 1.6931471805599454, &#39;si&#39;: 1.6931471805599454, &#39;si posibl&#39;: 1.6931471805599454, &#39;si posibl dar&#39;: 1.6931471805599454, &#39;text&#39;: 1.6931471805599454, &#39;text ser&#39;: 1.6931471805599454, &#39;text ser proces&#39;: 1.6931471805599454}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;algun&#39;: np.float64(1.2876820724517808), &#39;algun ejempl&#39;: np.float64(1.2876820724517808), &#39;algun ejempl puend&#39;: np.float64(1.6931471805599454), &#39;complej&#39;: np.float64(1.6931471805599454), &#39;complej ejempl&#39;: np.float64(1.6931471805599454), &#39;dar&#39;: np.float64(1.6931471805599454), &#39;dar algun&#39;: np.float64(1.6931471805599454), &#39;dar algun ejempl&#39;: np.float64(1.6931471805599454), &#39;ejempl&#39;: np.float64(1.0), &#39;ejempl puend&#39;: np.float64(1.6931471805599454), &#39;ejempl puend ser&#39;: np.float64(1.6931471805599454), &#39;ejempl text&#39;: np.float64(1.6931471805599454), &#39;ejempl text ser&#39;: np.float64(1.6931471805599454), &#39;mas&#39;: np.float64(1.6931471805599454), &#39;mas complej&#39;: np.float64(1.6931471805599454), &#39;mas complej ejempl&#39;: np.float64(1.6931471805599454), &#39;posibl&#39;: np.float64(1.6931471805599454), &#39;posibl dar&#39;: np.float64(1.6931471805599454), &#39;posibl dar algun&#39;: np.float64(1.6931471805599454), &#39;proces&#39;: np.float64(1.6931471805599454), &#39;puend&#39;: np.float64(1.6931471805599454), &#39;puend ser&#39;: np.float64(1.6931471805599454), &#39;puend ser mas&#39;: np.float64(1.6931471805599454), &#39;ser&#39;: np.float64(1.2876820724517808), &#39;ser mas&#39;: np.float64(1.6931471805599454), &#39;ser mas complej&#39;: np.float64(1.6931471805599454), &#39;ser proces&#39;: np.float64(1.6931471805599454), &#39;si&#39;: np.float64(1.6931471805599454), &#39;si posibl&#39;: np.float64(1.6931471805599454), &#39;si posibl dar&#39;: np.float64(1.6931471805599454), &#39;text&#39;: np.float64(1.6931471805599454), &#39;text ser&#39;: np.float64(1.6931471805599454), &#39;text ser proces&#39;: np.float64(1.6931471805599454)}
 </pre></div>
 </div>
 </div>
@@ -869,6 +853,11 @@ Wall time: 15 ms
 </div>
 </div>
 <p><a class="reference external" href="https://medium.com/&#64;ionejunhong/my-machine-learning-diary-day-78-c36d602ca9bf">Image taken from here</a></p>
+<p>There is a nice library called <a class="reference external" href="https://radimrehurek.com/gensim/">Gensim</a> for training CBOW and Skip-gram models, but it is not compatible with the current versions of NumPy and SciPy. A new version is in process to be leaveraged, so it is worth to take a look at it.</p>
+</section>
+</section>
+<section id="let-s-build-a-word2vec-model-using-tf">
+<h2>Let’s build a word2vec model using <code class="docutils literal notranslate"><span class="pre">tf</span></code><a class="headerlink" href="#let-s-build-a-word2vec-model-using-tf" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">bs</span>  
@@ -876,17 +865,26 @@ Wall time: 15 ms
 <span class="kn">import</span><span class="w"> </span><span class="nn">re</span>  
 <span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
 
-<span class="n">scrapped_data</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;https://en.wikipedia.org/wiki/Artificial_intelligence&#39;</span><span class="p">)</span>  
-<span class="n">article</span> <span class="o">=</span> <span class="n">scrapped_data</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://en.wikipedia.org/wiki/Artificial_intelligence&#39;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span> <span class="s1">&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3&#39;</span><span class="p">}</span>
+<span class="n">req</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
-<span class="n">parsed_article</span> <span class="o">=</span> <span class="n">bs</span><span class="o">.</span><span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">article</span><span class="p">,</span><span class="s1">&#39;lxml&#39;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">)</span> <span class="k">as</span> <span class="n">response</span><span class="p">:</span>
+        <span class="c1"># Read the content of the response</span>
+        <span class="n">article</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="n">parsed_article</span> <span class="o">=</span> <span class="n">bs</span><span class="o">.</span><span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">article</span><span class="p">,</span><span class="s1">&#39;lxml&#39;</span><span class="p">)</span>
 
-<span class="n">paragraphs</span> <span class="o">=</span> <span class="n">parsed_article</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
-
-<span class="n">article_text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-
-<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">paragraphs</span><span class="p">:</span>  
-    <span class="n">article_text</span> <span class="o">+=</span> <span class="n">p</span><span class="o">.</span><span class="n">text</span>
+        <span class="n">paragraphs</span> <span class="o">=</span> <span class="n">parsed_article</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+        
+        <span class="n">article_text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">paragraphs</span><span class="p">:</span>  
+            <span class="n">article_text</span> <span class="o">+=</span> <span class="n">p</span><span class="o">.</span><span class="n">text</span>
+<span class="k">except</span> <span class="n">urllib</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">HTTPError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;HTTP Error: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">reason</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">urllib</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">URLError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;URL Error: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">reason</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -914,13 +912,13 @@ Wall time: 15 ms
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">local.lib.mlutils</span><span class="w"> </span><span class="kn">import</span> <span class="n">prepare_text_for_cbow</span><span class="p">,</span> <span class="n">generate_context_word_pairs</span>
-<span class="n">wids</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">embed_size</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span><span class="n">id2word</span><span class="p">,</span><span class="n">word2id</span> <span class="o">=</span> <span class="n">prepare_text_for_cbow</span><span class="p">(</span><span class="n">all_words</span><span class="p">)</span>
+<span class="n">wids</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">embed_size</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">id2word</span><span class="p">,</span> <span class="n">word2id</span> <span class="o">=</span> <span class="n">prepare_text_for_cbow</span><span class="p">(</span><span class="n">all_words</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vocabulary Size: 2341
-Vocabulary Sample: [(&#39;ai&#39;, 1), (&#39;intelligence&#39;, 2), (&#39;human&#39;, 3), (&#39;artificial&#39;, 4), (&#39;research&#39;, 5), (&#39;machine&#39;, 6), (&#39;knowledge&#39;, 7), (&#39;many&#39;, 8), (&#39;learning&#39;, 9), (&#39;also&#39;, 10)]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vocabulary Size: 2944
+Vocabulary Sample: [(&#39;ai&#39;, 1), (&#39;intelligence&#39;, 2), (&#39;learning&#39;, 3), (&#39;used&#39;, 4), (&#39;data&#39;, 5), (&#39;artificial&#39;, 6), (&#39;human&#39;, 7), (&#39;machine&#39;, 8), (&#39;research&#39;, 9), (&#39;use&#39;, 10)]
 </pre></div>
 </div>
 </div>
@@ -940,63 +938,206 @@ Vocabulary Sample: [(&#39;ai&#39;, 1), (&#39;intelligence&#39;, 2), (&#39;human&
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Context (X): [&#39;artificial&#39;, &#39;intelligence&#39;, &#39;intelligence&#39;, &#39;demonstrated&#39;] -&gt; Target (Y): ai
-Context (X): [&#39;intelligence&#39;, &#39;ai&#39;, &#39;demonstrated&#39;, &#39;machines&#39;] -&gt; Target (Y): intelligence
-Context (X): [&#39;ai&#39;, &#39;intelligence&#39;, &#39;machines&#39;, &#39;unlike&#39;] -&gt; Target (Y): demonstrated
-Context (X): [&#39;intelligence&#39;, &#39;demonstrated&#39;, &#39;unlike&#39;, &#39;natural&#39;] -&gt; Target (Y): machines
-Context (X): [&#39;demonstrated&#39;, &#39;machines&#39;, &#39;natural&#39;, &#39;intelligence&#39;] -&gt; Target (Y): unlike
-Context (X): [&#39;machines&#39;, &#39;unlike&#39;, &#39;intelligence&#39;, &#39;displayed&#39;] -&gt; Target (Y): natural
-Context (X): [&#39;unlike&#39;, &#39;natural&#39;, &#39;displayed&#39;, &#39;humans&#39;] -&gt; Target (Y): intelligence
-Context (X): [&#39;natural&#39;, &#39;intelligence&#39;, &#39;humans&#39;, &#39;animals&#39;] -&gt; Target (Y): displayed
-Context (X): [&#39;intelligence&#39;, &#39;displayed&#39;, &#39;animals&#39;, &#39;involves&#39;] -&gt; Target (Y): humans
-Context (X): [&#39;displayed&#39;, &#39;humans&#39;, &#39;involves&#39;, &#39;consciousness&#39;] -&gt; Target (Y): animals
-Context (X): [&#39;humans&#39;, &#39;animals&#39;, &#39;consciousness&#39;, &#39;emotionality&#39;] -&gt; Target (Y): involves
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="cbow">
-<h3>CBOW<a class="headerlink" href="#cbow" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">gensim.sklearn_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">W2VTransformer</span>
-<span class="c1"># Create a model to represent each word by a 10 dimensional vector.</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">W2VTransformer</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">window</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="n">min_count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sg</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">iter</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Context (X): [&#39;artificial&#39;, &#39;intelligence&#39;, &#39;capability&#39;, &#39;computational&#39;] -&gt; Target (Y): ai
+Context (X): [&#39;intelligence&#39;, &#39;ai&#39;, &#39;computational&#39;, &#39;systems&#39;] -&gt; Target (Y): capability
+Context (X): [&#39;ai&#39;, &#39;capability&#39;, &#39;systems&#39;, &#39;perform&#39;] -&gt; Target (Y): computational
+Context (X): [&#39;capability&#39;, &#39;computational&#39;, &#39;perform&#39;, &#39;tasks&#39;] -&gt; Target (Y): systems
+Context (X): [&#39;computational&#39;, &#39;systems&#39;, &#39;tasks&#39;, &#39;typically&#39;] -&gt; Target (Y): perform
+Context (X): [&#39;systems&#39;, &#39;perform&#39;, &#39;typically&#39;, &#39;associated&#39;] -&gt; Target (Y): tasks
+Context (X): [&#39;perform&#39;, &#39;tasks&#39;, &#39;associated&#39;, &#39;human&#39;] -&gt; Target (Y): typically
+Context (X): [&#39;tasks&#39;, &#39;typically&#39;, &#39;human&#39;, &#39;intelligence&#39;] -&gt; Target (Y): associated
+Context (X): [&#39;typically&#39;, &#39;associated&#39;, &#39;intelligence&#39;, &#39;learning&#39;] -&gt; Target (Y): human
+Context (X): [&#39;associated&#39;, &#39;human&#39;, &#39;learning&#39;, &#39;reasoning&#39;] -&gt; Target (Y): intelligence
+Context (X): [&#39;human&#39;, &#39;intelligence&#39;, &#39;reasoning&#39;, &#39;problem&#39;] -&gt; Target (Y): learning
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TerminosDeInteres</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ai&#39;</span><span class="p">,</span><span class="s1">&#39;artificial&#39;</span><span class="p">,</span><span class="s1">&#39;intelligence&#39;</span><span class="p">,</span> <span class="s1">&#39;statistics&#39;</span><span class="p">,</span> <span class="s1">&#39;economics&#39;</span><span class="p">,</span> <span class="s1">&#39;mathematics&#39;</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;scientific&#39;</span><span class="p">,</span> <span class="s1">&#39;reinforcement&#39;</span><span class="p">,</span><span class="s1">&#39;learning&#39;</span><span class="p">,</span><span class="s1">&#39;mining&#39;</span><span class="p">,</span><span class="s1">&#39;processing&#39;</span><span class="p">]</span>
-<span class="n">wordvecs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">([</span><span class="n">all_words</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()])</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">TerminosDeInteres</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow.keras.backend</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">k</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">,</span> <span class="n">Lambda</span><span class="p">,</span> <span class="n">Input</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TerminosDeInteres</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ai&#39;</span><span class="p">,</span><span class="s1">&#39;artificial&#39;</span><span class="p">,</span><span class="s1">&#39;intelligence&#39;</span><span class="p">,</span> <span class="s1">&#39;statistics&#39;</span><span class="p">,</span> <span class="s1">&#39;economics&#39;</span><span class="p">,</span> <span class="s1">&#39;mathematics&#39;</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;scientific&#39;</span><span class="p">,</span> <span class="s1">&#39;reinforcement&#39;</span><span class="p">,</span><span class="s1">&#39;learning&#39;</span><span class="p">,</span><span class="s1">&#39;mining&#39;</span><span class="p">,</span><span class="s1">&#39;processing&#39;</span><span class="p">]</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_extraction.text</span><span class="w"> </span><span class="kn">import</span> <span class="n">CountVectorizer</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># build the CBOW architecture</span>
+<span class="n">cbow</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<span class="n">cbow</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">window_size</span><span class="o">*</span><span class="mi">2</span><span class="p">,)))</span>
+<span class="n">cbow</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Embedding</span><span class="p">(</span><span class="n">input_dim</span><span class="o">=</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">output_dim</span><span class="o">=</span><span class="n">embed_size</span><span class="p">))</span>
+<span class="n">cbow</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Lambda</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">k</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">output_shape</span><span class="o">=</span><span class="p">(</span><span class="n">embed_size</span><span class="p">,)))</span>
+<span class="n">cbow</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span>
+<span class="n">cbow</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;rmsprop&#39;</span><span class="p">)</span>
 
-<span class="c1">#define vectorizer parameters</span>
-<span class="n">count_vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">max_df</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">200000</span><span class="p">,</span>
-                                 <span class="n">min_df</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">vocabulary</span> <span class="o">=</span> <span class="n">TerminosDeInteres</span><span class="p">)</span>
+<span class="n">cbow</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "sequential_6"</span>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)                    </span>┃<span style="font-weight: bold"> Output Shape           </span>┃<span style="font-weight: bold">       Param # </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ embedding_5 (<span style="color: #0087ff; text-decoration-color: #0087ff">Embedding</span>)         │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">12</span>, <span style="color: #00af00; text-decoration-color: #00af00">10</span>)         │        <span style="color: #00af00; text-decoration-color: #00af00">29,440</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ lambda_5 (<span style="color: #0087ff; text-decoration-color: #0087ff">Lambda</span>)               │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">10</span>)             │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_4 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                 │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">2944</span>)           │        <span style="color: #00af00; text-decoration-color: #00af00">32,384</span> │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">61,824</span> (241.50 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">61,824</span> (241.50 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">0</span> (0.00 B)
+</pre>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">window_size</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">):</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">generate_context_word_pairs</span><span class="p">(</span><span class="n">corpus</span><span class="o">=</span><span class="p">[</span><span class="n">wids</span><span class="p">],</span> <span class="n">window_size</span><span class="o">=</span><span class="n">window_size</span><span class="p">,</span> <span class="n">vocab_size</span><span class="o">=</span><span class="n">vocab_size</span><span class="p">):</span>
+        <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+        <span class="n">loss</span> <span class="o">+=</span> <span class="n">cbow</span><span class="o">.</span><span class="n">train_on_batch</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">100000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Processed </span><span class="si">{}</span><span class="s1"> (context, word) pairs&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+        
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Epoch:&#39;</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">Loss:&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 1 	Loss: 63097.152
 
-<span class="n">count_matrix</span> <span class="o">=</span> <span class="n">count_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">all_sentences</span><span class="p">)</span> <span class="c1">#fit the vectorizer to synopses</span>
+Epoch: 2 	Loss: 62350.246
+
+Epoch: 3 	Loss: 62112.46
+
+Epoch: 4 	Loss: 62031.008
+
+Epoch: 5 	Loss: 61987.746
+
+Epoch: 6 	Loss: 61957.742
+
+Epoch: 7 	Loss: 61933.617
+
+Epoch: 8 	Loss: 61911.668
+
+Epoch: 9 	Loss: 61898.01
+
+Epoch: 10 	Loss: 61879.707
+
+Epoch: 11 	Loss: 61870.39
+
+Epoch: 12 	Loss: 61854.01
+
+Epoch: 13 	Loss: 61845.18
+
+Epoch: 14 	Loss: 61836.42
+
+Epoch: 15 	Loss: 61822.066
+
+Epoch: 16 	Loss: 61815.332
+
+Epoch: 17 	Loss: 61812.426
+
+Epoch: 18 	Loss: 61804.188
+
+Epoch: 19 	Loss: 61791.52
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">terms</span> <span class="o">=</span> <span class="n">count_vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span>
-<span class="n">Nt</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">TerminosDeInteres</span><span class="p">)</span>
-<span class="n">CountTerminosDeInteres</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nt</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Nt</span><span class="p">):</span>
-    <span class="n">indx</span> <span class="o">=</span> <span class="n">terms</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">TerminosDeInteres</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-    <span class="n">CountTerminosDeInteres</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">count_matrix</span><span class="p">[:,</span><span class="n">indx</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weights</span> <span class="o">=</span> <span class="n">cbow</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">weights</span> <span class="o">=</span> <span class="n">weights</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">weights</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2943, 10)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics.pairwise</span><span class="w"> </span><span class="kn">import</span> <span class="n">euclidean_distances</span>
+
+<span class="c1"># compute pairwise distance matrix</span>
+<span class="n">distance_matrix</span> <span class="o">=</span> <span class="n">euclidean_distances</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">distance_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># view contextually similar words</span>
+<span class="n">similar_words</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">search_term</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">(</span><span class="n">id2word</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">distance_matrix</span><span class="p">[</span><span class="n">word2id</span><span class="p">[</span><span class="n">search_term</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">idx</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">distance_matrix</span><span class="p">[</span><span class="n">word2id</span><span class="p">[</span><span class="n">search_term</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[</span><span class="mi">1</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
+    <span class="p">]</span>
+    <span class="k">for</span> <span class="n">search_term</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;intelligence&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">similar_words</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2943, 2943)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jdariasl/Documents/MaterialesClase/Fund_Deep_Learning/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/jdariasl/Documents/MaterialesClase/Fund_Deep_Learning/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/jdariasl/Documents/MaterialesClase/Fund_Deep_Learning/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;intelligence&#39;: [(&#39;artificial&#39;, np.float32(1.1204317)),
+  (&#39;human&#39;, np.float32(1.3073528)),
+  (&#39;machines&#39;, np.float32(1.3116813)),
+  (&#39;field&#39;, np.float32(1.4723947)),
+  (&#39;information&#39;, np.float32(1.6915356))]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TerminosDeInteres</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ai&#39;</span><span class="p">,</span><span class="s1">&#39;artificial&#39;</span><span class="p">,</span><span class="s1">&#39;intelligence&#39;</span><span class="p">,</span> <span class="s1">&#39;statistics&#39;</span><span class="p">,</span> <span class="s1">&#39;economics&#39;</span><span class="p">,</span> <span class="s1">&#39;mathematics&#39;</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;scientific&#39;</span><span class="p">,</span> <span class="s1">&#39;reinforcement&#39;</span><span class="p">,</span><span class="s1">&#39;learning&#39;</span><span class="p">,</span><span class="s1">&#39;mining&#39;</span><span class="p">,</span><span class="s1">&#39;processing&#39;</span><span class="p">,</span><span class="s1">&#39;databases&#39;</span><span class="p">]</span>
+<span class="n">wordvecs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">weights</span><span class="p">[</span><span class="n">word2id</span><span class="p">[</span><span class="n">search_term</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">search_term</span> <span class="ow">in</span> <span class="n">TerminosDeInteres</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wordvecs</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(13, 10)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>
+<span class="n">tokenizer</span><span class="o">.</span><span class="n">fit_on_texts</span><span class="p">(</span><span class="n">all_words</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">CountTerminosDeInteres</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">TerminosDeInteres</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">TerminosDeInteres</span><span class="p">)):</span>
+    <span class="n">CountTerminosDeInteres</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">word_counts</span><span class="p">[</span><span class="n">TerminosDeInteres</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -1004,6 +1145,7 @@ Context (X): [&#39;humans&#39;, &#39;animals&#39;, &#39;consciousness&#39;, &#39
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.manifold</span><span class="w"> </span><span class="kn">import</span> <span class="n">MDS</span>
+
 <span class="n">embedding</span> <span class="o">=</span> <span class="n">MDS</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">X_embedded</span> <span class="o">=</span> <span class="n">embedding</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">wordvecs</span><span class="p">)</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
@@ -1015,92 +1157,26 @@ Context (X): [&#39;humans&#39;, &#39;animals&#39;, &#39;consciousness&#39;, &#39
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0bb23c042b7baee7d0ed64645260e16ba4bddcf1c4e600d6c44c863844b5ad57.png" src="../_images/0bb23c042b7baee7d0ed64645260e16ba4bddcf1c4e600d6c44c863844b5ad57.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">gensim.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Word2Vec</span>
-<span class="n">model2</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="p">(</span>
-        <span class="p">[</span><span class="n">all_words</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()],</span>
-        <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-        <span class="n">window</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
-        <span class="n">min_count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-        <span class="n">sg</span><span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="c1">#1 for skip-gram; otherwise CBOW</span>
-        <span class="n">workers</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">model2</span><span class="o">.</span><span class="n">train</span><span class="p">([</span><span class="n">all_words</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()],</span> <span class="n">total_examples</span><span class="o">=</span><span class="nb">len</span><span class="p">([</span><span class="n">all_words</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()]),</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jdariasl/Documents/MaterialesClase/Fund_Deep_Learning/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: divide by zero encountered in matmul
+  ret = a @ b
+/Users/jdariasl/Documents/MaterialesClase/Fund_Deep_Learning/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: overflow encountered in matmul
+  ret = a @ b
+/Users/jdariasl/Documents/MaterialesClase/Fund_Deep_Learning/.venv/lib/python3.9/site-packages/sklearn/utils/extmath.py:203: RuntimeWarning: invalid value encountered in matmul
+  ret = a @ b
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(53275, 57240)
-</pre></div>
+<img alt="../_images/581cec573f17791035a8568f0b480022bd0faa35b8e2eb4cab8ec5ae66c8efaa.png" src="../_images/581cec573f17791035a8568f0b480022bd0faa35b8e2eb4cab8ec5ae66c8efaa.png" />
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model2</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;intelligence&#39;</span><span class="p">],</span><span class="n">topn</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;may&#39;, 0.998458981513977),
- (&#39;ai&#39;, 0.9982806444168091),
- (&#39;approaches&#39;, 0.9975531101226807),
- (&#39;research&#39;, 0.997254490852356),
- (&#39;many&#39;, 0.9969410300254822),
- (&#39;machine&#39;, 0.9969082474708557)]
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="skip-gram">
-<h3>Skip-gram<a class="headerlink" href="#skip-gram" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">gensim.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Word2Vec</span>
-<span class="n">model2</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="p">(</span>
-        <span class="p">[</span><span class="n">all_words</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()],</span>
-        <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-        <span class="n">window</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
-        <span class="n">min_count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-        <span class="n">sg</span><span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="c1">#1 for skip-gram; otherwise CBOW</span>
-        <span class="n">workers</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">model2</span><span class="o">.</span><span class="n">train</span><span class="p">([</span><span class="n">all_words</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()],</span> <span class="n">total_examples</span><span class="o">=</span><span class="nb">len</span><span class="p">([</span><span class="n">all_words</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()]),</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(53275, 57240)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model2</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;intelligence&#39;</span><span class="p">],</span><span class="n">topn</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;artificial&#39;, 0.9911572933197021),
- (&#39;moral&#39;, 0.9842232465744019),
- (&#39;symbolic&#39;, 0.9834890961647034),
- (&#39;research&#39;, 0.9820720553398132),
- (&#39;development&#39;, 0.980772852897644),
- (&#39;concerned&#39;, 0.9801471829414368)]
-</pre></div>
-</div>
-</div>
-</div>
-<p>It also have options for hierarchical softmax or negative sampling:</p>
-<ul class="simple">
-<li><p><strong>hs</strong> ({0, 1}, optional) – If 1, hierarchical softmax will be used for model training. If 0, and negative is non-zero, negative sampling will be used.</p></li>
-<li><p><strong>negative</strong> (int, optional) – If &gt; 0, negative sampling will be used, the int for negative specifies how many “noise words” should be drawn (usually between 5-20). If set to 0, no negative sampling is used.</p></li>
-</ul>
-</section>
+<p><strong>Skip-gram implementation in <code class="docutils literal notranslate"><span class="pre">tf</span></code></strong></p>
+<p>Training objective:</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{T}\sum_{t=1}^T \sum_{-c \leq j \leq c, j \neq 0} \log p(w_{t+j}|w_t)\]</div>
+<p>where <span class="math notranslate nohighlight">\(c\)</span> is the size of the training context. The basic formulation defines the probability as</p>
+<div class="math notranslate nohighlight">
+\[p(w_O|w_I) = \frac{\exp({\bf{v}}_{w_O}^\top {\bf{v}}_{w_I})}{\sum_{w=1}^W \exp({\bf{v}}_{w}^\top {\bf{v}}_{w_I})}\]</div>
+<p>where <span class="math notranslate nohighlight">\({\bf{v}}_w\)</span> is the vector representation of the word <span class="math notranslate nohighlight">\(w\)</span> and <span class="math notranslate nohighlight">\(W\)</span> is the size of the dictionary.</p>
+<p>Take a look at the implementation available on this <a class="reference external" href="https://www.tensorflow.org/text/tutorials/word2vec">link</a></p>
 <section id="there-are-other-two-widely-used-representations-based-on-matrix-factorization">
 <h3>There are other two widely used representations based on Matrix factorization:<a class="headerlink" href="#there-are-other-two-widely-used-representations-based-on-matrix-factorization" title="Link to this heading">#</a></h3>
 <p>These methods utilize low-rank approximations to decompose large matrices that
@@ -1113,17 +1189,11 @@ capture statistical information about a corpus. That means that this methods are
 <p>Different pretrained GloVe embeddings can be download from <a class="reference external" href="https://nlp.stanford.edu/projects/glove/">here</a>. The lightest file is more than 800 Mb, so a tutorial for its use can be found in the following <a class="reference external" href="https://blog.keras.io/using-pre-trained-word-embeddings-in-a-keras-model.html">link</a></p>
 </div>    <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">gensim.downloader</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">gensim</span><span class="o">.</span><span class="n">downloader</span><span class="o">.</span><span class="n">info</span><span class="p">()[</span><span class="s1">&#39;models&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#import gensim.downloader</span>
+<span class="c1">#print(list(gensim.downloader.info()[&#39;models&#39;].keys()))</span>
 
 <span class="c1"># Download the &quot;glove-twitter-25&quot; embeddings</span>
-<span class="n">glove_vectors</span> <span class="o">=</span> <span class="n">gensim</span><span class="o">.</span><span class="n">downloader</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;glove-twitter-25&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;fasttext-wiki-news-subwords-300&#39;, &#39;conceptnet-numberbatch-17-06-300&#39;, &#39;word2vec-ruscorpora-300&#39;, &#39;word2vec-google-news-300&#39;, &#39;glove-wiki-gigaword-50&#39;, &#39;glove-wiki-gigaword-100&#39;, &#39;glove-wiki-gigaword-200&#39;, &#39;glove-wiki-gigaword-300&#39;, &#39;glove-twitter-25&#39;, &#39;glove-twitter-50&#39;, &#39;glove-twitter-100&#39;, &#39;glove-twitter-200&#39;, &#39;__testing_word2vec-matrix-synopsis&#39;]
-[==================================================] 100.0% 104.8/104.8MB downloaded
+<span class="c1">#glove_vectors = gensim.downloader.load(&#39;glove-twitter-25&#39;)</span>
 </pre></div>
 </div>
 </div>
@@ -1135,18 +1205,20 @@ capture statistical information about a corpus. That means that this methods are
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequential</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Embedding</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Embedding</span><span class="p">,</span> <span class="n">Input</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Embedding</span><span class="p">(</span><span class="n">input_dim</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">output_dim</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">input_length</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,)))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Embedding</span><span class="p">(</span><span class="n">input_dim</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">output_dim</span> <span class="o">=</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span> <span class="o">=</span> <span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mse&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">3</span><span class="p">]])))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[[ 0.02357093  0.02092982 -0.04955918 -0.01931781]
-  [ 0.03651024  0.04621916 -0.04629884  0.00012832]
-  [-0.04131331 -0.02115368 -0.03124855  0.02596796]]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">1/1</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 18ms/step
+[[[-0.02371303  0.00716837 -0.02285376  0.04179534]
+  [-0.02503325 -0.03807782 -0.02270105  0.02248449]
+  [ 0.04261405  0.0298858  -0.00957584 -0.04253836]]]
 </pre></div>
 </div>
 </div>
@@ -1166,6 +1238,14 @@ capture statistical information about a corpus. That means that this methods are
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">1/1</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 25ms/step
+[[[-1.69751    -0.16846594  0.01590205  0.4779847 ]
+  [-1.4023608  -1.5816872  -0.49606568  1.2519339 ]
+  [ 0.64782345  2.1656923   0.3370885   0.6460906 ]]]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1174,21 +1254,23 @@ capture statistical information about a corpus. That means that this methods are
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;model&quot;
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-input_2 (InputLayer)         [(None, 3)]               0         
-_________________________________________________________________
-embedding_2 (Embedding)      (None, 3, 4)              400       
-=================================================================
-Total params: 400
-Trainable params: 0
-Non-trainable params: 400
-_________________________________________________________________
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "functional_15"</span>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)                    </span>┃<span style="font-weight: bold"> Output Shape           </span>┃<span style="font-weight: bold">       Param # </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ input_layer_7 (<span style="color: #0087ff; text-decoration-color: #0087ff">InputLayer</span>)      │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">3</span>)              │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ embedding_8 (<span style="color: #0087ff; text-decoration-color: #0087ff">Embedding</span>)         │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">3</span>, <span style="color: #00af00; text-decoration-color: #00af00">4</span>)           │           <span style="color: #00af00; text-decoration-color: #00af00">400</span> │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">400</span> (1.56 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">0</span> (0.00 B)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">400</span> (1.56 KB)
+</pre>
+</div></div>
 </div>
 </section>
 </section>
@@ -1269,8 +1351,9 @@ _________________________________________________________________
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#word-embeddings">Word embeddings</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#word2vec">word2vec</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-activation-functions">Alternative activation functions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cbow">CBOW</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skip-gram">Skip-gram</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-build-a-word2vec-model-using-tf">Let’s build a word2vec model using <code class="docutils literal notranslate"><span class="pre">tf</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#there-are-other-two-widely-used-representations-based-on-matrix-factorization">There are other two widely used representations based on Matrix factorization:</a></li>
 </ul>
 </li>
