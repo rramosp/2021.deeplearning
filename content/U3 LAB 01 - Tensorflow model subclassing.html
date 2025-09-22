@@ -613,7 +613,7 @@ b shapes [TensorShape([10]), TensorShape([5]), TensorShape([1])]
             <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">neurons</span><span class="p">)</span><span class="o">==</span><span class="nb">len</span><span class="p">(</span><span class="n">activations</span><span class="p">),</span> \
                         <span class="s2">&quot;must have the same number of neurons and activations&quot;</span>
 
-            <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">true</span><span class="p">([</span><span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation_map</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">activations</span><span class="p">]),</span> \
+            <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">([</span><span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation_map</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">activations</span><span class="p">]),</span> \
                                 <span class="s2">&quot;activation string not recognized&quot;</span>
 
             <span class="bp">self</span><span class="o">.</span><span class="n">neurons</span> <span class="o">=</span> <span class="n">neurons</span>
