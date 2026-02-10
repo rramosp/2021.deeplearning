@@ -3,3 +3,6 @@
 *XX--TEACHER--*
 admin/
 _build/
+
+# MyST build outputs
+_build
