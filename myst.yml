@@ -3,7 +3,7 @@ project:
   title: Fundamentos de Deep Learning
   authors:
     - name: Raúl Ramos
-    - name: Julián Arias / Universidad de Antioquia
+    - name: Julián Arias 
   github: rramosp/2021.deeplearning
   jupyter: false
   # thebe:
